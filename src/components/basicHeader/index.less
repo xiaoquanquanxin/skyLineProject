@@ -1,3 +1,64 @@
+//	头部
 .basic-header {
-	height: 52px;
+	width: 100%;
+	height: 62px;
+	@media screen and (max-width: 768px) {
+		height: 52px;
+	}
+	//	外套
+	.basic-header-wrap {
+		position: fixed;
+		width: 1280px;
+		height: 62px;
+		margin: auto;
+		top: 0;
+		left: 0;
+		right: 0;
+		background-color: white;
+		@media screen and (max-width: 768px) {
+			height: 52px;
+			width: 100%;
+		}
+
+		//	头部的logo
+		.basic-header-logo {
+			display: block;
+			position: absolute;
+			width: 118px;
+			margin-left: -576px;
+			top: 14px;
+			left: 50%;
+			@media screen and (max-width: 768px) {
+				width: 99px;
+				margin-left: 30px;
+				margin-top: 11px;
+				position: static;
+			}
+
+			//	默认logo
+			&.basic-header-logo-default {
+
+			}
+
+			//	蓝色logo
+			&.basic-header-logo-active {
+
+			}
+		}
+
+		//	菜单
+		.basic-header-menu {
+			width: 20px;
+			position: absolute;
+			top: 18px;
+			right: 30px;
+		}
+	}
+
+
+}
+
+
+*{
+	color: red;
 }
