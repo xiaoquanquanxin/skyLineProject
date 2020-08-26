@@ -29,7 +29,7 @@ const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
 //  自定义参数，用于载入百度地图的那个script
-const GetFullPathPlugin = require('./customWebpackPlugin/GetFullPathPlugin');
+const MultiplePageJsCdn = require('./customWebpackPlugin/MultiplePageJsCdn');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -689,7 +689,7 @@ module.exports = function (webpackEnv){
             /**
              * ⬇️⬇️⬇️⬇️新增多页打包配置
              * **/
-            new GetFullPathPlugin()
+            new MultiplePageJsCdn()
             /**
              * ⬆️⬆️⬆️⬆️新增多页打包配置
              * **/
