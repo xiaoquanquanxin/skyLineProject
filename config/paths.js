@@ -40,11 +40,9 @@ const resolveModule = (resolveFn, filePath) => {
     const extension = moduleFileExtensions.find(extension =>
         fs.existsSync(resolveFn(`${filePath}.${extension}`))
     );
-
     if (extension) {
         return resolveFn(`${filePath}.${extension}`);
     }
-
     return resolveFn(`${filePath}.js`);
 };
 
@@ -55,13 +53,18 @@ const glob = require('glob');
 
 // 获取指定路径下的入口文件
 function getEntries(globPath){
-    const files = glob.sync(globPath),
-        entries = {};
+    const files = glob.sync(globPath);
+    const entries = {};
     files.forEach(function (filepath){
-        const split = filepath.split('/');
-        const name = split[split.length - 2];
-        entries[name] = './' + filepath;
+        const split = filepath.split('src/pages/');
+        const name = split[1];
+        const nameIndex = name.lastIndexOf('/');
+        //  key 是 a/b/c 的路由结构
+        const key = name.slice(0, nameIndex);
+        entries[key] = './' + filepath;
     });
+//    console.log(entries);
+//    console.log('🍌🍌');
     return entries;
 }
 
@@ -70,15 +73,14 @@ const entries = getEntries('src/**/index.js');
 function getIndexJs(){
     const indexJsList = [];
     Object.keys(entries).forEach((name) => {
-        const indexjs = resolveModule(resolveApp, `src/${name}/index`);
+        const indexjs = resolveModule(resolveApp, `src/pages/${name}/index`);
         indexJsList.push({
             name,
             path: indexjs
         });
     });
-
-    console.log('执行次数🌰🌰');
-//    console.log(indexJsList);
+    console.log(indexJsList);
+    console.log('入口文件🌰🌰');
     return indexJsList;
 }
 
