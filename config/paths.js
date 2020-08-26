@@ -79,8 +79,8 @@ function getIndexJs(){
             path: indexjs
         });
     });
-    console.log(indexJsList);
-    console.log('入口文件🌰🌰');
+//    console.log(indexJsList);
+//    console.log('入口文件🌰🌰');
     return indexJsList;
 }
 
