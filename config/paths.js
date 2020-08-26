@@ -68,7 +68,7 @@ function getEntries(globPath){
     return entries;
 }
 
-const entries = getEntries('src/**/index.js');
+const entries = getEntries('src/pages/**/index.jsx');
 
 function getIndexJs(){
     const indexJsList = [];
@@ -110,6 +110,24 @@ module.exports = {
     appNodeModules: resolveApp('node_modules'),
     publicUrlOrPath,
     entries,
+
+
+    /**
+     * 以下，自定义的，给别名用的所以加了__
+     * ***/
+    //  api
+    __api: resolveApp('src/api'),
+    //  组件
+    __components: resolveApp('src/components'),
+    //  页面
+    __pages: resolveApp('src/pages'),
+    //  css
+    __css: resolveApp('src/css'),
+    //  图片
+    __images: resolveApp('src/images'),
+    //  工具
+    __utils: resolveApp('src/utils'),
+
 };
 
 //  resolveModule(resolveApp, 'src/index')
