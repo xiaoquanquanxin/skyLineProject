@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import { BasicHeader } from '../../components/basicHeader';
+import { BasicHeader } from '@components/basicHeader';
 
 function App(){
     return (
