@@ -1,9 +1,9 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import logoBlue from '@images/header/logo-blue.png';
+
 import product01 from '@images/header/product-01.png';
 import style from './index.less';
-import { scrollListener } from '@utils/eventListener';
+import { resizeListener, scrollListener } from '@utils/eventListener';
 
 //  菜单列表项
 const MenuListItem = CSSModules(
@@ -136,7 +136,7 @@ const BasicHeaderRenderComponent = CSSModules(
             headerRenderInfo.isTopAndHome = style.isTopAndHome;
         } else {
             //  蓝色logo
-            headerRenderInfo.imageLogo = logoBlue;
+            headerRenderInfo.imageLogo = require('@images/header/logo-blue.png');
             //  如果没有滚到顶部，但是导航展开，菜单应该是黑色的
             if (menuIsFold) {
                 //  黑色展开菜单
@@ -255,15 +255,29 @@ export const BasicHeader = class extends React.Component {
         };
     }
 
+    //  钩子
     componentDidMount(){
-        const fn = (scrollTop) => {
+        //  滚动监听回调函数，用于控制header的css
+        const sfn = (scrollTop) => {
             this.setState(() => {
                 return {
                     isTop: scrollTop === 0
                 };
             });
         };
-        scrollListener(fn);
+        //  滚动监听
+        scrollListener(sfn);
+
+        //  resize监听，用于适配
+        const rfn = (width) => {
+            console.log(width);
+            return;
+            this.setState(() => {
+                return {};
+            });
+        };
+        //  resize监听
+        resizeListener(rfn);
     }
 
     //  头部右侧折叠框的点击事件
