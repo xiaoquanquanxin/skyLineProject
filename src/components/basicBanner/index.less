@@ -1,0 +1,56 @@
+//	banner主内容
+.basicBanner {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	@media screen and (max-width: 768px) {
+		height: 154.7vw;
+	}
+	//	banner gif
+	.basicBannerGif {
+
+		display: block;
+		height: 100%;
+		position: absolute;
+		transform: translateX(-50%);
+		top: 0;
+		left: 50%;
+		@media screen and (max-width: 768px) {
+
+		}
+	}
+
+	//	标题
+	.theTitle {
+		color: var(--white);
+		height: 200px;
+		position: absolute;
+		z-index: 9;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		text-align: center;
+		font-size: 14px;
+		width: 90%;
+
+		& > h1 {
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+	}
+
+
+	//	整个一遮罩
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, .4);
+	}
+}
