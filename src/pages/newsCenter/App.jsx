@@ -1,10 +1,13 @@
 import React from 'react';
 import './index.css';
+import { BasicHeader } from '@components/basicHeader';
 
 function App(){
     return (
         <div className="App">
-            新闻中心
+            <BasicHeader
+                menuListActiveIndex={3}
+            />
         </div>
     );
 }

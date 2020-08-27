@@ -91,6 +91,14 @@ const SolutionItem = CSSModules(
     }
 );
 
+//  点击logo跳转到首页
+const logoClick = (menuListActiveIndex) => {
+    if (menuListActiveIndex === 0) {
+        return false;
+    }
+    window.location.href = '/index.html';
+};
+
 //  头部渲染
 const BasicHeaderRenderComponent = CSSModules(
     function ({
@@ -142,12 +150,13 @@ const BasicHeaderRenderComponent = CSSModules(
                     style={{ position: 'fixed' }}>
                     <img className={`${style.basicHeaderLogo}`}
                          src={headerRenderInfo.imageLogo}
+                         onClick={() => (logoClick(menuListActiveIndex))}
                          alt="地平线头部logo"/>
                     <img className={style.basicHeaderMenu}
                          onClick={() => (menuFoldClick(menuIsFold))}
                          src={headerRenderInfo.imageMenu}
                          alt="地平线菜单图标"/>
-                    <ul className={`${style.menuList} ${style.menuListShow}`}>
+                    <ul className={`${style.menuList} ${menuIsFold ? '' : style.menuListShow}`}>
                         {/*首页，index=0*/}
                         <MenuListItem
                             menuListActiveIndex={menuListActiveIndex}
@@ -235,7 +244,7 @@ export const BasicHeader = class extends React.Component {
         this.state = {
             //  是否滚动在顶部
             isTop: true,
-            //  右侧菜单的折叠状态
+            //  右侧菜单的折叠状态 true:折叠
             menuIsFold: true,
             //  激活了哪一个路由？
             menuListActiveIndex: props.menuListActiveIndex || 0,

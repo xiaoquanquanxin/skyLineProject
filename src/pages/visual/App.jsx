@@ -1,10 +1,12 @@
 import React from 'react';
 import './index.css';
+import { BasicHeader } from '@components/basicHeader';
 
 function App(){
     return (
-        <div className="App">视觉
-        </div>
+        <BasicHeader
+            menuListActiveIndex={2}
+        />
     );
 }
 
