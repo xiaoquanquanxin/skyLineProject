@@ -4,6 +4,7 @@ import CSSModules from 'react-css-modules';
 import product01 from '@images/header/product-01.png';
 import style from './index.less';
 import { resizeListener, scrollListener } from '@utils/eventListener';
+import { basicCompareWidth } from '@utils/constant';
 
 //  菜单列表项
 const MenuListItem = CSSModules(
@@ -244,6 +245,8 @@ export const BasicHeader = class extends React.Component {
         this.state = {
             //  是否滚动在顶部
             isTop: true,
+            //  浏览器宽度是否超过basicCompareWidth
+            isRelativelyWide: window.innerWidth >= basicCompareWidth,
             //  右侧菜单的折叠状态 true:折叠
             menuIsFold: true,
             //  激活了哪一个路由？
@@ -270,10 +273,10 @@ export const BasicHeader = class extends React.Component {
 
         //  resize监听，用于适配
         const rfn = (width) => {
-            console.log(width);
-            return;
             this.setState(() => {
-                return {};
+                return {
+                    menuListActiveIndex: width >= basicCompareWidth
+                };
             });
         };
         //  resize监听
