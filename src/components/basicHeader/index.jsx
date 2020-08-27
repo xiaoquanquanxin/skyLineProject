@@ -29,6 +29,21 @@ const MenuListItem = CSSModules(
     }
 );
 
+//  中英文切换
+const ChineseEnglishSwitch = CSSModules(
+    function (isCN){
+        return (
+            <li>
+                <div className={style.menuListItem}>
+                    {isCN ? <span className={style.activeColor}>CN</span> : <a href='https://horizon.ai/'>CN</a>}
+                    <b className={style.languageItem}>/</b>
+                    {!isCN ? <span className={style.activeColor}>EN</span> : <a href='https://en.horizon.ai/'>EN</a>}
+                </div>
+            </li>
+        );
+    }
+);
+
 //  产品列表项
 const ProductItem = CSSModules(
     function ({ src, description }){
@@ -43,9 +58,49 @@ const ProductItem = CSSModules(
     }
 );
 
+//  解决方案
+const SolutionItem = CSSModules(
+    function ({ menuListActiveIndex,menuListUnFoldIndex, menuListClick }){
+        return (
+            <li onClick={(e) => (menuListClick(2, e))}>
+                <div
+                    className={`${style.menuListItem}
+                                 ${menuListActiveIndex === 2 ? style.activeColor : ''}
+                                 ${menuListUnFoldIndex === 2 ? style.curr : ''}`}>解决方案
+                    <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
+                        alt="箭头"/>
+                </div>
+                {
+                    menuListUnFoldIndex === 2 ?
+                        <ul className={style.programme}>
+                            <li><a href="/intelligentDriving.html">智能驾驶</a></li>
+                            <li>
+                                <a>智能物联网</a>
+                                <ul className={style.aiotChildren}>
+                                    <li><a href="/visual.html">视觉</a></li>
+                                    <li><a href="/voice.html">语音</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        : ''
+                }
+            </li>
+        );
+    }
+);
+
 //  头部渲染
 const BasicHeaderRenderComponent = CSSModules(
-    function ({ isTop, menuIsFold, menuListActiveIndex, menuListUnFoldIndex, menuFoldClick, menuListClick, }){
+    function ({
+        isTop,
+        menuIsFold,
+        menuListActiveIndex,
+        menuListUnFoldIndex,
+        isCN,
+        menuFoldClick,
+        menuListClick,
+    }){
         //  渲染信息
         const headerRenderInfo = {
             imageLogo: null,
@@ -88,7 +143,7 @@ const BasicHeaderRenderComponent = CSSModules(
                             content='首页'
                             href='/index.html'
                         />
-                        <li onClick={() => (menuListClick(1))}>
+                        <li onClick={(e) => (menuListClick(1, e))}>
                             <div
                                 className={`${style.menuListItem}
                                  ${menuListActiveIndex === 1 ? style.activeColor : ''}
@@ -124,30 +179,11 @@ const BasicHeaderRenderComponent = CSSModules(
                                     : ''
                             }
                         </li>
-                        <li onClick={() => (menuListClick(2))}>
-                            <div
-                                className={`${style.menuListItem}
-                                 ${menuListActiveIndex === 2 ? style.activeColor : ''}
-                                 ${menuListUnFoldIndex === 2 ? style.curr : ''}`}>解决方案
-                                <img
-                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
-                                    alt="箭头"/>
-                            </div>
-                            {
-                                menuListUnFoldIndex === 2 ?
-                                    <ul className={style.programme}>
-                                        <li><a href="/intelligentDriving.html">智能驾驶</a></li>
-                                        <li>
-                                            <a>智能物联网</a>
-                                            <ul className={style.aiotChildren}>
-                                                <li><a href="/visual.html">视觉</a></li>
-                                                <li><a href="">语音</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                    : ''
-                            }
-                        </li>
+                        <SolutionItem
+                            menuListActiveIndex={menuListActiveIndex}
+                            menuListUnFoldIndex={menuListUnFoldIndex}
+                            menuListClick={menuListClick}
+                        />
                         <MenuListItem
                             menuListActiveIndex={menuListActiveIndex}
                             currentIndex={3}
@@ -167,14 +203,7 @@ const BasicHeaderRenderComponent = CSSModules(
                             target='_blank'
                             href='http://horizon.hotjob.cn/'
                         />
-                        <li>
-                            <div
-                                className={`${menuListActiveIndex === 6 ? style.activeColor : ''} ${style.menuListItem}`}>
-                                <span>CN</span>
-                                <b className={style.languageItem}>/</b>
-                                <span>EN</span>
-                            </div>
-                        </li>
+                        <ChineseEnglishSwitch isCN={isCN}/>
                     </ul>
                 </div>
             </header>
@@ -192,7 +221,9 @@ export const BasicHeader = class extends React.Component {
             //  激活了哪一个路由？
             menuListActiveIndex: 0,
             //  展开了哪一个菜单？
-            menuListUnFoldIndex: 2
+            menuListUnFoldIndex: 2,
+            //  是中文还是英文站点
+            isCN: true
         };
     }
 
@@ -216,7 +247,11 @@ export const BasicHeader = class extends React.Component {
         });
     };
     //  头部导航
-    menuListClick = (menuListUnFoldIndex) => {
+    menuListClick = (menuListUnFoldIndex, e) => {
+        if (e) {
+            e.stopPropagation();
+            return false;
+        }
         //  如果点击的还是原来那个
         if (this.state.menuListUnFoldIndex === menuListUnFoldIndex) {
             menuListUnFoldIndex = null;
@@ -235,6 +270,7 @@ export const BasicHeader = class extends React.Component {
                 menuIsFold={this.state.menuIsFold}
                 menuListActiveIndex={this.state.menuListActiveIndex}
                 menuListUnFoldIndex={this.state.menuListUnFoldIndex}
+                isCN={this.state.isCN}
                 menuFoldClick={this.menuFoldClick}
                 menuListClick={this.menuListClick}
             />
