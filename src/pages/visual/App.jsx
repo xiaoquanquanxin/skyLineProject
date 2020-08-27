@@ -3,7 +3,7 @@ import './index.css';
 
 function App(){
     return (
-        <div className="App">智能驾驶
+        <div className="App">视觉
         </div>
     );
 }
