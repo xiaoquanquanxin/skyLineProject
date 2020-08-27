@@ -48,7 +48,7 @@ const useTypeScript = fs.existsSync(paths.appTsConfig);
 
 // style files regexes
 const cssRegex = /\.(css|less)$/;
-const cssModuleRegex = /\.module\.css$/;
+const cssModuleRegex = /\.module\.(css|less)$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
@@ -100,7 +100,7 @@ module.exports = function (webpackEnv){
                             autoprefixer: {
                                 flexbox: 'no-2009',
                             },
-                            stage: 3,
+                            stage: 0,
                         }),
                         // Adds PostCSS Normalize as the reset css with default options,
                         // so that it honors browserslist config in package.json
@@ -463,11 +463,13 @@ module.exports = function (webpackEnv){
                             use: getStyleLoaders({
                                 importLoaders: 1,
                                 sourceMap: isEnvProduction && shouldUseSourceMap,
+                                modules: {
+                                    getLocalIdent: getCSSModuleLocalIdent
+                                },
+                                localsConvention: 'camelCase',
                             }),
-                            // Don't consider CSS imports dead code even if the
-                            // containing package claims to have no side effects.
-                            // Remove this when webpack adds a warning or an error for this.
-                            // See https://github.com/webpack/webpack/issues/6571
+                            //   不要认为CSS导入死代码，即使包含的包声称没有副作用。
+                            //   当webpack为此添加了一个警告或错误时，请删除它。参见https://github.com/webpack/webpack/issues/6571
                             sideEffects: true,
                         },
                         // Adds support for CSS Modules (https://github.com/css-modules/css-modules)
@@ -480,6 +482,7 @@ module.exports = function (webpackEnv){
                                 modules: {
                                     getLocalIdent: getCSSModuleLocalIdent,
                                 },
+                                localsConvention: 'camelCase',
                             }),
                         },
                         // Opt-in support for SASS (using .scss or .sass extensions).
