@@ -25,9 +25,10 @@ const BasicBannerRenderComponent = CSSModules(
                 </div>
             </div>
         );
-    }, style, { allowMultiple: true });
+    }, style, { allowMultiple: true }
+);
 
-export const BasicBanner = class extends React.Component {
+const BasicBanner = class extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -61,3 +62,4 @@ export const BasicBanner = class extends React.Component {
         );
     }
 };
+export default BasicBanner;
