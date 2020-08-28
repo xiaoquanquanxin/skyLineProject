@@ -165,7 +165,7 @@ export const MenuMobile = ({
         <ul className={`${style.menuMobile} ${!menuIsFold ? style.menuListShow : ''}`}>
             {/*首页，index=0*/}
             <MenuListItem
-                activeColor={menuListActiveIndex === 1}
+                activeColor={menuListActiveIndex === 0}
                 content='首页'
                 href='/index.html'
             />
