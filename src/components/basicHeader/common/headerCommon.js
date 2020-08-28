@@ -16,7 +16,7 @@ export const GetHeaderLogoMenuInformation = (menuIsFold, isTop, menuListActiveIn
         imageLogoSrc: null,
         //  菜单 三 的src
         imageMenuSrc: null,
-        //  是滚动到顶部，并且是首页，使用的class
+        //  是滚动到顶部，并且是首页，使用的class。true:透明的,false:白色的底
         isTopAndHome: false
     };
 
