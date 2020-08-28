@@ -1,22 +1,18 @@
-@import "~@css/layout";
 //	头部
 .basicHeader {
 	width: 100%;
 	//	外套
 	.basicHeaderWrap {
 		position: fixed;
-		width: 1280px;
-		height: 62px;
+		height: 52px;
 		margin: auto;
 		top: 0;
 		left: 0;
 		right: 0;
 		z-index: 999;
 		background-color: var(--white);
-		@media screen and (max-width: 768px) {
-			height: 52px;
-			width: 100%;
-		}
+		width: 100%;
+
 		//	如果滚动到了顶部，并且是首页
 		&.isTopAndHome {
 			background-color: transparent;
@@ -25,207 +21,16 @@
 		//	头部的logo
 		.basicHeaderLogo {
 			display: block;
-			position: absolute;
-			width: 118px;
-			margin-left: -576px;
-			top: 14px;
-			left: 50%;
-			@media screen and (max-width: 768px) {
-				width: 99px;
-				margin: 11px 30px;
-				position: static;
-			}
-
-
-			&.show {
-				display: block;
-			}
-
-			&.hide {
-				display: none;
-			}
+			width: 99px;
+			margin: 11px 30px;
 		}
 
-		//	菜单
+		//	菜单 三 三个横
 		.basicHeaderMenu {
 			width: 20px;
 			position: absolute;
 			top: 18px;
 			right: 30px;
-		}
-
-
-		//	菜单内容
-		.menuList {
-			cursor: pointer;
-			display: none;
-			width: 100%;
-			@media screen and (max-width: 768px) {
-				border-top: 1px solid #eee;
-				box-sizing: border-box;
-			}
-			//	展开
-			&.menuListShow {
-				display: block;
-				background-color: var(--white);
-			}
-
-			//	首页没有border-top
-			& > :first-child {
-				.menuListItem {
-					border: none;
-				}
-			}
-
-			//	菜单的每一项
-			.menuListItem {
-				padding: 20px;
-				margin-left: 20px;
-				display: block;
-				border-top: 1px solid #eee;
-				font-size: 14px;
-				position: relative;
-				color: #999;
-
-				//	cn / en 中间的 /
-				.languageItem {
-					padding: 0 10px;
-					display: inline-block;
-				}
-
-				//	cn / en文字
-				& > a {
-					color: var(--color999);
-				}
-
-				//	箭头
-				& > img {
-					width: 20px;
-					position: absolute;
-					top: 20px;
-					right: 30px;
-				}
-
-				//	如果旋转
-				&.curr {
-					//	箭头得旋转
-					img {
-						transform: rotate(180deg);
-					}
-
-				}
-
-			}
-
-			//	菜单中的产品列表
-			.headerProduct {
-				width: 100%;
-				background: #fafafa;
-				border-top: 1px solid #eee;
-				padding: 10px 0;
-
-				&::after {
-					.clearfix;
-				}
-
-				@media screen and (max-width: 768px) {
-					width: 100%;
-					background: #fafafa;
-					border-top: 1px solid #eee;
-					padding: 10px 0;
-				}
-
-				//	产品列表里面的每一项
-				.item {
-					width: 25%;
-					float: left;
-					text-align: center;
-					@media screen and (max-width: 768px) {
-						width: 33%;
-					}
-
-					//	直系亲属a标签
-					& > a {
-						width: 100%;
-						display: block;
-						padding: 10px 0;
-						font-size: 13px;
-
-						//	产品图片
-						.itemImage {
-							height: 106px;
-							margin-bottom: 18px;
-							@media screen and (max-width: 768px) {
-								height: 85px;
-								margin: 0;
-							}
-						}
-
-						//	产品描述
-						.itemDescription {
-							color: var(--color999);
-							display: block;
-							margin-bottom: 8px;
-						}
-					}
-
-					//	鼠标hover
-					&:hover {
-						& > a {
-							.itemImage {
-								margin-top: -10px;
-								margin-bottom: 10px;
-							}
-
-							.itemDescription {
-								color: var(--black);
-							}
-						}
-					}
-				}
-			}
-
-			//	解决方案，这个是特殊的
-			.programme {
-				background: #fafafa;
-				padding-left: 40px;
-				border-top: 1px solid var(--coloreee);
-
-				li {
-					border-top: 1px solid var(--coloreee);
-
-					&:hover {
-						& > a {
-							color: var(--black)
-						}
-					}
-
-					a {
-						width: 100%;
-						display: block;
-						padding: 20px 10px;
-						font-size: 13px;
-						color: var(--color999)
-					}
-				}
-
-				//	直系的第一个li没有bordertop
-				& > li:first-child {
-					border-top: none;
-				}
-
-				//	有子列表的项
-				.aiotChildren {
-					padding-left: 10px;
-				}
-
-			}
-
-
-			//	激活的颜色
-			.activeColor {
-				color: var(--color0066ff)
-			}
 		}
 	}
 }
