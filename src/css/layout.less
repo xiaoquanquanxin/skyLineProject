@@ -1,8 +1,39 @@
-.clearfix() {
+//	清除浮动
+.clearfix {
 	zoom: 1;
-	clear: both;
-	display: table;
-	content: '';
+
+	&::before, &::after {
+		content: '';
+		display: table;
+	}
+
+	&::after {
+		clear: both;
+	}
 }
 
+
+.none {
+	display: none;
+}
+
+.block {
+	display: block;
+}
+
+.flex {
+	display: flex;
+}
+
+.table {
+	display: table;
+}
+
+.inline {
+	display: inline;
+}
+
+.inlineBlock {
+	display: inline-block;
+}
 
