@@ -7,7 +7,7 @@ import layout from '@css/layout.less';
 import { pathConfig } from '@utils/constant';
 
 const MenuListItem = CSSModules(
-    function ({ menuListActiveIndex, currentIndex, content, href, target }){
+    function ({ activeColor, content, href, target }){
         let clickFn = null;
         //  路由一样，不跳转
         if (window.location.pathname === href) {
@@ -18,7 +18,7 @@ const MenuListItem = CSSModules(
         }
         return (
             <li>
-                <a className={`${menuListActiveIndex === currentIndex ? style.activeColor : ''} ${style.menuListItem}`}
+                <a className={`${activeColor ? style.activeColor : ''} ${style.menuListItem}`}
                    href={href}
                    target={target}
                    onClick={clickFn}>
@@ -67,23 +67,67 @@ const ProductItem = CSSModules(
     }
 );
 
+//  产品中心
+const ProductionCenter = CSSModules(
+    function ({
+        activeColor,
+        block,
+        menuListClick,
+    }){
+        return (
+            <li>
+                <div onClick={() => (menuListClick(1))}
+                     className={`${style.menuListItem}
+                                 ${activeColor ? style.activeColor : ''}
+                                 ${block ? style.curr : ''}`}>产品中心
+                    <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
+                        alt="箭头"/>
+                </div>
+                <ul className={`${style.headerProduct} ${layout.clearfix} ${block ? layout.block : layout.none}`}>
+                    <ProductItem
+                        src={product01}
+                        href={'/production.html'}
+                        description={'Sunrise 旭日'}
+                    />
+                    <ProductItem
+                        src={product01}
+                        href={'/production.html'}
+                        description={'Sunrise 旭日'}
+                        isActiveItem={true}
+                    />
+                    <ProductItem
+                        src={product01}
+                        href={'/production.html'}
+                        description={'Sunrise 旭日'}
+                    />
+                    <ProductItem
+                        src={product01}
+                        href={'/production.html'}
+                        description={'Nebula 智能车载主动安全解决方案'}
+                    />
+                </ul>
+            </li>
+        );
+    }
+);
 //  解决方案
 const SolutionItem = CSSModules(
-    function ({ menuListActiveIndex, menuListUnFoldIndex, menuListClick }){
+    function ({ activeColor, block, menuListClick }){
         const pathname = window.location.pathname;
 //        console.log(`pathname:${pathname}`);
         return (
             <li>
                 <div className={`${style.menuListItem}
-                                 ${menuListActiveIndex === 2 ? style.activeColor : ''}
-                                 ${menuListUnFoldIndex === 2 ? style.curr : ''}`}
+                                 ${activeColor ? style.activeColor : ''}
+                                 ${block ? style.curr : ''}`}
                      onClick={() => (menuListClick(2))}
                 >解决方案
                     <img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
                         alt="箭头"/>
                 </div>
-                <ul className={`${style.programme} ${menuListUnFoldIndex === 2 ? layout.block : layout.none}`}>
+                <ul className={`${style.programme} ${block ? layout.block : layout.none}`}>
                     <li
                         className={pathname === pathConfig.intelligentDriving ? style.isActiveItemProgramme : ''}
                     ><a href={pathConfig.intelligentDriving}>智能驾驶</a></li>
@@ -121,69 +165,37 @@ export const MenuMobile = ({
         <ul className={`${style.menuMobile} ${!menuIsFold ? style.menuListShow : ''}`}>
             {/*首页，index=0*/}
             <MenuListItem
-                menuListActiveIndex={menuListActiveIndex}
-                currentIndex={0}
+                activeColor={menuListActiveIndex === 1}
                 content='首页'
                 href='/index.html'
             />
             {/*产品中心，index=1*/}
-            <li>
-                <div onClick={() => (menuListClick(1))}
-                     className={`${style.menuListItem}
-                                 ${menuListActiveIndex === 1 ? style.activeColor : ''}
-                                 ${menuListUnFoldIndex === 1 ? style.curr : ''}`}>产品中心
-                    <img
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
-                        alt="箭头"/>
-                </div>
-                <ul className={`${style.headerProduct} ${menuListUnFoldIndex === 1 ? layout.block : layout.none}`}>
-                    <ProductItem
-                        src={product01}
-                        href={'/production.html'}
-                        description={'Sunrise 旭日'}
-                    />
-                    <ProductItem
-                        src={product01}
-                        href={'/production.html'}
-                        description={'Sunrise 旭日'}
-                        isActiveItem={true}
-                    />
-                    <ProductItem
-                        src={product01}
-                        href={'/production.html'}
-                        description={'Sunrise 旭日'}
-                    />
-                    <ProductItem
-                        src={product01}
-                        href={'/production.html'}
-                        description={'Nebula 智能车载主动安全解决方案'}
-                    />
-                </ul>
-            </li>
+            <ProductionCenter
+                activeColor={menuListActiveIndex === 1}
+                block={menuListUnFoldIndex === 1}
+                menuListClick={menuListClick}
+            />
             {/*解决方案，index=1*/}
             <SolutionItem
-                menuListActiveIndex={menuListActiveIndex}
-                menuListUnFoldIndex={menuListUnFoldIndex}
+                activeColor={menuListActiveIndex === 2}
+                block={menuListUnFoldIndex === 2}
                 menuListClick={menuListClick}
             />
             {/*新闻中心，index=1*/}
             <MenuListItem
-                menuListActiveIndex={menuListActiveIndex}
-                currentIndex={3}
+                activeColor={menuListActiveIndex === 3}
                 content='新闻中心'
                 href='/newsCenter.html'
             />
             {/*关于我们，index=1*/}
             <MenuListItem
-                menuListActiveIndex={menuListActiveIndex}
-                currentIndex={4}
+                activeColor={menuListActiveIndex === 4}
                 content='关于我们'
                 href='/aboutAs.html'
             />
             {/*加入我们，index=1*/}
             <MenuListItem
-                menuListActiveIndex={menuListActiveIndex}
-                currentIndex={5}
+                activeColor={menuListActiveIndex === 5}
                 content='加入我们'
                 target='_blank'
                 href='http://horizon.hotjob.cn/'
