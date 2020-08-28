@@ -3,6 +3,8 @@ import CSSModules from 'react-css-modules';
 import product01 from '@images/header/product-01.png';
 import React from 'react';
 import style from './index.less';
+import layout from '@css/layout.less';
+import { pathConfig } from '@utils/constant';
 
 const MenuListItem = CSSModules(
     function ({ menuListActiveIndex, currentIndex, content, href, target }){
@@ -68,6 +70,8 @@ const ProductItem = CSSModules(
 //  解决方案
 const SolutionItem = CSSModules(
     function ({ menuListActiveIndex, menuListUnFoldIndex, menuListClick }){
+        const pathname = window.location.pathname;
+//        console.log(`pathname:${pathname}`);
         return (
             <li>
                 <div className={`${style.menuListItem}
@@ -79,20 +83,25 @@ const SolutionItem = CSSModules(
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
                         alt="箭头"/>
                 </div>
-                {
-                    menuListUnFoldIndex === 2 ?
-                        <ul className={style.programme}>
-                            <li><a href="/intelligentDriving.html">智能驾驶</a></li>
-                            <li>
-                                <a>智能物联网</a>
-                                <ul className={style.aiotChildren}>
-                                    <li><a href="/visual.html">视觉</a></li>
-                                    <li><a href="/voice.html">语音</a></li>
-                                </ul>
-                            </li>
+                <ul className={`${style.programme} ${menuListUnFoldIndex === 2 ? layout.block : layout.none}`}>
+                    <li
+                        className={pathname === pathConfig.intelligentDriving ? style.isActiveItemProgramme : ''}
+                    ><a href={pathConfig.intelligentDriving}>智能驾驶</a></li>
+                    <li
+                        className={(pathname === pathConfig.visual || pathname === pathConfig.voice)
+                            ? style.isActiveItemProgramme : ''}
+                    >
+                        <a>智能物联网</a>
+                        <ul className={style.aiotChildren}>
+                            <li
+                                className={pathname === pathConfig.visual ? style.isActiveItemProgramme : ''}
+                            ><a href={pathConfig.visual}>视觉</a></li>
+                            <li
+                                className={pathname === pathConfig.voice ? style.isActiveItemProgramme : ''}
+                            ><a href={pathConfig.voice}>语音</a></li>
                         </ul>
-                        : ''
-                }
+                    </li>
+                </ul>
             </li>
         );
     }
@@ -127,33 +136,29 @@ export const MenuMobile = ({
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
                         alt="箭头"/>
                 </div>
-                {
-                    menuListUnFoldIndex === 1 ?
-                        <ul className={style.headerProduct}>
-                            <ProductItem
-                                src={product01}
-                                href={'/production.html'}
-                                description={'Sunrise 旭日'}
-                            />
-                            <ProductItem
-                                src={product01}
-                                href={'/production.html'}
-                                description={'Sunrise 旭日'}
-                                isActiveItem={true}
-                            />
-                            <ProductItem
-                                src={product01}
-                                href={'/production.html'}
-                                description={'Sunrise 旭日'}
-                            />
-                            <ProductItem
-                                src={product01}
-                                href={'/production.html'}
-                                description={'Nebula 智能车载主动安全解决方案'}
-                            />
-                        </ul>
-                        : ''
-                }
+                <ul className={`${style.headerProduct} ${menuListUnFoldIndex === 1 ? layout.block : layout.none}`}>
+                    <ProductItem
+                        src={product01}
+                        href={'/production.html'}
+                        description={'Sunrise 旭日'}
+                    />
+                    <ProductItem
+                        src={product01}
+                        href={'/production.html'}
+                        description={'Sunrise 旭日'}
+                        isActiveItem={true}
+                    />
+                    <ProductItem
+                        src={product01}
+                        href={'/production.html'}
+                        description={'Sunrise 旭日'}
+                    />
+                    <ProductItem
+                        src={product01}
+                        href={'/production.html'}
+                        description={'Nebula 智能车载主动安全解决方案'}
+                    />
+                </ul>
             </li>
             {/*解决方案，index=1*/}
             <SolutionItem
