@@ -58,8 +58,9 @@ export const BasicHeader = class extends React.Component {
             };
         });
     };
-    //  头部导航
+    //  箭头
     menuListClick = (menuListUnFoldIndex) => {
+        console.log('箭头');
         //  如果点击的还是原来那个
         if (this.state.menuListUnFoldIndex === menuListUnFoldIndex) {
             menuListUnFoldIndex = -1;
@@ -88,7 +89,6 @@ export const BasicHeader = class extends React.Component {
                     menuListActiveIndex={menuListActiveIndex}
                     menuListUnFoldIndex={menuListUnFoldIndex}
                     isCN={isCN}
-                    menuListClick={this.menuListClick}
                 /> :
                 <HeaderMobile
                     isTop={isTop}

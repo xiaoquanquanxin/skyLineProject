@@ -19,7 +19,7 @@ export const HeaderMobile = (
         return (
             <header className={style.basicHeader}>
                 <div
-                    className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome}`}>
+                    className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}>
                     {/*logo*/}
                     <img className={`${style.basicHeaderLogo}`}
                          src={headerRenderInfo.imageLogoSrc}
