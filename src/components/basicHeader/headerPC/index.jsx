@@ -12,16 +12,17 @@ export const HeaderPC = CSSModules(({
     menuListActiveIndex,
     menuListUnFoldIndex,
     isCN,
+    headerMouseOver,
+    headerMouseLeave,
 }) => {
     //  渲染信息
     const headerRenderInfo = GetHeaderLogoMenuInformation(true, isTop, menuListActiveIndex);
-//    console.log(`isTop:${isTop} \n  menuListActiveIndex:${menuListActiveIndex} \n menuListUnFoldIndex:${menuListUnFoldIndex}`);
-//    console.log(headerRenderInfo.isTopAndHome);
-    if (headerRenderInfo.isTopAndHome) {
-        console.log(isTop);
-    }
+    console.log(headerRenderInfo.isTopAndHome);
     return (
-        <header className={style.basicHeader}>
+        <header className={style.basicHeader}
+                onMouseOver={() => {headerMouseOver();}}
+                onMouseLeave={() => {headerMouseLeave();}}
+        >
             <div className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}>
                 <div className={`${style.inner} ${layout.clearfix}`}>
                     {/*logo*/}
@@ -32,6 +33,7 @@ export const HeaderPC = CSSModules(({
                     {/*菜单*/}
                     <MenuPC
                         menuIsFold={menuIsFold}
+                        isTopAndHome={headerRenderInfo.isTopAndHome}
                         menuListActiveIndex={menuListActiveIndex}
                         menuListUnFoldIndex={menuListUnFoldIndex}
                         isCN={isCN}
@@ -40,5 +42,4 @@ export const HeaderPC = CSSModules(({
             </div>
         </header>
     );
-
 }, style, { allowMultiple: true });
