@@ -1,0 +1,160 @@
+@import "~@css/layout";
+//	菜单列表移动端
+.menuMobile {
+	display: none;
+	border-top: 1px solid #eee;
+	background-color: var(--white);
+	//	展开
+	&.menuListShow {
+		display: block;
+	}
+
+	//	首页没有border-top
+	& > :first-child {
+		.menuListItem {
+			border: none;
+		}
+	}
+
+	//	li
+	& > li {
+		float: none;
+		font-size: initial;
+		padding: 0;
+		font-weight: initial;
+	}
+
+	//	菜单的每一项
+	.menuListItem {
+		padding: 20px;
+		margin-left: 20px;
+		display: block;
+		border-top: 1px solid #eee;
+		font-size: 14px;
+		position: relative;
+		color: var(--color999);
+		//	cn / en 中间的 /
+		.languageItem {
+			padding: 0 10px;
+			display: inline-block;
+		}
+
+		//	cn / en文字
+		& > a {
+			color: var(--color999);
+		}
+
+		//	箭头
+		& > img {
+			display: block;
+			width: 20px;
+			position: absolute;
+			top: 20px;
+			right: 30px;
+		}
+
+		//	如果旋转
+		&.curr {
+			//	箭头得旋转
+			img {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	//	菜单中的产品列表
+	.headerProduct {
+		background: #fafafa;
+		border-top: 1px solid #eee;
+		padding: 10px 0;
+
+		&::after {
+			.clearfix;
+		}
+
+		//	产品列表里面的每一项
+		.item {
+			width: 33%;
+			float: left;
+			text-align: center;
+
+			//	直系亲属a标签
+			& > a {
+				width: 100%;
+				display: block;
+				padding: 10px 0;
+				font-size: 13px;
+
+				//	产品图片
+				.itemImage {
+					height: 85px;
+					margin: 0;
+				}
+
+				//	产品描述
+				.itemDescription {
+					color: var(--color999);
+					display: block;
+					margin-bottom: 8px;
+				}
+			}
+
+			//	鼠标hover，或选中了某个产品
+			&:hover, &.isActiveItem {
+				& > a {
+					.itemImage {
+						margin-top: -10px;
+						margin-bottom: 10px;
+					}
+
+					.itemDescription {
+						color: var(--black);
+					}
+				}
+			}
+		}
+	}
+
+	//	解决方案
+	.programme {
+		background: #fafafa;
+		padding-left: 40px;
+		border-top: 1px solid var(--coloreee);
+
+		li {
+			border-top: 1px solid var(--coloreee);
+
+			//	鼠标hover，或选中了某个解决方案
+			&:hover, &.isActiveItemProgramme {
+				& > a {
+					color: var(--black)
+				}
+			}
+
+			a {
+				width: 100%;
+				display: block;
+				padding: 20px 10px;
+				font-size: 13px;
+				color: var(--color999)
+			}
+		}
+
+		//	直系的第一个li没有bordertop
+		& > li:first-child {
+			border-top: none;
+		}
+
+		//	有子列表的项
+		.aiotChildren {
+			padding-left: 10px;
+		}
+
+	}
+
+
+	//	激活的颜色
+	.activeColor {
+		color: var(--color0066ff)
+	}
+}
