@@ -1,14 +1,17 @@
 //	banner主内容
 .basicBanner {
 	position: relative;
-	width: 100%;
 	overflow: hidden;
+	width: 100%;
+	height: 800px;
+	background: var(--black);
+	min-width: 1280px;
 	@media screen and (max-width: 768px) {
 		height: 154.7vw;
+		min-width: auto;
 	}
 	//	banner gif
 	.basicBannerGif {
-
 		display: block;
 		height: 100%;
 		position: absolute;
@@ -20,32 +23,69 @@
 		}
 	}
 
+	//	视频
+	.basicBannerVideo {
+		width: 100%;
+		height: auto;
+		display: block;
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		transform: translate3d(-50%, 0, 0);
+	}
+
 	//	标题
 	.theTitle {
 		color: var(--white);
-		height: 200px;
 		position: absolute;
 		z-index: 9;
 		top: 50%;
 		left: 50%;
+		text-align: center;
 		-webkit-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
-		text-align: center;
-		font-size: 14px;
-		width: 90%;
-
+		margin-top: -60px;
+		//	AI 赋能万物 共创智能未来
 		& > h1 {
+			font-size: 50px;
+			font-weight: 500;
+			height: 70px;
+			margin-top: -70px;
+		}
+
+		//	AI on Horizon, Journey Together
+		& > .desc {
+			padding: 20px 0;
 			font-size: 24px;
-			font-weight: 400;
-			line-height: 1.5;
-			margin-bottom: 20px;
+		}
+
+		//	小屏幕
+		@media screen and (max-width: 768px) {
+			height: 200px;
+			text-align: center;
+			font-size: 14px;
+			width: 90%;
+			margin-top: 0;
+			& > h1 {
+				margin-top: 0;
+				font-size: 24px;
+				font-weight: 400;
+				line-height: 1.5;
+				margin-bottom: 20px;
+				height: auto;
+			}
+
+			& > .desc {
+				font-size: 14px;
+				padding: 0;
+			}
 		}
 	}
 
 
-	//	整个一遮罩
+	//	整个一遮罩	todo	注释了
 	&::after {
-		content: "";
+		//content: "";
 		position: absolute;
 		top: 0;
 		left: 0;

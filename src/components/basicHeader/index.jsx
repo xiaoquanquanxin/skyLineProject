@@ -100,10 +100,102 @@ const logoClick = (menuListActiveIndex) => {
     window.location.href = '/index.html';
 };
 
+//  主菜单
+const Menu = ({
+    menuIsFold,
+    isRelativelyWide,
+    menuListActiveIndex,
+    menuListUnFoldIndex,
+    isCN,
+    menuListClick,
+}) => {
+//    console.log('是否折叠', menuIsFold);
+//    console.log('是否足够宽', isRelativelyWide);
+    return (
+        <ul className={`${style.menuList} ${menuIsFold ? '' : style.menuListShow}`}>
+            {/*首页，index=0*/}
+            <MenuListItem
+                menuListActiveIndex={menuListActiveIndex}
+                currentIndex={0}
+                content='首页'
+                href='/index.html'
+            />
+            {/*产品中心，index=1*/}
+            <li>
+                <div onClick={() => (menuListClick(1))}
+                     className={`${style.menuListItem}
+                                 ${menuListActiveIndex === 1 ? style.activeColor : ''}
+                                 ${menuListUnFoldIndex === 1 ? style.curr : ''}`}>产品中心
+                    <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
+                        alt="箭头"/>
+                </div>
+                {
+                    menuListUnFoldIndex === 1 ?
+                        <ul className={style.headerProduct}>
+                            <ProductItem
+                                src={product01}
+                                href={'/production.html'}
+                                description={'Sunrise 旭日'}
+                            />
+                            <ProductItem
+                                src={product01}
+                                href={'//production.html'}
+                                description={'Sunrise 旭日'}
+                            />
+                            <ProductItem
+                                src={product01}
+                                href={'/production.html'}
+                                description={'Sunrise 旭日'}
+                            />
+                            <ProductItem
+                                src={product01}
+                                href={'//production.html'}
+                                description={'Nebula 智能车载主动安全解决方案'}
+                            />
+                        </ul>
+                        : ''
+                }
+            </li>
+            {/*解决方案，index=1*/}
+            <SolutionItem
+                menuListActiveIndex={menuListActiveIndex}
+                menuListUnFoldIndex={menuListUnFoldIndex}
+                menuListClick={menuListClick}
+            />
+            {/*新闻中心，index=1*/}
+            <MenuListItem
+                menuListActiveIndex={menuListActiveIndex}
+                currentIndex={3}
+                content='新闻中心'
+                href='/newsCenter.html'
+            />
+            {/*关于我们，index=1*/}
+            <MenuListItem
+                menuListActiveIndex={menuListActiveIndex}
+                currentIndex={4}
+                content='关于我们'
+                href='/aboutAs.html'
+            />
+            {/*加入我们，index=1*/}
+            <MenuListItem
+                menuListActiveIndex={menuListActiveIndex}
+                currentIndex={5}
+                content='加入我们'
+                target='_blank'
+                href='http://horizon.hotjob.cn/'
+            />
+            {/*中英文切换，index=1*/}
+            <ChineseEnglishSwitch isCN={isCN}/>
+        </ul>
+    );
+};
+
 //  头部渲染
 const BasicHeaderRenderComponent = CSSModules(
     function ({
         isTop,
+        isRelativelyWide,
         menuIsFold,
         menuListActiveIndex,
         menuListUnFoldIndex,
@@ -149,90 +241,26 @@ const BasicHeaderRenderComponent = CSSModules(
                 <div
                     className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome}`}
                     style={{ position: 'fixed' }}>
+                    {/*logo*/}
                     <img className={`${style.basicHeaderLogo}`}
                          src={headerRenderInfo.imageLogo}
                          onClick={() => (logoClick(menuListActiveIndex))}
                          alt="地平线头部logo"/>
+                    {/*菜单按钮*/}
                     <img className={style.basicHeaderMenu}
+                         style={isRelativelyWide ? { display: 'none' } : {}}
                          onClick={() => (menuFoldClick(menuIsFold))}
                          src={headerRenderInfo.imageMenu}
                          alt="地平线菜单图标"/>
-                    <ul className={`${style.menuList} ${menuIsFold ? '' : style.menuListShow}`}>
-                        {/*首页，index=0*/}
-                        <MenuListItem
-                            menuListActiveIndex={menuListActiveIndex}
-                            currentIndex={0}
-                            content='首页'
-                            href='/index.html'
-                        />
-                        {/*产品中心，index=1*/}
-                        <li>
-                            <div onClick={() => (menuListClick(1))}
-                                 className={`${style.menuListItem}
-                                 ${menuListActiveIndex === 1 ? style.activeColor : ''}
-                                 ${menuListUnFoldIndex === 1 ? style.curr : ''}`}>产品中心
-                                <img
-                                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
-                                    alt="箭头"/>
-                            </div>
-                            {
-                                menuListUnFoldIndex === 1 ?
-                                    <ul className={style.headerProduct}>
-                                        <ProductItem
-                                            src={product01}
-                                            href={'/production.html'}
-                                            description={'Sunrise 旭日'}
-                                        />
-                                        <ProductItem
-                                            src={product01}
-                                            href={'//production.html'}
-                                            description={'Sunrise 旭日'}
-                                        />
-                                        <ProductItem
-                                            src={product01}
-                                            href={'/production.html'}
-                                            description={'Sunrise 旭日'}
-                                        />
-                                        <ProductItem
-                                            src={product01}
-                                            href={'//production.html'}
-                                            description={'Nebula 智能车载主动安全解决方案'}
-                                        />
-                                    </ul>
-                                    : ''
-                            }
-                        </li>
-                        {/*解决方案，index=1*/}
-                        <SolutionItem
-                            menuListActiveIndex={menuListActiveIndex}
-                            menuListUnFoldIndex={menuListUnFoldIndex}
-                            menuListClick={menuListClick}
-                        />
-                        {/*新闻中心，index=1*/}
-                        <MenuListItem
-                            menuListActiveIndex={menuListActiveIndex}
-                            currentIndex={3}
-                            content='新闻中心'
-                            href='/newsCenter.html'
-                        />
-                        {/*关于我们，index=1*/}
-                        <MenuListItem
-                            menuListActiveIndex={menuListActiveIndex}
-                            currentIndex={4}
-                            content='关于我们'
-                            href='/aboutAs.html'
-                        />
-                        {/*加入我们，index=1*/}
-                        <MenuListItem
-                            menuListActiveIndex={menuListActiveIndex}
-                            currentIndex={5}
-                            content='加入我们'
-                            target='_blank'
-                            href='http://horizon.hotjob.cn/'
-                        />
-                        {/*中英文切换，index=1*/}
-                        <ChineseEnglishSwitch isCN={isCN}/>
-                    </ul>
+                    {/*菜单*/}
+                    <Menu
+                        menuIsFold={menuIsFold}
+                        isRelativelyWide={isRelativelyWide}
+                        menuListActiveIndex={menuListActiveIndex}
+                        menuListUnFoldIndex={menuListUnFoldIndex}
+                        isCN={isCN}
+                        menuListClick={menuListClick}
+                    />
                 </div>
             </header>
         );
@@ -241,12 +269,12 @@ const BasicHeaderRenderComponent = CSSModules(
 export const BasicHeader = class extends React.Component {
     constructor(props){
         super(props);
-        console.log(props);
+//        console.log(props);
         this.state = {
             //  是否滚动在顶部
             isTop: true,
             //  浏览器宽度是否超过basicCompareWidth
-            isRelativelyWide: window.innerWidth >= basicCompareWidth,
+            isRelativelyWide: window.innerWidth > basicCompareWidth,
             //  右侧菜单的折叠状态 true:折叠
             menuIsFold: true,
             //  激活了哪一个路由？
@@ -275,7 +303,7 @@ export const BasicHeader = class extends React.Component {
         const rfn = (width) => {
             this.setState(() => {
                 return {
-                    menuListActiveIndex: width >= basicCompareWidth
+                    isRelativelyWide: width > basicCompareWidth
                 };
             });
         };
@@ -309,6 +337,7 @@ export const BasicHeader = class extends React.Component {
         return (
             <BasicHeaderRenderComponent
                 isTop={this.state.isTop}
+                isRelativelyWide={this.state.isRelativelyWide}
                 menuIsFold={this.state.menuIsFold}
                 menuListActiveIndex={this.state.menuListActiveIndex}
                 menuListUnFoldIndex={this.state.menuListUnFoldIndex}

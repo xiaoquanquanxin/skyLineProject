@@ -1,19 +1,63 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './index.less';
-import BasicBannerGif from '@images/basicBanner/basic-banner.gif';
-import BasicBannerMp4 from '@images/basicBanner/basic-banner.mp4';
+import { basicCompareWidth } from '@utils/constant';
+import { resizeListener } from '@utils/eventListener';
 //  脚部信息
-export const BasicBanner = CSSModules(
-    function ({ xx }){
+const BasicBannerRenderComponent = CSSModules(
+    function ({ isRelativelyWide }){
+//        console.log('是否足够宽', isRelativelyWide);
         return (
             <div className={style.basicBanner}>
-                <img src={BasicBannerGif}
-                     className={style.basicBannerGif}/>
+                {isRelativelyWide ?
+                    <video className={style.basicBannerVideo}
+                           src={require('@images/basicBanner/basic-banner.mp4')}/>
+                    :
+                    <img
+                        className={style.basicBannerGif}
+                        src={require('@images/basicBanner/basic-banner.gif')}
+                        alt='主banner图'
+                    />
+                }
                 <div className={style.theTitle}>
-                    <h1 >AI 赋能万物 共创智能未来</h1>
-                    <p className="desc">AI on Horizon, Journey Together</p>
+                    <h1>AI 赋能万物 共创智能未来</h1>
+                    <p className={style.desc}>AI on Horizon, Journey Together</p>
                 </div>
             </div>
         );
     }, style, { allowMultiple: true });
+
+export const BasicBanner = class extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            //  浏览器宽度是否超过basicCompareWidth
+            isRelativelyWide: true,
+        };
+    }
+
+    //  钩子
+    componentDidMount(){
+        this.setState(() => {
+            return {
+                isRelativelyWide: window.innerWidth > basicCompareWidth
+            };
+        });
+        //  resize监听，用于适配
+        const rfn = (width) => {
+            this.setState(() => {
+                return {
+                    isRelativelyWide: width > basicCompareWidth
+                };
+            });
+        };
+        //  resize监听
+        resizeListener(rfn);
+    };
+
+    render(){
+        return (
+            <BasicBannerRenderComponent isRelativelyWide={this.state.isRelativelyWide}/>
+        );
+    }
+};
