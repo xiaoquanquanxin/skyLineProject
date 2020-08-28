@@ -47,7 +47,6 @@ export const BasicHeader = class extends React.Component {
         };
         //  resize监听
         resizeListener(rfn);
-//        window.scrollTo(0, 0);
     }
 
     //  头部右侧折叠框的点击事件
@@ -72,6 +71,24 @@ export const BasicHeader = class extends React.Component {
         });
     };
 
+    //  鼠标浮于上方
+    headerMoseOver = () => {
+        //  告诉子组件我不是在顶部，以展示白色
+        this.setState(() => {
+            return {
+                isTop: false
+            };
+        });
+    };
+    //  鼠标离开
+    headerMouseLeave = () => {
+        this.setState(() => {
+            return {
+                isTop: (document.documentElement.scrollTop || document.body.scrollTop) === 0
+            };
+        });
+    };
+
     //  渲染函数
     render(){
         const {
@@ -86,9 +103,12 @@ export const BasicHeader = class extends React.Component {
             this.state.isRelativelyWide ?
                 <HeaderPC
                     isTop={isTop}
+                    menuIsFold={menuIsFold}
                     menuListActiveIndex={menuListActiveIndex}
                     menuListUnFoldIndex={menuListUnFoldIndex}
                     isCN={isCN}
+                    headerMouseOver={this.headerMoseOver}
+                    headerMouseLeave={this.headerMouseLeave}
                 /> :
                 <HeaderMobile
                     isTop={isTop}
