@@ -181,26 +181,31 @@ export const MenuMobile = ({
                 block={menuListUnFoldIndex === 2}
                 menuListClick={menuListClick}
             />
-            {/*新闻中心，index=1*/}
+            {/*解决方案，index=2*/}
+            <SolutionItem
+                activeColor={menuListActiveIndex === 2}
+                block={menuListUnFoldIndex === 2}
+            />
+            {/*新闻中心，index=3*/}
             <MenuListItem
                 activeColor={menuListActiveIndex === 3}
                 content='新闻中心'
                 href='/newsCenter.html'
             />
-            {/*关于我们，index=1*/}
+            {/*关于我们，index=4*/}
             <MenuListItem
                 activeColor={menuListActiveIndex === 4}
                 content='关于我们'
                 href='/aboutAs.html'
             />
-            {/*加入我们，index=1*/}
+            {/*加入我们，index=5*/}
             <MenuListItem
                 activeColor={menuListActiveIndex === 5}
                 content='加入我们'
                 target='_blank'
                 href='http://horizon.hotjob.cn/'
             />
-            {/*中英文切换，index=1*/}
+            {/*中英文切换*/}
             <ChineseEnglishSwitch isCN={isCN}/>
         </ul>
     );
