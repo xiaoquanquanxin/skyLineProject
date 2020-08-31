@@ -30,22 +30,20 @@ const MenuListItem = CSSModules(
 
 //  中英文切换
 const ChineseEnglishSwitch = CSSModules(
-    function (isCN){
-        return (
-            <li>
-                <div className={style.menuListItem}>
-                    {isCN ? <span className={style.activeColor}>CN</span> : <a href='https://horizon.ai/'>CN</a>}
-                    <b className={style.languageItem}>/</b>
-                    {!isCN ? <span className={style.activeColor}>EN</span> : <a href='https://en.horizon.ai/'>EN</a>}
-                </div>
-            </li>
-        );
-    }
+    (isCN) => (
+        <li>
+            <div className={style.menuListItem}>
+                {isCN ? <span className={style.activeColor}>CN</span> : <a href='https://horizon.ai/'>CN</a>}
+                <b className={style.languageItem}>/</b>
+                {!isCN ? <span className={style.activeColor}>EN</span> : <a href='https://en.horizon.ai/'>EN</a>}
+            </div>
+        </li>
+    )
 );
 
 //  产品列表项
 const ProductItem = CSSModules(
-    function ({
+    ({
         //  图片地址
         src,
         //  链接
@@ -54,61 +52,57 @@ const ProductItem = CSSModules(
         description,
         //  被选中的项目
         isActiveItem
-    }){
-        return (
-            <li className={`${style.item} ${isActiveItem ? style.isActiveItem : ''}`}>
-                <a href={href}>
-                    <img className={style.itemImage} src={src} alt={description}/>
-                    <span className={style.itemDescription}>{description}</span>
-                </a>
-            </li>
-        );
-    }
+    }) => (
+        <li className={`${style.item} ${isActiveItem ? style.isActiveItem : ''}`}>
+            <a href={href}>
+                <img className={style.itemImage} src={src} alt={description}/>
+                <span className={style.itemDescription}>{description}</span>
+            </a>
+        </li>
+    )
 );
 
 //  产品中心
 const ProductionCenter = CSSModules(
-    function ({
+    ({
         activeColor,
         block,
         menuListClick,
-    }){
-        return (
-            <li>
-                <div onClick={() => (menuListClick(1))}
-                     className={`${style.menuListItem}
+    }) => (
+        <li>
+            <div onClick={() => (menuListClick(1))}
+                 className={`${style.menuListItem}
                                  ${activeColor ? style.activeColor : ''}
                                  ${block ? style.curr : ''}`}>产品中心
-                    <img
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
-                        alt="箭头"/>
-                </div>
-                <ul className={`${style.headerProduct} ${layout.clearfix} ${block ? layout.block : layout.none}`}>
-                    <ProductItem
-                        src={product01}
-                        href={'/production.html'}
-                        description={'Sunrise 旭日'}
-                    />
-                    <ProductItem
-                        src={product01}
-                        href={'/production.html'}
-                        description={'Sunrise 旭日'}
-                        isActiveItem={true}
-                    />
-                    <ProductItem
-                        src={product01}
-                        href={'/production.html'}
-                        description={'Sunrise 旭日'}
-                    />
-                    <ProductItem
-                        src={product01}
-                        href={'/production.html'}
-                        description={'Nebula 智能车载主动安全解决方案'}
-                    />
-                </ul>
-            </li>
-        );
-    }
+                <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
+                    alt="箭头"/>
+            </div>
+            <ul className={`${style.headerProduct} ${layout.clearfix} ${block ? layout.block : layout.none}`}>
+                <ProductItem
+                    src={product01}
+                    href={'/production.html'}
+                    description={'Sunrise 旭日'}
+                />
+                <ProductItem
+                    src={product01}
+                    href={'/production.html'}
+                    description={'Sunrise 旭日'}
+                    isActiveItem={true}
+                />
+                <ProductItem
+                    src={product01}
+                    href={'/production.html'}
+                    description={'Sunrise 旭日'}
+                />
+                <ProductItem
+                    src={product01}
+                    href={'/production.html'}
+                    description={'Nebula 智能车载主动安全解决方案'}
+                />
+            </ul>
+        </li>
+    )
 );
 //  解决方案
 const SolutionItem = CSSModules(
@@ -157,50 +151,47 @@ export const MenuMobile = ({
     menuListUnFoldIndex,
     isCN,
     menuListClick,
-}) => {
-//    console.log('折叠', menuIsFold);
-    return (
-        //  如果窄屏展开，或者宽屏
-        <ul className={`${style.menuMobile} ${!menuIsFold ? style.menuListShow : ''}`}>
-            {/*首页，index=0*/}
-            <MenuListItem
-                activeColor={menuListActiveIndex === 0}
-                content='首页'
-                href='/index.html'
-            />
-            {/*产品中心，index=1*/}
-            <ProductionCenter
-                activeColor={menuListActiveIndex === 1}
-                block={menuListUnFoldIndex === 1}
-                menuListClick={menuListClick}
-            />
-            {/*解决方案，index=1*/}
-            <SolutionItem
-                activeColor={menuListActiveIndex === 2}
-                block={menuListUnFoldIndex === 2}
-                menuListClick={menuListClick}
-            />
-            {/*新闻中心，index=1*/}
-            <MenuListItem
-                activeColor={menuListActiveIndex === 3}
-                content='新闻中心'
-                href='/newsCenter.html'
-            />
-            {/*关于我们，index=1*/}
-            <MenuListItem
-                activeColor={menuListActiveIndex === 4}
-                content='关于我们'
-                href='/aboutAs.html'
-            />
-            {/*加入我们，index=1*/}
-            <MenuListItem
-                activeColor={menuListActiveIndex === 5}
-                content='加入我们'
-                target='_blank'
-                href='http://horizon.hotjob.cn/'
-            />
-            {/*中英文切换，index=1*/}
-            <ChineseEnglishSwitch isCN={isCN}/>
-        </ul>
-    );
-};
+}) => (
+    //  如果窄屏展开，或者宽屏
+    <ul className={`${style.menuMobile} ${!menuIsFold ? style.menuListShow : ''}`}>
+        {/*首页，index=0*/}
+        <MenuListItem
+            activeColor={menuListActiveIndex === 0}
+            content='首页'
+            href='/index.html'
+        />
+        {/*产品中心，index=1*/}
+        <ProductionCenter
+            activeColor={menuListActiveIndex === 1}
+            block={menuListUnFoldIndex === 1}
+            menuListClick={menuListClick}
+        />
+        {/*解决方案，index=1*/}
+        <SolutionItem
+            activeColor={menuListActiveIndex === 2}
+            block={menuListUnFoldIndex === 2}
+            menuListClick={menuListClick}
+        />
+        {/*新闻中心，index=1*/}
+        <MenuListItem
+            activeColor={menuListActiveIndex === 3}
+            content='新闻中心'
+            href='/newsCenter.html'
+        />
+        {/*关于我们，index=1*/}
+        <MenuListItem
+            activeColor={menuListActiveIndex === 4}
+            content='关于我们'
+            href='/aboutAs.html'
+        />
+        {/*加入我们，index=1*/}
+        <MenuListItem
+            activeColor={menuListActiveIndex === 5}
+            content='加入我们'
+            target='_blank'
+            href='http://horizon.hotjob.cn/'
+        />
+        {/*中英文切换，index=1*/}
+        <ChineseEnglishSwitch isCN={isCN}/>
+    </ul>
+);
