@@ -29,7 +29,7 @@ const BasicBannerRenderComponent = CSSModules(
     }, style, { allowMultiple: true }
 );
 
-const BasicBanner = class extends React.Component {
+export const BasicBanner = class extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -40,11 +40,6 @@ const BasicBanner = class extends React.Component {
 
     //  钩子
     componentDidMount(){
-        this.setState(() => {
-            return {
-                isRelativelyWide: window.innerWidth > basicCompareWidth
-            };
-        });
         //  resize监听，用于适配
         const rfn = (width) => {
             this.setState(() => {
@@ -63,4 +58,4 @@ const BasicBanner = class extends React.Component {
         );
     }
 };
-export default BasicBanner;
+//export default BasicBanner;
