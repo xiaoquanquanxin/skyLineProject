@@ -1,22 +1,26 @@
 @import "./colorConfig";
+//	todo	这个mac和windows表现型不一样
+@font-face {
+	font-family: "Roboto-Black";
+	src: url(./Roboto-Black.ttf);
+	font-family: "Roboto-Light";
+	src: url(./Roboto-Light.ttf);
+	font-family: "Roboto-Medium";
+	src: url(./Roboto-Medium.ttf);
+	font-family: "Roboto-Regular";
+	src: url(./Roboto-Regular.ttf);
+}
 
 * {
 	margin: 0;
 	padding: 0;
-	font-family: PingFangSC-Medium, PingFangSC, Roboto-Black, Roboto-Light, Roboto-Medium, Roboto-Regular, Microsoft Yahei, Calibri, Arial, sans-serif;
+	font-family: PingFangSC-Medium, PingFangSC, "苹方-简 中黑体", Roboto-Black, Roboto-Light, Roboto-Medium, Roboto-Regular, Microsoft Yahei, "微软雅黑", Calibri, Arial, sans-serif;
 	user-select: auto !important;
 	list-style: none;
 	outline: none;
 	//	减除字体或数字动画产生的抖动
 	font-feature-settings: 'tnum';
 }
-
-//	todo	这个mac和windows表现型不一样
-@font-face {
-	//font-family: 'PingFangSC-Medium';
-	//src: url(./Roboto-Regular.90679e0.ttf)
-}
-
 
 *::-webkit-scrollbar {
 	display: none;
@@ -30,7 +34,7 @@
 html, body {
 	line-height: 1.5;
 	font-size: 14px;
-	background-color: skyblue;
+	//background-color: skyblue;
 	//	手触摸变成蓝色
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	min-width: 1200px;
