@@ -11,6 +11,7 @@ const BasicBannerRenderComponent = CSSModules(
             <div className={style.basicBanner}>
                 {isRelativelyWide ?
                     <video className={style.basicBannerVideo}
+                           autoPlay="autoplay" muted="muted" loop="loop" x5-video-player-type="h5"
                            src={require('@images/basicBanner/basic-banner.mp4')}/>
                     :
                     <img
