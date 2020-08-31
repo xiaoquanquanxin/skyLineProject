@@ -12,11 +12,11 @@ const BasicBannerRenderComponent = CSSModules(
                 {isRelativelyWide ?
                     <video className={style.basicBannerVideo}
                            autoPlay="autoplay" muted="muted" loop="loop" x5-video-player-type="h5"
-                           src={require('@images/basicBanner/basic-banner.mp4')}/>
+                           src={require('@media/basicBanner/basic-banner.mp4')}/>
                     :
                     <img
                         className={style.basicBannerGif}
-                        src={require('@images/basicBanner/basic-banner.gif')}
+                        src={require('@media/basicBanner/basic-banner.gif')}
                         alt='主banner图'
                     />
                 }

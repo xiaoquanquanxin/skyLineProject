@@ -327,7 +327,7 @@ module.exports = function (webpackEnv){
                 '@components': paths.__components,
                 '@pages': paths.__pages,
                 '@css': paths.__css,
-                '@images': paths.__images,
+                '@media': paths.__media,
                 '@utils': paths.__utils,
             },
             plugins: [

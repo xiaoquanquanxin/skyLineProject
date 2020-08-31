@@ -11,7 +11,7 @@
             "@css/*": [
                 "src/css/*"
             ],
-            "@images/*": [
+            "@media/*": [
                 "src/images/*"
             ],
             "@pages/*": [

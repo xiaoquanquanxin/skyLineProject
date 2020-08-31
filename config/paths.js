@@ -123,8 +123,8 @@ module.exports = {
     __pages: resolveApp('src/pages'),
     //  css
     __css: resolveApp('src/css'),
-    //  图片
-    __images: resolveApp('src/images'),
+    //  媒体
+    __media: resolveApp('src/media'),
     //  工具
     __utils: resolveApp('src/utils'),
 

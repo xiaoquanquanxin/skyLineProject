@@ -3,7 +3,7 @@ import CSSModules from 'react-css-modules';
 import { pathConfig } from '@utils/constant';
 import style from './index.less';
 import layout from '@css/layout.less';
-import product01 from '@images/header/product-01.png';
+import product01 from '@media/header/product-01.png';
 
 const MenuListItem = CSSModules(
     function ({ activeColor, content, href, target }){
