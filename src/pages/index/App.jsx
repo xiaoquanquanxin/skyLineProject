@@ -3,6 +3,7 @@ import './index.css';
 import { BasicHeader } from '@components/basicHeader';
 import { BasicBanner } from '@components/basicBanner';
 import { HomeChip } from '@components/index/homeChip';
+import { SafeDriving } from '@components/index/safeDriving';
 
 function App(){
     return (
@@ -13,6 +14,8 @@ function App(){
             <BasicBanner/>
             {/*首页芯片*/}
             <HomeChip/>
+            {/*安全驾驶*/}
+            <SafeDriving/>
         </div>
     );
 }

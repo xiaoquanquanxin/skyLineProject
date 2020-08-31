@@ -7,7 +7,7 @@ import { HeaderMobile } from '@components/basicHeader/headerMobile';
 export const BasicHeader = class extends React.Component {
     constructor(props){
         super(props);
-        console.log(props);
+//        console.log(props);
         this.state = {
             //  是否滚动在顶部
             isTop: true,
@@ -59,7 +59,7 @@ export const BasicHeader = class extends React.Component {
     };
     //  箭头
     menuListClick = (menuListUnFoldIndex) => {
-        console.log('箭头');
+//        console.log('箭头');
         //  如果点击的还是原来那个
         if (this.state.menuListUnFoldIndex === menuListUnFoldIndex) {
             menuListUnFoldIndex = -1;

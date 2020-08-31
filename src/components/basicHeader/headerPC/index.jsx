@@ -17,7 +17,7 @@ export const HeaderPC = CSSModules(({
 }) => {
     //  渲染信息
     const headerRenderInfo = GetHeaderLogoMenuInformation(true, isTop, menuListActiveIndex);
-    console.log(headerRenderInfo.isTopAndHome);
+//    console.log(headerRenderInfo.isTopAndHome);
     return (
         <header className={style.basicHeader}
                 onMouseOver={() => {headerMouseOver();}}
