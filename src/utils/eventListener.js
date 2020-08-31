@@ -1,4 +1,4 @@
-//  下一帧
+//  定义下一帧
 (function (){
     let lastTime = 0;
     const vendors = ['webkit', 'moz'];

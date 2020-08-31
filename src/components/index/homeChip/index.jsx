@@ -20,13 +20,14 @@ export const HomeChipRender = CSSModules(
                              className={style.homeChipGif}
                              alt='首页芯片'/>
                 }
-                <div className={style.content}>
+                <div className={style.homeContent}>
                     <p className={style.homeChipTitle}>用“芯”创造 万物智能</p>
                     <p className={style.homeChipDescription}>基于创新的人工智能专用处理器架构 BPU，自主设计研发面向智能驾驶的征程系列处理器和面向 AIoT
                         的旭日系列处理器，以领先的边缘人工智能处理器技术赋能智能终端。</p>
                     {/*todo 这个地址*/}
-                    <a className={style.link} href="">了解更多&nbsp;&nbsp;&gt;</a></div>
-            </div>);
+                    <a className={style.homeChipLink} href="">了解更多&nbsp;&nbsp;&gt;</a></div>
+            </div>
+        );
     }
 );
 
