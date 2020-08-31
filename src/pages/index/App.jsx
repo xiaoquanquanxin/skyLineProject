@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import { BasicHeader } from '@components/basicHeader';
-import { BasicBanner } from '@components/basicBanner';
+import { BasicBanner } from '@components/index/basicBanner';
 import { HomeChip } from '@components/index/homeChip';
 import { SafeDriving } from '@components/index/safeDriving';
 import { RevealTerminal } from '@components/index/revealTerminal';
