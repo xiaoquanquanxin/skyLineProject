@@ -1,10 +1,9 @@
-//  菜单列表项
-import CSSModules from 'react-css-modules';
-import product01 from '@images/header/product-01.png';
 import React from 'react';
+import CSSModules from 'react-css-modules';
+import { pathConfig } from '@utils/constant';
 import style from './index.less';
 import layout from '@css/layout.less';
-import { pathConfig } from '@utils/constant';
+import product01 from '@images/header/product-01.png';
 
 const MenuListItem = CSSModules(
     function ({ activeColor, content, href, target }){
@@ -113,7 +112,7 @@ export const MenuPC = ({
                 }>产品中心
                 </div>
                 <div className={style.productWrap}>
-                    <ul className={style.product}>
+                    <ul className={`${style.product} ${layout.clearfix}`}>
                         <ProductItem
                             src={product01}
                             href={'/production.html'}

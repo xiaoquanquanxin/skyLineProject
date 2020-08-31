@@ -1,10 +1,9 @@
-//  菜单列表项
-import CSSModules from 'react-css-modules';
-import product01 from '@images/header/product-01.png';
 import React from 'react';
+import CSSModules from 'react-css-modules';
+import { pathConfig } from '@utils/constant';
 import style from './index.less';
 import layout from '@css/layout.less';
-import { pathConfig } from '@utils/constant';
+import product01 from '@images/header/product-01.png';
 
 const MenuListItem = CSSModules(
     function ({ activeColor, content, href, target }){
@@ -181,31 +180,26 @@ export const MenuMobile = ({
                 block={menuListUnFoldIndex === 2}
                 menuListClick={menuListClick}
             />
-            {/*解决方案，index=2*/}
-            <SolutionItem
-                activeColor={menuListActiveIndex === 2}
-                block={menuListUnFoldIndex === 2}
-            />
-            {/*新闻中心，index=3*/}
+            {/*新闻中心，index=1*/}
             <MenuListItem
                 activeColor={menuListActiveIndex === 3}
                 content='新闻中心'
                 href='/newsCenter.html'
             />
-            {/*关于我们，index=4*/}
+            {/*关于我们，index=1*/}
             <MenuListItem
                 activeColor={menuListActiveIndex === 4}
                 content='关于我们'
                 href='/aboutAs.html'
             />
-            {/*加入我们，index=5*/}
+            {/*加入我们，index=1*/}
             <MenuListItem
                 activeColor={menuListActiveIndex === 5}
                 content='加入我们'
                 target='_blank'
                 href='http://horizon.hotjob.cn/'
             />
-            {/*中英文切换*/}
+            {/*中英文切换，index=1*/}
             <ChineseEnglishSwitch isCN={isCN}/>
         </ul>
     );
