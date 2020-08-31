@@ -1,0 +1,80 @@
+//	主体
+.basicFooter {
+	//	基本信息
+	.basicFooterInfo {
+		//	文本
+		.static {
+			//	灰色的描述，小字
+			.subDescription {
+
+			}
+		}
+
+		//	链接list
+		.linkList {
+			//	链接项
+			.linkItem {
+				//	链接描述
+				.linkItemPar {
+					//	箭头
+					.curr {
+
+					}
+				}
+			}
+		}
+	}
+
+	//	网站信息
+	.siteInfo {
+
+	}
+
+	@media screen and  (max-width: 768px) {
+		font-size: 13px;
+		line-height: 2;
+		background: #1a1a1a;
+		color: #fff;
+		min-width: 0;
+
+		.basicFooterInfo {
+			width: 100%;
+			min-width: 0;
+			padding: 12px;
+
+			.static {
+				text-align: center;
+				margin: 30px;
+
+				.subDescription {
+					font-size: 12px;
+					color: #999;
+					margin: 5px 0 10px;
+				}
+			}
+
+			.linkList {
+				border-bottom: 1px solid #666;
+				margin-bottom: 30px;
+
+				.linkItem {
+					border-top: 1px solid #666;
+					padding-left: 10px;
+
+					.linkItemPar {
+						color: var(--white);
+						line-height: 50px;
+						position: relative;
+
+						.curr {
+							position: absolute;
+							top: 18px;
+							right: 10px;
+							width: 16px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

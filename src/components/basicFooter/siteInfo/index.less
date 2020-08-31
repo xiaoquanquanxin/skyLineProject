@@ -1,0 +1,62 @@
+//	主要内容
+.siteInfo {
+	//	框
+	.siteInfoInner {
+
+		//	按钮组
+		.buttonGroups {
+
+			//	按钮
+			.button {
+				//	微信icon
+				.icon {
+					position: absolute;
+					width: 20px;
+					top: 10px;
+					left: 12px;
+				}
+				//	二维码
+				.qrCode{
+					position: absolute;
+					width: 100%;
+					bottom: 52px;
+					left: 0;
+					display: none;
+					border-radius: 4px;
+				}
+			}
+
+		}
+	}
+
+	@media screen and  (max-width: 768px) {
+		line-height: 44px;
+		text-align: center;
+		.siteInfoInner {
+			width: 100%;
+			min-width: 0;
+			padding: 12px;
+			//	按钮组
+			.buttonGroups {
+
+				//	按钮
+				.button {
+					display: inline-block;
+					margin: 0 10px;
+					width: 124px;
+					height: 40px;
+					border: 1px solid #fff;
+					border-radius: 20px;
+					line-height: 38px;
+					padding-left: 28px;
+					box-sizing: border-box;
+					position: relative;
+					color: #fff;
+					text-align: center;
+					cursor: pointer;
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}
