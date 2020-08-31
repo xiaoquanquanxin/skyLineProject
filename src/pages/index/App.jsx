@@ -4,6 +4,8 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicBanner } from '@components/basicBanner';
 import { HomeChip } from '@components/index/homeChip';
 import { SafeDriving } from '@components/index/safeDriving';
+import { RevealTerminal } from '@components/index/revealTerminal';
+import { LearnMore } from '@components/index/learnMore';
 
 function App(){
     return (
@@ -16,6 +18,10 @@ function App(){
             <HomeChip/>
             {/*安全驾驶*/}
             <SafeDriving/>
+            {/*点化终端*/}
+            <RevealTerminal/>
+            {/*了解更多*/}
+            <LearnMore/>
         </div>
     );
 }
