@@ -6,30 +6,27 @@ import { resizeListener } from '@utils/eventListener';
 import { BasicIntroduction } from '@components/index/basicIntroduction';
 
 export const HomeChipRender = CSSModules(
-    ({ isRelativelyWide }) => {
-//        console.log('是否够宽？', isRelativelyWide);
-        return (
-            <div className={style.homeChip}>
-                {
-                    isRelativelyWide ?
-                        <video src={require('@media/index/HomeChip.mp4')}
-                               className={style.homeChipVideo}
-                               autoPlay="autoplay" muted="muted" loop="loop"
-                               x5-video-player-type="h5"/>
-                        :
-                        <img src={require('@media/index/HomeChip.gif')}
-                             className={style.homeChipGif}
-                             alt='首页芯片'/>
-                }
-                <BasicIntroduction
-                    title='用“芯”创造 万物智能'
-                    description='基于创新的人工智能专用处理器架构 BPU，自主设计研发面向智能驾驶的征程系列处理器和面向 AIoT 的旭日系列处理器，以领先的边缘人工智能处理器技术赋能智能终端。'
-                    linkHref={''}
-                    contentIsLeft={true}
-                />
-            </div>
-        );
-    }
+    ({ isRelativelyWide }) => (
+        <div className={style.homeChip}>
+            {
+                isRelativelyWide ?
+                    <video src={require('@media/index/HomeChip.mp4')}
+                           className={style.homeChipVideo}
+                           autoPlay="autoplay" muted="muted" loop="loop"
+                           x5-video-player-type="h5"/>
+                    :
+                    <img src={require('@media/index/HomeChip.gif')}
+                         className={style.homeChipGif}
+                         alt='首页芯片'/>
+            }
+            <BasicIntroduction
+                title='用“芯”创造 万物智能'
+                description='基于创新的人工智能专用处理器架构 BPU，自主设计研发面向智能驾驶的征程系列处理器和面向 AIoT 的旭日系列处理器，以领先的边缘人工智能处理器技术赋能智能终端。'
+                linkHref={''}
+                contentIsLeft={true}
+            />
+        </div>
+    )
 );
 
 export const HomeChip = class extends React.Component {
