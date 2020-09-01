@@ -1,13 +1,33 @@
 //	主要内容
 .siteInfo {
+	background: var(--color252525);
+	color: var(----colorddd);
+	line-height: 44px;
 	//	框
 	.siteInfoInner {
-
+		padding: 50px 100px;
+		box-sizing: border-box;
 		//	按钮组
 		.buttonGroups {
 
 			//	按钮
 			.button {
+				border: 2px solid var(--white);
+				box-sizing: border-box;
+				position: relative;
+				color: var(--white);
+				text-align: center;
+				cursor: pointer;
+				padding-left: 28px;
+				font-size: 12px;
+				opacity: .8;
+				margin: 0 0 0 40px;
+				width: 134px;
+				height: 44px;
+				border-radius: 22px;
+				line-height: 40px;
+
+
 				//	微信icon
 				.icon {
 					position: absolute;
@@ -25,6 +45,7 @@
 					border-radius: 4px;
 				}
 
+				//	展示二维码
 				&:hover {
 					background: var(--color6c6c6c);
 					border-color: var(--colorgray);
@@ -51,21 +72,11 @@
 
 				//	按钮
 				.button {
-					display: inline-block;
 					margin: 0 12px;
 					width: 124px;
 					height: 40px;
-					border: 1px solid var(--white);
 					border-radius: 20px;
 					line-height: 38px;
-					padding-left: 28px;
-					box-sizing: border-box;
-					position: relative;
-					color: var(--white);
-					text-align: center;
-					cursor: pointer;
-					font-size: 12px;
-					opacity: .8;
 				}
 			}
 
