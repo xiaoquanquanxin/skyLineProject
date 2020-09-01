@@ -72,9 +72,9 @@ export const BasicFooter = class extends React.Component {
     }
 
     //  点击二维码
-    qrCodeClick = (qrCodeShowIndex, e) => {
-//        console.log('是被激活的dom', e.currentTarget === document.activeElement, qrCodeShowIndex);
-        if (qrCodeShowIndex === this.state.qrCodeShowIndex) {
+    qrCodeClick = (qrCodeShowIndex, isClose) => {
+        //  重复点击                                            强制关闭
+        if (qrCodeShowIndex === this.state.qrCodeShowIndex || isClose) {
             qrCodeShowIndex = -1;
         }
         this.setState(() => ({

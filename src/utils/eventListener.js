@@ -85,3 +85,12 @@ export const resizeListener = (callbackFn) => {
 export const deleteResizeListener = (deleteCallbackFn) => {
     resizeController.resizeQueue.splice(resizeController.resizeQueue.indexOf(deleteCallbackFn), 1);
 };
+
+//  阻止默认事件
+export const preventDefaultFn = (e) => {e.preventDefault();};
+//  阻止冒泡
+export const stopPropagation = (e) => {
+    e.stopPropagation();
+    e.cancelBubble = false;
+    return false;
+};
