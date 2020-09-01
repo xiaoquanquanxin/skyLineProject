@@ -7,11 +7,15 @@
 	.siteInfoInner {
 		padding: 50px 100px;
 		box-sizing: border-box;
+		margin: auto;
+		width: 100%;
+		max-width: 1280px;
 		//	按钮组
 		.buttonGroups {
 
 			//	按钮
 			.button {
+				background: transparent;
 				border: 2px solid var(--white);
 				box-sizing: border-box;
 				position: relative;
@@ -27,6 +31,17 @@
 				border-radius: 22px;
 				line-height: 40px;
 
+				&:last-child {
+					width: 150px;
+				}
+
+				//	fixme	看需求
+				//	如果按钮不是被激活的，那么二维码不展示
+				//&:not(:focus) {
+				//	.qrCode {
+				//		display: none !important;
+				//	}
+				//}
 
 				//	微信icon
 				.icon {
@@ -78,6 +93,11 @@
 					border-radius: 20px;
 					line-height: 38px;
 					border-width: 1px;
+
+					&:last-child {
+						width: 124px;
+					}
+
 					.icon {
 						top: 10px;
 						left: 12px;

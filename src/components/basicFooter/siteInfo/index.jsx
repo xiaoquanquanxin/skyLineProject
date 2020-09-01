@@ -20,20 +20,20 @@ export const SiteInfo = CSSModules(
         <div className={style.siteInfo}>
             <div className={`${style.siteInfoInner} ${layout.clearfix}`}>
                 <div className={`${style.buttonGroups} ${layout.clearfix} ${isRelativelyWide ? layout.right : ''}`}>
-                    <div className={`${style.button} ${layout.inlineBlock}`}
-                         onClick={() => {qrCodeClick(0);}}>
+                    <button className={`${style.button} ${layout.inlineBlock}`}
+                            onClick={(e) => {qrCodeClick(0, e);}}>
                         <img src={weixinImg} className={style.icon}/>
                         <span>地平线官微</span>
                         <img src={qrCodeOfficialWeChat}
                              className={`${style.qrCode} ${qrCodeShowIndex === 0 ? layout.block : layout.none}`}/>
-                    </div>
-                    <div className={`${style.button} ${layout.inlineBlock}`}
-                         onClick={() => {qrCodeClick(1);}}>
+                    </button>
+                    <button className={`${style.button} ${layout.inlineBlock}`}
+                            onClick={(e) => {qrCodeClick(1, e);}}>
                         <img src={weixinImg} className={style.icon}/>
                         <span>地平线招聘号</span>
                         <img src={qrCodeRecruitment}
                              className={`${style.qrCode} ${qrCodeShowIndex === 1 ? layout.block : layout.none}`}/>
-                    </div>
+                    </button>
                 </div>
                 <div className={`${style.siteInfoMsg} ${isRelativelyWide ? layout.left : ''} `}>Copyright © 2019-2020
                     地平线官网 粤ICP备17098896号-1 {isRelativelyWide ? '' :

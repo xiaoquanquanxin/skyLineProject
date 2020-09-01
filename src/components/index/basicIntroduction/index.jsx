@@ -7,7 +7,7 @@ export const BasicIntroduction = ({
     linkHref,
     contentIsLeft
 }) => {
-    console.log(contentIsLeft);
+//    console.log(contentIsLeft);
     return (
         <div className={`${style.basicIntroductionContent} ${contentIsLeft ? style.contentLeft : style.contentRight}`}>
             <p className={style.title}>{title}</p>

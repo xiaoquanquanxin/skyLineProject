@@ -72,8 +72,11 @@ export const BasicFooter = class extends React.Component {
     }
 
     //  点击二维码
-    qrCodeClick = (qrCodeShowIndex) => {
-        console.log(`qrCodeShowIndex:${qrCodeShowIndex}`);
+    qrCodeClick = (qrCodeShowIndex, e) => {
+//        console.log('是被激活的dom', e.currentTarget === document.activeElement, qrCodeShowIndex);
+        if (qrCodeShowIndex === this.state.qrCodeShowIndex) {
+            qrCodeShowIndex = -1;
+        }
         this.setState(() => ({
             qrCodeShowIndex,
         }));
