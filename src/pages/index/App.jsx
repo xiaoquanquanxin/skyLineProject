@@ -6,6 +6,7 @@ import { HomeChip } from '@components/index/homeChip';
 import { SafeDriving } from '@components/index/safeDriving';
 import { RevealTerminal } from '@components/index/revealTerminal';
 import { LearnMore } from '@components/index/learnMore';
+import { BasicFooter } from '@components/basicFooter';
 
 function App(){
     return (
@@ -22,6 +23,8 @@ function App(){
             <RevealTerminal/>
             {/*了解更多*/}
             <LearnMore/>
+            {/*脚部*/}
+            <BasicFooter/>
         </div>
     );
 }
