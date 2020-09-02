@@ -1,0 +1,185 @@
+//	菜单列表pc端
+.menuPC {
+	float: right;
+	margin-right: 70px;
+
+	& > li {
+		float: left;
+		font-size: 14px;
+		padding: 0 30px;
+		font-weight: 500;
+	}
+
+	//	菜单的每一项li里的直系a和div，真正有意义的块
+	.menuListItem {
+		color: var(--black);
+		cursor: pointer;
+		line-height: 60px;
+		display: inline-block;
+
+
+		//	cn / en
+		&.languageItem {
+			//	cn / en 中间的 /
+			.languageSplit {
+				padding: 0 10px;
+				display: inline-block;
+				color: var(--color999);
+			}
+
+			a {
+				color: var(--color999);
+			}
+		}
+
+		//	鼠标浮于上方、被激活的
+		&:not(.languageItem):hover, &.activeColor {
+			//	颜色变化
+			color: var(--color06f);
+			border-bottom: 4px solid;
+		}
+	}
+
+	//	激活的颜色
+	.activeColor {
+		color: var(--color06f);
+	}
+
+
+	//	是顶部，并且在首页
+	&.isTopAndHome {
+		.menuListItem {
+			color: var(--color999);
+		}
+
+		//	激活的颜色
+		& .activeColor {
+			color: var(--white);
+			border-bottom-width: 2px;
+		}
+	}
+
+
+	//	header常驻解决方案
+	.headerProgramme {
+		position: relative;
+
+		&:hover {
+			.programme {
+				display: block;
+			}
+		}
+	}
+
+	//	header常驻产品中心
+	.headerProduct:hover {
+		.productWrap {
+			display: block;
+		}
+	}
+
+	//	菜单中的产品列表的外套		✅
+	.productWrap {
+		width: 100%;
+		background: #fff;
+		border-top: 1px solid #ddd;
+		box-shadow: 0 0 2px rgba(0, 0, 0, .1);
+		position: absolute;
+		top: 64px;
+		left: 0;
+		display: none;
+		//	菜单中的产品列表
+		.product {
+			width: 1280px;
+			margin: 0 auto;
+			//	产品列表里面的每一项
+			.item {
+				width: 25%;
+				float: left;
+				text-align: center;
+
+				//	直系亲属a标签
+				& > a {
+					width: 100%;
+					display: block;
+					padding: 40px 0;
+
+					//	产品图片
+					.itemImage {
+						height: 106px;
+						margin-bottom: 18px;
+					}
+
+					//	产品描述
+					.itemDescription {
+						color: var(--color999);
+						display: block;
+						margin-bottom: 8px;
+					}
+				}
+
+				//	鼠标hover
+				&:hover {
+					& > a {
+						.itemImage {
+							margin-top: -10px;
+							margin-bottom: 28px;
+						}
+
+						.itemDescription {
+							color: var(--black);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//	解决方案
+	.programme {
+		position: absolute;
+		top: 64px;
+		left: 0;
+		width: 100%;
+		z-index: 10;
+		display: none;
+
+		li {
+			text-align: center;
+			background: var(--white);
+
+			&:hover {
+				& > a {
+					color: var(--black);
+					background-color: var(--colorf9);
+				}
+			}
+
+			a {
+				width: 100%;
+				display: block;
+				padding: 10px 0;
+				color: var(--color999)
+			}
+
+			//	子列表的外套
+			&.aiotChildrenWrap {
+				&:hover {
+					.aiotChildren {
+						display: block;
+					}
+				}
+
+				//	有子列表的项
+				.aiotChildren {
+					display: none;
+					position: absolute;
+					right: -100%;
+					top: 40px;
+					width: 100%;
+					background: #fff;
+				}
+			}
+		}
+	}
+}

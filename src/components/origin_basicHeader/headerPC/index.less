@@ -1,0 +1,38 @@
+//	头部
+.basicHeader {
+	position: relative;
+	//	解决问题1
+	height: 1px;
+	margin-bottom: -1px;
+	background-color: var(--black);
+	//	外套
+	.basicHeaderWrap {
+		width: 100%;
+		min-width: 1200px;
+		left: 0;
+		top: 0;
+		z-index: 999;
+		position: fixed;
+		margin: auto;
+		background-color: var(--white);
+
+		//	如果滚动到了顶部，并且是首页
+		&.isTopAndHome {
+			background-color: transparent;
+		}
+
+		.inner {
+			width: 1280px;
+			margin: 0 auto;
+			//	头部的logo
+			.basicHeaderLogo {
+				width: 118px;
+				position: absolute;
+				top: 14px;
+				left: 50%;
+				margin-left: -576px;
+			}
+		}
+	}
+}
+
