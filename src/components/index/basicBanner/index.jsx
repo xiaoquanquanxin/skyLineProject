@@ -1,7 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './index.less';
-import { basicCompareWidth } from '@utils/constant';
+import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { resizeListener } from '@utils/eventListener';
 //  脚部信息
 const BasicBannerRenderComponent = CSSModules(
@@ -30,7 +30,7 @@ export const BasicBanner = class extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            //  浏览器宽度是否超过basicCompareWidth
+            //  浏览器宽度是否超过BASIC_COMPARE_WIDTH
             isRelativelyWide: true,
         };
     }
@@ -41,7 +41,7 @@ export const BasicBanner = class extends React.Component {
         const rfn = (width) => {
             this.setState(() => {
                 return {
-                    isRelativelyWide: width > basicCompareWidth
+                    isRelativelyWide: width > BASIC_COMPARE_WIDTH
                 };
             });
         };

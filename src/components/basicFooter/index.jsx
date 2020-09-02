@@ -2,7 +2,7 @@ import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './index.less';
 import layout from '@css/layout.less';
-import { basicCompareWidth } from '@utils/constant';
+import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { resizeListener } from '@utils/eventListener';
 import { SiteInfo } from '@components/basicFooter/siteInfo';
 import { LinkList } from '@components/basicFooter/linkList';
@@ -44,8 +44,8 @@ export const BasicFooter = class extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            //  浏览器宽度是否超过basicCompareWidth
-            isRelativelyWide: window.innerWidth > basicCompareWidth,
+            //  浏览器宽度是否超过BASIC_COMPARE_WIDTH
+            isRelativelyWide: window.innerWidth > BASIC_COMPARE_WIDTH,
             //  被展开的链接块
             isSpreadIndex: -1,
             //  被选中的link
@@ -63,7 +63,7 @@ export const BasicFooter = class extends React.Component {
         const rfn = (width) => {
             this.setState(() => {
                 return {
-                    isRelativelyWide: width > basicCompareWidth
+                    isRelativelyWide: width > BASIC_COMPARE_WIDTH
                 };
             });
         };

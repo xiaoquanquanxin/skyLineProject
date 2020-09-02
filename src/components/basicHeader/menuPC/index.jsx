@@ -98,6 +98,12 @@ export const MenuPC = ({
                 content='首页'
                 href='/index.html'
             />
+            {/*新闻中心，index=3*/}
+            <MenuListItem
+                activeColor={menuListActiveIndex === 3}
+                content='新闻中心'
+                href='/newsCenter.html'
+            />
             {/*产品中心，index=1*/}
             <li className={style.headerProduct}>
                 <div className={`${style.menuListItem}

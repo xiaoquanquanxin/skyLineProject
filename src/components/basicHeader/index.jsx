@@ -1,6 +1,6 @@
 import React from 'react';
 import { resizeListener, scrollListener } from '@utils/eventListener';
-import { basicCompareWidth } from '@utils/constant';
+import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { HeaderPC } from '@components/basicHeader/headerPC';
 import { HeaderMobile } from '@components/basicHeader/headerMobile';
 
@@ -11,8 +11,8 @@ export const BasicHeader = class extends React.Component {
         this.state = {
             //  是否滚动在顶部
             isTop: true,
-            //  浏览器宽度是否超过basicCompareWidth
-            isRelativelyWide: window.innerWidth > basicCompareWidth,
+            //  浏览器宽度是否超过BASIC_COMPARE_WIDTH
+            isRelativelyWide: window.innerWidth > BASIC_COMPARE_WIDTH,
             //  右侧菜单的折叠状态 true:折叠
             menuIsFold: true,
             //  激活了哪一个路由？
@@ -41,7 +41,7 @@ export const BasicHeader = class extends React.Component {
         const rfn = (width) => {
             this.setState(() => {
                 return {
-                    isRelativelyWide: width > basicCompareWidth
+                    isRelativelyWide: width > BASIC_COMPARE_WIDTH
                 };
             });
         };
