@@ -3,11 +3,16 @@
 	float: right;
 	margin-right: 70px;
 
-	& > li {
+	//	菜单的每一项li
+	.menuListItem {
 		float: left;
 		font-size: 14px;
 		padding: 0 25px;
 		font-weight: 500;
+		position: relative;
+		cursor: pointer;
+		line-height: 64px;
+		display: inline-block;
 		//	最后两个元素，是zn/en
 		&:nth-last-child(2), &:nth-last-child(1) {
 			padding: 0 10px;
@@ -15,49 +20,15 @@
 		}
 
 		//	无论是zn还是en，是倒数第二个元素
-		&:nth-last-child(2)::after {
+		&:nth-last-child(2)::before {
 			content: "/";
 			display: block;
 			position: absolute;
-			top: 50%;
-			height: 12px;
-			margin-top: -9px;
+			top: 0;
+			height: 0;
 			right: -2px;
 			font-size: 12px;
 			color: var(--color999);
-		}
-	}
-
-	//	菜单的每一项li里的直系a和div，真正有意义的块
-	.menuListItem {
-		color: rgba(0, 0, 0, 0.6);
-		cursor: pointer;
-		line-height: 64px;
-		display: inline-block;
-		position: relative;
-		//	cn / en
-		&.languageItem {
-			//	cn / en 中间的 /
-			.languageSplit {
-				padding: 0 10px;
-				display: inline-block;
-				color: var(--color999);
-			}
-
-			a {
-				color: var(--color999);
-			}
-		}
-
-		//	鼠标浮于上方、被激活的
-		&:not(.languageItem):hover, &.activeColor {
-			//	颜色变化
-			color: var(--color06f);
-			//	底部横线-激活态
-			&::after {
-				background-color: var(--color06f);
-				transform: translateX(-50%) scaleX(2);
-			}
 		}
 
 		//	底部横线
@@ -72,152 +43,110 @@
 			width: 70%;
 			left: 50%;
 			bottom: 0;
-			transform: translateX(-50%) scaleX(.5);
+			transform: translateX(-50%) scaleX(0.5);
 			transition: transform .3s;
+		}
+
+		//	鼠标浮于上方
+		&:hover {
+			//	底部横线-激活态
+			&::after {
+				transform: translateX(-50%) scaleX(1);
+				background-color: var(--color06f);
+			}
+
+			.navLevel2 {
+				display: block;
+			}
+		}
+
+		//	链接
+		& > a {
+			color: rgba(0, 0, 0, 0.6);
 		}
 	}
 
 	//	激活的颜色
-	.activeColor {
-		color: var(--color06f);
-	}
+	.activeColor, .menuListItem:hover > a {
+		a {
+			color: var(--color06f);
+		}
 
+		&::after {
+			transform: translateX(-50%) scaleX(1);
+			background-color: var(--color06f);
+		}
+	}
 
 	//	是顶部，并且在首页
 	&.isTopAndHome {
-		.menuListItem {
+		.menuListItem > a {
 			color: var(--color999);
 		}
 
-		//	激活的颜色
+		//	激活的项目
 		& .activeColor {
-			color: var(--white);
-
 			&::after {
+				transform: translateX(-50%) scaleX(1);
 				background-color: var(--white);
 			}
 		}
 	}
 
-
-	//	header常驻解决方案
-	.headerProgramme {
-		position: relative;
-
-		&:hover {
-			.programme {
-				display: block;
-			}
-		}
-	}
-
-	//	header常驻产品中心
-	.headerProduct:hover {
-		.productWrap {
-			display: block;
-		}
-	}
-
-	//	菜单中的产品列表的外套		✅
-	.productWrap {
-		width: 100%;
-		background: #fff;
-		border-top: 1px solid #ddd;
-		box-shadow: 0 0 2px rgba(0, 0, 0, .1);
-		position: absolute;
-		top: 64px;
-		left: 0;
+	//	子列表
+	.navLevel2 {
 		display: none;
-		//	菜单中的产品列表
-		.product {
-			width: 1280px;
-			margin: 0 auto;
-			//	产品列表里面的每一项
-			.item {
-				width: 25%;
-				float: left;
-				text-align: center;
-
-				//	直系亲属a标签
-				& > a {
-					width: 100%;
-					display: block;
-					padding: 40px 0;
-
-					//	产品图片
-					.itemImage {
-						height: 106px;
-						margin-bottom: 18px;
-					}
-
-					//	产品描述
-					.itemDescription {
-						color: var(--color999);
-						display: block;
-						margin-bottom: 8px;
-					}
-				}
-
-				//	鼠标hover
-				&:hover {
-					& > a {
-						.itemImage {
-							margin-top: -10px;
-							margin-bottom: 28px;
-						}
-
-						.itemDescription {
-							color: var(--black);
-						}
-					}
-				}
-			}
-		}
-	}
-
-	//	解决方案
-	.programme {
+		width: 150%;
 		position: absolute;
+		left: 50%;
+		margin-left: -75%;
 		top: 64px;
-		left: 0;
-		width: 100%;
-		z-index: 10;
-		display: none;
+		background-color: var(--white);
+		font-size: 14px;
+		text-align: center;
+		line-height: 52px;
 
-		li {
+		& > dd {
 			text-align: center;
-			background: var(--white);
+			position: relative;
+
+			a {
+				display: block;
+				color: rgba(0, 0, 0, 0.6);
+				cursor: pointer;
+			}
 
 			&:hover {
+				background: var(--colorf6f6f6);
+				//	最底层列表
+				.navLevel3 {
+					display: block;
+				}
+
 				& > a {
 					color: var(--black);
 					background-color: var(--colorf9);
 				}
 			}
 
-			a {
+			//	最底层列表
+			.navLevel3 {
+				background: var(--white);
+				position: absolute;
 				width: 100%;
-				display: block;
-				padding: 10px 0;
-				color: var(--color999)
-			}
+				left: 100%;
+				top: 0;
+				display: none;
 
-			//	子列表的外套
-			&.aiotChildrenWrap {
-				&:hover {
-					.aiotChildren {
-						display: block;
+				dd {
+
+					&:hover {
+						background: var(--colorf6f6f6);
+
+						a {
+							color: var(--color06f);
+						}
 					}
-				}
-
-				//	有子列表的项
-				.aiotChildren {
-					display: none;
-					position: absolute;
-					right: -100%;
-					top: 40px;
-					width: 100%;
-					background: #fff;
 				}
 			}
 		}

@@ -1,9 +1,9 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import { pathConfig } from '@utils/constant';
 import style from './index.less';
 import layout from '@css/layout.less';
 
+//  每一项
 const MenuListItem = CSSModules(
     ({
         //  是激活状态
@@ -13,74 +13,54 @@ const MenuListItem = CSSModules(
         //  链接
         href,
         //  打开方式
-        target
+        target,
+        //  子元素，子路由
+        subList,
     }) => {
-        let clickFn = null;
-        //  路由一样，不跳转
-        if (window.location.pathname === href) {
-            clickFn = (e) => {
-                e.preventDefault();
-                return false;
-            };
-        }
         return (
-            <li>
-                <a className={`${isActive ? style.activeColor : ''} ${style.menuListItem}`}
-                   href={href}
-                   target={target}
-                   onClick={clickFn}>
-                    {content}
-                </a>
+            <li className={`${isActive ? style.activeColor : ''} ${style.menuListItem}`}>
+                <a href={href} target={target}>{content}</a>
+                {subList ? <NavLevel2 subList={subList}/> : ''}
             </li>
         );
     }
 );
 
-//  中英文切换
-const ChineseEnglishSwitch = CSSModules(
-    (isCN) => (
-        <li>
-            <div className={`${style.menuListItem} ${style.languageItem}`}>
-                {isCN ? <span className={style.activeColor}>CN</span> : <a href='https://horizon.ai/'>CN</a>}
-                <b className={style.languageSplit}>/</b>
-                {!isCN ? <span className={style.activeColor}>EN</span> : <a href='https://en.horizon.ai/'>EN</a>}
-            </div>
-        </li>
-    )
+//  二级目录
+const NavLevel2 = CSSModules(
+    ({ subList }) => {
+        const list = subList.map((item) => {
+            return (
+                <dd key={item.id}>
+                    <a href={item.url} target={item.target}>{item.name}</a>
+                    {item.son ? <NavLevel3 lowestList={item.son}/> : ''}
+                </dd>
+            );
+        });
+        return (
+            <dl className={style.navLevel2}>
+                {list}
+            </dl>
+        );
+    }
 );
 
-//  产品列表项
-const ProductItem = CSSModules(
-    ({ src, href, description }) => (
-        <li className={style.item}>
-            <a href={href}>
-                <img className={style.itemImage} src={src} alt={description}/>
-                <span className={style.itemDescription}>{description}</span>
-            </a>
-        </li>
-    )
-);
-
-//  解决方案
-const SolutionItem = CSSModules(
-    ({ activeColor, block }) => (
-        <li className={style.headerProgramme}>
-            <div className={`${style.menuListItem}
-                                 ${activeColor ? style.activeColor : ''}`}
-            >解决方案
-            </div>
-            <ul className={style.programme}>
-                <li><a href={pathConfig.intelligentDriving}>智能驾驶</a></li>
-                <li className={style.aiotChildrenWrap}>
-                    <a href='/'>智能物联网</a>
-                    <ul className={style.aiotChildren}>
-                        <li><a href={pathConfig.visual}>视觉</a></li>
-                        <li><a href={pathConfig.voice}>语音</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    )
+//  三级目录
+const NavLevel3 = CSSModules(
+    ({ lowestList }) => {
+        const list = lowestList.map((item) => {
+            return (
+                <dd key={item.id}>
+                    <a href={item.url} target={item.target}>{item.name}</a>
+                </dd>
+            );
+        });
+        return (
+            <dl className={style.navLevel3}>
+                {list}
+            </dl>
+        );
+    }
 );
 
 //  主菜单
@@ -109,6 +89,7 @@ export const MenuPC = ({
                 content={item.name}
                 href={item.url}
                 target={item.is_out ? '_blank' : '_self'}
+                subList={item.son}
             />
         );
     });
