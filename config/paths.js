@@ -7,6 +7,7 @@ const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebook/create-react-app/issues/637
 const appDirectory = fs.realpathSync(process.cwd());
+console.log(`当前appDirectory地址🥒🥒🥒🥒${appDirectory}`);
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 // We use `PUBLIC_URL` environment variable or "homepage" field to infer
@@ -106,11 +107,10 @@ module.exports = {
     appJsConfig: resolveApp('./jsconfig.json'),
     yarnLockFile: resolveApp('yarn.lock'),
     testsSetup: resolveModule(resolveApp, 'src/setupTests'),
-    proxySetup: resolveApp('setupProxy.js'),
+    proxySetup: resolveApp('config/setupProxy.js'),
     appNodeModules: resolveApp('node_modules'),
     publicUrlOrPath,
     entries,
-
 
     /**
      * 以下，自定义的，给别名用的所以加了__
