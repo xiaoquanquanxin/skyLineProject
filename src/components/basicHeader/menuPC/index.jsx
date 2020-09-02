@@ -3,10 +3,18 @@ import CSSModules from 'react-css-modules';
 import { pathConfig } from '@utils/constant';
 import style from './index.less';
 import layout from '@css/layout.less';
-import product01 from '@media/header/product-01.png';
 
 const MenuListItem = CSSModules(
-    ({ activeColor, content, href, target }) => {
+    ({
+        //  是激活状态
+        isActive,
+        //  文字
+        content,
+        //  链接
+        href,
+        //  打开方式
+        target
+    }) => {
         let clickFn = null;
         //  路由一样，不跳转
         if (window.location.pathname === href) {
@@ -17,7 +25,7 @@ const MenuListItem = CSSModules(
         }
         return (
             <li>
-                <a className={`${activeColor ? style.activeColor : ''} ${style.menuListItem}`}
+                <a className={`${isActive ? style.activeColor : ''} ${style.menuListItem}`}
                    href={href}
                    target={target}
                    onClick={clickFn}>
@@ -87,81 +95,26 @@ export const MenuPC = ({
     menuListUnFoldIndex,
     //  是中文
     isCN,
+    //  数据
+    navListData,
 }) => {
-//    console.log(isTopAndHome);
+    if (!navListData || !navListData.length) {
+        return '';
+    }
+    const list = navListData.map((item) => {
+        return (
+            <MenuListItem
+                isActive={item.isActive}
+                key={item.id}
+                content={item.name}
+                href={item.url}
+                target={item.is_out ? '_blank' : '_self'}
+            />
+        );
+    });
     return (
-        //  如果窄屏展开，或者宽屏
-        <ul className={`${style.menuPC} ${layout.clearfix} ${isTopAndHome ? style.isTopAndHome : ''} ${!menuIsFold ? style.menuListShow : ''}`}>
-            {/*首页，index=0*/}
-            <MenuListItem
-                activeColor={menuListActiveIndex === 0}
-                content='首页'
-                href='/index.html'
-            />
-            {/*新闻中心，index=3*/}
-            <MenuListItem
-                activeColor={menuListActiveIndex === 3}
-                content='新闻中心'
-                href='/newsCenter.html'
-            />
-            {/*产品中心，index=1*/}
-            <li className={style.headerProduct}>
-                <div className={`${style.menuListItem}
-                                 ${menuListActiveIndex === 1 ? style.activeColor : ''}`
-
-                }>产品中心
-                </div>
-                <div className={style.productWrap}>
-                    <ul className={`${style.product} ${layout.clearfix}`}>
-                        <ProductItem
-                            src={product01}
-                            href={'/production.html'}
-                            description={'Sunrise 旭日'}
-                        />
-                        <ProductItem
-                            src={product01}
-                            href={'/production.html'}
-                            description={'Sunrise 旭日'}
-                        />
-                        <ProductItem
-                            src={product01}
-                            href={'/production.html'}
-                            description={'Sunrise 旭日'}
-                        />
-                        <ProductItem
-                            src={product01}
-                            href={'/production.html'}
-                            description={'Nebula 智能车载主动安全解决方案'}
-                        />
-                    </ul>
-                </div>
-            </li>
-            {/*解决方案，index=2*/}
-            <SolutionItem
-                activeColor={menuListActiveIndex === 2}
-                block={menuListUnFoldIndex === 2}
-            />
-            {/*新闻中心，index=3*/}
-            <MenuListItem
-                activeColor={menuListActiveIndex === 3}
-                content='新闻中心'
-                href='/newsCenter.html'
-            />
-            {/*关于我们，index=4*/}
-            <MenuListItem
-                activeColor={menuListActiveIndex === 4}
-                content='关于我们'
-                href='/aboutAs.html'
-            />
-            {/*加入我们，index=5*/}
-            <MenuListItem
-                activeColor={menuListActiveIndex === 5}
-                content='加入我们'
-                target='_blank'
-                href='http://horizon.hotjob.cn/'
-            />
-            {/*中英文切换*/}
-            <ChineseEnglishSwitch isCN={isCN}/>
+        <ul className={`${style.menuPC} ${layout.clearfix} ${isTopAndHome ? style.isTopAndHome : ''}`}>
+            {list}
         </ul>
     );
 };

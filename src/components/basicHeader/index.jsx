@@ -3,14 +3,20 @@ import { resizeListener, scrollListener } from '@utils/eventListener';
 import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { HeaderPC } from '@components/basicHeader/headerPC';
 import { HeaderMobile } from '@components/basicHeader/headerMobile';
+import { requestHeaderNav } from '@api/index';
+import { navSortByRank } from '@utils/utils';
 
 export const BasicHeader = class extends React.Component {
     constructor(props){
         super(props);
+        //  是哪一个页面
+        this.pathName = window.location.pathname.replace(/\//ig, '');
 //        console.log(props);
         this.state = {
             //  是否滚动在顶部
             isTop: true,
+            //  鼠标浮于上方，锁定白色
+            isOverHeader: false,
             //  浏览器宽度是否超过BASIC_COMPARE_WIDTH
             isRelativelyWide: window.innerWidth > BASIC_COMPARE_WIDTH,
             //  右侧菜单的折叠状态 true:折叠
@@ -21,11 +27,23 @@ export const BasicHeader = class extends React.Component {
             menuListUnFoldIndex: -1,
             //  是中文还是英文站点
             isCN: props.isCN || true,
+
+            //  请求的导航数据
+            navListData: null
         };
     }
 
     //  钩子
     componentDidMount(){
+        //  发请求，取导航数据
+        requestHeaderNav()
+            .then(v => {
+                console.log(v.data);
+                this.navSort(v.data);
+                this.setState((a) => ({
+                    navListData: v.data
+                }));
+            });
         //  滚动监听回调函数，用于控制header的css
         const sfn = (scrollTop) => {
             this.setState(() => {
@@ -47,6 +65,20 @@ export const BasicHeader = class extends React.Component {
         };
         //  resize监听
         resizeListener(rfn);
+    }
+
+    //  导航排序
+    navSort(list){
+        navSortByRank(list, 'rank');
+        for (let value of list) {
+//            console.log(value.url);
+            //  如果遍历到的url和当前页面的url匹配，那么，我当前选中的就是这个路由，它的div应该是激活态
+            if (value.url === this.pathName) {
+                console.log('🐸', value);
+                value.isActive = true;
+            }
+            value.son && value.son.length && this.navSort(value.son);
+        }
     }
 
     //  头部右侧折叠框的点击事件
@@ -72,11 +104,11 @@ export const BasicHeader = class extends React.Component {
     };
 
     //  鼠标浮于上方
-    headerMoseOver = () => {
+    headerMouseOver = () => {
         //  告诉子组件我不是在顶部，以展示白色
         this.setState(() => {
             return {
-                isTop: false
+                isOverHeader: true,
             };
         });
     };
@@ -84,7 +116,7 @@ export const BasicHeader = class extends React.Component {
     headerMouseLeave = () => {
         this.setState(() => {
             return {
-                isTop: (document.documentElement.scrollTop || document.body.scrollTop) === 0
+                isOverHeader: false,
             };
         });
     };
@@ -93,21 +125,25 @@ export const BasicHeader = class extends React.Component {
     render(){
         const {
             isTop,
+            isOverHeader,
             menuIsFold,
             menuListActiveIndex,
             menuListUnFoldIndex,
             isCN,
+            navListData,
         } = this.state;
         return (
             //  pc？
             this.state.isRelativelyWide ?
                 <HeaderPC
                     isTop={isTop}
+                    isOverHeader={isOverHeader}
                     menuIsFold={menuIsFold}
                     menuListActiveIndex={menuListActiveIndex}
                     menuListUnFoldIndex={menuListUnFoldIndex}
                     isCN={isCN}
-                    headerMouseOver={this.headerMoseOver}
+                    navListData={navListData}
+                    headerMouseOver={this.headerMouseOver}
                     headerMouseLeave={this.headerMouseLeave}
                 /> :
                 <HeaderMobile
