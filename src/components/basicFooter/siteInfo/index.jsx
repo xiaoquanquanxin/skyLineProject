@@ -27,7 +27,7 @@ export const SiteInfo = CSSModules(
                     >
                         <img src={weixinImg} className={style.icon}/>
                         <span>地平线官微</span>
-                        <img src={qrCodeRecruitment} onClick={(e) => stopPropagation(e)}
+                        <img src={qrCodeOfficialWeChat} onClick={(e) => stopPropagation(e)}
                              className={`${style.qrCode} ${qrCodeShowIndex === 0 ? layout.block : layout.none}`}/>
                     </button>
                     <button className={`${style.button} ${layout.inlineBlock}`}

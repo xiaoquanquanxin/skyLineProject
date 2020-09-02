@@ -705,7 +705,7 @@ module.exports = function (webpackEnv){
             /**
              * ⬇️⬇️⬇️⬇️新增多页打包配置
              * **/
-            new MultiplePageJsCdn()
+            new MultiplePageJsCdn(isEnvProduction)
             /**
              * ⬆️⬆️⬆️⬆️新增多页打包配置
              * **/
@@ -727,7 +727,9 @@ module.exports = function (webpackEnv){
         performance: false,
         //  百度地图
         externals: {
-            'BMap': 'BMap'
+            BMap: 'BMap',
+            //  todo    如果不用cdn，需要注释
+            react: 'React',
         },
     };
 };

@@ -64,7 +64,7 @@ const SolutionItem = CSSModules(
             <ul className={style.programme}>
                 <li><a href={pathConfig.intelligentDriving}>智能驾驶</a></li>
                 <li className={style.aiotChildrenWrap}>
-                    <a>智能物联网</a>
+                    <a href='/'>智能物联网</a>
                     <ul className={style.aiotChildren}>
                         <li><a href={pathConfig.visual}>视觉</a></li>
                         <li><a href={pathConfig.voice}>语音</a></li>

@@ -12,6 +12,18 @@ let customJsCdnPlaceholder = '';
 
 //  为html打入完整路径
 class MultiplePageJsCdn {
+    //  是生产环境？
+    constructor(isEnvProduction){
+        console.log(`cdn插件，是生产环境？🍉${isEnvProduction}`);
+        //  todo    如果不用cdn，需要注释
+        if (isEnvProduction) {
+            customJsCdnPlaceholder += '<script type="text/javascript" src="/react.v16.13.1.production.js"></script>';
+        } else {
+            //  https://cdn.bootcdn.net/ajax/libs/react/16.13.1/umd/react.production.min.js
+            customJsCdnPlaceholder += '<script type="text/javascript" src="/react.v16.13.1.development.js"></script>';
+        }
+    }
+
     apply(compiler){
         compiler.hooks.compilation.tap('MyPlugin', (compilation) => {
             HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(

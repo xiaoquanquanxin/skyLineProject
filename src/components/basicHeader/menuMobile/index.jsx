@@ -128,7 +128,7 @@ const SolutionItem = CSSModules(
                         className={(pathname === pathConfig.visual || pathname === pathConfig.voice)
                             ? style.isActiveItemProgramme : ''}
                     >
-                        <a>智能物联网</a>
+                        <a href='/'>智能物联网</a>
                         <ul className={style.aiotChildren}>
                             <li
                                 className={pathname === pathConfig.visual ? style.isActiveItemProgramme : ''}

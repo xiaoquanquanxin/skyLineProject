@@ -9,10 +9,13 @@ export const SafeDrivingRender = CSSModules(
     () => (
         <div className={style.safeDriving}>
             <img src={require('@media/index/HomeCity.gif')}
-                 className={style.safeDrivingGif}/>
+                 className={style.safeDrivingGif}
+                 alt=''
+            />
             <div className={style.safeDrivingPngWrap}>
                 <img src={require('@media/index/HomeCar.png')}
                      className={style.safeDrivingPng}
+                     alt=''
                 />
             </div>
             <BasicIntroduction
