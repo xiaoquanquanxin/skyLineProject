@@ -7,22 +7,28 @@ const currSrc = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXA
 
 //  链接项
 const Link = CSSModules(
-    ({ href, text, activeLinkIndex }) => (
-        <p>{href ?
-            <a className={`${style.link} ${layout.block} ${activeLinkIndex ? '' : ''}`} href={href}>{text}</a>
-            : <span className={`${style.noLinking} ${layout.block}`}>{text}</span>}</p>
+    ({ url, name, activeLinkIndex }) => (
+        <p>
+            {url ?
+                <a className={`${style.link} ${layout.block} ${activeLinkIndex ? '' : ''}`} href={url}>{name}</a>
+                : <span className={`${style.noLinking} ${layout.block}`}>{name}</span>
+            }
+        </p>
     )
 );
 //  链接的一列
 const LinkListItem = CSSModules(
     ({
+        //  浏览器宽度是否超过BASIC_COMPARE_WIDTH
         isRelativelyWide,
+        //  文字链接区域的文字描述
         par,
+        //  链接list
         linkList,
-        //  展开的导航是第几个，从零开始，下标
-        isSpreadIndex,
         //  当前模块是第几个，从零开始，下标
         currentIndex,
+        //  展开的导航是第几个，从零开始，下标
+        isSpreadIndex,
         //  当前链接列，第几个路由是被激活的
         activeLinkIndex,
         //  点击展开模块
@@ -30,21 +36,26 @@ const LinkListItem = CSSModules(
     }) => {
         const isSpread = isSpreadIndex === currentIndex;
         //  生成块内链接list
-        const list = linkList.map(item => <Link
-            //            todo  错误
-            href={item.href}
-            key={item.text}
-            text={item.text}
-            activeLinkIndex={activeLinkIndex}
-        />);
+        const list = linkList.map(item => {
+            return (
+                <Link
+                    url={item.url}
+                    key={item.id}
+                    name={item.name}
+                    activeLinkIndex={activeLinkIndex}
+                />
+            );
+        });
         return (
             <li className={`${style.linkItem} ${isRelativelyWide ? layout.left : ''}`}>
                 <p className={style.linkItemPar} onClick={() => {spreadClick(currentIndex);}}>
                     {/*文字链接区域的文字描述*/}
                     {par}
                     {/*箭头*/}
-                    {isRelativelyWide ? '' : <img src={currSrc} className={`${style.curr} ${isSpread ? style.isSpread : ''}`}
-                                                  alt='箭头'/>}
+                    {isRelativelyWide
+                        ? ''
+                        : <img src={currSrc} alt='箭头' className={`${style.curr} ${isSpread ? style.isSpread : ''}`}/>
+                    }
                 </p>
                 <div className={`${style.linkWrap} ${(isSpread || isRelativelyWide) ? layout.block : layout.none}`}>
                     {list}
@@ -56,65 +67,43 @@ const LinkListItem = CSSModules(
 
 export const LinkList = CSSModules(
     ({
+        //  浏览器宽度是否超过BASIC_COMPARE_WIDTH
         isRelativelyWide,
+        //  被展开的链接块
         isSpreadIndex,
+        //  被选中的link
         activeLinkIndex,
+        //  数据
+        data,
+        //  展开底导航
         spreadClick,
-    }) => (
-        <ul className={`${style.linkList} ${layout.clearfix} ${isRelativelyWide ? layout.right : ''}`}>
-            <LinkListItem
-                isRelativelyWide={isRelativelyWide}
-                par='公司产品'
-                linkList={[
-                    { text: '征程处理器', href: 'www' },
-                    { text: '旭日处理器', href: 'www' },
-                    { text: '地平线 Matrix', href: 'www' },
-                    { text: '地平线 Nebula', href: 'www' },
-                ]}
-                currentIndex={0}
-                isSpreadIndex={isSpreadIndex}
-                activeLinkIndex={activeLinkIndex}
-                spreadClick={spreadClick}
-            />
-            <LinkListItem
-                isRelativelyWide={isRelativelyWide}
-                par='公司业务'
-                linkList={[
-                    { text: '智能驾驶', href: '' },
-                    { text: '智能物联网 - 视觉', href: '' },
-                    { text: '智能物联网 - 语音', href: '' },
-                ]}
-                currentIndex={1}
-                isSpreadIndex={isSpreadIndex}
-                activeLinkIndex={activeLinkIndex}
-                spreadClick={spreadClick}
-            />
-            <LinkListItem
-                isRelativelyWide={isRelativelyWide}
-                par='关于我们'
-                linkList={[
-                    { text: '公司介绍', href: '' },
-                    { text: '发展历程', href: '' },
-                    { text: '主要投资阵容', href: '' },
-                    { text: '联系我们', href: '' },
-                ]}
-                currentIndex={2}
-                isSpreadIndex={isSpreadIndex}
-                activeLinkIndex={activeLinkIndex}
-                spreadClick={spreadClick}
-            />
-            <LinkListItem
-                isRelativelyWide={isRelativelyWide}
-                par='联系我们'
-                linkList={[
-                    { text: '业务合作：bd@horizon.ai', href: '' },
-                    { text: '其他合作：mkt@horizon.ai', href: '' },
-                ]}
-                currentIndex={3}
-                isSpreadIndex={isSpreadIndex}
-                activeLinkIndex={activeLinkIndex}
-                spreadClick={spreadClick}
-            />
-        </ul>
-    )
+    }) => {
+        if (data === null) {
+            return '';
+        }
+        const list = [
+            { par: '公司业务', key: 'solution' },
+            { par: '公司产品', key: 'product' },
+            { par: '关于我们', key: 'aboutus' },
+            { par: '联系我们', key: 'contact' },
+        ].map((item, index) => {
+            return (
+                <LinkListItem
+                    key={index}
+                    isRelativelyWide={isRelativelyWide}
+                    par={item.par}
+                    linkList={data[item.key]}
+                    currentIndex={index}
+                    isSpreadIndex={isSpreadIndex}
+                    activeLinkIndex={activeLinkIndex}
+                    spreadClick={spreadClick}
+                />
+            );
+        });
+        return (
+            <ul className={`${style.linkList} ${layout.clearfix} ${isRelativelyWide ? layout.right : ''}`}>
+                {list}
+            </ul>
+        );
+    }
 );

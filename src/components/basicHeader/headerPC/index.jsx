@@ -20,7 +20,7 @@ export const HeaderPC = CSSModules(({
     //  鼠标离开
     headerMouseLeave,
 }) => {
-    console.log(isHomePage);
+    console.log('是首页',isHomePage);
     //  渲染信息
     const headerRenderInfo = GetHeaderLogoMenuInformation(true, isTop, isHomePage, isOverHeader);
     return (

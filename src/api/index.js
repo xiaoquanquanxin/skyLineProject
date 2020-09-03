@@ -10,3 +10,13 @@ export function requestHeaderNav(){
     });
 }
 
+//  获取footer数据
+export function requestFooterNav(){
+    return request({
+        url: '/api/getfooter',
+        method: 'get',
+        //  get:params: { clientKey: CLIENT_IP, }
+        //  post:data: data,
+    });
+}
+
