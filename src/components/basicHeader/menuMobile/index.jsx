@@ -1,196 +1,116 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import { pathConfig } from '@utils/constant';
 import style from './index.less';
 import layout from '@css/layout.less';
-import product01 from '@media/header/product-01.png';
-
+//  箭头
+import arrowsSrc from '@media/basicHeader/icon-arrow-black.png';
+//  每一项
 const MenuListItem = CSSModules(
-    function ({ activeColor, content, href, target }){
-        let clickFn = null;
-        //  路由一样，不跳转
-        if (window.location.pathname === href) {
-            clickFn = (e) => {
-                e.preventDefault();
-                return false;
-            };
+    ({
+        //  是激活状态
+        isActive,
+        //  文字
+        content,
+        //  链接
+        href,
+        //  打开方式
+        target,
+        //  子元素，子路由
+        subList,
+        //  点击箭头
+        arrowClick,
+    }) => {
+        let arrowsElements = null;
+        let subListElements = null;
+        if (subList) {
+            arrowsElements = <img src={arrowsSrc} alt="箭头" className={style.arrows} onClick={() => (arrowClick(1))}/>;
+            subListElements = <NavLevel2 subList={subList}/>;
         }
         return (
-            <li>
-                <a className={`${activeColor ? style.activeColor : ''} ${style.menuListItem}`}
-                   href={href}
-                   target={target}
-                   onClick={clickFn}>
-                    {content}
-                </a>
+            <li className={`${isActive ? style.activeColor : ''} ${style.menuListItem}`}>
+                <a href={href} target={target}>{content}</a>
+                {arrowsElements}
+                {subListElements}
             </li>
         );
     }
 );
 
-//  中英文切换
-const ChineseEnglishSwitch = CSSModules(
-    () => (
-        <li>
-            <div className={style.menuListItem}>
-                <span className={style.activeColor}>CN</span>
-                <b className={style.languageItem}>/</b>
-                <a href='https://en.horizon.ai/'>EN</a>
-            </div>
-        </li>
-    )
-);
-
-//  产品列表项
-const ProductItem = CSSModules(
-    ({
-        //  图片地址
-        src,
-        //  链接
-        href,
-        //  项目描述
-        description,
-        //  被选中的项目
-        isActiveItem
-    }) => (
-        <li className={`${style.item} ${isActiveItem ? style.isActiveItem : ''}`}>
-            <a href={href}>
-                <img className={style.itemImage} src={src} alt={description}/>
-                <span className={style.itemDescription}>{description}</span>
-            </a>
-        </li>
-    )
-);
-
-//  产品中心
-const ProductionCenter = CSSModules(
-    ({
-        activeColor,
-        block,
-        menuListClick,
-    }) => (
-        <li>
-            <div onClick={() => (menuListClick(1))}
-                 className={`${style.menuListItem}
-                                 ${activeColor ? style.activeColor : ''}
-                                 ${block ? style.curr : ''}`}>产品中心
-                <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
-                    alt="箭头"/>
-            </div>
-            <ul className={`${style.headerProduct} ${layout.clearfix} ${block ? layout.block : layout.none}`}>
-                <ProductItem
-                    src={product01}
-                    href={'/production.html'}
-                    description={'Sunrise 旭日'}
-                />
-                <ProductItem
-                    src={product01}
-                    href={'/production.html'}
-                    description={'Sunrise 旭日'}
-                    isActiveItem={true}
-                />
-                <ProductItem
-                    src={product01}
-                    href={'/production.html'}
-                    description={'Sunrise 旭日'}
-                />
-                <ProductItem
-                    src={product01}
-                    href={'/production.html'}
-                    description={'Nebula 智能车载主动安全解决方案'}
-                />
-            </ul>
-        </li>
-    )
-);
-//  解决方案
-const SolutionItem = CSSModules(
-    function ({ activeColor, block, menuListClick }){
-        const pathname = window.location.pathname;
-//        console.log(`pathname:${pathname}`);
+//  二级菜单
+const NavLevel2 = CSSModules(
+    ({ subList }) => {
+        const list = subList.map((item) => {
+            let arrowsElements = null;
+            let subListElements = null;
+            if (item.son) {
+                arrowsElements = <img src={arrowsSrc} alt="箭头" className={style.arrows}/>;
+                subListElements = <NavLevel3 lowestList={item.son}/>;
+            }
+            return (
+                <dd key={item.id} className={item.isActive ? style.navLevel2Active : ''}>
+                    <a href={item.url} target={item.target}>{item.name}</a>
+                    {arrowsElements}
+                    {subListElements}
+                </dd>
+            );
+        });
         return (
-            <li>
-                <div className={`${style.menuListItem}
-                                 ${activeColor ? style.activeColor : ''}
-                                 ${block ? style.curr : ''}`}
-                     onClick={() => (menuListClick(2))}
-                >解决方案
-                    <img
-                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAB5klEQVRoQ+2XzSpFURTHfzfyURLvYIKJiRKFpIzMPIQnMLrxGF5BmUgkJZGRKRMZKMrA50AZKWnVPnXadc/e56x10611pvv8/3v9P/Y+97bo8afV4/PjAv47QU/AE1A64BVSGqiGewJqC5UEnoDSQDXcE1BbqCTITWAM2Ab6gTbwpdy3E3wA2AImgB3gMbVProB9YCOQPQDzwEuKvOb6MHAWuAV6D0wCv1U8OQIGgW+gr0RkLSIevthqDrjWChD8LrAZEYmIReC5ptPx6yPAacn5Yv0q8FfS5yQgBNL9I2AtYnsKGzcVIcOfA7MR7y2wDHymzMkVIDxywA4NRYyGzjceXoaqIyAlQuqUvDWCozL8JTDT1PkCV1dAlQip0UKGCLPhmyRQCO9Up5SI8dB5tfOaBHJESJ3klio/MrzcLNPa2pTxTSpUxndKQj5y8rErRHRleE2FckUsAR/AhbXzFhXKEfEOvAJTUW3uwoFP3vOW34EUl9TpBFhJvCjDyxl5SxHmrGvPQLzHEHBcIcJ0eKszkCvCfPhuCRBeSeKg9LPjBli1qo3lNZqq6Togf4b2gJ/Uy03Wrc9AkxlUGBegss8A7AkYmKii8ARU9hmAPQEDE1UUnoDKPgOwJ2BgoorCE1DZZwD+A5xEVzEAReBTAAAAAElFTkSuQmCC"
-                        alt="箭头"/>
-                </div>
-                <ul className={`${style.programme} ${block ? layout.block : layout.none}`}>
-                    <li
-                        className={pathname === pathConfig.intelligentDriving ? style.isActiveItemProgramme : ''}
-                    ><a href={pathConfig.intelligentDriving}>智能驾驶</a></li>
-                    <li
-                        className={(pathname === pathConfig.visual || pathname === pathConfig.voice)
-                            ? style.isActiveItemProgramme : ''}
-                    >
-                        <a href='/'>智能物联网</a>
-                        <ul className={style.aiotChildren}>
-                            <li
-                                className={pathname === pathConfig.visual ? style.isActiveItemProgramme : ''}
-                            ><a href={pathConfig.visual}>视觉</a></li>
-                            <li
-                                className={pathname === pathConfig.voice ? style.isActiveItemProgramme : ''}
-                            ><a href={pathConfig.voice}>语音</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+            <dl className={style.navLevel2}>
+                {list}
+            </dl>
+        );
+    }
+);
+
+//  三级菜单
+const NavLevel3 = CSSModules(
+    ({ lowestList }) => {
+        const list = lowestList.map((item) => {
+            return (
+                <dd key={item.id} className={item.isActive ? style.navLevel3Active : ''}>
+                    <a href={item.url} target={item.target}>{item.name}</a>
+                </dd>
+            );
+        });
+        return (
+            <dl className={style.navLevel3}>
+                {list}
+            </dl>
         );
     }
 );
 
 //  主菜单
 export const MenuMobile = ({
+    //  是折叠
     menuIsFold,
-    menuListActiveIndex,
+    //  数据
+    navListData,
+    //  菜单展开的index
     menuListUnFoldIndex,
-    menuListClick,
-}) => (
-    //  如果窄屏展开，或者宽屏
-    <ul className={`${style.menuMobile} ${!menuIsFold ? style.menuListShow : ''}`}>
-        {/*首页，index=0*/}
+    //  点击箭头
+    arrowClick,
+}) => {
+    if (!navListData || !navListData.length) {
+        return '';
+    }
+    const list = navListData.map((item) => (
         <MenuListItem
-            activeColor={menuListActiveIndex === 0}
-            content='首页'
-            href='/index.html'
+            isActive={item.isActive}
+            key={item.id}
+            content={item.name}
+            href={item.url}
+            target={item.is_out ? '_blank' : '_self'}
+            subList={item.son}
+            arrowClick={arrowClick}
         />
-        {/*产品中心，index=1*/}
-        <ProductionCenter
-            activeColor={menuListActiveIndex === 1}
-            block={menuListUnFoldIndex === 1}
-            menuListClick={menuListClick}
-        />
-        {/*解决方案，index=1*/}
-        <SolutionItem
-            activeColor={menuListActiveIndex === 2}
-            block={menuListUnFoldIndex === 2}
-            menuListClick={menuListClick}
-        />
-        {/*新闻中心，index=1*/}
-        <MenuListItem
-            activeColor={menuListActiveIndex === 3}
-            content='新闻中心'
-            href='/newsCenter.html'
-        />
-        {/*关于我们，index=1*/}
-        <MenuListItem
-            activeColor={menuListActiveIndex === 4}
-            content='关于我们'
-            href='/aboutAs.html'
-        />
-        {/*加入我们，index=1*/}
-        <MenuListItem
-            activeColor={menuListActiveIndex === 5}
-            content='加入我们'
-            target='_blank'
-            href='http://horizon.hotjob.cn/'
-        />
-        {/*中英文切换，index=1*/}
-        <ChineseEnglishSwitch/>
-    </ul>
-);
+    ));
+
+    return (
+        //  如果窄屏展开，或者宽屏
+        <ul className={`${style.menuMobile} ${!menuIsFold ? style.menuListShow : ''}`}>
+            {list}
+        </ul>
+    );
+};
+

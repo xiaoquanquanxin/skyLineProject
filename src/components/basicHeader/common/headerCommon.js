@@ -44,7 +44,7 @@ export const GetHeaderLogoMenuInformation = (menuIsFold, isTop, isHomePage, isOv
         headerRenderInfo.isTopAndHome = true;
     } else {
         //  蓝色logo
-        headerRenderInfo.imageLogoSrc = require('@media/header/logo-blue.png');
+        headerRenderInfo.imageLogoSrc = require('@media/basicHeader/logo-blue.png');
         //  如果没有滚到顶部，但是导航展开，菜单应该是黑色的
         if (menuIsFold) {
             //  黑色展开菜单

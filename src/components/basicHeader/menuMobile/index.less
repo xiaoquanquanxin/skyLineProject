@@ -1,143 +1,136 @@
 //	菜单列表移动端
 .menuMobile {
 	display: none;
-	border-top: 1px solid #eee;
+	border-top: 0.667px solid var(--coloreee);
 	background-color: var(--white);
+	position: relative;
+	//height: 200px;
+	overflow-y: auto;
 	//	展开
 	&.menuListShow {
 		display: block;
 	}
 
-	//	首页没有border-top
-	& > :first-child {
-		.menuListItem {
-			border: none;
-		}
-	}
-
-	//	li
-	& > li {
-		float: none;
-		font-size: initial;
-		padding: 0;
-		font-weight: initial;
-	}
-
 	//	菜单的每一项
 	.menuListItem {
-		padding: 20px;
-		margin-left: 20px;
+		float: none;
+		font-weight: initial;
 		display: block;
 		border-top: 0.667px solid var(--coloreee);
 		font-size: 14px;
 		position: relative;
-		color: var(--color999);
 
-		//	箭头
-		& > img {
-			display: block;
-			width: 20px;
-			position: absolute;
-			top: 20px;
-			right: 30px;
+		//	首页没有border-top
+		&:first-child {
+			border: none;
 		}
+
+		//	一级链接
+		& > a {
+			padding: 20px;
+			margin-left: 20px;
+			color: rgba(0, 0, 0, 0.6);
+			display: block;
+		}
+
 
 		//	如果旋转
 		&.curr {
 			//	箭头得旋转
 			img {
-				transform: rotate(180deg);
+
 			}
 		}
-	}
 
-	//	菜单中的产品列表
-	.headerProduct {
-		background: #fafafa;
-		border-top: 1px solid #eee;
-		padding: 10px 0;
-
-		//	产品列表里面的每一项
-		.item {
-			width: 33%;
+		//	倒数第二
+		&:nth-last-child(2) {
 			float: left;
-			text-align: center;
-
-			//	直系亲属a标签
-			& > a {
-				width: 100%;
-				display: block;
-				padding: 10px 0;
-				font-size: 13px;
-
-				//	产品图片
-				.itemImage {
-					height: 85px;
-					margin: 0;
-				}
-
-				//	产品描述
-				.itemDescription {
-					color: var(--color999);
-					display: block;
-					margin-bottom: 8px;
-				}
-			}
-
-			//	鼠标hover，或选中了某个产品
-			&:hover, &.isActiveItem {
-				& > a {
-					.itemImage {
-						margin-top: -10px;
-						margin-bottom: 10px;
-					}
-
-					.itemDescription {
-						color: var(--black);
-					}
-				}
-			}
-		}
-	}
-
-	//	解决方案
-	.programme {
-		background: #fafafa;
-		padding-left: 40px;
-		border-top: 1px solid var(--coloreee);
-
-		li {
-			border-top: 1px solid var(--coloreee);
-
-			//	鼠标hover，或选中了某个解决方案
-			&:hover, &.isActiveItemProgramme {
-				& > a {
-					color: var(--black)
-				}
-			}
 
 			a {
-				width: 100%;
-				display: block;
-				padding: 20px 10px;
-				font-size: 13px;
-				color: var(--color999)
+				color: var(--color06f);
 			}
 		}
 
-		//	直系的第一个li没有bordertop
-		& > li:first-child {
-			border-top: none;
-		}
+		//	倒数第一，装到倒数第二后头
+		&:nth-last-child(1) {
+			position: relative;
 
-		//	有子列表的项
-		.aiotChildren {
-			padding-left: 10px;
+			//	en
+			a {
+				display: inline-block;
+				padding-left: 0;
+				margin-left: 0;
+			}
+
+			//	斜线
+			&::before {
+				content: "/";
+				display: block;
+				position: absolute;
+				top: 21px;
+				height: 0;
+				left: 68px;
+				font-size: 12px;
+				color: var(--color999);
+			}
 		}
 	}
 
 	//	激活的颜色
 	.activeColor {
-		color: var(--color06f)
+		& > a {
+			color: var(--color06f);
+		}
+	}
+
+	//	箭头
+	.arrows {
+		display: block;
+		width: 20px;
+		position: absolute;
+		top: 20px;
+		right: 30px;
+		transition: transform .3s;
+		//	颠倒箭头方向
+		&.upsideDown {
+			transform: rotate(180deg);
+		}
+	}
+
+
+}
+
+//	二级菜单
+.navLevel2 {
+	display: none;
+	background-color: var(--colorf6f6f6);
+
+	& > dd {
+		position: relative;
+
+		a {
+			width: 100%;
+			display: block;
+			padding: 20px 10px;
+			font-size: 13px;
+			margin-left: 60px;
+			border-top: 0.667px solid var(--coloreee);
+		}
+	}
+}
+
+//	三级菜单
+.navLevel3 {
+	background-color: var(--colore8e8e8);
+
+	& > dd {
+		a {
+			width: 100%;
+			display: block;
+			padding: 20px 10px;
+			font-size: 13px;
+			margin-left: 60px;
+			border-top: 0.667px solid rgba(0, 0, 0, 0.1);
+		}
 	}
 }

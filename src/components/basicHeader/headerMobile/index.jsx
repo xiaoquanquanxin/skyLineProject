@@ -21,6 +21,7 @@ export const HeaderMobile = (
         //  菜单展开点击事件
         menuFoldClick,
     }) => {
+        menuIsFold = false;
         //  渲染信息
         const headerRenderInfo = GetHeaderLogoMenuInformation(menuIsFold, isTop, isHomePage, false);
         return (
@@ -39,7 +40,6 @@ export const HeaderMobile = (
                     {/*菜单*/}
                     <MenuMobile
                         menuIsFold={menuIsFold}
-                        isHomePage={isHomePage}
                         navListData={navListData}
                         menuListUnFoldIndex={menuListUnFoldIndex}
                         arrowClick={arrowClick}
