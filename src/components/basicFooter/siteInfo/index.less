@@ -30,6 +30,10 @@
 				border-radius: 22px;
 				line-height: 40px;
 
+				//	地平线招聘号
+				&:last-child {
+					width: 154px;
+				}
 
 				//	fixme	看需求
 				//	如果按钮不是被激活的，那么二维码不展示
@@ -89,37 +93,43 @@
 	@media screen and  (max-width: 750px) {
 		line-height: 44px;
 		text-align: center;
+		padding: 0.96rem 0 0 0;
 		.siteInfoInner {
 			width: 100%;
 			min-width: 0;
-			padding: 12px;
+			padding: 0;
 			//	按钮组
 			.buttonGroups {
 
 				//	按钮
 				.button {
-					margin: 0 12px;
-					width: 124px;
-					height: 40px;
-					border-radius: 20px;
-					line-height: 38px;
-					border-width: 1px;
+					margin: 0 0.26rem;
+					border-radius: 0.42rem;
+					line-height: 0.8rem;
+					padding-left: 0.56rem;
+					font-size: 0.24rem;
+					width: 2.68rem;
+					height: 0.88rem;
+					border: 0.04rem solid rgba(255, 255, 255, 0.8);
 
 					&:last-child {
-						width: 124px;
+						width: 2.78rem;
 					}
 
 					.icon {
-						top: 10px;
-						left: 12px;
+						width: 0.4rem;
+						height: 0.32rem;
+						left: 0.3rem;
+						top: 50%;
+						margin-top: -0.16rem;
 					}
 				}
 			}
 
 			//
 			.siteInfoMsg {
-				margin: 35px 0;
-				font-size: 10px;
+				padding: 0.7rem 0 1.2rem 0;
+				font-size: 0.2rem;
 			}
 		}
 	}
