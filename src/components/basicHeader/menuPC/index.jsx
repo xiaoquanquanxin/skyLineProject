@@ -73,8 +73,6 @@ export const MenuPC = ({
     menuListActiveIndex,
     //  展开了哪一个菜单 index
     menuListUnFoldIndex,
-    //  是中文
-    isCN,
     //  数据
     navListData,
 }) => {

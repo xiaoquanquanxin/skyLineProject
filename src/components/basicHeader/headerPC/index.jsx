@@ -17,8 +17,6 @@ export const HeaderPC = CSSModules(({
     isHomePage,
     //  菜单展开的index
     menuListUnFoldIndex,
-    //  是中文？
-    isCN,
     //  数据
     navListData,
     //  鼠标浮于header上方
@@ -46,7 +44,6 @@ export const HeaderPC = CSSModules(({
                         menuIsFold={menuIsFold}
                         isHomePage={isHomePage}
                         menuListUnFoldIndex={menuListUnFoldIndex}
-                        isCN={isCN}
                         navListData={navListData}
                         isTopAndHome={headerRenderInfo.isTopAndHome}
                     />

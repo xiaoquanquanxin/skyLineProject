@@ -25,8 +25,6 @@ export const BasicHeader = class extends React.Component {
             isHomePage: this.pathName === 'index.html',
             //  展开了哪一个菜单？
             menuListUnFoldIndex: -1,
-            //  是中文还是英文站点
-            isCN: props.isCN || true,
 
             //  请求的导航数据
             navListData: null
@@ -64,6 +62,41 @@ export const BasicHeader = class extends React.Component {
         };
         //  resize监听
         resizeListener(rfn);
+    }
+
+    //  渲染函数
+    render(){
+        const {
+            isTop,
+            isOverHeader,
+            menuIsFold,
+            isHomePage,
+            menuListUnFoldIndex,
+            navListData,
+        } = this.state;
+        return (
+            //  pc？
+            this.state.isRelativelyWide ?
+                <HeaderPC
+                    isTop={isTop}
+                    isOverHeader={isOverHeader}
+                    menuIsFold={menuIsFold}
+                    isHomePage={isHomePage}
+                    menuListUnFoldIndex={menuListUnFoldIndex}
+                    navListData={navListData}
+                    headerMouseOver={this.headerMouseOver}
+                    headerMouseLeave={this.headerMouseLeave}
+                /> :
+                <HeaderMobile
+                    isTop={isTop}
+                    menuIsFold={menuIsFold}
+                    isHomePage={isHomePage}
+                    menuListUnFoldIndex={menuListUnFoldIndex}
+                    navListData={navListData}
+                    arrowClick={this.arrowClick}
+                    menuFoldClick={this.menuFoldClick}
+                />
+        );
     }
 
     //  导航排序
@@ -113,9 +146,9 @@ export const BasicHeader = class extends React.Component {
             };
         });
     };
-    //  箭头
-    menuListClick = (menuListUnFoldIndex) => {
-//        console.log('箭头');
+    //  点击箭头
+    arrowClick = (menuListUnFoldIndex) => {
+        //  console.log('箭头');
         //  如果点击的还是原来那个
         if (this.state.menuListUnFoldIndex === menuListUnFoldIndex) {
             menuListUnFoldIndex = -1;
@@ -145,41 +178,5 @@ export const BasicHeader = class extends React.Component {
         });
     };
 
-    //  渲染函数
-    render(){
-        const {
-            isTop,
-            isOverHeader,
-            menuIsFold,
-            isHomePage,
-            menuListUnFoldIndex,
-            isCN,
-            navListData,
-        } = this.state;
-        return (
-            //  pc？
-            this.state.isRelativelyWide ?
-                <HeaderPC
-                    isTop={isTop}
-                    isOverHeader={isOverHeader}
-                    menuIsFold={menuIsFold}
-                    isHomePage={isHomePage}
-                    menuListUnFoldIndex={menuListUnFoldIndex}
-                    isCN={isCN}
-                    navListData={navListData}
-                    headerMouseOver={this.headerMouseOver}
-                    headerMouseLeave={this.headerMouseLeave}
-                /> :
-                <HeaderMobile
-                    isTop={isTop}
-                    menuIsFold={menuIsFold}
-                    isHomePage={isHomePage}
-                    menuListUnFoldIndex={menuListUnFoldIndex}
-                    isCN={isCN}
-                    menuListClick={this.menuListClick}
-                    menuFoldClick={this.menuFoldClick}
-                />
-        );
-    }
 };
 

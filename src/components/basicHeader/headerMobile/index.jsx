@@ -5,25 +5,31 @@ import { MenuMobile } from '@components/basicHeader/menuMobile';
 
 //  移动端头部渲染
 export const HeaderMobile = (
-    function ({
+    ({
+        //  页面是处于顶部
         isTop,
+        //  菜单是否展开
         menuIsFold,
-        menuListActiveIndex,
+        //  是否为首页
+        isHomePage,
+        //  菜单展开的index
         menuListUnFoldIndex,
-        isCN,
+        //  数据
+        navListData,
+        //  点击箭头事件
+        arrowClick,
+        //  菜单展开点击事件
         menuFoldClick,
-        menuListClick,
-    }){
+    }) => {
         //  渲染信息
-        const headerRenderInfo = GetHeaderLogoMenuInformation(menuIsFold, isTop, menuListActiveIndex);
+        const headerRenderInfo = GetHeaderLogoMenuInformation(menuIsFold, isTop, isHomePage, false);
         return (
             <header className={style.basicHeader}>
-                <div
-                    className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}>
+                <div className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}>
                     {/*logo*/}
                     <img className={`${style.basicHeaderLogo}`}
                          src={headerRenderInfo.imageLogoSrc}
-                         onClick={() => (logoClick(menuListActiveIndex))}
+                         onClick={() => (logoClick(isHomePage))}
                          alt="地平线头部logo"/>
                     {/*菜单按钮*/}
                     <img className={style.basicHeaderMenu}
@@ -33,10 +39,10 @@ export const HeaderMobile = (
                     {/*菜单*/}
                     <MenuMobile
                         menuIsFold={menuIsFold}
-                        menuListActiveIndex={menuListActiveIndex}
+                        isHomePage={isHomePage}
+                        navListData={navListData}
                         menuListUnFoldIndex={menuListUnFoldIndex}
-                        isCN={isCN}
-                        menuListClick={menuListClick}
+                        arrowClick={arrowClick}
                     />
                 </div>
             </header>

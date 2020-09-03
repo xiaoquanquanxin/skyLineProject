@@ -30,12 +30,12 @@ const MenuListItem = CSSModules(
 
 //  中英文切换
 const ChineseEnglishSwitch = CSSModules(
-    (isCN) => (
+    () => (
         <li>
             <div className={style.menuListItem}>
-                {isCN ? <span className={style.activeColor}>CN</span> : <a href='https://horizon.ai/'>CN</a>}
+                <span className={style.activeColor}>CN</span>
                 <b className={style.languageItem}>/</b>
-                {!isCN ? <span className={style.activeColor}>EN</span> : <a href='https://en.horizon.ai/'>EN</a>}
+                <a href='https://en.horizon.ai/'>EN</a>
             </div>
         </li>
     )
@@ -149,7 +149,6 @@ export const MenuMobile = ({
     menuIsFold,
     menuListActiveIndex,
     menuListUnFoldIndex,
-    isCN,
     menuListClick,
 }) => (
     //  如果窄屏展开，或者宽屏
@@ -192,6 +191,6 @@ export const MenuMobile = ({
             href='http://horizon.hotjob.cn/'
         />
         {/*中英文切换，index=1*/}
-        <ChineseEnglishSwitch isCN={isCN}/>
+        <ChineseEnglishSwitch/>
     </ul>
 );
