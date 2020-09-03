@@ -2,8 +2,8 @@ import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './index.less';
 import layout from '@css/layout.less';
-//  箭头
-const currSrc = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACBUlEQVRoQ+2XzSpFURTHfyvyURLvYIKJiRJ1ScrIzEN4AiPxGF5BmUgkJZGRKRMZKMrA50AZKUtL++p24u5zztqS2md69n/t9f9Y69wr/PNH/nn/ZAJ/7WB2IDvgVCBHyCmgG54dcEvoLJAdcArohmcH3BI6C5RyQFUHgFWgE1gRkRfnvd/CVbULWAaGgDURuY7dU5bAJrAYil0BkyJyFyte5b2q9gIHVjvgLoFhEXlvVydKQFW7gVego6VQUhLfNN+8akJETl0EDKyq68BSoZCRaIjIbRWli2dVtQ/Yb1G+eeRERBqx2lEHAgHL/g4wXyh4E+JUi0Ro/hAYL9Q9B2ZE5DkJgUDCBmw7FQlV7Q+Zr9289VXKgaYKYUv8RMLiFN0aQQxr/hgYq6t8E1eJQMQJi9FUjERQPknzlR0o4URbEqo6CFjm3crXdqAkCYuTbamvJzR/Aox6Y9OKrxyhQlM/DbZ95Oxj90nit5qvHaEKJKaBJ+AotfLuCJUk8QjcAyOF2FyEgY/u+WTfgVihsGL3gNnIWWveZuQhVrPMe9cMFC9Q1R5gtw2JpM0nmYEKJJI3/ysEwtYxJ7ZafnacAXOpYpNsjcYyqqoLgP0Z2hCRt9j5Ou+TzkCdBryYTMCroBefHfAq6MVnB7wKevHZAa+CXnx2wKugF58d8CroxWcHvAp68R/4Mq4x+a2PSAAAAABJRU5ErkJggg==';
+//  白色箭头，取自header
+import currSrc from '@media/basicHeader/icon-arrow-white.png';
 
 //  链接项
 const Link = CSSModules(
