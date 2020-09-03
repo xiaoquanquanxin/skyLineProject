@@ -23,9 +23,10 @@ export const BasicHeader = class extends React.Component {
             menuIsFold: true,
             //  是首页？
             isHomePage: this.pathName === 'index.html',
-            //  展开的一级菜单的index
+            //  展开的一级菜单的index - 移动端
             primaryIndex: -1,
-
+            //  展开的二级菜单的index - 移动端
+            secondaryIndex: -1,
             //  请求的导航数据
             navListData: null
         };
@@ -72,6 +73,7 @@ export const BasicHeader = class extends React.Component {
             menuIsFold,
             isHomePage,
             primaryIndex,
+            secondaryIndex,
             navListData,
         } = this.state;
         return (
@@ -90,8 +92,10 @@ export const BasicHeader = class extends React.Component {
                     menuIsFold={menuIsFold}
                     isHomePage={isHomePage}
                     primaryIndex={primaryIndex}
+                    secondaryIndex={secondaryIndex}
                     navListData={navListData}
                     primaryMenuClick={this.primaryMenuClick}
+                    secondaryMenuClick={this.secondaryMenuClick}
                     menuFoldClick={this.menuFoldClick}
                 />
         );
@@ -149,13 +153,24 @@ export const BasicHeader = class extends React.Component {
         //  如果点击的还是原来那个
         if (this.state.primaryIndex === primaryIndex) {
             primaryIndex = -1;
+        } else {
+            //  点击的不同，次级index重置
+            this.setState(() => ({
+                secondaryIndex: -1
+            }));
         }
-        this.setState(() => {
-            return {
-                primaryIndex: primaryIndex
-            };
-        });
-        //        console.log(primaryIndex);
+        this.setState(() => ({
+            primaryIndex,
+        }));
+    };
+    //  次级菜单点击事件
+    secondaryMenuClick = (secondaryIndex) => {
+        if (this.state.secondaryIndex === secondaryIndex) {
+            secondaryIndex = -1;
+        }
+        this.setState(() => ({
+            secondaryIndex
+        }));
     };
 
     //  鼠标浮于上方

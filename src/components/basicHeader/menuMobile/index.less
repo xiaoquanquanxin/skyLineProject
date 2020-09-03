@@ -8,6 +8,7 @@
 	height: auto;
 	max-height: calc(100vh - 52px);
 	overflow-y: auto;
+	overflow-x: hidden;
 	//	展开
 	&.menuListShow {
 		display: block;
@@ -16,7 +17,6 @@
 	//	菜单的每一项
 	.menuListItem {
 		font-weight: initial;
-		display: block;
 		border-top: 0.667px solid var(--coloreee);
 		font-size: 14px;
 		position: relative;
@@ -30,8 +30,6 @@
 		& > a {
 			padding: 20px;
 			margin-left: 20px;
-			color: rgba(0, 0, 0, 0.6);
-			display: block;
 		}
 
 		//	倒数第二
@@ -94,26 +92,14 @@
 		background-color: var(--colorf6f6f6);
 
 		& > dd {
-			display: block;
 			position: relative;
-
 
 			a {
 				width: 100%;
-				display: block;
 				padding: 20px 10px;
 				font-size: 13px;
 				margin-left: 60px;
 				border-top: 0.667px solid var(--coloreee);
-			}
-
-			//	激活态
-			&.navLevel2Active {
-				display: block;
-
-				a > {
-					color: var(--color06f);
-				}
 			}
 		}
 	}
@@ -121,17 +107,27 @@
 	//	三级菜单
 	.navLevel3 {
 		background-color: var(--colore8e8e8);
-		display: none;
 
 		& > dd {
 			a {
 				width: 100%;
-				display: block;
 				padding: 20px 10px;
 				font-size: 13px;
 				margin-left: 60px;
 				border-top: 0.667px solid rgba(0, 0, 0, 0.1);
 			}
 		}
+	}
+
+	//	激活态
+	.navLevel2Active, .navLevel3Active {
+		& > a {
+			color: var(--color06f);
+		}
+	}
+
+	a {
+		color: rgba(0, 0, 0, 0.6);
+		display: block;
 	}
 }

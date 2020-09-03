@@ -12,17 +12,21 @@ export const HeaderMobile = (
         menuIsFold,
         //  是否为首页
         isHomePage,
-        //  展开的一级菜单的index
+        //  展开的一级菜单的index - 移动端
         primaryIndex,
+        //  展开的二级菜单的index - 移动端
+        secondaryIndex,
         //  数据
         navListData,
         //  一级菜单点击事件
         primaryMenuClick,
+        //  次级菜单点击事件
+        secondaryMenuClick,
         //  菜单展开点击事件
         menuFoldClick,
     }) => {
-        //  todo    暂时
-        menuIsFold = false;
+        //  如果需要永久展开菜单
+        //  menuIsFold = false;
         //  渲染信息
         const headerRenderInfo = GetHeaderLogoMenuInformation(menuIsFold, isTop, isHomePage, false);
         return (
@@ -43,7 +47,9 @@ export const HeaderMobile = (
                         menuIsFold={menuIsFold}
                         navListData={navListData}
                         primaryIndex={primaryIndex}
+                        secondaryIndex={secondaryIndex}
                         primaryMenuClick={primaryMenuClick}
+                        secondaryMenuClick={secondaryMenuClick}
                     />
                 </div>
             </header>
