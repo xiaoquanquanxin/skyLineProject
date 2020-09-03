@@ -114,7 +114,7 @@ export const BasicHeader = class extends React.Component {
             //  console.log(value.url);
             //  如果遍历到的url和当前页面的url匹配，那么，我当前选中的就是这个路由，它的div应该是激活态
             if (value.url === this.pathName) {
-                console.log('🐸', value);
+                console.log('匹配到的页面，这个路由是激活的🐸', value);
                 //  激活态
                 value.isActive = true;
                 //  不需要跳转
