@@ -21,8 +21,8 @@ export const BasicHeader = class extends React.Component {
             isRelativelyWide: window.innerWidth > BASIC_COMPARE_WIDTH,
             //  右侧菜单的折叠状态 true:折叠
             menuIsFold: true,
-            //  激活了哪一个路由？
-            menuListActiveIndex: props.menuListActiveIndex || 0,
+            //  是首页？
+            isHomePage: this.pathName === 'index.html',
             //  展开了哪一个菜单？
             menuListUnFoldIndex: -1,
             //  是中文还是英文站点
@@ -38,9 +38,8 @@ export const BasicHeader = class extends React.Component {
         //  发请求，取导航数据
         requestHeaderNav()
             .then(v => {
-                console.log(v.data);
                 this.navSort(v.data);
-                this.setState((a) => ({
+                this.setState(() => ({
                     navListData: v.data
                 }));
             });
@@ -68,17 +67,42 @@ export const BasicHeader = class extends React.Component {
     }
 
     //  导航排序
+    /**
+     * @param {Array} list              数据
+     * @return {boolean}                子路由有没有被选中
+     * **/
     navSort(list){
         navSortByRank(list, 'rank');
+        //  当前路由有没有被选中
+        let currentHasActive = false;
         for (let value of list) {
-//            console.log(value.url);
+            //  console.log(value.url);
             //  如果遍历到的url和当前页面的url匹配，那么，我当前选中的就是这个路由，它的div应该是激活态
             if (value.url === this.pathName) {
                 console.log('🐸', value);
+                //  激活态
                 value.isActive = true;
+                //  不需要跳转
+                value.url = null;
+                currentHasActive = true;
+            } else if (!value.url.includes('.html')) {
+                //  如果不包含.html后缀，说明是死路由
+                value.url = null;
             }
-            value.son && value.son.length && this.navSort(value.son);
+            //  如果没有子路由
+            if (!value.son || !value.son.length) {
+                value.son = null;
+            } else {
+                //  排子列表
+                const childIsActive = this.navSort(value.son);
+                //  子路由有没有被选中
+                if (childIsActive) {
+                    value.isActive = true;
+                    currentHasActive = true;
+                }
+            }
         }
+        return currentHasActive;
     }
 
     //  头部右侧折叠框的点击事件
@@ -127,7 +151,7 @@ export const BasicHeader = class extends React.Component {
             isTop,
             isOverHeader,
             menuIsFold,
-            menuListActiveIndex,
+            isHomePage,
             menuListUnFoldIndex,
             isCN,
             navListData,
@@ -139,7 +163,7 @@ export const BasicHeader = class extends React.Component {
                     isTop={isTop}
                     isOverHeader={isOverHeader}
                     menuIsFold={menuIsFold}
-                    menuListActiveIndex={menuListActiveIndex}
+                    isHomePage={isHomePage}
                     menuListUnFoldIndex={menuListUnFoldIndex}
                     isCN={isCN}
                     navListData={navListData}
@@ -149,7 +173,7 @@ export const BasicHeader = class extends React.Component {
                 <HeaderMobile
                     isTop={isTop}
                     menuIsFold={menuIsFold}
-                    menuListActiveIndex={menuListActiveIndex}
+                    isHomePage={isHomePage}
                     menuListUnFoldIndex={menuListUnFoldIndex}
                     isCN={isCN}
                     menuListClick={this.menuListClick}
