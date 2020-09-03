@@ -105,3 +105,12 @@ function fillUpWithZero(n){
 
 //  空函数
 export function emptyFunction(){}
+
+//  header排序，按rank排序
+/**
+ * @param {Array}list
+ * @param {String}rank
+ * **/
+export function navSortByRank(list, rank){
+    list.sort((a, b) => a[rank] - b[rank]);
+}

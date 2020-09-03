@@ -76,6 +76,11 @@
 			transform: translateX(-50%) scaleX(1);
 			background-color: var(--color06f);
 		}
+
+		//	最后两个没有横线
+		&:nth-last-child(2)::after, &:nth-last-child(1)::after {
+			display: none;
+		}
 	}
 
 	//	是顶部，并且在首页
@@ -106,6 +111,7 @@
 		text-align: center;
 		line-height: 52px;
 
+
 		& > dd {
 			text-align: center;
 			position: relative;
@@ -116,16 +122,27 @@
 				cursor: pointer;
 			}
 
-			&:hover {
+			//	路由匹配，激活的二级目录，与hover效果相当
+			&:hover, &.navLevel2Active {
 				background: var(--colorf6f6f6);
-				//	最底层列表
-				.navLevel3 {
-					display: block;
-				}
 
 				& > a {
 					color: var(--black);
 					background-color: var(--colorf9);
+				}
+			}
+
+			//	激活的3级目录不展开						问题4
+			&.navLevel2Active {
+				.navLevel3 {
+					display: none;
+				}
+			}
+
+			//	hover展开3级目录
+			&:hover {
+				.navLevel3 {
+					display: block;
 				}
 			}
 
@@ -139,8 +156,8 @@
 				display: none;
 
 				dd {
-
-					&:hover {
+					//	路由匹配，激活的三级目录，与hover效果相当			问题4
+					&.navLevel3Active, &:hover {
 						background: var(--colorf6f6f6);
 
 						a {

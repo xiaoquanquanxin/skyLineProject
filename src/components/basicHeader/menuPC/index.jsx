@@ -31,7 +31,7 @@ const NavLevel2 = CSSModules(
     ({ subList }) => {
         const list = subList.map((item) => {
             return (
-                <dd key={item.id}>
+                <dd key={item.id} className={item.isActive ? style.navLevel2Active : ''}>
                     <a href={item.url} target={item.target}>{item.name}</a>
                     {item.son ? <NavLevel3 lowestList={item.son}/> : ''}
                 </dd>
@@ -50,7 +50,7 @@ const NavLevel3 = CSSModules(
     ({ lowestList }) => {
         const list = lowestList.map((item) => {
             return (
-                <dd key={item.id}>
+                <dd key={item.id} className={item.isActive ? style.navLevel3Active : ''}>
                     <a href={item.url} target={item.target}>{item.name}</a>
                 </dd>
             );
