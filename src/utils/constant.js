@@ -4,7 +4,7 @@
  *
  * ****/
 //  相对宽度，浏览器resize用
-export const BASIC_COMPARE_WIDTH = 768;
+export const BASIC_COMPARE_WIDTH = 750;
 
 //  页面地址，相对路径
 export const pathConfig = {

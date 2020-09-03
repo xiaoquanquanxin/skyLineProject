@@ -98,9 +98,9 @@ export const stopPropagation = (e) => {
 //  重置rem
 function remSet(){
     //  设备宽度
-    const maxDeviceWidth = 768;
+    const maxDeviceWidth = 750;
     //  设备比例
-    const remCount = 7.68;
+    const remCount = maxDeviceWidth/100;
     const docEle = document.documentElement;
     const docEleStyle = docEle.style;
     const fn = () => {
