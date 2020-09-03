@@ -2,9 +2,11 @@
 .menuMobile {
 	display: none;
 	border-top: 0.667px solid var(--coloreee);
+	border-bottom: 0.667px solid var(--coloreee);
 	background-color: var(--white);
 	position: relative;
-	//height: 200px;
+	height: auto;
+	max-height: calc(100vh - 52px);
 	overflow-y: auto;
 	//	展开
 	&.menuListShow {
@@ -13,7 +15,6 @@
 
 	//	菜单的每一项
 	.menuListItem {
-		float: none;
 		font-weight: initial;
 		display: block;
 		border-top: 0.667px solid var(--coloreee);
@@ -33,15 +34,6 @@
 			display: block;
 		}
 
-
-		//	如果旋转
-		&.curr {
-			//	箭头得旋转
-			img {
-
-			}
-		}
-
 		//	倒数第二
 		&:nth-last-child(2) {
 			float: left;
@@ -54,7 +46,6 @@
 		//	倒数第一，装到倒数第二后头
 		&:nth-last-child(1) {
 			position: relative;
-
 			//	en
 			a {
 				display: inline-block;
@@ -98,39 +89,49 @@
 	}
 
 
-}
+	//	二级菜单
+	.navLevel2 {
+		background-color: var(--colorf6f6f6);
 
-//	二级菜单
-.navLevel2 {
-	display: none;
-	background-color: var(--colorf6f6f6);
-
-	& > dd {
-		position: relative;
-
-		a {
-			width: 100%;
+		& > dd {
 			display: block;
-			padding: 20px 10px;
-			font-size: 13px;
-			margin-left: 60px;
-			border-top: 0.667px solid var(--coloreee);
+			position: relative;
+
+
+			a {
+				width: 100%;
+				display: block;
+				padding: 20px 10px;
+				font-size: 13px;
+				margin-left: 60px;
+				border-top: 0.667px solid var(--coloreee);
+			}
+
+			//	激活态
+			&.navLevel2Active {
+				display: block;
+
+				a > {
+					color: var(--color06f);
+				}
+			}
 		}
 	}
-}
 
-//	三级菜单
-.navLevel3 {
-	background-color: var(--colore8e8e8);
+	//	三级菜单
+	.navLevel3 {
+		background-color: var(--colore8e8e8);
+		display: none;
 
-	& > dd {
-		a {
-			width: 100%;
-			display: block;
-			padding: 20px 10px;
-			font-size: 13px;
-			margin-left: 60px;
-			border-top: 0.667px solid rgba(0, 0, 0, 0.1);
+		& > dd {
+			a {
+				width: 100%;
+				display: block;
+				padding: 20px 10px;
+				font-size: 13px;
+				margin-left: 60px;
+				border-top: 0.667px solid rgba(0, 0, 0, 0.1);
+			}
 		}
 	}
 }

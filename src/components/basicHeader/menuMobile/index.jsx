@@ -1,34 +1,37 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './index.less';
-import layout from '@css/layout.less';
 //  箭头
 import arrowsSrc from '@media/basicHeader/icon-arrow-black.png';
 //  每一项
 const MenuListItem = CSSModules(
     ({
-        //  是激活状态
-        isActive,
-        //  文字
-        content,
-        //  链接
-        href,
-        //  打开方式
-        target,
-        //  子元素，子路由
-        subList,
+        //  数据
+        data,
         //  点击箭头
-        arrowClick,
+        primaryMenuClick,
+        //  索引
+        index,
+        //  是否事件激活
+        isEventActive,
     }) => {
         let arrowsElements = null;
         let subListElements = null;
-        if (subList) {
-            arrowsElements = <img src={arrowsSrc} alt="箭头" className={style.arrows} onClick={() => (arrowClick(1))}/>;
-            subListElements = <NavLevel2 subList={subList}/>;
+        //  有二级列表
+        if (data.son) {
+            arrowsElements = <img src={arrowsSrc} alt="箭头"
+                                  className={style.arrows}
+                                  onClick={() => (primaryMenuClick(index))}/>;
+            if (isEventActive) {
+                subListElements = <NavLevel2 subList={data.son}/>;
+            }
         }
         return (
-            <li className={`${isActive ? style.activeColor : ''} ${style.menuListItem}`}>
-                <a href={href} target={target}>{content}</a>
+            <li className={`${(isEventActive || data.isActive) ? style.activeColor : ''} ${style.menuListItem}`}>
+                <a href={data.url}
+                   target={data.is_out ? '_blank' : '_self'}
+                   onClick={() => (primaryMenuClick(index))}
+                >{data.name}</a>
                 {arrowsElements}
                 {subListElements}
             </li>
@@ -46,8 +49,11 @@ const NavLevel2 = CSSModules(
                 arrowsElements = <img src={arrowsSrc} alt="箭头" className={style.arrows}/>;
                 subListElements = <NavLevel3 lowestList={item.son}/>;
             }
+            if (item.isActive) {
+                console.log(item);
+            }
             return (
-                <dd key={item.id} className={item.isActive ? style.navLevel2Active : ''}>
+                <dd key={item.id} className={(item.isActive) ? style.navLevel2Active : ''}>
                     <a href={item.url} target={item.target}>{item.name}</a>
                     {arrowsElements}
                     {subListElements}
@@ -86,23 +92,21 @@ export const MenuMobile = ({
     menuIsFold,
     //  数据
     navListData,
-    //  菜单展开的index
-    menuListUnFoldIndex,
-    //  点击箭头
-    arrowClick,
+    //  展开的一级菜单的index
+    primaryIndex,
+    //  一级菜单点击事件
+    primaryMenuClick,
 }) => {
     if (!navListData || !navListData.length) {
         return '';
     }
-    const list = navListData.map((item) => (
+    const list = navListData.map((item, index) => (
         <MenuListItem
-            isActive={item.isActive}
             key={item.id}
-            content={item.name}
-            href={item.url}
-            target={item.is_out ? '_blank' : '_self'}
-            subList={item.son}
-            arrowClick={arrowClick}
+            data={item}
+            primaryMenuClick={primaryMenuClick}
+            index={index}
+            isEventActive={primaryIndex === index}
         />
     ));
 

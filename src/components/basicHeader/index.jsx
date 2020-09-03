@@ -23,8 +23,8 @@ export const BasicHeader = class extends React.Component {
             menuIsFold: true,
             //  是首页？
             isHomePage: this.pathName === 'index.html',
-            //  展开了哪一个菜单？
-            menuListUnFoldIndex: -1,
+            //  展开的一级菜单的index
+            primaryIndex: -1,
 
             //  请求的导航数据
             navListData: null
@@ -71,7 +71,7 @@ export const BasicHeader = class extends React.Component {
             isOverHeader,
             menuIsFold,
             isHomePage,
-            menuListUnFoldIndex,
+            primaryIndex,
             navListData,
         } = this.state;
         return (
@@ -80,9 +80,7 @@ export const BasicHeader = class extends React.Component {
                 <HeaderPC
                     isTop={isTop}
                     isOverHeader={isOverHeader}
-                    menuIsFold={menuIsFold}
                     isHomePage={isHomePage}
-                    menuListUnFoldIndex={menuListUnFoldIndex}
                     navListData={navListData}
                     headerMouseOver={this.headerMouseOver}
                     headerMouseLeave={this.headerMouseLeave}
@@ -91,9 +89,9 @@ export const BasicHeader = class extends React.Component {
                     isTop={isTop}
                     menuIsFold={menuIsFold}
                     isHomePage={isHomePage}
-                    menuListUnFoldIndex={menuListUnFoldIndex}
+                    primaryIndex={primaryIndex}
                     navListData={navListData}
-                    arrowClick={this.arrowClick}
+                    primaryMenuClick={this.primaryMenuClick}
                     menuFoldClick={this.menuFoldClick}
                 />
         );
@@ -146,18 +144,18 @@ export const BasicHeader = class extends React.Component {
             };
         });
     };
-    //  点击箭头
-    arrowClick = (menuListUnFoldIndex) => {
-        //  console.log('箭头');
+    //  一级菜单点击事件
+    primaryMenuClick = (primaryIndex) => {
         //  如果点击的还是原来那个
-        if (this.state.menuListUnFoldIndex === menuListUnFoldIndex) {
-            menuListUnFoldIndex = -1;
+        if (this.state.primaryIndex === primaryIndex) {
+            primaryIndex = -1;
         }
         this.setState(() => {
             return {
-                menuListUnFoldIndex: menuListUnFoldIndex
+                primaryIndex: primaryIndex
             };
         });
+        //        console.log(primaryIndex);
     };
 
     //  鼠标浮于上方
