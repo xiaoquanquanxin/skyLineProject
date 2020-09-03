@@ -31,9 +31,6 @@
 				border-radius: 22px;
 				line-height: 40px;
 
-				&:last-child {
-					width: 150px;
-				}
 
 				//	fixme	看需求
 				//	如果按钮不是被激活的，那么二维码不展示
@@ -47,8 +44,14 @@
 				.icon {
 					position: absolute;
 					width: 20px;
+					height: 16px;
 					top: 12px;
 					left: 15px;
+					background-image: url(~@media/basicFooter/icon-wechat.png);
+					background-repeat: no-repeat;
+					background-size: 100%;
+					background-position: center center;
+					//	background-color: red;
 				}
 
 				//	二维码
@@ -62,9 +65,14 @@
 
 				//	展示二维码
 				&:hover {
-					background: var(--color6c6c6c);
+					background-color: var(--white);
 					border-color: var(--colorgray);
 					cursor: pointer;
+					color: rgba(0, 0, 0, 0.8);
+
+					.icon {
+						background-image: url(~@media/basicFooter/icon-wechat-active.png);
+					}
 				}
 			}
 		}

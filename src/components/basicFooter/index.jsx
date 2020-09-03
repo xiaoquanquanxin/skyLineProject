@@ -12,7 +12,6 @@ const BasicFooterRender = CSSModules(
         isRelativelyWide,
         activeLinkIndex,
         isSpreadIndex,
-        isCN,
         qrCodeShowIndex,
         spreadClick,
         qrCodeClick,
@@ -50,8 +49,6 @@ export const BasicFooter = class extends React.Component {
             isSpreadIndex: -1,
             //  被选中的link
             activeLinkIndex: props.activeLinkIndex || 0,
-            //  是中文还是英文站点
-            isCN: props.isCN || true,
             //  二维码展示index
             qrCodeShowIndex: -1
         };
@@ -97,7 +94,6 @@ export const BasicFooter = class extends React.Component {
                 isRelativelyWide={this.state.isRelativelyWide}
                 activeLinkIndex={this.state.activeLinkIndex}
                 isSpreadIndex={this.state.isSpreadIndex}
-                isCN={this.state.isCN}
                 qrCodeShowIndex={this.state.qrCodeShowIndex}
                 spreadClick={this.spreadClick}
                 qrCodeClick={this.qrCodeClick}
