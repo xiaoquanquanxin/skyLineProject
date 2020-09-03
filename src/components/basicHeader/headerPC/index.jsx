@@ -7,17 +7,28 @@ import { GetHeaderLogoMenuInformation, logoClick } from '../common/headerCommon'
 
 //  PC端头部
 export const HeaderPC = CSSModules(({
+    //  页面是处于顶部
     isTop,
+    //  鼠标浮于上方
+    isOverHeader,
+    //  菜单是否展开
     menuIsFold,
-    menuListActiveIndex,
+    //  是否为首页
+    isHomePage,
+    //  菜单展开的index
     menuListUnFoldIndex,
+    //  是中文？
     isCN,
+    //  数据
+    navListData,
+    //  鼠标浮于header上方
     headerMouseOver,
+    //  鼠标离开
     headerMouseLeave,
 }) => {
+    console.log(isHomePage);
     //  渲染信息
-    const headerRenderInfo = GetHeaderLogoMenuInformation(true, isTop, menuListActiveIndex);
-//    console.log(headerRenderInfo.isTopAndHome);
+    const headerRenderInfo = GetHeaderLogoMenuInformation(true, isTop, isHomePage, isOverHeader);
     return (
         <header className={style.basicHeader}
                 onMouseOver={() => {headerMouseOver();}}
@@ -28,15 +39,16 @@ export const HeaderPC = CSSModules(({
                     {/*logo*/}
                     <img className={`${style.basicHeaderLogo}`}
                          src={headerRenderInfo.imageLogoSrc}
-                         onClick={() => (logoClick(menuListActiveIndex))}
+                         onClick={() => (logoClick(isHomePage))}
                          alt="地平线头部logo"/>
                     {/*菜单*/}
                     <MenuPC
                         menuIsFold={menuIsFold}
-                        isTopAndHome={headerRenderInfo.isTopAndHome}
-                        menuListActiveIndex={menuListActiveIndex}
+                        isHomePage={isHomePage}
                         menuListUnFoldIndex={menuListUnFoldIndex}
                         isCN={isCN}
+                        navListData={navListData}
+                        isTopAndHome={headerRenderInfo.isTopAndHome}
                     />
                 </div>
             </div>
