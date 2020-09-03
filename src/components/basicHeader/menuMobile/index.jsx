@@ -24,7 +24,7 @@ const MenuListItem = CSSModules(
         //  有二级列表
         if (data.son) {
             arrowsElements = <img src={arrowsSrc} alt="箭头"
-                                  className={style.arrows}
+                                  className={`${style.arrows} ${isEventActive ? style.upsideDown : ''}`}
                                   onClick={() => (primaryMenuClick(index))}/>;
             if (isEventActive) {
                 subListElements = <NavLevel2
@@ -60,11 +60,13 @@ const NavLevel2 = CSSModules(
         const list = subList.map((item, index) => {
             let arrowsElements = null;
             let subListElements = null;
+            //  是事件激活
+            const isEventActive = secondaryIndex === index;
             if (item.son) {
                 arrowsElements = <img src={arrowsSrc} alt="箭头"
-                                      className={style.arrows}
+                                      className={`${style.arrows} ${isEventActive ? style.upsideDown : ''}`}
                                       onClick={() => (secondaryMenuClick(index))}/>;
-                if (secondaryIndex === index) {
+                if (isEventActive) {
                     subListElements = <NavLevel3 lowestList={item.son}/>;
                 }
             }
@@ -72,7 +74,7 @@ const NavLevel2 = CSSModules(
                 console.log('激活的二级', item);
             }
             return (
-                <dd key={item.id} className={(item.isActive) ? style.navLevel2Active : ''}>
+                <dd key={item.id} className={(item.isActive || isEventActive) ? style.navLevel2Active : ''}>
                     <a href={item.url}
                        target={item.target}
                        onClick={() => (secondaryMenuClick(index))}>{item.name}</a>

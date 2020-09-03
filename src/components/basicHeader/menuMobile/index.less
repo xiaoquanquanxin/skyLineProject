@@ -1,7 +1,6 @@
 //	菜单列表移动端
 .menuMobile {
-	//	todo
-	//display: none;
+	display: none;
 	border-top: 0.01rem solid var(--coloreee);
 	border-bottom: 0.01rem solid var(--coloreee);
 	background-color: var(--white);
@@ -67,7 +66,6 @@
 		}
 	}
 
-
 	//	箭头
 	.arrows {
 		display: block;
@@ -76,12 +74,11 @@
 		top: .4rem;
 		right: .6rem;
 		transition: transform .3s;
-		//	颠倒箭头方向
+		//	颠倒箭头方向，旋转
 		&.upsideDown {
 			transform: rotate(180deg);
 		}
 	}
-
 
 	//	二级菜单
 	.navLevel2 {
@@ -119,9 +116,15 @@
 	}
 
 	//	激活态
-	.activeColor, .navLevel2Active, .navLevel3Active {
+	.activeColor, .navLevel3Active {
 		& > a {
 			color: var(--color06f);
+		}
+	}
+
+	.navLevel2Active {
+		& > a {
+			color: var(--black);
 		}
 	}
 
