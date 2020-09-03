@@ -1,8 +1,9 @@
 //	菜单列表移动端
 .menuMobile {
-	display: none;
-	border-top: 0.667px solid var(--coloreee);
-	border-bottom: 0.667px solid var(--coloreee);
+	//	todo
+	//display: none;
+	border-top: 0.01rem solid var(--coloreee);
+	border-bottom: 0.01rem solid var(--coloreee);
 	background-color: var(--white);
 	position: relative;
 	height: auto;
@@ -17,8 +18,8 @@
 	//	菜单的每一项
 	.menuListItem {
 		font-weight: initial;
-		border-top: 0.667px solid var(--coloreee);
-		font-size: 14px;
+		border-top: 0.01rem solid var(--coloreee);
+		font-size: 0.28rem;
 		position: relative;
 
 		//	首页没有border-top
@@ -28,8 +29,8 @@
 
 		//	一级链接
 		& > a {
-			padding: 20px;
-			margin-left: 20px;
+			padding: 0 0.8rem;
+			line-height: 1.2rem;
 		}
 
 		//	倒数第二
@@ -38,6 +39,7 @@
 
 			a {
 				color: var(--color06f);
+				padding-right: .4rem;
 			}
 		}
 
@@ -56,29 +58,23 @@
 				content: "/";
 				display: block;
 				position: absolute;
-				top: 21px;
+				top: .42rem;
 				height: 0;
-				left: 68px;
-				font-size: 12px;
+				left: 1.36rem;
+				font-size: .24rem;
 				color: var(--color999);
 			}
 		}
 	}
 
-	//	激活的颜色
-	.activeColor {
-		& > a {
-			color: var(--color06f);
-		}
-	}
 
 	//	箭头
 	.arrows {
 		display: block;
-		width: 20px;
+		width: .4rem;
 		position: absolute;
-		top: 20px;
-		right: 30px;
+		top: .4rem;
+		right: .6rem;
 		transition: transform .3s;
 		//	颠倒箭头方向
 		&.upsideDown {
@@ -89,17 +85,21 @@
 
 	//	二级菜单
 	.navLevel2 {
-		background-color: var(--colorf6f6f6);
+		background-color: var(--colorfafafa);
 
 		& > dd {
 			position: relative;
 
 			a {
 				width: 100%;
-				padding: 20px 10px;
-				font-size: 13px;
-				margin-left: 60px;
-				border-top: 0.667px solid var(--coloreee);
+				line-height: 1.04rem;
+				//	font-size: .26rem;	以前是13
+				margin-left: 1rem;
+				border-top: 0.01rem solid var(--coloreee);
+			}
+
+			.arrows {
+				top: .32rem;
 			}
 		}
 	}
@@ -111,16 +111,15 @@
 		& > dd {
 			a {
 				width: 100%;
-				padding: 20px 10px;
-				font-size: 13px;
-				margin-left: 60px;
-				border-top: 0.667px solid rgba(0, 0, 0, 0.1);
+				font-size: .24rem;
+				margin-left: 1.2rem;
+				border-top: 0.01rem solid rgba(0, 0, 0, 0.1);
 			}
 		}
 	}
 
 	//	激活态
-	.navLevel2Active, .navLevel3Active {
+	.activeColor, .navLevel2Active, .navLevel3Active {
 		& > a {
 			color: var(--color06f);
 		}
