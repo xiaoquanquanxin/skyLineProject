@@ -118,7 +118,7 @@ export const BasicHeader = class extends React.Component {
                 //  不需要跳转
                 value.url = null;
                 currentHasActive = true;
-            } else if (!value.url.includes('.html')) {
+            } else if (!value.url.includes('.html') && !value.url.includes('http')) {
                 //  如果不包含.html后缀，说明是死路由
                 value.url = null;
             }
