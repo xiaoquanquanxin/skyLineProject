@@ -65,14 +65,8 @@ const NavLevel3 = CSSModules(
 
 //  主菜单
 export const MenuPC = ({
-    //  导航信息是展开的
-    menuIsFold,
-    //  是位于顶部并且是在首页
-    isTopAndHome,
     //  激活了哪一个路由 index
-    menuListActiveIndex,
-    //  展开了哪一个菜单 index
-    menuListUnFoldIndex,
+    isTopAndHome,
     //  数据
     navListData,
 }) => {
