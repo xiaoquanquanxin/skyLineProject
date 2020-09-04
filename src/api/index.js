@@ -20,3 +20,13 @@ export function requestFooterNav(){
     });
 }
 
+//  获取首页数据
+export function requestIndex(){
+    return request({
+        url: '/api/getindex',
+        method: 'get',
+        //  get:params: { clientKey: CLIENT_IP, }
+        //  post:data: data,
+    });
+}
+
