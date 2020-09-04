@@ -106,7 +106,7 @@ export const BasicFooter = class extends React.Component {
             const titleKey = data[`title${index}`];
             const contentKey = data[`content${index}`];
             if (titleKey && contentKey) {
-                list.push({ name: `${titleKey}${contentKey}`, id: -1000000 + index });
+                list.push({ name: `${titleKey} ：${contentKey}`, id: -1000000 + index });
                 index++;
                 continue;
             }
