@@ -29,12 +29,24 @@ export function navSortByRank(list, rank){
     list.sort((a, b) => a[rank] - b[rank]);
 }
 
-//  正则验证是不是一个http
 /**
+ * 正则验证是不是一个http
  * @param {string} str
  * @return boolean
  * */
-export const  isValidHTTPString = (str) => {
+export const isValidHTTPString = (str) => {
     const reg = /^(https:\/\/|http:\/\/).+/;
+    return reg.test(str);
+};
+
+//  验证是不是一个项目资源地址
+
+/**
+ * 验证是不是一个项目资源地址
+ * @param {string} str
+ * @return boolean
+ * */
+export const isValidResourceString = (str) => {
+    const reg = /^(\/upload).+/;
     return reg.test(str);
 };

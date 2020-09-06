@@ -1,3 +1,4 @@
+import { FRAME_DELAY } from '@utils/constant';
 //  定义下一帧
 (function (){
     let lastTime = 0;
@@ -7,9 +8,9 @@
         // Webkit中此取消方法的名字变了
         window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
     }
-    window.requestAnimationFrame = window.requestAnimationFrame || function (callback, element){
+    window.requestAnimationFrame = window.requestAnimationFrame || function (callback){
         let currTime = new Date().getTime();
-        let timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+        let timeToCall = Math.max(0, FRAME_DELAY - (currTime - lastTime));
         let id = window.setTimeout(function (){
             callback(currTime + timeToCall);
         }, timeToCall);
@@ -62,7 +63,7 @@ const resizeController = {
     fallback: true,
 };
 //  resize监听
-window.addEventListener('resize', (e) => {
+window.addEventListener('resize', () => {
     if (resizeController.fallback) {
         //  返回window的宽度
         for (const value of resizeController.resizeQueue) {
@@ -100,7 +101,7 @@ function remSet(){
     //  设备宽度
     const maxDeviceWidth = 750;
     //  设备比例
-    const remCount = maxDeviceWidth/100;
+    const remCount = maxDeviceWidth / 100;
     const docEle = document.documentElement;
     const docEleStyle = docEle.style;
     const fn = () => {
