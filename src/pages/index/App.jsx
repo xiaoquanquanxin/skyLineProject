@@ -1,14 +1,13 @@
 import React from 'react';
-import './index.css';
-
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { resizeListener } from '@utils/eventListener';
 import { BannerSlick } from '@components/index/bannerSlick';
-import { requestHeaderNav, requestIndex } from '@api/index';
+import { requestIndex } from '@api/index';
 import { navSortByRank } from '@utils/utils';
-//import { json } from './json.js';
+import './index.css';
+
 const App = class extends React.Component {
     constructor(props){
         super(props);
@@ -29,14 +28,7 @@ const App = class extends React.Component {
 
     //  钩子
     componentDidMount(){
-        //  todo    发请求，取首页数据
-//        this.setState(() => ({
-//            swiperData: json.top_banner,
-//            mainContent: json.middle_banner,
-//            subContent: json.bottom_banner,
-//            customList: json.client,
-//        }));
-        //  发请求，取导航数据
+        //  发请求，取页面数据
         requestIndex()
             .then(v => {
                 //  banner数据
@@ -48,6 +40,12 @@ const App = class extends React.Component {
                 //  客户轮播
                 v.client && v.client.length && navSortByRank(v.client, 'rank');
                 console.log(v);
+                this.setState(() => ({
+                    swiperData: v.top_banner,
+                    mainContent: v.middle_banner,
+                    subContent: v.bottom_banner,
+                    customList: v.client,
+                }));
             });
 
         //  resize监听，用于适配
