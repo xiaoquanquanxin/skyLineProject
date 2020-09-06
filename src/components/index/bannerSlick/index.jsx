@@ -41,7 +41,9 @@ export const BannerSlider = ({
                 <p className={style.title}>{title}</p>
                 <div className={style.description}>{desc}</div>
             </div>
-            {url ? <a href={url} onDragStart={preventDefaultFn} className={style.link}/> : <span className={style.link}/>}
+            {/*全局遮罩，放置拖拽*/}
+            {url ? <a href={url} onDragStart={preventDefaultFn} className={style.link}/> : <span
+                className={style.link}/>}
         </div>
     );
 };
