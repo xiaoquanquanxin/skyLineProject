@@ -1,4 +1,3 @@
-
 //  倒计时
 export function timeSurplus(countDown){
     const surplus = new Date(countDown).getTime() + 15 * 60 * 1000 - new Date().getTime();
@@ -30,3 +29,12 @@ export function navSortByRank(list, rank){
     list.sort((a, b) => a[rank] - b[rank]);
 }
 
+//  正则验证是不是一个http
+/**
+ * @param {string} str
+ * @return boolean
+ * */
+export const  isValidHTTPString = (str) => {
+    const reg = /^(https:\/\/|http:\/\/).+/;
+    return reg.test(str);
+};
