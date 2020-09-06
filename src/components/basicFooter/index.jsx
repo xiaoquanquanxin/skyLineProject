@@ -73,11 +73,11 @@ export const BasicFooter = class extends React.Component {
         requestFooterNav()
             .then(data => {
                 //  公司业务
-                navSortByRank(data.solution, 'rank');
+                data.solution && data.solution.length && navSortByRank(data.solution, 'rank');
                 //  公司产品
-                navSortByRank(data.product, 'rank');
+                data.product && data.product.length && navSortByRank(data.product, 'rank');
                 //  关于我们
-                navSortByRank(data.aboutus, 'rank');
+                data.aboutus && data.aboutus.length && navSortByRank(data.aboutus, 'rank');
                 //  联系我们
                 data.contact = this.getContentList(data.contact);
                 //  console.log(data);

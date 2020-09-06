@@ -185,7 +185,7 @@
 
             {
                 // In DEV, include code for a common special case:
-                // prefer "folder/index.js" instead of just "index.js".
+                // prefer "folder/json.js" instead of just "json.js".
                 if (/^index\./.test(fileName)) {
                     var match = path.match(BEFORE_SLASH_RE);
 

@@ -14,12 +14,10 @@ module.exports = function (app){
                 '^/api': ''
             }
         }),
-//        createProxyMiddleware('/hachi-api', {
-//            target: '',
-//            changeOrigin: true,
-//            pathRewrite: {
-//                '^/': '/api'
-//            }
-//        })
+        //  图片资源
+        createProxyMiddleware('/upload', {
+            target: 'http://horizon.wx.h5work.com',
+            changeOrigin: true,
+        })
     );
 };
