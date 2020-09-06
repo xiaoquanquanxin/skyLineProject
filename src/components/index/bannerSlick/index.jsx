@@ -2,6 +2,7 @@ import React from 'react';
 import { Slick } from '@components/slick';
 import style from './index.module.less';
 import { isValidHTTPString, isValidResourceString } from '@utils/utils';
+import { preventDefaultFn } from '@utils/eventListener';
 
 //  slick的最内部展示组件
 export const BannerSlider = ({
@@ -26,7 +27,7 @@ export const BannerSlider = ({
     }
 
     return (
-        <a href={url}>
+        <div>
             {/*视频优先*/}
             {video ?
                 <video autoPlay='autoplay' muted='muted' loop='loop' preload='auto' playsInline={true}
@@ -40,7 +41,8 @@ export const BannerSlider = ({
                 <p className={style.title}>{title}</p>
                 <div className={style.description}>{desc}</div>
             </div>
-        </a>
+            {url ? <a href={url} onDragStart={preventDefaultFn} className={style.link}/> : <span className={style.link}/>}
+        </div>
     );
 };
 
