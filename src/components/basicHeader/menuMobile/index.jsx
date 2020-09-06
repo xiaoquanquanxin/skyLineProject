@@ -1,6 +1,6 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import style from './index.less';
+import style from './index.module.less';
 //  箭头
 import arrowsSrc from '@media/basicHeader/icon-arrow-black.png';
 //  每一项

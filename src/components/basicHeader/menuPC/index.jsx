@@ -1,7 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import style from './index.less';
-import layout from '@css/layout.less';
+import style from './index.module.less';
+import layout from '@css/layout.module.less';
 
 //  每一项
 const MenuListItem = CSSModules(

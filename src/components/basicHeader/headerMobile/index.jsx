@@ -1,4 +1,4 @@
-import style from './index.less';
+import style from './index.module.less';
 import React from 'react';
 import { logoClick, GetHeaderLogoMenuInformation } from '../common/headerCommon';
 import { MenuMobile } from '@components/basicHeader/menuMobile';

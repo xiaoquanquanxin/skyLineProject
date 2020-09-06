@@ -1,7 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import style from './index.less';
-import layout from '@css/layout.less';
+import style from './index.module.less';
+import layout from '@css/layout.module.less';
 import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { resizeListener } from '@utils/eventListener';
 import { SiteInfo } from '@components/basicFooter/siteInfo';
@@ -80,7 +80,7 @@ export const BasicFooter = class extends React.Component {
                 navSortByRank(data.aboutus, 'rank');
                 //  联系我们
                 data.contact = this.getContentList(data.contact);
-                console.log(data);
+                //  console.log(data);
                 this.setState(() => ({
                     data,
                 }));

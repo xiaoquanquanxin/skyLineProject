@@ -3,9 +3,9 @@ import './index.css';
 
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
-import { BannerSwiper } from '@components/index/BannerSwiper';
 import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { resizeListener } from '@utils/eventListener';
+import { Slick } from '@components/index/Slick';
 
 const App = class extends React.Component {
     constructor(props){
@@ -202,7 +202,6 @@ const App = class extends React.Component {
             subContent: data.bottom_banner,
             customList: data.client,
         }));
-
         //  resize监听，用于适配
         const rfn = (width) => {
             this.setState(() => {
@@ -225,8 +224,8 @@ const App = class extends React.Component {
         return (
             <div className="App">
                 <BasicHeader/>
-                {/*首swiper*/}
-                <BannerSwiper swiperData={swiperData}/>
+                {/*swiper*/}
+                <Slick swiperData={swiperData}/>
                 {/*脚部*/}
                 <BasicFooter/>
             </div>

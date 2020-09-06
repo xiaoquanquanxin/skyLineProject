@@ -1,7 +1,7 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import style from './index.less';
-import layout from '@css/layout.less';
+import style from './index.module.less';
+import layout from '@css/layout.module.less';
 //  白色箭头，取自header
 import currSrc from '@media/basicHeader/icon-arrow-white.png';
 

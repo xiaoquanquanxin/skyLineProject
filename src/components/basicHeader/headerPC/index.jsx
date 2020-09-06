@@ -2,8 +2,8 @@ import React from 'react';
 import CSSModules from 'react-css-modules';
 import { MenuPC } from '@components/basicHeader/menuPC';
 import { GetHeaderLogoMenuInformation, logoClick } from '../common/headerCommon';
-import style from './index.less';
-import layout from '@css/layout.less';
+import style from './index.module.less';
+import layout from '@css/layout.module.less';
 
 //  PC端头部
 export const HeaderPC = CSSModules(({

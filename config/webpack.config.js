@@ -463,10 +463,6 @@ module.exports = function (webpackEnv){
                             use: getStyleLoaders({
                                 importLoaders: 1,
                                 sourceMap: isEnvProduction && shouldUseSourceMap,
-                                modules: {
-                                    getLocalIdent: getCSSModuleLocalIdent
-                                },
-                                localsConvention: 'camelCase',
                             }),
                             //   不要认为CSS导入死代码，即使包含的包声称没有副作用。
                             //   当webpack为此添加了一个警告或错误时，请删除它。参见https://github.com/webpack/webpack/issues/6571
