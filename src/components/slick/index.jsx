@@ -20,7 +20,7 @@ const SlickRender = ({
         default:
             throw new Error('错误的类型');
     }
-
+//    console.log('执行次数');
     return (
         <Slider {...slickSetting} ref={sliderRef}>
             {swiperData && swiperData.map(item => (
@@ -134,8 +134,16 @@ export class Slick extends React.Component {
         }
         //  插件有个bug，来回切换的时候，原先那个的slider的定时器不停止。需要先暂停，再播放
         this.sliderRef.current.slickPause();
+        //  必须要有足够多的轮播
+        if (this.paginRefs.length === 0) {
+            return;
+        }
         //  激活的i元素
         const activeElement = this.paginRefs[this.activeIndex].current;
+        //  必须有激活元素，否则是一个轮播图
+        if (activeElement === null) {
+            return;
+        }
         //  所有元素先置为初始化
         this.paginRefs.forEach(item => {
             //  初始化宽度为 i 标签的高度，i是蓝色的进度条
@@ -173,6 +181,7 @@ export class Slick extends React.Component {
         const {
             sliderItemType,
         } = this.props;
+//        console.log('执行次数')
         return (
             <SlickRender
                 slickSetting={this.slickSetting}
