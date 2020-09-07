@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '@store/reduxMap';
 import { commonRelativeWideFn } from '@utils/common';
@@ -25,7 +25,7 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    class App extends React.Component {
+    class App extends Component {
 //        constructor(props){
 //            super(props);
 //        }

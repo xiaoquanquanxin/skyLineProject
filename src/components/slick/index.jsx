@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, createRef } from 'react';
 import Slider from 'react-slick';
 import '@css/slick-theme.less';
 import { resizeListener } from '@utils/eventListener';
@@ -40,7 +40,7 @@ const SlickRender = ({
 
 };
 
-export class Slick extends React.Component {
+export class Slick extends Component {
     constructor(props){
         super(props);
         //  状态
@@ -103,10 +103,10 @@ export class Slick extends React.Component {
         }));
         //  创建多个paginer分页器所用的ref
         for (let i = 0; i < swiperData.length; i++) {
-            this.paginRefs.push(React.createRef());
+            this.paginRefs.push(createRef());
         }
         //  slider的ref
-        this.sliderRef = React.createRef();
+        this.sliderRef = createRef();
         resizeListener(() => {
             this.transform();
         });

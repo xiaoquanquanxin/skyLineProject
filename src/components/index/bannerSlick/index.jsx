@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Slick } from '@components/slick';
 import style from './index.module.less';
 import { isValidHTTPString, isValidResourceString } from '@utils/utils';

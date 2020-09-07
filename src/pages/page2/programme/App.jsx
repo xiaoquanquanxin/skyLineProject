@@ -1,8 +1,8 @@
 import './index.css';
-import React from 'react';
+import React, { Component } from 'react';
 import BMap from 'BMap';
 
-class App extends React.Component {
+class App extends Component {
 
     componentDidMount(){
         var map = new BMap.Map('allmap'); // 创建Map实例

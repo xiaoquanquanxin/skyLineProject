@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import { MenuPC } from '@components/basicHeader/menuPC';
 import { GetHeaderLogoMenuInformation, logoClick } from '../common/headerCommon';

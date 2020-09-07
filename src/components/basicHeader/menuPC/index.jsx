@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';

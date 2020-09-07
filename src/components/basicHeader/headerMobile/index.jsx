@@ -1,5 +1,5 @@
 import style from './index.module.less';
-import React from 'react';
+import React, { Component } from 'react';
 import { logoClick, GetHeaderLogoMenuInformation } from '../common/headerCommon';
 import { MenuMobile } from '@components/basicHeader/menuMobile';
 

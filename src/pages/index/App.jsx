@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { BannerSlick } from '@components/index/bannerSlick';
@@ -14,7 +14,7 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    class App extends React.Component {
+    class App extends Component {
         constructor(props){
             super(props);
             this.state = {
@@ -68,6 +68,7 @@ export default connect(
                     {/*基本信息*/}
                     <MainInfo info={firstInfo} textPosition='right'/>
                     <MainInfo info={secondInfo} textPosition='left'/>
+                    {/*赋能客户*/}
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

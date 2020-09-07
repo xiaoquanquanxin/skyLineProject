@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { resizeListener, scrollListener } from '@utils/eventListener';
 import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { HeaderPC } from '@components/basicHeader/headerPC';
@@ -12,7 +12,7 @@ export const BasicHeader = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(
-    class extends React.Component {
+    class extends Component {
         constructor(props){
             super(props);
             //  是哪一个页面
