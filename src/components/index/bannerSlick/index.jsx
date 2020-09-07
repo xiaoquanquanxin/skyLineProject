@@ -12,19 +12,23 @@ export const BannerSlider = connect(
     mapDispatchToProps,
 )(
     ({
-        //  视频
-        video,
-        //  图片地址
-        img,
-        //  title
-        title,
-        //  描述
-        desc,
-        //  链接
-        url,
+        //  数据
+        data,
         //  获取浏览器信息，来源于redux
         REDUCER_BROWSER_INFO,
     }) => {
+        let {
+            //  视频
+            video,
+            //  图片地址
+            img,
+            //  title
+            title,
+            //  描述
+            desc,
+            //  链接
+            url,
+        } = data;
         //  如果不是合法视频地址
         if (!isValidHTTPString(video) && !isValidResourceString(video)) {
             video = null;
