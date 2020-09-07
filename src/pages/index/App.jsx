@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import './index.css';
 import { MainInfo } from '@components/index/mainInfo';
+import { AssignedCustomer } from '@components/index/assignedCustomer';
 
 export default connect(
     mapStateToProps,
@@ -38,6 +39,10 @@ export default connect(
                     v.middle_banner && v.middle_banner.length && navSortByRank(v.middle_banner, 'rank');
                     v.bottom_banner && v.bottom_banner.length && navSortByRank(v.bottom_banner, 'rank');
                     v.client && v.client.length && navSortByRank(v.client, 'rank');
+                    const customList = [];
+                    while (v.client && v.client.length) {
+                        customList.push(v.client.splice(0, 15));
+                    }
                     //  客户轮播
                     this.setState(() => ({
                         //  banner数据
@@ -47,7 +52,7 @@ export default connect(
                         //  第三块
                         secondInfo: v.bottom_banner && v.bottom_banner[0],
                         //  客户轮播
-                        customList: v.client,
+                        customList,
                     }));
                 });
             commonRelativeWideFn(this.props.setRelativeWideFn);
@@ -69,6 +74,7 @@ export default connect(
                     <MainInfo info={firstInfo} textPosition='right'/>
                     <MainInfo info={secondInfo} textPosition='left'/>
                     {/*赋能客户*/}
+                    <AssignedCustomer data={customList}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
