@@ -1,0 +1,108 @@
+.container {
+	position: relative;
+	height: 760px;
+	background: linear-gradient(90deg, #081830, #051125);
+	//	背景图
+	.bgGif, .bgVideo {
+		height: 100%;
+		left: 50%;
+		position: absolute;
+		top: 0;
+		-webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		transform: translateX(-50%);
+	}
+
+	//	内容部分
+	.content {
+		padding: 271px 0 0 730px;
+		margin: 0 auto;
+		width: 1280px;
+		position: relative;
+		color: var(--white);
+
+		//	title
+		.title {
+			width: 360px;
+			height: 112px;
+			font-size: 40px;
+			font-weight: 500;
+			line-height: 56px;
+		}
+
+		//	描述
+		.description {
+			width: 449px;
+			height: 81px;
+			margin-top: 24px;
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 27px;
+			opacity: 0.8;
+
+			a {
+				cursor: pointer;
+			}
+		}
+	}
+
+
+	//	文字在左面
+	&.left {
+		background: #0A1121;
+
+		.content {
+			padding: 226px 0 0 100px;
+		}
+	}
+}
+
+@media screen and  (max-width: 768px) {
+	.container {
+		padding-top: 59.9369%;
+		height: auto;
+
+		.bgGif, .bgVideo {
+			height: auto;
+			left: 50%;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			transform: translateX(-50%);
+			-webkit-transform: translateX(-50%);
+		}
+
+		.content {
+			padding: 1rem 0 0 4rem;
+			margin: 0 auto;
+			width: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+
+			.title {
+				width: 3rem;
+				height: 1.12rem;
+				font-size: 0.3rem;
+				font-weight: 500;
+				line-height: 0.56rem;
+			}
+
+			.description {
+				width: 3rem;
+				margin-top: 0.24rem;
+				font-size: 0.12rem;
+				font-weight: 400;
+				line-height: 0.27rem;
+			}
+		}
+
+		&.left {
+			.content {
+				padding: 1rem 0 0 0.3rem
+			}
+		}
+	}
+}
