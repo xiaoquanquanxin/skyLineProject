@@ -1,7 +1,7 @@
 import React from 'react';
 import { Slick } from '@components/slick';
 import style from './index.module.less';
-import { isValidHTTPString, isValidResourceString, replaceBrString } from '@utils/utils';
+import { isValidHTTPString, isValidResourceString } from '@utils/utils';
 import { preventDefaultFn } from '@utils/eventListener';
 import { mapStateToProps, mapDispatchToProps } from '@store/reduxMap';
 import { connect } from 'react-redux';
@@ -49,12 +49,14 @@ export const BannerSlider = connect(
                     <img src={img} alt={desc} className={style.sliderItemImg}/>
                 }
                 <div className={style.sliderItemText}>
-                    <p className={style.title}>{replaceBrString(title)}</p>
-                    <div className={style.description}>{replaceBrString(desc)}</div>
+                    <p className={style.title}
+                       dangerouslySetInnerHTML={{ __html: title }}/>
+                    <div className={style.description}
+                         dangerouslySetInnerHTML={{ __html: desc }}/>
                 </div>
                 {/*全局遮罩，放置拖拽*/}
                 {url
-                    ? <a href={url} onDragStart={preventDefaultFn} className={style.link}/>
+                    ? <a href={url} onDragStart={preventDefaultFn} className={style.link}>&emsp;</a>
                     : <span className={style.link}/>}
             </div>
         );
