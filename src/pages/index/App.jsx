@@ -4,10 +4,11 @@ import { BasicFooter } from '@components/basicFooter';
 import { BannerSlick } from '@components/index/bannerSlick';
 import { requestIndex } from '@api/index';
 import { navSortByRank } from '@utils/utils';
-import './index.css';
 import { commonRelativeWideFn } from '@utils/common';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
+import './index.css';
+import { MainInfo } from '@components/index/mainInfo';
 
 export default connect(
     mapStateToProps,
@@ -20,9 +21,9 @@ export default connect(
                 //  swiper
                 swiperData: null,
                 //  车规级 AI 芯片
-                mainContent: null,
+                firstInfo: null,
                 //  新一代底层计算平台
-                subContent: null,
+                secondInfo: null,
                 //  智能客户
                 customList: null,
             };
@@ -33,18 +34,19 @@ export default connect(
             //  发请求，取页面数据
             requestIndex()
                 .then(v => {
-                    //  banner数据
                     v.top_banner && v.top_banner.length && navSortByRank(v.top_banner, 'rank');
-                    //  第二块
-                    v.middle_banner && v.client.length && navSortByRank(v.client, 'rank');
-                    //  第三块
+                    v.middle_banner && v.middle_banner.length && navSortByRank(v.middle_banner, 'rank');
                     v.bottom_banner && v.bottom_banner.length && navSortByRank(v.bottom_banner, 'rank');
-                    //  客户轮播
                     v.client && v.client.length && navSortByRank(v.client, 'rank');
+                    //  客户轮播
                     this.setState(() => ({
+                        //  banner数据
                         swiperData: v.top_banner,
-                        mainContent: v.middle_banner,
-                        subContent: v.bottom_banner,
+                        //  第二块
+                        firstInfo: v.middle_banner && v.middle_banner[0],
+                        //  第三块
+                        secondInfo: v.bottom_banner && v.bottom_banner[0],
+                        //  客户轮播
                         customList: v.client,
                     }));
                 });
@@ -54,15 +56,18 @@ export default connect(
         render(){
             const {
                 swiperData,
-                mainContent,
-                subContent,
+                firstInfo,
+                secondInfo,
                 customList,
             } = this.state;
             return (
                 <div className="App">
                     <BasicHeader/>
-                    {/*swiper*/}
+                    {/*banner轮播*/}
                     <BannerSlick swiperData={swiperData}/>
+                    {/*基本信息*/}
+                    <MainInfo info={firstInfo} textPosition='right'/>
+                    <MainInfo info={secondInfo} textPosition='left'/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
