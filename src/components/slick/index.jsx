@@ -4,6 +4,7 @@ import '@css/slick-theme.less';
 import { resizeListener } from '@utils/eventListener';
 import { BannerSlider } from '@components/index/bannerSlick';
 import { FRAME_DELAY } from '@utils/constant';
+import { CustomerSlickItem } from '@components/index/assignedCustomer';
 
 const SlickRender = ({
     slickSetting,
@@ -17,23 +18,18 @@ const SlickRender = ({
         case 1: //  首页banner
             SliderItem = BannerSlider;
             break;
+        case 2: //  首页的赋能客户
+            SliderItem = CustomerSlickItem;
+            break;
         default:
             throw new Error('错误的类型');
     }
 //    console.log('执行次数');
+//    debugger
     return (
         <Slider {...slickSetting} ref={sliderRef}>
             {swiperData && swiperData.map(
-                item => (
-                    <SliderItem
-                        key={item.id}
-                        video={item.video}
-                        img={item.img}
-                        title={item.title}
-                        desc={item.desc}
-                        url={item.url}
-                    />
-                )
+                (item, index) => (<SliderItem key={item.id || index} data={item}/>)
             )}
         </Slider>
     );
