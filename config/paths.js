@@ -127,7 +127,8 @@ module.exports = {
     __media: resolveApp('src/media'),
     //  工具
     __utils: resolveApp('src/utils'),
-
+    //  store
+    __store: resolveApp('src/store'),
 };
 
 //  resolveModule(resolveApp, 'src/index')

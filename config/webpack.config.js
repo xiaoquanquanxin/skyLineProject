@@ -329,6 +329,7 @@ module.exports = function (webpackEnv){
                 '@css': paths.__css,
                 '@media': paths.__media,
                 '@utils': paths.__utils,
+                '@store': paths.__store,
             },
             plugins: [
                 // Adds support for installing with Plug'n'Play, leading to faster installs and adding
