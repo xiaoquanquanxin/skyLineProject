@@ -2,60 +2,65 @@ import React from 'react';
 import CSSModules from 'react-css-modules';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
-import { BASIC_COMPARE_WIDTH } from '@utils/constant';
-import { resizeListener } from '@utils/eventListener';
 import { SiteInfo } from '@components/basicFooter/siteInfo';
 import { LinkList } from '@components/basicFooter/linkList';
 import { requestFooterNav } from '@api/index';
 import { navSortByRank } from '@utils/utils';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
-const BasicFooterRender = CSSModules(
-    ({
-        //  浏览器宽度是否超过BASIC_COMPARE_WIDTH
-        isRelativelyWide,
-        //  被选中的link
-        activeLinkIndex,
-        //  被展开的链接块
-        isSpreadIndex,
-        //  二维码展示index
-        qrCodeShowIndex,
-        //  数据
-        data,
-        //  展开底导航
-        spreadClick,
-        //  点击二维码
-        qrCodeClick,
-    }) => (
-        <section className={style.basicFooter}>
-            <div className={`${style.basicFooterInfo} ${layout.clearfix}`}>
-                <div className={`${style.static} ${isRelativelyWide ? layout.left : ''}`}>
-                    <p className={`${isRelativelyWide ? style.subTitle : ''}`}>我们的愿景：</p>
-                    <p className={style.subDescription}>边缘人工智能芯片全球领导者</p>
-                    <p className={`${isRelativelyWide ? style.subTitle : ''}`}>我们的使命：</p>
-                    <p className={style.subDescription}>赋能万物，让每个人的生活更安全，更美好</p>
-                </div>
-                <LinkList
-                    isRelativelyWide={isRelativelyWide}
-                    isSpreadIndex={isSpreadIndex}
-                    activeLinkIndex={activeLinkIndex}
-                    data={data}
-                    spreadClick={spreadClick}
-                />
-            </div>
-            <SiteInfo
-                isRelativelyWide={isRelativelyWide}
-                qrCodeShowIndex={qrCodeShowIndex}
-                qrCodeClick={qrCodeClick}
-            />
-        </section>
+const BasicFooterRender = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(
+    CSSModules(
+        ({
+            //  被选中的link
+            activeLinkIndex,
+            //  被展开的链接块
+            isSpreadIndex,
+            //  二维码展示index
+            qrCodeShowIndex,
+            //  数据
+            data,
+            //  展开底导航
+            spreadClick,
+            //  点击二维码
+            qrCodeClick,
+            //  获取浏览器信息，来源于redux
+            REDUCER_BROWSER_INFO,
+        }) => {
+            //  浏览器足够宽
+            const { isRelativeWide } = REDUCER_BROWSER_INFO;
+            return (
+                <section className={style.basicFooter}>
+                    <div className={`${style.basicFooterInfo} ${layout.clearfix}`}>
+                        <div className={`${style.static} ${isRelativeWide ? layout.left : ''}`}>
+                            <p className={`${isRelativeWide ? style.subTitle : ''}`}>我们的愿景：</p>
+                            <p className={style.subDescription}>边缘人工智能芯片全球领导者</p>
+                            <p className={`${isRelativeWide ? style.subTitle : ''}`}>我们的使命：</p>
+                            <p className={style.subDescription}>赋能万物，让每个人的生活更安全，更美好</p>
+                        </div>
+                        <LinkList
+                            isSpreadIndex={isSpreadIndex}
+                            activeLinkIndex={activeLinkIndex}
+                            data={data}
+                            spreadClick={spreadClick}
+                        />
+                    </div>
+                    <SiteInfo
+                        qrCodeShowIndex={qrCodeShowIndex}
+                        qrCodeClick={qrCodeClick}
+                    />
+                </section>
+            );
+        }
     )
 );
 export const BasicFooter = class extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            //  浏览器宽度是否超过BASIC_COMPARE_WIDTH
-            isRelativelyWide: window.innerWidth > BASIC_COMPARE_WIDTH,
             //  被选中的link
             activeLinkIndex: props.activeLinkIndex || 0,
             //  被展开的链接块
@@ -85,17 +90,6 @@ export const BasicFooter = class extends React.Component {
                     data,
                 }));
             });
-
-        //  resize监听，用于适配
-        const rfn = (width) => {
-            this.setState(() => {
-                return {
-                    isRelativelyWide: width > BASIC_COMPARE_WIDTH
-                };
-            });
-        };
-        //  resize监听
-        resizeListener(rfn);
     }
 
     //  将联系我们的数据格式转为list
@@ -137,7 +131,6 @@ export const BasicFooter = class extends React.Component {
 
     render(){
         const {
-            isRelativelyWide,
             activeLinkIndex,
             isSpreadIndex,
             qrCodeShowIndex,
@@ -145,7 +138,6 @@ export const BasicFooter = class extends React.Component {
         } = this.state;
         return (
             <BasicFooterRender
-                isRelativelyWide={isRelativelyWide}
                 activeLinkIndex={activeLinkIndex}
                 isSpreadIndex={isSpreadIndex}
                 qrCodeShowIndex={qrCodeShowIndex}
