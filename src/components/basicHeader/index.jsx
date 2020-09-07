@@ -11,7 +11,7 @@ export const BasicHeader = class extends React.Component {
         super(props);
         //  是哪一个页面
         this.pathName = window.location.pathname.replace(/\//ig, '');
-//        console.log(props);
+        //  console.log(this.pathName === '');
         this.state = {
             //  是否滚动在顶部
             isTop: true,
@@ -22,7 +22,7 @@ export const BasicHeader = class extends React.Component {
             //  右侧菜单的折叠状态 true:折叠
             menuIsFold: true,
             //  是首页？
-            isHomePage: this.pathName === 'index.html',
+            isHomePage: this.pathName === 'index.html' || this.pathName === '',
             //  展开的一级菜单的index - 移动端
             primaryIndex: -1,
             //  展开的二级菜单的index - 移动端
