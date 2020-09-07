@@ -23,7 +23,8 @@ const SlickRender = ({
 //    console.log('执行次数');
     return (
         <Slider {...slickSetting} ref={sliderRef}>
-            {swiperData && swiperData.map(item => (
+            {swiperData && swiperData.map(
+                item => (
                     <SliderItem
                         key={item.id}
                         video={item.video}
@@ -46,8 +47,6 @@ export class Slick extends React.Component {
         this.state = {
             //  数据
             swiperData: null,
-            //  浏览器宽度是否超过BASIC_COMPARE_WIDTH
-            isRelativelyWide: window.innerWidth > BASIC_COMPARE_WIDTH,
         };
         //  设置
         this.slickSetting = {
@@ -111,20 +110,10 @@ export class Slick extends React.Component {
         resizeListener(() => {
             this.transform();
         });
+        //  需要延迟一帧执行
         window.requestAnimationFrame(() => {
             this.transform();
         });
-
-        //  resize监听，用于适配
-        const rfn = (width) => {
-            this.setState(() => {
-                return {
-                    isRelativelyWide: width > BASIC_COMPARE_WIDTH
-                };
-            });
-        };
-        //  resize监听
-        resizeListener(rfn);
     }
 
     //  进度条的变化
@@ -157,6 +146,7 @@ export class Slick extends React.Component {
         const second = this.props.swiperData[this.activeIndex].second;
         //  延迟次数
         const fullTime = second * 1000 / FRAME_DELAY;
+        //  最开始的i的宽度所需执行次数
         let i = (fullTime * 12.5 / 100)|0;
         const fn = () => {
             this.timer = setTimeout(() => {
@@ -166,6 +156,7 @@ export class Slick extends React.Component {
                     this.timer = null;
                     return;
                 }
+                //  i的宽度 = 执行次数 / 总需执行次数
                 activeElement.style.width = `${i / fullTime * 100}%`;
                 i++;
                 fn();
