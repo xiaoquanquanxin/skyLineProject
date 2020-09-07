@@ -3,7 +3,8 @@ import style from './index.module.less';
 import CSSModules from 'react-css-modules';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { isValidHTTPString, replaceBrString } from '@utils/utils';
+import { isValidHTTPString } from '@utils/utils';
+import LazyLoad from 'react-lazyload';
 
 export const MainInfo = connect(
     mapStateToProps,
@@ -39,14 +40,18 @@ export const MainInfo = connect(
             }
             return (
                 <div className={`${style.container} ${style[extraClassName]}`}>
-                    {info.video ?
-                        <video className={style.bgVideo}
-                               src={info.video}
-                               autoPlay="autoplay" muted="muted" loop="loop" preload="auto" playsInline={true}
-                               webkit-playsinline="true" x5-video-player-type="h5" x5-video-orientation="portraint"
-                               x5-video-player-fullscreen="true"
-                        />
-                        : <img className={style.bgGif} alt={info.title} src={info.img}/>}
+                    <LazyLoad>
+                        {info.video
+                            ? <video className={style.bgVideo}
+                                     src={info.video}
+                                     autoPlay="autoplay" muted="muted" loop="loop" preload="auto" playsInline={true}
+                                     webkit-playsinline="true" x5-video-player-type="h5"
+                                     x5-video-orientation="portraint"
+                                     x5-video-player-fullscreen="true"
+                            />
+                            : <img className={style.bgGif} alt={info.title} src={info.img}/>
+                        }
+                    </LazyLoad>
                     <div className={style.content}>
                         <p className={style.title}
                            dangerouslySetInnerHTML={{ __html: info.title }}/>
