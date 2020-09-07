@@ -76,7 +76,6 @@ export class Slick extends Component {
             pauseOnDotsHover: false,
             //  阈值，越大滑动距离可以越短
             touchThreshold: 30,
-
         };
         //  计时器
         this.timer = null;
@@ -137,9 +136,8 @@ export class Slick extends Component {
         if (this.timer) {
             clearTimeout(this.timer);
         }
-
         //  本次延迟的完整时间
-        const second = this.props.swiperData[this.activeIndex].second;
+        const second = this.props.swiperData[this.activeIndex].second || this.props.delay;
         //  延迟次数
         const fullTime = second * 1000 / FRAME_DELAY;
         //  最开始的i的宽度所需执行次数
@@ -168,7 +166,6 @@ export class Slick extends Component {
         const {
             sliderItemType,
         } = this.props;
-//        console.log('执行次数')
         return (
             <SlickRender
                 slickSetting={this.slickSetting}
