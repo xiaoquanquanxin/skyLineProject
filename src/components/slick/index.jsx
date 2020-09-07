@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import '@css/slick-theme.less';
 import { resizeListener } from '@utils/eventListener';
 import { BannerSlider } from '@components/index/bannerSlick';
-import { BASIC_COMPARE_WIDTH, FRAME_DELAY } from '@utils/constant';
+import { FRAME_DELAY } from '@utils/constant';
 
 const SlickRender = ({
     slickSetting,
