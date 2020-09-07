@@ -39,8 +39,6 @@ export const isValidHTTPString = (str) => {
     return reg.test(str);
 };
 
-//  验证是不是一个项目资源地址
-
 /**
  * 验证是不是一个项目资源地址
  * @param {string} str
@@ -50,3 +48,15 @@ export const isValidResourceString = (str) => {
     const reg = /^(\/upload).+/;
     return reg.test(str);
 };
+
+/**
+ * 服务端传回的字符串，替换 <br/>
+ * @param {string} str
+ * @return {string}
+ */
+//export const replaceBrString = (str) => {
+//    if (!str) {
+//        return str;
+//    }
+//    return str.replace(/<br\/>/ig, '\n');
+//};
