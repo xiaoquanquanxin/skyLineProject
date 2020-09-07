@@ -1,5 +1,5 @@
 import { resizeListener } from '@utils/eventListener';
-//import { BASIC_COMPARE_WIDTH } from '@utils/constant';
+import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 
 //  重置rem
 function remSet(){
@@ -28,14 +28,12 @@ function remSet(){
     resizeListener(fn);
 }
 
+//  重置rem
 remSet();
-//
-////  监听浏览器宽度是否超过BASIC_COMPARE_WIDTH
-//export const getRelativelyWide = () => {
-//    return window.innerWidth > BASIC_COMPARE_WIDTH;
-//};
-//export const commonData = {
-//    isRelativelyWide: getRelativelyWide(),
-//};
-//resizeListener(() => {commonData.isRelativelyWide = getRelativelyWide();});
-//window.commonData = commonData;
+
+//  统一通过浏览器的resize事件，获取判断是>750px
+export const commonRelativeWideFn = (setRelativeWideFn) => {
+    resizeListener((width) => {
+        setRelativeWideFn(width > BASIC_COMPARE_WIDTH);
+    });
+};
