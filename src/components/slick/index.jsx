@@ -97,7 +97,7 @@ export class Slick extends React.Component {
         if (swiperData === prevProps.swiperData) {
             return;
         }
-        console.log('swiperData', swiperData);
+        //  console.log('swiperData', swiperData);
         this.setState(() => ({
             swiperData,
         }));
