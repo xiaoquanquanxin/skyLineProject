@@ -41,7 +41,6 @@ export default connect(
                     v.bottom_banner && v.bottom_banner.length && navSortByRank(v.bottom_banner, 'rank');
                     //  客户轮播
                     v.client && v.client.length && navSortByRank(v.client, 'rank');
-                    console.log(v);
                     this.setState(() => ({
                         swiperData: v.top_banner,
                         mainContent: v.middle_banner,
