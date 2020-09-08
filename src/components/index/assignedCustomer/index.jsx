@@ -1,6 +1,5 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import LazyLoad from 'react-lazyload';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
 import { CustomSwiper } from '@components/swiper';
@@ -31,9 +30,7 @@ export const CustomerSlickItem = ({
     const list = data.map(item => {
         return (
             <li className={style.swiperItem} key={item.id} title={item.name}>
-                <LazyLoad once>
-                    <img src={item.img} alt={item.name}/>
-                </LazyLoad>
+                <img src={item.img} alt={item.name}/>
             </li>
         );
     });
