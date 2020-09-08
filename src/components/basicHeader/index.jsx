@@ -4,7 +4,7 @@ import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { HeaderPC } from '@components/basicHeader/headerPC';
 import { HeaderMobile } from '@components/basicHeader/headerMobile';
 import { requestHeaderNav } from '@api/index';
-import { navSortByRank } from '@utils/utils';
+import { navSortByRank, specialPathName } from '@utils/utils';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
@@ -13,6 +13,8 @@ export const BasicHeader = connect(
     mapDispatchToProps,
 )(
     class extends Component {
+        pathName;
+
         constructor(props){
             super(props);
             //  是哪一个页面
@@ -43,6 +45,8 @@ export const BasicHeader = connect(
             requestHeaderNav()
                 .then(v => {
                     this.navSort(v.data);
+                    //  ⚠️⚠️特殊问题特殊处理
+                    specialPathName(this.pathName, v.data);
                     this.setState(() => ({
                         navListData: v.data
                     }));

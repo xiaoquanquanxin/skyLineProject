@@ -67,3 +67,22 @@ export const isValidResourceString = (str) => {
 //    }
 //    return str.replace(/<br\/>/ig, '\n');
 //};
+
+//  特殊的页面，不存在于服务端返回的路由中，需要自己手动添加
+/**
+ * @param {string} pathName
+ * @param {Array} routeList
+ * */
+export function specialPathName(pathName, routeList){
+    switch (pathName) {
+        case 'news-detail.html':
+            routeList.forEach(item => {
+                if (item.url === 'news.html') {
+                    item.isActive = true;
+                }
+            });
+            break;
+        default:
+            throw new Error(`需要参数${pathName}`);
+    }
+}

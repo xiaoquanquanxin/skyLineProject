@@ -96,3 +96,14 @@ export function requestGetNewsList(category_id, page){
         method: 'get',
     });
 }
+
+//  新闻详情
+export function requestGetNewsDetail(id){
+    if (isNaN(id)) {
+        throw new Error(`错误的id：${id}`);
+    }
+    return request({
+        url: `/api/getnewsdetail?id=${id}`,
+        method: 'get',
+    });
+}
