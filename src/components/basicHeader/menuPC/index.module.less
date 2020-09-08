@@ -1,7 +1,7 @@
 //	菜单列表pc端
 .menuPC {
 	float: right;
-
+	padding-right: 10px;
 	//	菜单的每一项li
 	.menuListItem {
 		float: left;
@@ -10,7 +10,9 @@
 		font-weight: 500;
 		position: relative;
 		cursor: pointer;
-		line-height: 64px;
+		//	💡有问题，对齐方式如果是按vertical-middle，则忽略了行高。所以这样是不对的
+		line-height: 67px;
+		height: 64px;
 		display: inline-block;
 		//	最后两个元素，是zn/en
 		&:nth-last-child(2), &:nth-last-child(1) {
