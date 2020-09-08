@@ -21,11 +21,11 @@ export default connect(
             //  发请求，取页面数据
             requestGetBannerByType(12)
                 .then(v => {
-                    v.data && v.data.length && navSortByRank(v.data, 'rank');
+                    navSortByRank(v.data, 'rank');
                 });
             requestGetProductPartner()
                 .then(v => {
-                    v.data && v.data.length && navSortByRank(v.data, 'rank');
+                    navSortByRank(v.data, 'rank');
                 });
             commonRelativeWideFn(this.props.setRelativeWideFn);
         }
