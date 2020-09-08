@@ -29,6 +29,10 @@ export function navSortByRank(list, rank){
     if (rank === undefined) {
         throw new Error(`排序规则?${rank}`);
     }
+    //  如果不是一个合格的数组
+    if (!list || !list.length || !Array.prototype.isPrototypeOf(list)) {
+        return;
+    }
     list.sort((a, b) => a[rank] - b[rank]);
 }
 
