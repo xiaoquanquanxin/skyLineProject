@@ -4,11 +4,8 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import {
-    requestGetBannerByType,
-    requestGetMapClient,
     requestGetNewsCategory,
     requestGetNewsDetail,
-    requestGetNewsList
 } from '@api/index';
 import { commonRelativeWideFn } from '@utils/common';
 import { navSortByRank } from '@utils/utils';

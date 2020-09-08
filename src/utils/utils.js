@@ -83,6 +83,6 @@ export function specialPathName(pathName, routeList){
             });
             break;
         default:
-            throw new Error(`需要参数${pathName}`);
+            console.log(`非自定义路由:${pathName}`);
     }
 }

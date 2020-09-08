@@ -92,8 +92,9 @@ export function requestGetNewsList(category_id, page){
     page = page || 1;
     category_id = category_id || '';
     return request({
-        url: `/api/getnewslist?category_id=${category_id}&page=${page}`,
+        url: '/api/getnewslist',
         method: 'get',
+        params: { category_id, page }
     });
 }
 
@@ -103,7 +104,16 @@ export function requestGetNewsDetail(id){
         throw new Error(`错误的id：${id}`);
     }
     return request({
-        url: `/api/getnewsdetail?id=${id}`,
+        url: '/api/getnewsdetail',
+        method: 'get',
+        params: { id }
+    });
+}
+
+//  关于我们
+export function requestGetAboutUs(){
+    return request({
+        url: '/api/getaboutus',
         method: 'get',
     });
 }
