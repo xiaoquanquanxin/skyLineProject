@@ -30,7 +30,7 @@ export function requestIndex(){
     });
 }
 
-//  核心技术
+//  各个页面的参数请求
 export function requestGetBannerByType(type){
     return request({
         url: '/api/getbanner',
@@ -39,3 +39,18 @@ export function requestGetBannerByType(type){
     });
 }
 
+//  天工开物
+export function requestGetProductPartner(){
+    return request({
+        url: '/api/getproductpartner',
+        method: 'get',
+    });
+}
+
+//  高级别辅助驾驶
+export function requestGetDriverClient(){
+    return request({
+        url: '/api/getdriverclient',
+        method: 'get',
+    });
+}
