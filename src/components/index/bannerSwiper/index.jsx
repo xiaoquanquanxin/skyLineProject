@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { Slick } from '@components/slick';
-import style from './index.module.less';
+import React from 'react';
 import { isValidHTTPString, isValidResourceString } from '@utils/utils';
 import { preventDefaultFn } from '@utils/eventListener';
 import { mapStateToProps, mapDispatchToProps } from '@store/reduxMap';
 import { connect } from 'react-redux';
+import { CustomSwiper } from '@components/swiper';
+import style from './index.module.less';
+import './index.less';
 
 //  slick的最内部展示组件
 export const BannerSlider = connect(
@@ -68,15 +69,16 @@ export const BannerSlider = connect(
 );
 
 //  本组件暴露
-export const BannerSlick = ({
+export const BannerSwiper = ({
     swiperData
 }) => {
 //    console.log('执行次数')
     return (
-        <div className={style.bannerSlick}>
+        <div className={style.bannerSwiper} id='bannerSwiper'>
             <div className={style.container}>
-                <Slick swiperData={swiperData}
-                       sliderItemType={1}
+                <CustomSwiper
+                    swiperData={swiperData}
+                    sliderItemType={1}
                 />
             </div>
         </div>
