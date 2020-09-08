@@ -54,3 +54,27 @@ export function requestGetDriverClient(){
         method: 'get',
     });
 }
+
+//  智能座舱
+export function requestGetCockPitPartner(){
+    return request({
+        url: '/api/getcockpitpartner',
+        method: 'get',
+    });
+}
+
+//  高精地图
+export function requestGetMapClient(){
+    return request({
+        url: '/api/getmapclient',
+        method: 'get',
+    });
+}
+
+//  智能物联网
+export function requestGetIotPartner(){
+    return request({
+        url: '/api/getiotpartner',
+        method: 'get',
+    });
+}

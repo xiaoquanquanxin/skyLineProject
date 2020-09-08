@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { requestGetBannerByType, requestGetMapClient } from '@api/index';
+import { requestGetBannerByType, requestGetIotPartner } from '@api/index';
 import { commonRelativeWideFn } from '@utils/common';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
@@ -23,7 +23,7 @@ export default connect(
                 .then(v => {
                     navSortByRank(v.data, 'rank');
                 });
-            requestGetMapClient()
+            requestGetIotPartner()
                 .then(v => {
                     navSortByRank(v.data, 'rank');
                 });
