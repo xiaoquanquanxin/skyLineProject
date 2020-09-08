@@ -8,7 +8,7 @@
 	.basicHeaderWrap {
 		position: fixed;
 		width: 100%;
-		min-width: 1200px;
+		min-width: 1280px;
 		left: 0;
 		top: 0;
 		z-index: 999;
@@ -24,13 +24,17 @@
 			width: 1280px;
 			margin: 0 auto;
 			height: 64px;
+			padding: 0 64px;
+			line-height: 64px;
 			//	头部的logo
 			.basicHeaderLogo {
-				width: 118px;
-				position: absolute;
-				top: 14px;
-				left: 50%;
-				margin-left: -41%;
+				height: 100%;
+
+				img {
+					vertical-align: middle;
+					width: 118px;
+					height: 36px;
+				}
 			}
 		}
 	}
