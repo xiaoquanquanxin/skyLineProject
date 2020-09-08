@@ -78,3 +78,21 @@ export function requestGetIotPartner(){
         method: 'get',
     });
 }
+
+//  新闻类型
+export function requestGetNewsCategory(){
+    return request({
+        url: '/api/getnewscategory',
+        method: 'get',
+    });
+}
+
+//  新闻内容列表
+export function requestGetNewsList(category_id, page){
+    page = page || 1;
+    category_id = category_id || '';
+    return request({
+        url: `/api/getnewslist?category_id=${category_id}&page=${page}`,
+        method: 'get',
+    });
+}
