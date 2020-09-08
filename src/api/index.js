@@ -30,3 +30,12 @@ export function requestIndex(){
     });
 }
 
+//  核心技术
+export function requestGetBannerByType(type){
+    return request({
+        url: '/api/getbanner',
+        method: 'get',
+        params: { type },
+    });
+}
+
