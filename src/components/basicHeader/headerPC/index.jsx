@@ -31,10 +31,12 @@ export const HeaderPC = CSSModules(({
             <div className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}>
                 <div className={`${style.inner} ${layout.clearfix}`}>
                     {/*logo*/}
-                    <img className={`${style.basicHeaderLogo}`}
-                         src={headerRenderInfo.imageLogoSrc}
-                         onClick={() => (logoClick(isHomePage))}
-                         alt="地平线头部logo"/>
+                    <div className={`${style.basicHeaderLogo} ${layout.left}`}>
+                        <img className={`${layout.inlineBlock}`}
+                             src={headerRenderInfo.imageLogoSrc}
+                             onClick={() => (logoClick(isHomePage))}
+                             alt="地平线头部logo"/>
+                    </div>
                     {/*菜单*/}
                     <MenuPC
                         navListData={navListData}
