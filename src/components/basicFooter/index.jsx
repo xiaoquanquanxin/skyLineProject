@@ -78,11 +78,11 @@ export const BasicFooter = class extends Component {
         requestFooterNav()
             .then(data => {
                 //  公司业务
-                data.solution && data.solution.length && navSortByRank(data.solution, 'rank');
+                navSortByRank(data.solution, 'rank');
                 //  公司产品
-                data.product && data.product.length && navSortByRank(data.product, 'rank');
+                navSortByRank(data.product, 'rank');
                 //  关于我们
-                data.aboutus && data.aboutus.length && navSortByRank(data.aboutus, 'rank');
+                navSortByRank(data.aboutus, 'rank');
                 //  联系我们
                 data.contact = this.getContentList(data.contact);
                 //  console.log(data);

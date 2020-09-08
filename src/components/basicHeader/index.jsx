@@ -101,7 +101,7 @@ export const BasicHeader = connect(
          * @return {boolean}                子路由有没有被选中
          * **/
         navSort(list){
-            list && list.length && navSortByRank(list, 'rank');
+            navSortByRank(list, 'rank');
             //  当前路由有没有被选中
             let currentHasActive = false;
             for (let value of list) {

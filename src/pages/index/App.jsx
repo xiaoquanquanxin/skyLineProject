@@ -34,10 +34,10 @@ export default connect(
             //  发请求，取页面数据
             requestIndex()
                 .then(v => {
-                    v.top_banner && v.top_banner.length && navSortByRank(v.top_banner, 'rank');
-                    v.middle_banner && v.middle_banner.length && navSortByRank(v.middle_banner, 'rank');
-                    v.bottom_banner && v.bottom_banner.length && navSortByRank(v.bottom_banner, 'rank');
-                    v.client && v.client.length && navSortByRank(v.client, 'rank');
+                    navSortByRank(v.top_banner, 'rank');
+                    navSortByRank(v.middle_banner, 'rank');
+                    navSortByRank(v.bottom_banner, 'rank');
+                    navSortByRank(v.client, 'rank');
                     const customList = [];
                     while (v.client && v.client.length) {
                         customList.push(v.client.splice(0, 15));
