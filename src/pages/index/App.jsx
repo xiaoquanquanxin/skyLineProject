@@ -7,7 +7,6 @@ import { navSortByRank } from '@utils/utils';
 import { commonRelativeWideFn } from '@utils/common';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import './index.css';
 import { MainInfo } from '@components/index/mainInfo';
 import { AssignedCustomer } from '@components/index/assignedCustomer';
 
