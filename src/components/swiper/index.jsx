@@ -151,7 +151,7 @@ export const CustomSwiper = connect(
                     {swiperData && swiperData.length && swiperData.map(
                         (item, index) => {
                             return (
-                                <div key={index} className="swiper-slide">
+                                <div key={item.id || index} className="swiper-slide">
                                     <SliderItem data={item}/>
                                 </div>
                             );
@@ -162,7 +162,7 @@ export const CustomSwiper = connect(
                     {swiperData && swiperData.length && swiperData.map(
                         (item, index) => {
                             return (
-                                <span key={item.id} ref={this.paginRefs[index]}><i/></span>
+                                <span key={item.id || index} ref={this.paginRefs[index]}><i/></span>
                             );
                         })
                     }
