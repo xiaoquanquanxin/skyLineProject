@@ -43,6 +43,11 @@ export const CustomSwiper = connect(
         if (swiperData === prevProps.swiperData) {
             return;
         }
+        console.log(swiperData.length);
+        //  数据量必须>=2才能有swiper，否则没有swiper
+        if (swiperData.length < 2) {
+            return;
+        }
         //  console.log('swiper的update执行次数');
         this.mySwiper = new Swiper(this.swiperRef.current, {
             autoplay: {
@@ -76,7 +81,7 @@ export const CustomSwiper = connect(
         if (status !== 1) {
             return;
         }
-        const { swiperData } = this.props;
+        const { swiperData, basicDelay } = this.props;
         const { realIndex } = this.mySwiper;
 
         //  激活的i元素
@@ -90,7 +95,7 @@ export const CustomSwiper = connect(
             clearTimeout(this.timer);
         }
         //  延迟时间
-        const second = swiperData[realIndex].second;
+        const second = swiperData[realIndex].second || basicDelay;
         //  console.log('延迟时间：s', second);
         //  console.log('真实下标', realIndex);
         //  延迟次数
@@ -159,7 +164,7 @@ export const CustomSwiper = connect(
                     }
                 </div>
                 <div className={`swiper-pagination-custom`}>
-                    {swiperData && swiperData.length && swiperData.map(
+                    {swiperData && swiperData.length > 1 && swiperData.map(
                         (item, index) => {
                             return (
                                 <span key={item.id || index} ref={this.paginRefs[index]}><i/></span>

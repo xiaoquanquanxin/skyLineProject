@@ -1,10 +1,11 @@
 import React from 'react';
 import CSSModules from 'react-css-modules';
-import { Slick } from '@components/slick';
 import LazyLoad from 'react-lazyload';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
-import './index.less'
+import { CustomSwiper } from '@components/swiper';
+import './index.less';
+
 export const AssignedCustomer = CSSModules(({
     //  数据
     data,
@@ -12,9 +13,9 @@ export const AssignedCustomer = CSSModules(({
     return (
         <div className={style.container} id='assignedCustomer'>
             <p className={style.title}>赋能客户</p>
-            <Slick swiperData={data}
-                   sliderItemType={2}
-                   delay={5}
+            <CustomSwiper swiperData={data}
+                          sliderItemType={2}
+                          basicDelay={5}
             />
         </div>
     );
