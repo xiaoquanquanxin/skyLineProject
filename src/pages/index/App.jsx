@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
-import { BannerSlick } from '@components/index/bannerSlick';
+import { BannerSwiper } from '@components/index/bannerSwiper';
 import { requestIndex } from '@api/index';
 import { navSortByRank } from '@utils/utils';
 import { commonRelativeWideFn } from '@utils/common';
@@ -69,7 +69,7 @@ export default connect(
                 <div className="App">
                     <BasicHeader/>
                     {/*banner轮播*/}
-                    <BannerSlick swiperData={swiperData}/>
+                    <BannerSwiper swiperData={swiperData}/>
                     {/*基本信息*/}
                     <MainInfo info={firstInfo} textPosition='right'/>
                     <MainInfo info={secondInfo} textPosition='left'/>
