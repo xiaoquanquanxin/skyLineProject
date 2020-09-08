@@ -2,7 +2,7 @@ import React, { Component, createRef } from 'react';
 import Slider from 'react-slick';
 import '@css/slick-theme.less';
 import { resizeListener } from '@utils/eventListener';
-import { BannerSlider } from '@components/index/bannerSlick';
+import { BannerSlider } from '@components/index/bannerSwiper';
 import { FRAME_DELAY } from '@utils/constant';
 import { CustomerSlickItem } from '@components/index/assignedCustomer';
 
