@@ -36,7 +36,7 @@ class MultiplePageJsCdn {
                     switch (outputName) {
                         case 'about.html':
                             //  todo    这里需要百度地图
-//                            customJsCdnPlaceholder = `<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=W0xBY4G53d6qSbWYajZKeXVUEkbkM1Mo"></script>`;
+                            customJsCdnPlaceholder += `<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=W0xBY4G53d6qSbWYajZKeXVUEkbkM1Mo"></script>`;
                             console.log('🍉🍉', customJsCdnPlaceholder);
                             break;
                         default:
