@@ -26,6 +26,9 @@ export function emptyFunction(){}
  * @param {String}rank
  * **/
 export function navSortByRank(list, rank){
+    if (rank === undefined) {
+        throw new Error(`排序规则?${rank}`);
+    }
     list.sort((a, b) => a[rank] - b[rank]);
 }
 
