@@ -1,7 +1,6 @@
 //	菜单列表pc端
 .menuPC {
 	float: right;
-	margin-right: 70px;
 
 	//	菜单的每一项li
 	.menuListItem {
@@ -20,15 +19,22 @@
 		}
 
 		//	无论是zn还是en，是倒数第二个元素，斜线
-		&:nth-last-child(2)::before {
-			content: "/";
-			display: block;
-			position: absolute;
-			top: 0;
-			height: 0;
-			right: -2px;
-			font-size: 12px;
-			color: var(--color999);
+		&:nth-last-child(2) {
+			//	💡明显是白色好看
+			a {
+				color: var(--color06f) !important;
+			}
+
+			&::before {
+				content: "/";
+				display: block;
+				position: absolute;
+				top: 0;
+				height: 0;
+				right: -2px;
+				font-size: 12px;
+				color: var(--color999);
+			}
 		}
 
 		//	底部横线
@@ -86,7 +92,7 @@
 	//	是顶部，并且在首页
 	&.isTopAndHome {
 		.menuListItem > a {
-			color: rgba(255,255,255,0.7);
+			color: rgba(255, 255, 255, 0.7);
 		}
 
 		//	激活的项目
