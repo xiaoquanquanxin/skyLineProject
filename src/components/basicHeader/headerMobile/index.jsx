@@ -1,8 +1,8 @@
-import style from './index.module.less';
 import React, { Component } from 'react';
 import { logoClick, GetHeaderLogoMenuInformation } from '../common/headerCommon';
 import { MenuMobile } from '@components/basicHeader/menuMobile';
-
+import style from './index.module.less';
+import layout from '@css/layout.module.less';
 //  移动端头部渲染
 export const HeaderMobile = (
     ({
@@ -33,7 +33,7 @@ export const HeaderMobile = (
             <header className={style.basicHeader}>
                 <div className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}>
                     {/*logo*/}
-                    <img className={`${style.basicHeaderLogo}`}
+                    <img className={`${style.basicHeaderLogo} ${layout.inlineBlock}`}
                          src={headerRenderInfo.imageLogoSrc}
                          onClick={() => (logoClick(isHomePage))}
                          alt="地平线头部logo"/>
