@@ -6,7 +6,9 @@
  * **/
 //  神器
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+//  注入规则
+const titleInjectFn = require('./titleInject');
+const cdnInject = require('./cdnInject');
 //  设置替换的值
 let customJsCdnPlaceholder = '';
 
@@ -32,18 +34,10 @@ class MultiplePageJsCdn {
                     const outputName = data.outputName;
                     console.log(`当前正在处理的页面是 ${outputName}`);
                     const html = data.html;
-
-                    switch (outputName) {
-                        case 'about.html':
-                            //  todo    这里需要百度地图
-                            customJsCdnPlaceholder += `<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=W0xBY4G53d6qSbWYajZKeXVUEkbkM1Mo"></script>`;
-                            console.log('🍉🍉', customJsCdnPlaceholder);
-                            break;
-                        default:
-                            break;
-                    }
-                    //  替换html
-                    data.html = html.replace('[[[custom-js-cdn-placeholder]]]', customJsCdnPlaceholder);
+                    //  注入title
+//                    customJsCdnPlaceholder = titleInjectFn(outputName, customJsCdnPlaceholder);
+                    //  注入cdn
+                    data.html = cdnInject(outputName, html, customJsCdnPlaceholder);
                     cb(null, data);
                 }
             );
