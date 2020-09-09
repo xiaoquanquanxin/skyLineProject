@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Sitemap: http://horizon.wx.h5work.com/sitemap.html
+Sitemap: http://horizon.wx.h5work.com/sitemap.xml
