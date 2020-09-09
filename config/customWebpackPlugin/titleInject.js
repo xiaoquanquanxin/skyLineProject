@@ -19,7 +19,7 @@ const titleInjectFn = (outputName, html) => {
 
         case 'autonomous-driving.html':
             //  解决方案-智能驾驶-自动驾驶
-            titlePlaceholder = "解决方案-智能驾驶-自动驾驶";
+            titlePlaceholder = '解决方案-智能驾驶-自动驾驶';
             break;
 
         case 'index.html':
@@ -39,7 +39,7 @@ const titleInjectFn = (outputName, html) => {
 
         case 'martix.html':
             //  产品中心-MATRIX
-            titlePlaceholder = "产品中心-MATRIX";
+            titlePlaceholder = '产品中心-MATRIX';
             break;
         case 'navinet.html':
             //  解决方案-智能驾驶-高精地图
@@ -58,7 +58,7 @@ const titleInjectFn = (outputName, html) => {
 
         case 'open-explorer.html':
             //  产品中心-天工开物
-            titlePlaceholder = "产品中心-天工开物";
+            titlePlaceholder = '产品中心-天工开物';
             break;
 
         case 'sunrise2.html':
@@ -76,6 +76,7 @@ const titleInjectFn = (outputName, html) => {
             titlePlaceholder = '核心技术';
             break;
 
+        //  fixme   好像没有
         case 'visual.html':
             //  视觉
             titlePlaceholder = '视觉';
