@@ -33,11 +33,10 @@ class MultiplePageJsCdn {
                 (data, cb) => {
                     const outputName = data.outputName;
                     console.log(`当前正在处理的页面是 ${outputName}`);
-                    const html = data.html;
                     //  注入title
-//                    customJsCdnPlaceholder = titleInjectFn(outputName, customJsCdnPlaceholder);
+                    data.html = titleInjectFn(outputName, data.html);
                     //  注入cdn
-                    data.html = cdnInject(outputName, html, customJsCdnPlaceholder);
+                    data.html = cdnInject(outputName, data.html, customJsCdnPlaceholder);
                     cb(null, data);
                 }
             );
