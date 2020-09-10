@@ -3,13 +3,9 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import {
-    requestGetNewsCategory,
-    requestGetNewsDetail,
-} from '@api/index';
 import { commonRelativeWideFn } from '@utils/common';
-import { navSortByRank } from '@utils/utils';
 import './index.less';
+import { NewsDetail } from '@components/news-detail';
 
 export default connect(
     mapStateToProps,
@@ -21,16 +17,6 @@ export default connect(
         }
 
         componentDidMount(){
-            //  发请求，取页面数据
-            requestGetNewsCategory()
-                .then(v => {
-                    navSortByRank(v.data, 'rank');
-                });
-            requestGetNewsDetail(1)
-                .then(v => {
-                    console.log(v.data, v.relate);
-                    navSortByRank(v.relate, 'rank');
-                });
             commonRelativeWideFn(this.props.setRelativeWideFn);
         }
 
@@ -39,6 +25,8 @@ export default connect(
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
+                    {/*新闻详情*/}
+                    <NewsDetail/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
