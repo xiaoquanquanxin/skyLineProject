@@ -1,11 +1,11 @@
 //  注入title
 /**
- * @param {string} outputName
+ * @param {string} pathName
  * @param {string} html
  * @param {string} preString
  * */
-const cdnInject = (outputName, html, preString) => {
-    switch (outputName) {
+const cdnInject = (pathName, html, preString) => {
+    switch (pathName) {
         //  首页
         case 'index.html':
             break;
@@ -17,6 +17,7 @@ const cdnInject = (outputName, html, preString) => {
             break;
     }
     console.log('输出🍉🍉', preString);
+    //  preString += `<div>${pathName}</div>`;
     //  替换html
     html = html.replace('[[[custom-js-cdn-placeholder]]]', preString);
     return html;
