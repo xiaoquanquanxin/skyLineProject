@@ -20,6 +20,8 @@ export const NewsList = connect(
                 dataList: null,
                 //  相关文章数据
                 relateList: null,
+                //  有更多数据
+                hasMoreData: true,
             };
         }
 
@@ -27,6 +29,7 @@ export const NewsList = connect(
             this.getNewsList();
         }
 
+        //  仅关心是否分页
         componentDidUpdate(prevProps, prevState, snapshot){
             //  console.log(prevProps.REDUCER_ABOUT_TAB_BOX, this.props.REDUCER_ABOUT_TAB_BOX);
             const { activeIndex: prevActiveIndex } = prevProps.REDUCER_ABOUT_TAB_BOX;
@@ -37,8 +40,14 @@ export const NewsList = connect(
             if (prevActiveIndex !== activeIndex) {
                 this.setState(() => {
                     return {
-                        page: 0,
+                        //  重置页码
+                        page: 1,
+                        //  数据
                         dataList: null,
+                        //  相关文章
+                        relateList: null,
+                        //  更多数据
+                        hasMoreData: true,
                     };
                 });
                 //  必须等一帧
@@ -51,7 +60,11 @@ export const NewsList = connect(
         getNewsList(){
             const { activeIndex } = this.props.REDUCER_ABOUT_TAB_BOX;
             //  console.log('list请求数据', activeIndex,this.state.page);
-            const { page, dataList } = this.state;
+            const { page, dataList, relateList, hasMoreData } = this.state;
+            //  如果没有更多数据
+            if (!hasMoreData) {
+                return false;
+            }
             requestGetNewsList(activeIndex, page)
                 .then(v => {
                     console.log(v);
@@ -61,33 +74,44 @@ export const NewsList = connect(
                     //  navSortByRank(v.relate, 'rank');
                     this.setState(() => {
                             return {
+                                hasMoreData: v.data.length === 5,
                                 dataList: dataList ? dataList.concat(v.data) : v.data,
-                                relateList: v.relate,
+                                relateList: relateList ? relateList : v.relate,
                             };
                         }
                     );
-
                 });
         }
 
+        //  加载更多
+        loadMore(){
+            const { page } = this.state;
+            this.setState(() => {
+                return {
+                    page: page + 1,
+                };
+            });
+            //  必须等一帧
+            window.requestAnimationFrame(() => {
+                this.getNewsList();
+            });
+        }
+
         render(){
-            const { dataList, relateList } = this.state;
-            if (!dataList || !dataList.length) {
-                return '';
-            }
+            const { dataList, relateList, hasMoreData } = this.state;
             //  主数据模块
-            const mainList = dataList.map(item => {
+            const mainList = (dataList && dataList.length && dataList.map(item => {
                 return (
                     <MainListItem key={item.id} data={item}/>
                 );
-            });
+            })) || [];
 
             //  相关文章数据模块
-            const relativeArticleList = relateList.map(item => {
+            const relativeArticleList = (relateList && relateList.length && relateList.map(item => {
                 return (
                     <RelativeArticle key={item.id} data={item}/>
                 );
-            });
+            })) || [];
             return (
                 <div className={style.listRelative}>
                     <div className={style.listInner}>
@@ -95,7 +119,11 @@ export const NewsList = connect(
                             <ul className={style.mainList}>
                                 {mainList}
                             </ul>
-                            <div className={style.addMore}>加载更多</div>
+                            {
+                                !hasMoreData
+                                    ? <div className={style.emptyText}>没有更多了...</div>
+                                    : <div className={style.addMore} onClick={() => {this.loadMore();}}>加载更多</div>
+                            }
                         </div>
                         <dl className={style.relativeListBox}>
                             <dt className={style.relativeTitle}>相关文章</dt>

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetNewsCategory } from '@api/index';
 import { navSortByRank } from '@utils/utils';
-import { REDUCER_BROWSER_INFO } from '@store/windowResize';
 
 export const AboutTabBox = connect(
     mapStateToProps,
@@ -85,7 +84,11 @@ export const AboutTabBox = connect(
             });
             return (
                 <div className={style.aboutTabBox} id='aboutTabBox'
-                     style={list.length > 4 ? { height: '.8rem', marginBottom: '.2rem' } : {}}>
+                    //  如果数据大于4个，并且是移动端
+                     style={(list.length > 4 && !REDUCER_BROWSER_INFO.isRelativeWide) ? {
+                         height: '.8rem',
+                         marginBottom: '.2rem'
+                     } : {}}>
                     <div className={`${style.aboutTabInner} ${isFixed ? style.isFixed : ''}`}>
                         <div className={style.aboutTab}
                              style={REDUCER_BROWSER_INFO.isRelativeWide ? {} : {

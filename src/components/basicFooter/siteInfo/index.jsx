@@ -46,7 +46,7 @@ export const SiteInfo = connect(
                             </button>
                         </div>
                         <div className={`${style.siteInfoMsg} ${isRelativeWide ? layout.left : ''} `}>
-                            Copyright 2020 地平线官网 粤ICP备17020905号
+                            Copyright © 2019-2020 地平线官网 粤ICP备17098896号-1
                         </div>
                     </div>
                 </div>

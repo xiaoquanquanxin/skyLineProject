@@ -31,7 +31,6 @@
 				border: 1px solid rgba(235, 235, 235, 1);
 				font-size: 12px;
 				font-weight: 400;
-				color: rgba(0, 0, 0, 0.8);
 				cursor: pointer;
 				display: -webkit-box;
 				display: -ms-flexbox;
@@ -42,6 +41,17 @@
 				-webkit-box-pack: center;
 				-ms-flex-pack: center;
 				justify-content: center;
+				color: var(--color06f);
+			}
+
+			//	没有更多数据
+			.emptyText {
+				margin-top: 40px;
+				font-size: 12px;
+				font-weight: 400;
+				color: rgba(0, 0, 0, 1);
+				line-height: 2.5;
+				text-align: center;
 			}
 		}
 
@@ -95,6 +105,12 @@
 					height: 0.5rem;
 					border-radius: 0.3rem;
 					font-size: 0.2rem;
+				}
+
+				.emptyText {
+					margin-top: 0.4rem;
+					font-size: 0.2rem;
+					line-height: 2.5;
 				}
 			}
 
