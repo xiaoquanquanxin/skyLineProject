@@ -1,26 +1,37 @@
 import React from 'react';
 import style from './index.module.less';
 import { transformDateType } from '@utils/utils';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
-export const NewsMainContent = ({ mainData }) => {
-    if (mainData === null) {
-        return '';
+export const NewsMainContent = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(({
+    mainData,
+    REDUCER_ABOUT_TAB_BOX
+}) => {
+    const { newsCategoryDataMap } = REDUCER_ABOUT_TAB_BOX;
+    let data = null;
+    if (mainData && newsCategoryDataMap) {
+        //  这是新闻菜单数据
+        data = newsCategoryDataMap[mainData.id];
     }
-    //  todo    未完成
     return (
         <div className={style.mainContent}>
             <div className={style.mainBanner}>
-                <img className={style.thumb} src={mainData.thumb} alt=''/>
+                {mainData && <img className={style.thumb} src={mainData.thumb} alt=''/>}
                 <div className={style.imgDes}>
                     <div className={style.iconType}>
                         {/*用那个数据*/}
-                        <img alt='' className={style.icon}/>
-                        <span className={style.type}>{111}</span>
+                        {data && <img src={data.img} className={style.icon} alt={data.name}/>}
+                        {data && <span className={style.type}>{data.name}</span>}
                     </div>
-                    <p className={style.title}>{mainData.title}</p>
-                    <p className={style.date}>{transformDateType(mainData.publish_date)}</p></div>
+                    {mainData && <p className={style.title}>{mainData.title}</p>}
+                    {mainData && <p className={style.date}>{transformDateType(mainData.publish_date)}</p>}
+                </div>
             </div>
-            <div className={style.mainText} dangerouslySetInnerHTML={{ __html: mainData.content }}/>
+            {mainData && <div className={style.mainText} dangerouslySetInnerHTML={{ __html: mainData.content }}/>}
         </div>
     );
-};
+});
