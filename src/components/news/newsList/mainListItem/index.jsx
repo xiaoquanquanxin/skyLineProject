@@ -19,21 +19,23 @@ export const MainListItem = connect(
     //  console.log(newsCategoryDataMap[data.category_id].img);
     return (
         <li key={data.id} className={style.mainListItem}>
-            <div className={style.imgBox}>
-                <img src={data.img} className={style.mainImg} alt={data.span}/>
-                <div className={style.belongType}>
-                    <img src={categoryData.img} className={style.belongTypeImg}
-                         alt={data.span}/>
-                    <span className={style.span}>{categoryData.name || ''}</span>
+            <a href={`./news-detail.html?id=${data.id}`} className={style.mainListItemInner}>
+                <div className={style.imgBox}>
+                    <img src={data.img} className={style.mainImg} alt={data.span}/>
+                    <div className={style.belongType}>
+                        <img src={categoryData.img} className={style.belongTypeImg}
+                             alt={data.span}/>
+                        <span className={style.span}>{categoryData.name || ''}</span>
+                    </div>
                 </div>
-            </div>
-            <div className={style.titleDateDesc}>
-                <p className={style.title}>{data.title}</p>
-                <p className={style.date}>{transformDateType(data.publish_date)}</p>
-                <div className={style.desc}>
-                    {'⚠️这个不对' + matchReg(data.content) + '...'}
+                <div className={style.titleDateDesc}>
+                    <p className={style.title}>{data.title}</p>
+                    <p className={style.date}>{transformDateType(data.publish_date)}</p>
+                    <div className={style.desc}>
+                        {'⚠️这个不对' + matchReg(data.content) + '...'}
+                    </div>
                 </div>
-            </div>
+            </a>
         </li>
     );
 });
