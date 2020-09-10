@@ -4,7 +4,7 @@ import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetNewsList } from '@api/index';
 
 import { MainListItem } from '@components/news/newsList/mainListItem';
-import { RelativeArticle } from '@components/news/newsList/relativeArticle';
+import { RelativeArticle } from '@components/relativeArticle';
 import style from './index.module.less';
 
 export const NewsList = connect(
@@ -122,13 +122,6 @@ export const NewsList = connect(
                     <MainListItem key={item.id} data={item}/>
                 );
             })) || [];
-
-            //  相关文章数据模块
-            const relativeArticleList = (relateList && relateList.length && relateList.map(item => {
-                return (
-                    <RelativeArticle key={item.id} data={item}/>
-                );
-            })) || [];
             return (
                 <div className={style.listRelative}>
                     <div className={style.listInner}>
@@ -142,10 +135,8 @@ export const NewsList = connect(
                                     : <div className={style.addMore} onClick={() => {this.loadMore();}}>加载更多</div>
                             }
                         </div>
-                        <dl className={style.relativeListBox}>
-                            <dt className={style.relativeTitle}>相关文章</dt>
-                            {relativeArticleList}
-                        </dl>
+                        {/*相关文章数据模块*/}
+                        <RelativeArticle relateList={relateList}/>
                     </div>
                 </div>
             );
