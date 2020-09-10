@@ -26,10 +26,11 @@ export const NewsDetail = connect(
 
     componentDidMount(){
         const { detailId } = this.state;
-        //  发请求，取页面数据
+        //  获取页面所在父级id
         requestGetNewsCategory()
             .then(v => {
                 navSortByRank(v.data, 'rank');
+                this.props.setNewsCategoryData(v.data);
             });
         //  新闻详情数据
         requestGetNewsDetail(detailId)
@@ -51,7 +52,7 @@ export const NewsDetail = connect(
                 <div className={style.newsDetailInner}>
                     <div className={style.content}>
                         {/*面包屑*/}
-                        <Crumb/>
+                        <Crumb mainData={mainData}/>
                         {/*主要内容*/}
                         <NewsMainContent mainData={mainData}/>
                     </div>
@@ -63,5 +64,4 @@ export const NewsDetail = connect(
             </div>
         );
     }
-
 });
