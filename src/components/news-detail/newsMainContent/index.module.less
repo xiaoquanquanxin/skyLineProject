@@ -1,0 +1,107 @@
+.mainContent {
+	background-color: var(--white);
+
+	.mainBanner {
+		position: relative;
+
+		.thumb {
+			width: 100%;
+			vertical-align: top;
+		}
+
+		.imgDes {
+			padding-left: 43px;
+			padding-bottom: 40px;
+			left: 0;
+			bottom: 0;
+			position: absolute;
+
+			.iconType {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+
+				.icon {
+					width: 14px;
+					height: 14px;
+				}
+
+				.type {
+					font-size: 12px;
+					font-weight: 400;
+					color: rgba(255, 255, 255, 1);
+					line-height: 1.4166;
+					margin-left: 4px;
+				}
+			}
+
+			.title {
+				margin-top: 16px;
+				font-size: 36px;
+				font-weight: 500;
+				color: rgba(255, 255, 255, 1);
+				line-height: 1.3888;
+			}
+
+			.date {
+				margin-top: 10px;
+				font-size: 12px;
+				font-weight: 400;
+				color: rgba(255, 255, 255, 0.8);
+				line-height: 1.4166;
+			}
+		}
+	}
+
+	//	正文
+	.mainText {
+		font-size: 14px;
+		font-weight: 400;
+		color: rgba(7, 7, 7, 0.8);
+		line-height: 2.285;
+		padding: 32px 40px;
+	}
+
+	img {
+		max-width: 100%;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.mainContent {
+		.mainBanner {
+			.imgDes {
+				padding: 0 0 0.4rem 0.4rem;
+
+				.iconType {
+					.icon {
+						width: 0.18rem;
+						height: 0.18rem;
+					}
+
+					.type {
+						font-size: 0.16rem;
+						margin-left: 0.06rem;
+					}
+				}
+
+				.title {
+					margin-top: 0.16rem;
+					font-size: 0.32rem;
+				}
+
+				.date {
+					margin-top: 0.1rem;
+					font-size: 0.16rem;
+				}
+			}
+		}
+
+		.mainText {
+			padding: 0.32rem 0.4rem;
+		}
+	}
+}
