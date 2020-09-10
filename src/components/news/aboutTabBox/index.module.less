@@ -36,7 +36,7 @@
 				-webkit-box-align: center;
 				-ms-flex-align: center;
 				align-items: center;
-				display: -webkit-inline-box;
+				--webkit-display: -webkit-inline-box;
 				display: -ms-inline-flexbox;
 				display: inline-flex;
 				-webkit-box-pack: center;
@@ -68,20 +68,23 @@
 @media screen and (max-width: 750px) {
 	.aboutTabBox {
 		height: 0.8rem;
+		width: auto;
 
 		.aboutTabInner {
 			height: 0.8rem;
+			width: auto;
+			overflow: scroll;
 
 			.aboutTab {
-				width: 100%;
+				width: auto;
 				height: 0.8rem;
+				display: block;
 
 				& > span {
-					-webkit-box-flex: 1;
-					-ms-flex: 1;
-					flex: 1;
-					padding: 0;
+					display: inline-block;
 					font-size: 0.26rem;
+					padding: 0 0.16rem;
+					line-height: .8rem;
 
 					&.active {
 						&::after {
