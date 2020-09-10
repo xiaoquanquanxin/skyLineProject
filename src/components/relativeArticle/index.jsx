@@ -24,7 +24,7 @@ export const RelativeArticle = ({
 const RelativeArticleItem = ({ data }) => {
     return (
         <dd className={style.relativeItem}>
-            <div className={style.relativeItemInner}>
+            <a href={`./news-detail.html?id=${data.id}`} className={style.relativeItemInner}>
                 <div className={style.imgBox}>
                     <img src={data.thumb} className={style.img} alt=''/>
                 </div>
@@ -32,7 +32,7 @@ const RelativeArticleItem = ({ data }) => {
                     <p className={style.title}>{data.title}</p>
                     <p className={style.date}>{transformDateType(data.publish_date)}</p>
                 </div>
-            </div>
+            </a>
         </dd>
     );
 };
