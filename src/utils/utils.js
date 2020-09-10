@@ -97,3 +97,18 @@ export function matchReg(str){
 export function transformDateType(string){
     return string.replace('-', '年').replace('-', '月') + '日';
 }
+
+//  取页面参数
+export function getSearchString(key){
+    const str = window.location.search.slice(1);
+    // 以&分隔字符串，获得类似name=xiaoli这样的元素数组
+    const arr = str.split('&');
+    const obj = {};
+    // 将每一个数组元素以=分隔并赋给obj对象
+    for (let i = 0; i < arr.length; i++) {
+        const tmp_arr = arr[i].split('=');
+        obj[decodeURIComponent(tmp_arr[0])] = decodeURIComponent(tmp_arr[1]);
+    }
+    return obj[key];
+}
+
