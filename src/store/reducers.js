@@ -2,9 +2,11 @@
 import { combineReducers } from 'redux';
 
 import { REDUCER_BROWSER_INFO } from './windowResize';
+import { REDUCER_ABOUT_TAB_BOX } from '@store/aboutTabBox';
 
 const AppRedux = combineReducers({
-    REDUCER_BROWSER_INFO
+    REDUCER_BROWSER_INFO,
+    REDUCER_ABOUT_TAB_BOX
 });
 export default AppRedux;
 

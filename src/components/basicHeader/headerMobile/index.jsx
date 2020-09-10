@@ -31,7 +31,9 @@ export const HeaderMobile = (
         const headerRenderInfo = GetHeaderLogoMenuInformation(menuIsFold, isTop, isHomePage, false);
         return (
             <header className={style.basicHeader}>
-                <div className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}>
+                <div className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}
+                     style={isHomePage ? { position: 'fixed' } : { position: 'relative' }}
+                >
                     {/*logo*/}
                     <img className={`${style.basicHeaderLogo} ${layout.inlineBlock}`}
                          src={headerRenderInfo.imageLogoSrc}

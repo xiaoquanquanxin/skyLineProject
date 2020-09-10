@@ -28,7 +28,9 @@ export const HeaderPC = CSSModules(({
                 onMouseOver={() => {headerMouseOver();}}
                 onMouseLeave={() => {headerMouseLeave();}}
         >
-            <div className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}>
+            <div className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}
+                 style={isHomePage ? { position: 'fixed' } : { position: 'relative' }}
+            >
                 <div className={`${style.inner} ${layout.clearfix}`}>
                     {/*logo*/}
                     <div className={`${style.basicHeaderLogo} ${layout.left}`}>
