@@ -8,21 +8,24 @@ export const Crumb = connect(
     mapDispatchToProps,
 )(
     ({ REDUCER_ABOUT_TAB_BOX, mainData }) => {
+        //  redux里的数据，一个对于新闻菜单的map
         const { newsCategoryDataMap } = REDUCER_ABOUT_TAB_BOX;
-        //  redux里有数据 并且数据请求拿到了
-        if (!mainData || !newsCategoryDataMap) {
-            return '';
+
+        let data = null;
+        if (mainData && newsCategoryDataMap) {
+            //  这是新闻菜单数据
+            data = newsCategoryDataMap[mainData.id];
         }
-        //  这是新闻菜单数据
-        const data = newsCategoryDataMap[mainData.id];
+
         //  console.log(data);
         return (
             <div className={style.crumb}>
                 <a href={`./news.html`} className={style.link}>新闻中心</a>
                 <span className={style.arrows}>&gt;</span>
-                <a href={`./news.html?id=${mainData.id}`} className={style.subLink}>{data.name}</a>
+                {mainData &&
+                <a href={`./news.html?id=${mainData.id}`} className={style.subLink}>{data && data.name}</a>}
                 <span className={style.arrows}>&gt;</span>
-                <span className={style.arrows} style={{ marginLeft: 0 }}>{mainData.title}</span>
+                <span className={style.arrows} style={{ marginLeft: 0 }}>{mainData && mainData.title}</span>
             </div>
         );
     }
