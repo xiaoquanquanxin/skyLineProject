@@ -84,10 +84,13 @@ export const AboutTabBox = connect(
                 >{item.name}</span>;
             });
             return (
-                <div className={style.aboutTabBox} id='aboutTabBox'>
+                <div className={style.aboutTabBox} id='aboutTabBox'
+                     style={list.length > 4 ? { height: '.8rem', marginBottom: '.2rem' } : {}}>
                     <div className={`${style.aboutTabInner} ${isFixed ? style.isFixed : ''}`}>
                         <div className={style.aboutTab}
-                             style={REDUCER_BROWSER_INFO.isRelativeWide ? {} : { width: `${1.36 * (list.length + 1)}rem` }}>
+                             style={REDUCER_BROWSER_INFO.isRelativeWide ? {} : {
+                                 width: `${1.36 * (list.length + 1)}rem`,
+                             }}>
                             <span className={`${REDUCER_ABOUT_TAB_BOX.activeIndex === 0 ? style.active : ''}`}
                                   onClick={() => {this.setTabBoxActiveIndex(0);}}
                             >全部新闻</span>
