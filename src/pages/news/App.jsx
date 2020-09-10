@@ -53,12 +53,8 @@ export default connect(
                     {/*菜单*/}
                     <AboutTabBox/>
                     {/*新闻内容*/}
-                    <NewsList />
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <NewsList/>
+                    {/*<br/>*/}
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

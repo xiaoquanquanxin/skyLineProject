@@ -17,6 +17,8 @@ export const NewsList = connect(
                 page: 1,
                 //  主数据
                 dataList: null,
+                //  相关文章数据
+                relateList: null,
             };
         }
 
@@ -51,34 +53,50 @@ export const NewsList = connect(
                     console.log(v);
                     //  主数据没有排序
                     //  navSortByRank(v.data, 'rank');
+                    //  相关文章数据也没有排序
+                    //  navSortByRank(v.relate, 'rank');
                     this.setState(() => {
                             return {
                                 dataList: dataList ? dataList.concat(v.data) : v.data,
+                                relateList: v.relate,
                             };
                         }
                     );
-                    navSortByRank(v.relate, 'rank');
+
                 });
         }
 
         render(){
-            const { dataList } = this.state;
+            const { dataList, relateList } = this.state;
             if (!dataList || !dataList.length) {
                 return '';
             }
-            const list = dataList.map(item => {
+            //  主数据模块
+            const mainList = dataList.map(item => {
                 return (
                     <NewsListItem key={item.id} data={item}/>
+                );
+            });
+
+            //  相关文章数据模块
+            const relativeArticleList = relateList.map(item => {
+                return (
+                    <RelativeArticle key={item.id} data={item}/>
                 );
             });
             return (
                 <div className={style.listRelative}>
                     <div className={style.listInner}>
                         <div className={style.listBox}>
-                            <ul className={style.list}>
-                                {list}
+                            <ul className={style.mainList}>
+                                {mainList}
                             </ul>
+                            <div className={style.addMore}>加载更多</div>
                         </div>
+                        <dl className={style.relativeListBox}>
+                            <dt className={style.relativeTitle}>相关文章</dt>
+                            {relativeArticleList}
+                        </dl>
                     </div>
                 </div>
             );
@@ -86,25 +104,63 @@ export const NewsList = connect(
     }
 );
 //  每一项
-const NewsListItem = ({
+const NewsListItem = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(({
     data,
+    REDUCER_ABOUT_TAB_BOX,
 }) => {
+    const { newsCategoryDataMap } = REDUCER_ABOUT_TAB_BOX;
+    if (newsCategoryDataMap === null) {
+        return '';
+    }
+
     return (
-        <li key={data.id} className={style.item}>
+        <li key={data.id} className={style.mainListItem}>
             <div className={style.imgBox}>
                 <img src={data.img} className={style.mainImg} alt={data.span}/>
                 <div className={style.belongType}>
                     <img src={data.thumb} className={style.belongTypeImg} alt={data.span}/>
-                    <span className={style.span}>{data.category_id}</span>
+                    <span className={style.span}>{newsCategoryDataMap[data.category_id].name || ''}</span>
                 </div>
             </div>
             <div className={style.titleDateDesc}>
                 <p className={style.title}>{data.title}</p>
-                <p className={style.date}>{data.publish_date}</p>
+                <p className={style.date}>{transformDateType(data.publish_date)}</p>
                 <div className={style.desc}>
-                    故规则复杂
+                    {'⚠️这个不对' + matchReg(data.content) + '...'}
                 </div>
             </div>
         </li>
     );
+});
+
+//  右侧列表相关文章
+const RelativeArticle = ({
+    data
+}) => {
+    //  console.log(data);
+    return (
+        <dd className={style.relativeItem}>
+            <div className={style.imgBox}>
+                <img src={data.img} className={style.img} alt=''/>
+            </div>
+            <div className={style.contentBox}>
+                <p className={style.title}>{data.title}</p>
+                <p className={style.date}>{transformDateType(data.publish_date)}</p>
+            </div>
+        </dd>
+    );
 };
+
+//  匹配规则
+function matchReg(str){
+    let reg = /<\/?.+?\/?>/g;
+    return str.replace(reg, '').substr(0, 93);
+}
+
+//  转换时间格式
+function transformDateType(string){
+    return string.replace('-', '年').replace('-', '月') + '日';
+}

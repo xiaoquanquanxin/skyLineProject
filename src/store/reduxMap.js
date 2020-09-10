@@ -1,12 +1,12 @@
 import { setRelativeWide } from '@store/windowResize';
-import { setTabBoxActiveIndex } from '@store/aboutTabBox';
+import { setTabBoxActiveIndex, setNewsCategoryData, newsCategoryDataForMap } from '@store/newsInfo';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
 //  ✅读取state到props
 export const mapStateToProps = ({
     //  浏览器信息
     REDUCER_BROWSER_INFO,
-    //  关于我们页面
+    //  新闻页面
     REDUCER_ABOUT_TAB_BOX,
 }) => {
     return {
@@ -28,7 +28,16 @@ export const mapDispatchToProps = (dispatch) => {
         //  设置关于我们页面的 activeIndex，选中的哪一个
         setTabBoxActiveIndex: (activeIndex) => {
             dispatch(setTabBoxActiveIndex(activeIndex));
-        }
+        },
+        //  设置新闻菜单数据
+        setNewsCategoryData: (newsCategoryData) => {
+            dispatch(setNewsCategoryData(newsCategoryData));
+            const mapData = {};
+            newsCategoryData.forEach(item => {
+                mapData[item.id] = item;
+            });
+            dispatch(newsCategoryDataForMap(mapData));
+        },
     };
 };
 

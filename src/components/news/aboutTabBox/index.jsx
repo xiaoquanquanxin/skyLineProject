@@ -16,14 +16,8 @@ export const AboutTabBox = connect(
             this.state = {
                 //  是否固定布局
                 isFixed: false,
-                //  新闻菜单数据
-                newsCategoryData: null,
-                //  activeIndex
-                activeIndex: 0,
             };
         }
-
-
 
         //  初始化
         componentDidMount(){
@@ -40,15 +34,11 @@ export const AboutTabBox = connect(
         }
 
         //  拿菜单
-        getNewsCategory(index){
+        getNewsCategory(){
             requestGetNewsCategory()
                 .then(v => {
                     navSortByRank(v.data, 'rank');
-                    this.setState(() => {
-                        return {
-                            newsCategoryData: v.data,
-                        };
-                    });
+                    this.props.setNewsCategoryData(v.data);
                 });
         }
 
@@ -74,12 +64,13 @@ export const AboutTabBox = connect(
         render(){
             const {
                 isFixed,
-                newsCategoryData,
             } = this.state;
             const {
                 //  redux存的关于我们的信息
                 REDUCER_ABOUT_TAB_BOX,
             } = this.props;
+            //  数据
+            const { newsCategoryData } = REDUCER_ABOUT_TAB_BOX;
             if (!newsCategoryData || newsCategoryData.length === 0) {
                 return '';
             }

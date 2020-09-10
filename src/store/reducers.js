@@ -2,7 +2,7 @@
 import { combineReducers } from 'redux';
 
 import { REDUCER_BROWSER_INFO } from './windowResize';
-import { REDUCER_ABOUT_TAB_BOX } from '@store/aboutTabBox';
+import { REDUCER_ABOUT_TAB_BOX } from '@store/newsInfo';
 
 const AppRedux = combineReducers({
     REDUCER_BROWSER_INFO,
