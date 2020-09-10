@@ -41,7 +41,10 @@ export const NewsList = connect(
                         dataList: null,
                     };
                 });
-                this.getNewsList();
+                //  必须等一帧
+                window.requestAnimationFrame(() => {
+                    this.getNewsList();
+                });
             }
         }
 

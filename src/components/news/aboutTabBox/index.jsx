@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetNewsCategory } from '@api/index';
 import { navSortByRank } from '@utils/utils';
+import { REDUCER_BROWSER_INFO } from '@store/windowResize';
 
 export const AboutTabBox = connect(
     mapStateToProps,
@@ -68,6 +69,8 @@ export const AboutTabBox = connect(
             const {
                 //  redux存的关于我们的信息
                 REDUCER_ABOUT_TAB_BOX,
+                //  浏览器信息
+                REDUCER_BROWSER_INFO
             } = this.props;
             //  数据
             const { newsCategoryData } = REDUCER_ABOUT_TAB_BOX;
@@ -83,7 +86,8 @@ export const AboutTabBox = connect(
             return (
                 <div className={style.aboutTabBox} id='aboutTabBox'>
                     <div className={`${style.aboutTabInner} ${isFixed ? style.isFixed : ''}`}>
-                        <div className={style.aboutTab}>
+                        <div className={style.aboutTab}
+                             style={REDUCER_BROWSER_INFO.isRelativeWide ? {} : { width: `${1.36 * (list.length + 1)}rem` }}>
                             <span className={`${REDUCER_ABOUT_TAB_BOX.activeIndex === 0 ? style.active : ''}`}
                                   onClick={() => {this.setTabBoxActiveIndex(0);}}
                             >全部新闻</span>
