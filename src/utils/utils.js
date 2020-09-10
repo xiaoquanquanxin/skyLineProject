@@ -86,3 +86,14 @@ export function specialPathName(pathName, routeList){
             console.log(`非自定义路由:${pathName}`);
     }
 }
+
+//  服务端返回数据的匹配规则
+export function matchReg(str){
+    let reg = /<\/?.+?\/?>/g;
+    return str.replace(reg, '');
+}
+
+//  转换时间格式
+export function transformDateType(string){
+    return string.replace('-', '年').replace('-', '月') + '日';
+}
