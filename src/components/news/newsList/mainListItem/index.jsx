@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '@store/reduxMap';
-import { matchReg, transformDateType } from '@components/news/common/newsCommon';
+import { matchReg, transformDateType } from '@utils/utils';
 import style from './index.module.less';
 //  每一项
 export const MainListItem = connect(
@@ -32,7 +32,7 @@ export const MainListItem = connect(
                     <p className={style.title}>{data.title}</p>
                     <p className={style.date}>{transformDateType(data.publish_date)}</p>
                     <div className={style.desc}>
-                        {'⚠️这个不对' + matchReg(data.content) + '...'}
+                        {matchReg(data.content).slice(0, 150)}
                     </div>
                 </div>
             </a>
