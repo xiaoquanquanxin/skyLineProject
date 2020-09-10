@@ -15,6 +15,8 @@ export const NewsDetail = connect(
     constructor(props){
         super(props);
         this.state = {
+            //  主数据
+            mainData: null,
             //  右侧相关文章数据
             relateList: null,
             //  详情id
@@ -32,9 +34,10 @@ export const NewsDetail = connect(
         //  新闻详情数据
         requestGetNewsDetail(detailId)
             .then(v => {
-                console.log(v.data, v.relate);
+                //  console.log(v.data);
                 this.setState(() => {
                     return {
+                        mainData: v.data,
                         relateList: v.relate
                     };
                 });
@@ -42,7 +45,7 @@ export const NewsDetail = connect(
     }
 
     render(){
-        const { relateList } = this.state;
+        const { relateList, mainData } = this.state;
         return (
             <div className={style.newsDetailBox}>
                 <div className={style.newsDetailInner}>
@@ -50,8 +53,10 @@ export const NewsDetail = connect(
                         {/*面包屑*/}
                         <Crumb/>
                         {/*主要内容*/}
-                        {/*<NewsMainContent/>*/}
-                        {/*右侧*/}
+                        <NewsMainContent mainData={mainData}/>
+                    </div>
+                    {/*右侧*/}
+                    <div className={style.relativeArticleWrap}>
                         <RelativeArticle relateList={relateList}/>
                     </div>
                 </div>
