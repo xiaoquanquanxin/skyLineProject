@@ -1,0 +1,123 @@
+.listRelative {
+	background-color: #F9F9F9;
+	padding: 24px 0 90px 0;
+
+	.listInner {
+		width: 1080px;
+		margin: 0 auto;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+
+		.listBox {
+			.list {
+				width: 804px;
+
+				//	li，每一项
+				.item {
+					background: rgba(255, 255, 255, 1);
+					border: 1px solid rgba(235, 235, 235, 1);
+					padding: 20px 40px 20px 20px;
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: flex;
+					-webkit-box-pack: justify;
+					-ms-flex-pack: justify;
+					justify-content: space-between;
+					cursor: pointer;
+
+					& + .item {
+						margin-top: 24px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.item {
+	.imgBox {
+		width: 270px;
+		height: 200px;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		overflow: hidden;
+		border: 1px solid rgba(235, 235, 235, 1);
+		-ms-flex-negative: 0;
+		flex-shrink: 0;
+		position: relative;
+		background-color: #000;
+
+		.mainImg {
+			vertical-align: top;
+			height: 100%;
+		}
+
+		.belongType {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			position: absolute;
+			left: 14px;
+			top: 14px;
+
+			.belongTypeImg {
+				width: 14px;
+				height: 14px;
+				vertical-align: top;
+			}
+
+			.span {
+				font-size: 12px;
+				font-weight: 400;
+				color: rgba(255, 255, 255, 1);
+				line-height: 1.416;
+				margin-left: 4px;
+			}
+		}
+	}
+
+	//	右侧内容
+	.titleDateDesc {
+		width: 440px;
+
+		.title {
+			margin-top: 17px;
+			font-size: 20px;
+			font-weight: 400;
+			color: rgba(0, 0, 0, 1);
+			line-height: 28px;
+			height: 28px;
+			overflow: hidden;
+		}
+
+		.date {
+			font-size: 12px;
+			margin-top: 9px;
+			font-weight: 400;
+			color: rgba(0, 0, 0, 0.5);
+			line-height: 1.416;
+		}
+
+		//	主要内容
+		.desc {
+			margin-top: 17px;
+			height: 78px;
+			font-size: 14px;
+			font-weight: 400;
+			color: rgba(74, 74, 74, 1);
+			line-height: 26px;
+			overflow: hidden;
+		}
+	}
+}
