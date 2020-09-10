@@ -15,14 +15,16 @@ export const MainListItem = connect(
     if (newsCategoryDataMap === null) {
         return '';
     }
-
+    const categoryData = newsCategoryDataMap[data.category_id];
+    //  console.log(newsCategoryDataMap[data.category_id].img);
     return (
         <li key={data.id} className={style.mainListItem}>
             <div className={style.imgBox}>
                 <img src={data.img} className={style.mainImg} alt={data.span}/>
                 <div className={style.belongType}>
-                    <img src={data.thumb} className={style.belongTypeImg} alt={data.span}/>
-                    <span className={style.span}>{newsCategoryDataMap[data.category_id].name || ''}</span>
+                    <img src={categoryData.img} className={style.belongTypeImg}
+                         alt={data.span}/>
+                    <span className={style.span}>{categoryData.name || ''}</span>
                 </div>
             </div>
             <div className={style.titleDateDesc}>
