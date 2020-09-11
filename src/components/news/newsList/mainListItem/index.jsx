@@ -21,7 +21,7 @@ export const MainListItem = connect(
         <li key={data.id} className={style.mainListItem}>
             <a href={`./news-detail.html?id=${data.id}`} className={style.mainListItemInner}>
                 <div className={style.imgBox}>
-                    <img src={data.img} className={style.mainImg} alt={data.span}/>
+                    <img src={data.thumb} className={style.mainImg} alt={data.span}/>
                     <div className={style.belongType}>
                         <img src={categoryData.img} className={style.belongTypeImg}
                              alt={data.span}/>
