@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { resizeListener, scrollListener } from '@utils/eventListener';
-import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 import { HeaderPC } from '@components/basicHeader/headerPC';
 import { HeaderMobile } from '@components/basicHeader/headerMobile';
 import { requestHeaderNav } from '@api/index';
@@ -19,10 +17,7 @@ export const BasicHeader = connect(
             super(props);
             //  是哪一个页面
             this.pathName = window.location.pathname.replace(/\//ig, '');
-            //  console.log(this.pathName === '');
             this.state = {
-                //  是否滚动在顶部
-                isTop: true,
                 //  鼠标浮于上方，锁定白色
                 isOverHeader: false,
 
@@ -51,23 +46,11 @@ export const BasicHeader = connect(
                         navListData: v.data
                     }));
                 });
-            //  滚动监听回调函数，用于控制header的css
-            const sfn = (scrollTop) => {
-                this.setState(() => {
-                    return {
-                        //  safari适配
-                        isTop: scrollTop <= 0
-                    };
-                });
-            };
-            //  滚动监听
-            scrollListener(sfn);
         }
 
         //  渲染函数
         render(){
             const {
-                isTop,
                 isOverHeader,
                 menuIsFold,
                 isHomePage,
@@ -75,11 +58,13 @@ export const BasicHeader = connect(
                 secondaryIndex,
                 navListData,
             } = this.state;
+            const {
+                isRelativeWide
+            } = this.props.REDUCER_BROWSER_INFO;
             return (
                 //  pc？
-                this.props.REDUCER_BROWSER_INFO.isRelativeWide ?
+                isRelativeWide ?
                     <HeaderPC
-                        isTop={isTop}
                         isOverHeader={isOverHeader}
                         isHomePage={isHomePage}
                         navListData={navListData}
@@ -87,7 +72,6 @@ export const BasicHeader = connect(
                         headerMouseLeave={this.headerMouseLeave}
                     /> :
                     <HeaderMobile
-                        isTop={isTop}
                         menuIsFold={menuIsFold}
                         isHomePage={isHomePage}
                         primaryIndex={primaryIndex}
@@ -100,8 +84,8 @@ export const BasicHeader = connect(
             );
         }
 
-        //  导航排序
         /**
+         * 导航排序
          * @param {Array} list              数据
          * @return {boolean}                子路由有没有被选中
          * **/
@@ -171,7 +155,7 @@ export const BasicHeader = connect(
                 secondaryIndex = -1;
             }
             this.setState(() => ({
-                secondaryIndex
+                secondaryIndex,
             }));
         };
 
