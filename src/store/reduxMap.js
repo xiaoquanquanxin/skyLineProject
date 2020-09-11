@@ -1,4 +1,4 @@
-import { setRelativeWide } from '@store/windowResize';
+import { setBrowserScrollInfo, setRelativeWide } from '@store/browserInfo';
 import { setTabBoxActiveIndex, setNewsCategoryData, newsCategoryDataForMap } from '@store/newsInfo';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
@@ -24,6 +24,11 @@ export const mapDispatchToProps = (dispatch) => {
         //  设置浏览器宽度是否>750
         setRelativeWideFn: (bool) => {
             dispatch(setRelativeWide(bool));
+        },
+        //  设置浏览器信息
+        setBrowserScrollInfoFn: (info) => {
+            const { scrollLeft, scrollTop } = info;
+            dispatch(setBrowserScrollInfo(scrollLeft, scrollTop));
         },
         //  设置关于我们页面的 activeIndex，选中的哪一个
         setTabBoxActiveIndex: (activeIndex) => {
