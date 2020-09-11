@@ -1,4 +1,6 @@
 //  选中的index
+import { getSearchString } from '@utils/utils';
+
 export const ACTIVE_INDEX = 'ACTIVE_INDEX';
 
 //  新闻列表里的菜单类型数据
@@ -33,7 +35,7 @@ export function newsCategoryDataForMap(newsCategoryDataMap){
 //  关于的tab box
 export function REDUCER_ABOUT_TAB_BOX(state = {
     //  默认激活0
-    activeIndex: 0,
+    activeIndex: Number(getSearchString('id') || 0),
     //  默认没有数据
     newsCategoryData: null,
     //  默认map也没有
