@@ -6,8 +6,9 @@ import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetAboutUs, requestGetBannerByType, } from '@api/index';
 import { commonRelativeWideFn } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
-import './index.less';
-
+import { About } from '@components/about';
+import { AboutBanner } from '@components/bannerManage/aboutBanner';
+import './index.module.less';
 export default connect(
     mapStateToProps,
     mapDispatchToProps
@@ -15,14 +16,10 @@ export default connect(
     class App extends Component {
         constructor(props){
             super(props);
+            this.state = {};
         }
 
         componentDidMount(){
-            //  发请求，取页面数据
-            requestGetBannerByType(5)
-                .then(v => {
-                    navSortByRank(v.data, 'rank');
-                });
             requestGetAboutUs()
                 .then(v => {
                     navSortByRank(v.invest, 'rank');
@@ -35,6 +32,9 @@ export default connect(
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
+                    {/*banner轮播*/}
+                    <AboutBanner bannerType={5}/>
+                    <About/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
