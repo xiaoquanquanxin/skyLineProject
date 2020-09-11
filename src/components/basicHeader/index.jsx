@@ -55,7 +55,8 @@ export const BasicHeader = connect(
             const sfn = (scrollTop) => {
                 this.setState(() => {
                     return {
-                        isTop: scrollTop === 0
+                        //  safari适配
+                        isTop: scrollTop <= 0
                     };
                 });
             };
