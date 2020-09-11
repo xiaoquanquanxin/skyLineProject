@@ -6,6 +6,7 @@ import { resizeListener } from '@utils/eventListener';
 import { FRAME_DELAY } from '@utils/constant';
 import { BannerSlider } from '@components/index/bannerSwiper';
 import { CustomerSlickItem } from '@components/index/assignedCustomer';
+import { AboutBannerSliderItem } from '@components/bannerManage/aboutBanner';
 
 import 'swiper/dist/css/swiper.css';
 import './index.less';
@@ -14,6 +15,9 @@ export const CustomSwiper = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(class extends React.Component {
+    /**
+     * basicDelay:默认滚动时间，这是为数据如果没有second字段准备的
+     * */
     constructor(props){
         super(props);
         this.swiperRef = createRef();
@@ -144,6 +148,9 @@ export const CustomSwiper = connect(
                 break;
             case 2: //  首页的赋能客户
                 SliderItem = CustomerSlickItem;
+                break;
+            case 3: //  新闻中心、关于我们
+                SliderItem = AboutBannerSliderItem;
                 break;
             default:
                 throw new Error('错误的类型');

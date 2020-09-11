@@ -59,7 +59,7 @@ export const BannerSlider = connect(
                     <div className={style.description}
                          dangerouslySetInnerHTML={{ __html: desc }}/>
                 </div>
-                {/*全局遮罩，放置拖拽*/}
+                {/*全局遮罩，防止拖拽*/}
                 {url
                     ? <a href={url} onDragStart={preventDefaultFn} className={style.link}>&emsp;</a>
                     : <span className={style.link}/>}
