@@ -3,11 +3,14 @@ import { logoClick, GetHeaderLogoMenuInformation } from '../common/headerCommon'
 import { MenuMobile } from '@components/basicHeader/menuMobile';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 //  移动端头部渲染
-export const HeaderMobile = (
+export const HeaderMobile = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)((
     ({
-        //  页面是处于顶部
-        isTop,
         //  菜单是否展开
         menuIsFold,
         //  是否为首页
@@ -24,11 +27,14 @@ export const HeaderMobile = (
         secondaryMenuClick,
         //  菜单展开点击事件
         menuFoldClick,
+        //  浏览器滚动信息
+        REDUCER_BROWSER_INFO,
     }) => {
+        const { scrollTop } = REDUCER_BROWSER_INFO;
         //  如果需要永久展开菜单
         //  menuIsFold = false;
         //  渲染信息
-        const headerRenderInfo = GetHeaderLogoMenuInformation(menuIsFold, isTop, isHomePage, false);
+        const headerRenderInfo = GetHeaderLogoMenuInformation(menuIsFold, scrollTop <= 0, isHomePage, false);
         return (
             <header className={style.basicHeader}>
                 <div className={`${style.basicHeaderWrap} ${headerRenderInfo.isTopAndHome ? style.isTopAndHome : ''}`}
@@ -57,9 +63,7 @@ export const HeaderMobile = (
             </header>
         );
     }
-);
-
-
+));
 
 
 
