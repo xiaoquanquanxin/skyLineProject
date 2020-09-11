@@ -3,8 +3,8 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { BannerSwiper } from '@components/index/bannerSwiper';
 import { requestIndex } from '@api/index';
-import { navSortByRank } from '@utils/utils';
-import { commonRelativeWideFn } from '@utils/common';
+import { getBrowserInfo, navSortByRank } from '@utils/utils';
+import { commonRelativeWideFn } from '@utils/utils';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { MainInfo } from '@components/index/mainInfo';
@@ -55,6 +55,7 @@ export default connect(
                     }));
                 });
             commonRelativeWideFn(this.props.setRelativeWideFn);
+            getBrowserInfo(this.props.setBrowserScrollInfoFn);
         }
 
         render(){
