@@ -17,7 +17,7 @@
 	//	菜单的每一项
 	.menuListItem {
 		font-weight: initial;
-		border-top: 0.01rem solid var(--coloreee);
+		border-top: 0.01rem solid rgba(0, 0, 0, 0.1);
 		font-size: 0.28rem;
 		position: relative;
 
@@ -92,7 +92,7 @@
 				line-height: 1.04rem;
 				//	font-size: .26rem;	以前是13
 				margin-left: 1rem;
-				border-top: 0.01rem solid var(--coloreee);
+				border-top: 0.01rem solid rgba(0, 0, 0, 0.1);
 			}
 
 			.arrows {
@@ -123,8 +123,11 @@
 	}
 
 	.navLevel2Active {
+		background-color: var(--colorf6f6f6);
+
 		& > a {
 			color: var(--black);
+			font-weight: 600;
 		}
 	}
 
