@@ -13,49 +13,47 @@ const BasicFooterRender = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(
-    CSSModules(
-        ({
-            //  被选中的link
-            activeLinkIndex,
-            //  被展开的链接块
-            isSpreadIndex,
-            //  二维码展示index
-            qrCodeShowIndex,
-            //  数据
-            data,
-            //  展开底导航
-            spreadClick,
-            //  点击二维码
-            qrCodeClick,
-            //  获取浏览器信息，来源于redux
-            REDUCER_BROWSER_INFO,
-        }) => {
-            //  浏览器足够宽
-            const { isRelativeWide } = REDUCER_BROWSER_INFO;
-            return (
-                <section className={style.basicFooter}>
-                    <div className={`${style.basicFooterInfo} ${layout.clearfix}`}>
-                        <div className={`${style.static} ${isRelativeWide ? layout.left : ''}`}>
-                            <p className={`${isRelativeWide ? style.subTitle : ''}`}>我们的愿景：</p>
-                            <p className={style.subDescription}>边缘人工智能芯片全球领导者</p>
-                            <p className={`${isRelativeWide ? style.subTitle : ''}`}>我们的使命：</p>
-                            <p className={style.subDescription}>赋能万物，让每个人的生活更安全，更美好</p>
-                        </div>
-                        <LinkList
-                            isSpreadIndex={isSpreadIndex}
-                            activeLinkIndex={activeLinkIndex}
-                            data={data}
-                            spreadClick={spreadClick}
-                        />
+    ({
+        //  被选中的link
+        activeLinkIndex,
+        //  被展开的链接块
+        isSpreadIndex,
+        //  二维码展示index
+        qrCodeShowIndex,
+        //  数据
+        data,
+        //  展开底导航
+        spreadClick,
+        //  点击二维码
+        qrCodeClick,
+        //  获取浏览器信息，来源于redux
+        REDUCER_BROWSER_INFO,
+    }) => {
+        //  浏览器足够宽
+        const { isRelativeWide } = REDUCER_BROWSER_INFO;
+        return (
+            <section className={style.basicFooter}>
+                <div className={`${style.basicFooterInfo} ${layout.clearfix}`}>
+                    <div className={`${style.static} ${isRelativeWide ? layout.left : ''}`}>
+                        <p className={`${isRelativeWide ? style.subTitle : ''}`}>我们的愿景：</p>
+                        <p className={style.subDescription}>边缘人工智能芯片全球领导者</p>
+                        <p className={`${isRelativeWide ? style.subTitle : ''}`}>我们的使命：</p>
+                        <p className={style.subDescription}>赋能万物，让每个人的生活更安全，更美好</p>
                     </div>
-                    <SiteInfo
-                        qrCodeShowIndex={qrCodeShowIndex}
-                        qrCodeClick={qrCodeClick}
+                    <LinkList
+                        isSpreadIndex={isSpreadIndex}
+                        activeLinkIndex={activeLinkIndex}
+                        data={data}
+                        spreadClick={spreadClick}
                     />
-                </section>
-            );
-        }
-    )
+                </div>
+                <SiteInfo
+                    qrCodeShowIndex={qrCodeShowIndex}
+                    qrCodeClick={qrCodeClick}
+                />
+            </section>
+        );
+    }
 );
 export const BasicFooter = class extends Component {
     constructor(props){
@@ -100,7 +98,7 @@ export const BasicFooter = class extends Component {
             const titleKey = data[`title${index}`];
             const contentKey = data[`content${index}`];
             if (titleKey && contentKey) {
-                list.push({ name: `${titleKey} ：${contentKey}`, id: -1000000 + index });
+                list.push({ name: `${titleKey}：${contentKey}`, id: -1000000 + index });
                 index++;
                 continue;
             }
