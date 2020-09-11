@@ -29,7 +29,7 @@ export const GetHeaderLogoMenuInformation = (menuIsFold, isTop, isHomePage, isOv
         headerRenderInfo.imageMenuSrc = require('@media/basicHeader/menu-white.png');
     } else {
         //  黑色展开的菜单
-        headerRenderInfo.imageMenuSrc = require('@media/basicHeader/menu-black.png');
+        headerRenderInfo.imageMenuSrc = require('@media/basicHeader/icon-close.png');
         //  如果展开， 那么样式一定是白色背景并且，菜单是文字黑色的
         isTop = false;
     }
