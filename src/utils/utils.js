@@ -1,4 +1,7 @@
 //  倒计时
+import { resizeListener, scrollListener } from '@utils/eventListener';
+import { BASIC_COMPARE_WIDTH } from '@utils/constant';
+
 export function timeSurplus(countDown){
     const surplus = new Date(countDown).getTime() + 15 * 60 * 1000 - new Date().getTime();
     //  秒
@@ -112,3 +115,15 @@ export function getSearchString(key){
     return obj[key];
 }
 
+//  统一通过浏览器的resize事件，获取判断是>750px
+export const commonRelativeWideFn = (setRelativeWideFn) => {
+    resizeListener((width) => {
+        setRelativeWideFn(width > BASIC_COMPARE_WIDTH);
+    });
+};
+//  统一通过浏览器的scroll事件，获取滚动信息
+export const getBrowserInfo = (setBrowserScrollInfoFn) => {
+    scrollListener((info) => {
+        setBrowserScrollInfoFn(info);
+    });
+};

@@ -1,5 +1,4 @@
 import { resizeListener } from '@utils/eventListener';
-import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 
 //  重置rem
 function remSet(){
@@ -31,9 +30,3 @@ function remSet(){
 //  重置rem
 remSet();
 
-//  统一通过浏览器的resize事件，获取判断是>750px
-export const commonRelativeWideFn = (setRelativeWideFn) => {
-    resizeListener((width) => {
-        setRelativeWideFn(width > BASIC_COMPARE_WIDTH);
-    });
-};

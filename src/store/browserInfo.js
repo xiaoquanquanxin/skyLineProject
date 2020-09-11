@@ -23,9 +23,9 @@ export function REDUCER_BROWSER_INFO(state = {
     //  是否够宽    > 750
     isRelativeWide: window.innerWidth > BASIC_COMPARE_WIDTH,
     //  滚动左度
-    scrollLeft: 0,
+    scrollLeft: document.documentElement.scrollLeft || document.body.scrollLeft,
     //  滚动高度
-    scrollTop: 0,
+    scrollTop: document.documentElement.scrollTop || document.body.scrollTop,
 }, action){
     const { type, isRelativeWide, scrollLeft, scrollTop } = action;
     switch (type) {

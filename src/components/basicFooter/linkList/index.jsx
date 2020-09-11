@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CSSModules from 'react-css-modules';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
 //  白色箭头，取自header
@@ -9,12 +8,12 @@ import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
 //  链接项
 const Link = ({ url, name, activeLinkIndex }) => (
-    <p>
+    <dd>
         {url ?
             <a className={`${style.link} ${layout.inlineBlock} ${activeLinkIndex ? '' : ''}`} href={url}>{name}</a>
             : <span className={`${style.noLinking} ${layout.inlineBlock}`}>{name}</span>
         }
-    </p>
+    </dd>
 );
 //  链接的一列
 const LinkListItem = connect(
@@ -63,9 +62,9 @@ const LinkListItem = connect(
                                className={`${style.curr} ${isSpread ? style.isSpread : ''}`}/>
                     }
                 </p>
-                <div className={`${style.linkWrap} ${(isSpread || isRelativeWide) ? layout.block : layout.none}`}>
+                <dl className={`${style.linkWrap} ${(isSpread || isRelativeWide) ? layout.block : layout.none}`}>
                     {list}
-                </div>
+                </dl>
             </li>
         );
     }

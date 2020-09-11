@@ -5,7 +5,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetBannerByType } from '@api/index';
-import { commonRelativeWideFn } from '@utils/common';
+import { commonRelativeWideFn } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 
 export default connect(

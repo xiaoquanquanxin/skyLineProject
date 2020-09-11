@@ -66,12 +66,12 @@ export const NewsList = connect(
             const { activeIndex } = this.props.REDUCER_ABOUT_TAB_BOX;
             //  console.log('list请求数据', activeIndex,this.state.page);
             const { page, dataList, relateList, canClick } = this.state;
-            console.log(canClick);
+            //  console.log(canClick);
             //  如果不能点击
             if (!canClick) {
                 return false;
             }
-            console.log('发送请求');
+            //  console.log('发送请求');
             //  发请求的过程中，不能点击
             this.setState(() => {
                 return {
@@ -80,7 +80,7 @@ export const NewsList = connect(
             });
             requestGetNewsList(activeIndex, page)
                 .then(v => {
-                    console.log(v);
+                    //  console.log(v);
                     //  主数据没有排序
                     //  navSortByRank(v.data, 'rank');
                     //  相关文章数据也没有排序
