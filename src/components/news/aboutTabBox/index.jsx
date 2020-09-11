@@ -3,13 +3,14 @@ import style from './index.module.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetNewsCategory } from '@api/index';
-import { navSortByRank } from '@utils/utils';
+import { getSearchString, navSortByRank } from '@utils/utils';
 
 export const AboutTabBox = connect(
     mapStateToProps,
     mapDispatchToProps
 )(
     class extends React.Component {
+        //  新闻菜单的元素
         aboutTabBoxRef;
 
         constructor(props){
@@ -87,4 +88,5 @@ export const AboutTabBox = connect(
                 </div>
             );
         }
-    });
+    }
+);
