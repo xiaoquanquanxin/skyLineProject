@@ -7,7 +7,7 @@ import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetBannerByType } from '@api/index';
 import { commonRelativeWideFn } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
-import { AboutBanner } from '@components/bannerManage';
+import { BannerManage } from '@components/bannerManage';
 
 export default connect(
     mapStateToProps,
@@ -31,7 +31,7 @@ export default connect(
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
-                    <AboutBanner bannerType={6}/>
+                    <BannerManage bannerType={6}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

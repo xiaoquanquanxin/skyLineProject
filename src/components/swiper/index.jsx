@@ -7,10 +7,9 @@ import { FRAME_DELAY } from '@utils/constant';
 import { BannerSlider } from '@components/index/bannerSwiper';
 import { CustomerSlickItem } from '@components/index/assignedCustomer';
 import { AboutBannerSliderItem } from '@components/bannerManage/aboutBanner';
-
+import { ProjectBannerSliderItem } from '@components/bannerManage/projectBanner';
 import 'swiper/dist/css/swiper.css';
 import './index.less';
-import { ProjectBannerSliderItem } from '@components/bannerManage/projectBanner';
 
 export const CustomSwiper = connect(
     mapStateToProps,

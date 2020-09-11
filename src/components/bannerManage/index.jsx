@@ -4,7 +4,7 @@ import { navSortByRank } from '@utils/utils';
 import { CustomSwiper } from '@components/swiper';
 import style from './index.module.less';
 
-export class AboutBanner extends React.Component {
+export class BannerManage extends React.Component {
     //  区分使用使用的子组件
     //  key: bannerType , value : sliderItemType
     bannerSliderTypeMap = {
@@ -13,6 +13,7 @@ export class AboutBanner extends React.Component {
         5: 3,
         //  核心技术、天工开物、高级别辅助驾驶、自动驾驶、智能座舱、高精地图、智能物联网
         6: 4,
+        12: 4
     };
     //  功能类似，banner的Id
     //  key: bannerType , value : bannerId
@@ -23,6 +24,7 @@ export class AboutBanner extends React.Component {
         //
         //  核心技术、天工开物、高级别辅助驾驶、自动驾驶、智能座舱、高精地图、智能物联网
         6: 'projectBanner',
+        12: 'projectBanner',
     };
 
     /**
@@ -49,9 +51,9 @@ export class AboutBanner extends React.Component {
         requestGetBannerByType(bannerType)
             .then(v => {
                 navSortByRank(v.data, 'rank');
-//                const swiperData = v.data.concat(Object.assign({}, v.data[0]));
-//                swiperData[0].id = '122';
-                const swiperData = v.data;
+                const swiperData = v.data.concat(Object.assign({}, v.data[0]));
+                swiperData[0].id = '122';
+//                const swiperData = v.data;
                 //  console.log(swiperData);
                 this.setState(() => {
                     return {

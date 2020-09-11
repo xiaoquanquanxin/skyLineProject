@@ -7,7 +7,7 @@ import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { AboutTabBox } from '@components/news/aboutTabBox';
 import { NewsList } from '@components/news/newsList';
 import './index.less';
-import { AboutBanner } from '@components/bannerManage';
+import { BannerManage } from '@components/bannerManage';
 
 export default connect(
     mapStateToProps,
@@ -31,7 +31,7 @@ export default connect(
                     {/*头部*/}
                     <BasicHeader/>
                     {/*banner*/}
-                    <AboutBanner bannerType={4}/>
+                    <BannerManage bannerType={4}/>
                     {/*菜单*/}
                     <AboutTabBox/>
                     {/*新闻内容*/}
