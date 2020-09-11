@@ -7,6 +7,7 @@ import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetBannerByType } from '@api/index';
 import { commonRelativeWideFn } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
+import { AboutBanner } from '@components/bannerManage';
 
 export default connect(
     mapStateToProps,
@@ -18,11 +19,6 @@ export default connect(
         }
 
         componentDidMount(){
-            //  发请求，取页面数据
-            requestGetBannerByType(6)
-                .then(v => {
-                    navSortByRank(v.data, 'rank');
-                });
             requestGetBannerByType(7)
                 .then(v => {
                     navSortByRank(v.data, 'rank');
@@ -35,6 +31,7 @@ export default connect(
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
+                    <AboutBanner bannerType={6}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

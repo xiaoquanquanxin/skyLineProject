@@ -10,6 +10,7 @@ import { AboutBannerSliderItem } from '@components/bannerManage/aboutBanner';
 
 import 'swiper/dist/css/swiper.css';
 import './index.less';
+import { ProjectBannerSliderItem } from '@components/bannerManage/projectBanner';
 
 export const CustomSwiper = connect(
     mapStateToProps,
@@ -152,8 +153,11 @@ export const CustomSwiper = connect(
             case 3: //  新闻中心、关于我们
                 SliderItem = AboutBannerSliderItem;
                 break;
+            case 4: //  核心技术、天工开物、高级别辅助驾驶、自动驾驶、智能座舱、高精地图、智能物联网
+                SliderItem = ProjectBannerSliderItem;
+                break;
             default:
-                throw new Error('错误的类型');
+                throw new Error('错误的类型，没有这种类sliderItem');
         }
         return (
             <div className={`swiper-container`} ref={this.swiperRef}
