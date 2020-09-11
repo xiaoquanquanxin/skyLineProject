@@ -9,6 +9,7 @@
 	max-height: calc(100vh - 1.4rem);
 	overflow-y: auto;
 	overflow-x: hidden;
+	font-weight: 500;
 	//	展开
 	&.menuListShow {
 		display: block;
@@ -35,6 +36,8 @@
 		//	倒数第二
 		&:nth-last-child(2) {
 			float: left;
+			overflow: hidden;
+			border: none;
 
 			a {
 				color: var(--color06f);
@@ -47,9 +50,10 @@
 			position: relative;
 			//	en
 			a {
-				display: inline-block;
+				display: block;
 				padding-left: 0;
 				margin-left: 0;
+				line-height: 1.18rem;
 			}
 
 			//	斜线
@@ -57,7 +61,7 @@
 				content: "/";
 				display: block;
 				position: absolute;
-				top: .42rem;
+				top: -.1rem;
 				height: 0;
 				left: 1.36rem;
 				font-size: .24rem;
