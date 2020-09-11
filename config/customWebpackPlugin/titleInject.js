@@ -38,8 +38,8 @@ const titleInjectFn = (outputName, html) => {
             break;
 
         case 'martix.html':
-            //  产品中心-MATRIX
-            titlePlaceholder = '产品中心-MATRIX';
+            //  产品中心-MARTIX
+            titlePlaceholder = '产品中心-MARTIX';
             break;
         case 'navinet.html':
             //  解决方案-智能驾驶-高精地图
