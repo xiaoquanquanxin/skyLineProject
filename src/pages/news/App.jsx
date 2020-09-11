@@ -4,7 +4,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetBannerByType, requestGetNewsCategory, requestGetNewsList } from '@api/index';
-import { commonRelativeWideFn } from '@utils/common';
+import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import { NewsBanner } from '@components/news/newsBanner';
 import { AboutTabBox } from '@components/news/aboutTabBox';
@@ -37,6 +37,8 @@ export default connect(
                 });
             //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
+            //  页面滚动监听
+            getBrowserInfo(this.props.setBrowserScrollInfoFn);
         }
 
         render(){
