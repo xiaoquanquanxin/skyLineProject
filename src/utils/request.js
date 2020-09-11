@@ -35,7 +35,7 @@ export function request(options){
         params: options.params,
     })
         .catch(v => {
-            return Promise.reject();
+            return Promise.reject(v);
         });
 }
 
