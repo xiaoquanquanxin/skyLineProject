@@ -1,7 +1,6 @@
 //	链接list
 .linkList {
 	width: 664px;
-	margin-bottom: 1em;
 	//	链接项
 	.linkItem {
 		width: 25%;
@@ -21,25 +20,25 @@
 			}
 		}
 
+
 		//	链接
-		.linkWrap {
-			color: var(--color999);
+		.link {
+			transition: color .3s;
 
-			.link {
-				color: var(--color999);
-				cursor: pointer;
-				transition: color .3s;
-				margin-bottom: 6px;
-
-				&:hover {
-					color: var(--white);
-				}
+			&:hover {
+				color: var(--white);
 			}
+		}
 
-			.noLinking {
-				margin-bottom: 6px;
-				white-space: nowrap;
-			}
+		//	无链接
+		.noLinking {
+
+		}
+
+		.link, .noLinking {
+			margin: 6px 0;
+			white-space: nowrap;
+			color: rgba(255, 255, 255, 0.5);
 		}
 	}
 
