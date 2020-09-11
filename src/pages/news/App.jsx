@@ -7,7 +7,7 @@ import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { AboutTabBox } from '@components/news/aboutTabBox';
 import { NewsList } from '@components/news/newsList';
 import './index.less';
-import { AboutBanner } from '@components/bannerManage/aboutBanner';
+import { AboutBanner } from '@components/bannerManage';
 
 export default connect(
     mapStateToProps,

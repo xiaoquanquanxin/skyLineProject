@@ -7,7 +7,7 @@ import { requestGetAboutUs } from '@api/index';
 import { commonRelativeWideFn } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import { About } from '@components/about';
-import { AboutBanner } from '@components/bannerManage/aboutBanner';
+import { AboutBanner } from '@components/bannerManage';
 import './index.module.less';
 
 export default connect(

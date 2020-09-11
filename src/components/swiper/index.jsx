@@ -47,7 +47,7 @@ export const CustomSwiper = connect(
         if (swiperData === prevProps.swiperData) {
             return;
         }
-        console.log(swiperData.length);
+        console.log(`swiperData的数量`, swiperData.length);
         //  数据量必须>=2才能有swiper，否则没有swiper
         if (swiperData.length < 2) {
             return;
