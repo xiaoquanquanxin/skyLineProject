@@ -14,7 +14,7 @@ export const Crumb = connect(
         let data = null;
         if (mainData && newsCategoryDataMap) {
             //  这是新闻菜单数据
-            data = newsCategoryDataMap[mainData.id];
+            data = newsCategoryDataMap[mainData.category_id];
         }
 
         //  console.log(data);
