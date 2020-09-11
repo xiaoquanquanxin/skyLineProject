@@ -34,13 +34,14 @@ const scrollController = {
 window.addEventListener('scroll', () => {
     if (scrollController.fallback) {
         scrollController.fallback = false;
-        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const info = document.documentElement || document.body;
+        const { scrollTop, scrollLeft } = info;
         for (const value of scrollController.scrollQueue) {
             if (typeof value !== 'function') {
                 throw new Error('错误的函数调用。resizeController.resizeQueue里必须是函数');
             }
             //  返回滚动的位置
-            value(scrollTop);
+            value({ scrollLeft, scrollTop });
         }
         window.requestAnimationFrame(() => {
             scrollController.fallback = true;
