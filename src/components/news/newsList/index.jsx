@@ -94,6 +94,12 @@ export const NewsList = connect(
                             };
                         }
                     );
+                })
+                .catch(err => {
+                    if (Number(activeIndex) !== 0) {
+                        //  设置给store redux，因为这个请求出错了，所以要重置为零
+                        this.props.setTabBoxActiveIndex(0);
+                    }
                 });
         }
 
@@ -122,6 +128,8 @@ export const NewsList = connect(
                     <MainListItem key={item.id} data={item}/>
                 );
             })) || [];
+            //const {newsCategoryDataMap } = this.props;
+            //console.log(newsCategoryDataMap);
             return (
                 <div className={style.listRelative}>
                     <div className={style.listInner}>
