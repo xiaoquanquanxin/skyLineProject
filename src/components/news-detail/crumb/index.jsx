@@ -23,7 +23,7 @@ export const Crumb = connect(
                 <a href={`./news.html`} className={style.link}>新闻中心</a>
                 <span className={style.arrows}>&gt;</span>
                 {mainData &&
-                <a href={`./news.html?id=${mainData.id}`} className={style.subLink}>{data && data.name}</a>}
+                <a href={`./news.html?id=${mainData.category_id}`} className={style.subLink}>{data && data.name}</a>}
                 <span className={style.arrows}>&gt;</span>
                 <span className={style.arrows} style={{ marginLeft: 0 }}>{mainData && mainData.title}</span>
             </div>
