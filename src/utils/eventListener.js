@@ -34,8 +34,8 @@ const scrollController = {
 window.addEventListener('scroll', () => {
     if (scrollController.fallback) {
         scrollController.fallback = false;
-        const info = document.documentElement || document.body;
-        const { scrollTop, scrollLeft } = info;
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
         for (const value of scrollController.scrollQueue) {
             if (typeof value !== 'function') {
                 throw new Error('错误的函数调用。resizeController.resizeQueue里必须是函数');
