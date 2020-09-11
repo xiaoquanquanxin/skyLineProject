@@ -7,6 +7,7 @@ import { requestGetBannerByType, requestGetIotPartner } from '@api/index';
 import { commonRelativeWideFn } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
+import { BannerManage } from '@components/bannerManage';
 
 export default connect(
     mapStateToProps,
@@ -18,11 +19,6 @@ export default connect(
         }
 
         componentDidMount(){
-            //  发请求，取页面数据
-            requestGetBannerByType(18)
-                .then(v => {
-                    navSortByRank(v.data, 'rank');
-                });
             requestGetIotPartner()
                 .then(v => {
                     navSortByRank(v.data, 'rank');
@@ -35,6 +31,7 @@ export default connect(
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
+                    <BannerManage bannerType={18}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

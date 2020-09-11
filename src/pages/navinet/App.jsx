@@ -3,10 +3,11 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { requestGetBannerByType, requestGetMapClient } from '@api/index';
+import { requestGetMapClient } from '@api/index';
 import { commonRelativeWideFn } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
+import { BannerManage } from '@components/bannerManage';
 
 export default connect(
     mapStateToProps,
@@ -18,11 +19,6 @@ export default connect(
         }
 
         componentDidMount(){
-            //  发请求，取页面数据
-            requestGetBannerByType(17)
-                .then(v => {
-                    navSortByRank(v.data, 'rank');
-                });
             requestGetMapClient()
                 .then(v => {
                     navSortByRank(v.data, 'rank');
@@ -35,6 +31,7 @@ export default connect(
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
+                    <BannerManage bannerType={17}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

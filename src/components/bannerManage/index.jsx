@@ -4,6 +4,10 @@ import { navSortByRank } from '@utils/utils';
 import { CustomSwiper } from '@components/swiper';
 import style from './index.module.less';
 
+//  bannerId字符串
+const aboutBanner = 'aboutBanner';
+const projectBanner = 'projectBanner';
+
 export class BannerManage extends React.Component {
     //  区分使用使用的子组件
     //  key: bannerType , value : sliderItemType
@@ -13,18 +17,28 @@ export class BannerManage extends React.Component {
         5: 3,
         //  核心技术、天工开物、高级别辅助驾驶、自动驾驶、智能座舱、高精地图、智能物联网
         6: 4,
-        12: 4
+        12: 4,
+        13: 4,
+        14: 4,
+        16: 4,
+        17: 4,
+        18: 4,
     };
     //  功能类似，banner的Id
     //  key: bannerType , value : bannerId
     bannerIdMap = {
         //  关于我们、新闻中心
-        4: 'aboutBanner',
-        5: 'aboutBanner',
+        4: aboutBanner,
+        5: aboutBanner,
         //
         //  核心技术、天工开物、高级别辅助驾驶、自动驾驶、智能座舱、高精地图、智能物联网
-        6: 'projectBanner',
-        12: 'projectBanner',
+        6: projectBanner,
+        12: projectBanner,
+        13: projectBanner,
+        14: projectBanner,
+        16: projectBanner,
+        17: projectBanner,
+        18: projectBanner,
     };
 
     /**

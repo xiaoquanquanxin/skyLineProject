@@ -18,7 +18,7 @@ export const ProjectBannerSliderItem = connect(
         if (!isValidHTTPString(data.video) && !isValidResourceString(data.video)) {
             data.video = null;
         }
-        console.log(data);
+        //  console.log(data);
         return (
             <div className={`${sliderItemStyle.bannerSlider} ${style.bannerSlider}`}>
                 {

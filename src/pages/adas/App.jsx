@@ -7,6 +7,7 @@ import { requestGetBannerByType, requestGetDriverClient } from '@api/index';
 import { commonRelativeWideFn } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
+import { BannerManage } from '@components/bannerManage';
 
 export default connect(
     mapStateToProps,
@@ -18,11 +19,6 @@ export default connect(
         }
 
         componentDidMount(){
-            //  发请求，取页面数据
-            requestGetBannerByType(13)
-                .then(v => {
-                    navSortByRank(v.data, 'rank');
-                });
             requestGetBannerByType(20)
                 .then(v => {
                     navSortByRank(v.data, 'rank');
@@ -39,6 +35,7 @@ export default connect(
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
+                    <BannerManage bannerType={13}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

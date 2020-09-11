@@ -52,7 +52,7 @@ export const CustomSwiper = connect(
         if (swiperData.length < 2) {
             return;
         }
-        //  console.log('swiper的update执行次数');
+          console.log('swiper的update执行次数');
         this.mySwiper = new Swiper(this.swiperRef.current, {
             autoplay: {
                 delay: 100000000,
