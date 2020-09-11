@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import style from './index.module.less';
-import { scrollListener } from '@utils/eventListener';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetNewsCategory } from '@api/index';
@@ -11,26 +10,16 @@ export const AboutTabBox = connect(
     mapDispatchToProps
 )(
     class extends React.Component {
+        aboutTabBoxRef;
+
         constructor(props){
             super(props);
-            this.state = {
-                //  是否固定布局
-                isFixed: false,
-            };
+            this.aboutTabBoxRef = createRef();
         }
 
         //  初始化
         componentDidMount(){
             this.getNewsCategory();
-            this.getFixed(document.documentElement.scrollTop || document.body.scrollTop);
-            //  页面滚动监听
-            scrollListener((v) => {
-                this.setState(() => {
-                    return {
-                        isFixed: this.getFixed(v),
-                    };
-                });
-            });
         }
 
         //  拿菜单
@@ -40,14 +29,6 @@ export const AboutTabBox = connect(
                     navSortByRank(v.data, 'rank');
                     this.props.setNewsCategoryData(v.data);
                 });
-        }
-
-        getFixed(topValue){
-            const el = document.querySelector('#aboutTabBox');
-            if (!el) {
-                return false;
-            }
-            return (topValue >= el.offsetTop);
         }
 
         //  设置激活
@@ -63,9 +44,6 @@ export const AboutTabBox = connect(
 
         render(){
             const {
-                isFixed,
-            } = this.state;
-            const {
                 //  redux存的关于我们的信息
                 REDUCER_ABOUT_TAB_BOX,
                 //  浏览器信息
@@ -76,6 +54,12 @@ export const AboutTabBox = connect(
             if (!newsCategoryData || newsCategoryData.length === 0) {
                 return '';
             }
+            //  页面滚动高度
+            const { scrollTop } = REDUCER_BROWSER_INFO;
+            //  页面定位元素
+            const aboutTabBoxRef = this.aboutTabBoxRef.current;
+            //  是否固定
+            const isFixed = (aboutTabBoxRef && aboutTabBoxRef.offsetTop) < scrollTop;
             const list = newsCategoryData.map((item) => {
                 return <span key={item.id}
                              className={`${REDUCER_ABOUT_TAB_BOX.activeIndex === item.id ? style.active : ''}`}
@@ -83,7 +67,7 @@ export const AboutTabBox = connect(
                 >{item.name}</span>;
             });
             return (
-                <div className={style.aboutTabBox} id='aboutTabBox'
+                <div className={style.aboutTabBox} ref={this.aboutTabBoxRef}
                     //  如果数据大于4个，并且是移动端
                      style={(list.length > 4 && !REDUCER_BROWSER_INFO.isRelativeWide) ? {
                          height: '.8rem',
