@@ -6,11 +6,14 @@ import style from './index.module.less';
 export const RelativeArticle = ({
     relateList
 }) => {
-    const relativeArticleList = (relateList && relateList.length && relateList.map(item => {
+    if (!relateList || !relateList.length) {
+        return '';
+    }
+    const relativeArticleList = relateList.map(item => {
         return (
             <RelativeArticleItem key={item.id} data={item}/>
         );
-    })) || [];
+    });
     //  console.log(data);
     return (
         <dl className={style.relativeListBox}>
