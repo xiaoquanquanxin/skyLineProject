@@ -111,7 +111,7 @@ export const LinkList = connect(
             );
         });
         return (
-            <ul className={`${style.linkList} ${layout.clearfix} ${isRelativeWide ? layout.left : ''}`}>
+            <ul className={`${style.linkList} ${layout.clearfix} ${isRelativeWide ? layout.right : ''}`}>
                 {list}
             </ul>
         );
