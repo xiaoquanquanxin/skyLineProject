@@ -33,7 +33,7 @@ export const AboutTabBox = connect(
         }
 
         //  设置激活
-        setTabBoxActiveIndex(index){
+        clickTabBoxFn(index){
             const { setTabBoxActiveIndex, REDUCER_ABOUT_TAB_BOX } = this.props;
             //  重复点击
             if (REDUCER_ABOUT_TAB_BOX.activeIndex === index) {
@@ -64,7 +64,7 @@ export const AboutTabBox = connect(
             const list = newsCategoryData.map((item) => {
                 return <span key={item.id}
                              className={`${REDUCER_ABOUT_TAB_BOX.activeIndex === item.id ? style.active : ''}`}
-                             onClick={() => {this.setTabBoxActiveIndex(item.id);}}
+                             onClick={() => {this.clickTabBoxFn(item.id);}}
                 >{item.name}</span>;
             });
             return (
@@ -80,7 +80,7 @@ export const AboutTabBox = connect(
                                  width: `${1.36 * (list.length + 1)}rem`,
                              }}>
                             <span className={`${REDUCER_ABOUT_TAB_BOX.activeIndex === 0 ? style.active : ''}`}
-                                  onClick={() => {this.setTabBoxActiveIndex(0);}}
+                                  onClick={() => {this.clickTabBoxFn(0);}}
                             >全部新闻</span>
                             {list}
                         </div>
