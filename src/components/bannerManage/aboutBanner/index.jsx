@@ -8,8 +8,11 @@ import './banner.less';
 export class AboutBanner extends React.Component {
     constructor(props){
         super(props);
+        if (!props.bannerType) {
+            throw new Error(`缺少用于发请求的bannerType${props.bannerType}`);
+        }
         this.state = {
-            swiperData: null
+            swiperData: null,
         };
     }
 
@@ -22,8 +25,7 @@ export class AboutBanner extends React.Component {
                 //  const swiperData = v.data.concat(Object.assign({}, v.data[0]));
                 //  swiperData[0].id = '122';
                 const swiperData = v.data;
-                console.log(swiperData);
-
+                //  console.log(swiperData);
                 this.setState(() => {
                     return {
                         swiperData,
@@ -40,7 +42,7 @@ export class AboutBanner extends React.Component {
                     <CustomSwiper
                         swiperData={swiperData}
                         sliderItemType={3}
-                        basicDelay={1}
+                        basicDelay={5}
                     />
                 </div>
             </div>
