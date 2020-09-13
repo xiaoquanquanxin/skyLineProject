@@ -2,30 +2,40 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps } from '@store/reduxMap';
 import style from './index.module.less';
-
+import smoothscroll from 'smoothscroll-polyfill';
+// or if linting/typescript complains
+//  import * as smoothscroll from 'smoothscroll-polyfill';
+console.log(smoothscroll);
+// kick off the polyfill!
+smoothscroll.polyfill();
 export const AboutTabBox = connect(
-    mapStateToProps,
     mapStateToProps,
 )(class extends React.Component {
     //  锚点列表
     anchorList;
     //  锚点map
     anchorMap;
+    //  锚点在锚点列表的id
+    hashIndex;
 
     constructor(props){
         super(props);
         this.anchorList = [{
             anchor: '#tab1',
             name: '公司简介',
+            element: null,
         }, {
             anchor: '#tab2',
             name: '发展历程',
+            element: null,
         }, {
             anchor: '#tab3',
             name: '投资伙伴',
+            element: null,
         }, {
             anchor: '#tab4',
             name: '联系我们',
+            element: null,
         }];
         this.anchorMap = {
             '#tab1': 0,
@@ -33,43 +43,71 @@ export const AboutTabBox = connect(
             '#tab3': 2,
             '#tab4': 3,
         };
+        this.hashIndex = this.anchorMap[window.location.hash] || 0;
         this.state = {
-            activeIndex: this.anchorMap[window.location.hash] || 0,
+            activeIndex: this.hashIndex,
         };
+        //  console.log(this.hashIndex);
     }
 
     componentDidMount(){
+        this.anchorList.forEach(item => {
+            item.element = document.querySelector(item.anchor);
+        });
         //  模拟点击
-        this.anchorClick(this.anchorList[this.state.activeIndex].anchor);
+        window.requestAnimationFrame(() => {
+            //  fixme   safari
+            //  ⚠️⚠️⚠️⚠️
+            this.anchorClick(this.anchorList[this.hashIndex].element, 'smooth');
+        });
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot){
+        return;
+        const { scrollTop: prevScrollTop } = prevProps.REDUCER_BROWSER_INFO;
+        const { scrollTop: currentScrollTop } = this.props.REDUCER_BROWSER_INFO;
+        //  仅考虑定位不同的情况
+        if (prevScrollTop === currentScrollTop) {
+            return;
+        }
+        //  倒序寻找最高的那一个被激活的锚点元素，然后给tabBox上色
+        for (let i = this.anchorList.length - 1; i >= 0; i--) {
+            const value = this.anchorList[i];
+            if (value.element.offsetTop <= currentScrollTop) {
+                //  console.log(i, value.anchor);
+                this.setState(() => {
+                    return {
+                        activeIndex: i,
+                    };
+                });
+                break;
+            }
+        }
     }
 
     //  点击锚点
-    anchorClick(el){
-        const element = document.querySelector(el);
+    /***
+     * @param {HTMLElement} element
+     * @param {string} behavior {instant,smooth }
+     * */
+    anchorClick(element, behavior){
         if (!element) {
-            throw new Error(`元素${el}未定义`);
+            throw new Error(`元素${element}未定义`);
         }
-        const activeIndex = this.anchorMap[el];
-        this.setState(() => {
-            return {
-                activeIndex,
-            };
-        }, () => {
-            window.scrollTo({
-                top: element.offsetTop,
-                behavior: 'smooth'
-            });
+        console.log(element, element.offsetTop);
+        window.document.documentElement.scrollTo({
+            top: element.offsetTop,
+            behavior,
         });
     }
 
     render(){
         const { activeIndex } = this.state;
-        const {} = this.props
         const linkList = this.anchorList.map((item, index) => {
             return (
                 <span className={`${style.link} ${index === activeIndex ? style.active : ''}`}
                       key={index}
-                      onClick={() => {this.anchorClick(item.anchor);}}
+                      onClick={() => {this.anchorClick(item.element, 'smooth');}}
                 >{item.name}</span>
             );
         });

@@ -9,7 +9,6 @@ import { navSortByRank } from '@utils/utils';
 import { BannerManage } from '@components/bannerManage';
 import './index.module.less';
 import { ScrollFixed } from '@components/scrollFixed';
-import { NewsTabBox } from '@components/news/newsTabBox';
 import { AboutTabBox } from '@components/about/aboutTabBox';
 
 export default connect(
@@ -43,13 +42,13 @@ export default connect(
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={AboutTabBox}/>
                     <h3 id="tab1">aaa</h3>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/><br/>我是 a<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <h3 id="tab2">bbb</h3>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/><br/>我是 b<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <h3 id="tab3">cccc</h3>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/><br/>我是 c<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     <h3 id="tab4">ddd</h3>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/><br/>我是 d<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
