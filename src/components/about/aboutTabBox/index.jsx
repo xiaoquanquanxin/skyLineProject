@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps } from '@store/reduxMap';
 import style from './index.module.less';
-import smoothscroll from 'smoothscroll-polyfill';
-// or if linting/typescript complains
-//  import * as smoothscroll from 'smoothscroll-polyfill';
-console.log(smoothscroll);
-// kick off the polyfill!
-smoothscroll.polyfill();
+import { getUserAgentType } from '@utils/utils';
+
+//  如果是safari
+if (getUserAgentType.isSafari) {
+    require('smoothscroll-polyfill').polyfill();
+}
 export const AboutTabBox = connect(
     mapStateToProps,
 )(class extends React.Component {
@@ -58,12 +58,13 @@ export const AboutTabBox = connect(
         window.requestAnimationFrame(() => {
             //  fixme   safari
             //  ⚠️⚠️⚠️⚠️
-            this.anchorClick(this.anchorList[this.hashIndex].element, 'smooth');
+            setTimeout(() => {
+                this.anchorClick(this.anchorList[this.hashIndex].element, 'smooth');
+            }, 200);
         });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
-        return;
         const { scrollTop: prevScrollTop } = prevProps.REDUCER_BROWSER_INFO;
         const { scrollTop: currentScrollTop } = this.props.REDUCER_BROWSER_INFO;
         //  仅考虑定位不同的情况
@@ -80,7 +81,7 @@ export const AboutTabBox = connect(
                         activeIndex: i,
                     };
                 });
-                break;
+                return;
             }
         }
     }
@@ -94,7 +95,6 @@ export const AboutTabBox = connect(
         if (!element) {
             throw new Error(`元素${element}未定义`);
         }
-        console.log(element, element.offsetTop);
         window.document.documentElement.scrollTo({
             top: element.offsetTop,
             behavior,
