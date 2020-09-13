@@ -35,6 +35,7 @@ export default connect(
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
+                    {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={AiotBarBox}/>
                     <BannerManage bannerType={18}/>
                     <p>fjiewojfahfahf</p>

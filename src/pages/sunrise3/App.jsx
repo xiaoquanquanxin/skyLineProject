@@ -7,6 +7,9 @@ import { requestGetBannerByType } from '@api/index';
 import { commonRelativeWideFn } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
+import { ScrollFixed } from '@components/scrollFixed';
+import { AiotBarBox } from '@components/aiot';
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps
@@ -30,6 +33,8 @@ export default connect(
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
+                    {/*合作咨询定位组件*/}
+                    <ScrollFixed RenderElement={AiotBarBox}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

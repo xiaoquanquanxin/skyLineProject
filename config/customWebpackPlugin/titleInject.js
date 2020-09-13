@@ -37,9 +37,9 @@ const titleInjectFn = (outputName, html) => {
             titlePlaceholder = '征程';
             break;
 
-        case 'martix.html':
-            //  产品中心-MARTIX
-            titlePlaceholder = '产品中心-MARTIX';
+        case 'matrix.html':
+            //  产品中心-MATRIX
+            titlePlaceholder = '产品中心-MATRIX';
             break;
         case 'navinet.html':
             //  解决方案-智能驾驶-高精地图
