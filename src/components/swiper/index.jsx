@@ -47,12 +47,12 @@ export const CustomSwiper = connect(
         if (swiperData === prevProps.swiperData) {
             return;
         }
-        console.log(`swiperData的数量`, swiperData.length);
+        //  console.log(`swiperData的数量`, swiperData.length);
         //  数据量必须>=2才能有swiper，否则没有swiper
         if (swiperData.length < 2) {
             return;
         }
-          console.log('swiper的update执行次数');
+          //    console.log('swiper的update执行次数');
         this.mySwiper = new Swiper(this.swiperRef.current, {
             autoplay: {
                 delay: 100000000,

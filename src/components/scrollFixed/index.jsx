@@ -7,31 +7,46 @@ export const ScrollFixed = connect(
     mapStateToProps,
 )(
     class extends React.Component {
-        scrollFixedRef;
+        wrapRef;
+        locationRef;
 
         constructor(props){
             super(props);
-            this.scrollFixedRef = createRef();
+            this.wrapRef = createRef();
+            this.locationRef = createRef();
+        }
+
+        componentDidMount(){
+
         }
 
         render(){
             const { RenderElement, REDUCER_BROWSER_INFO } = this.props;
-            const { current } = this.scrollFixedRef;
-            const styleSheet = {};
+            const { current: wrapRef } = this.wrapRef;
+            const { current: locationRef } = this.locationRef;
+            const wrapRefStyleSheet = {};
+            const locationRefStyleSheet = {};
             let className = null;
             //  如果有元素了
-            if (current) {
-                styleSheet.height = `${current.offsetHeight}px`;
+            if (wrapRef) {
+                const { scrollTop, scrollLeft } = REDUCER_BROWSER_INFO;
                 //  如果滚动的距离大于元素本身的距离top的距离
-                if (REDUCER_BROWSER_INFO.scrollTop > current.offsetTop) {
+                //  固定定位
+                if (scrollTop > wrapRef.offsetTop) {
                     className = style.scrollFixed;
+                    wrapRefStyleSheet.left = `${-scrollLeft}px`;
+                    locationRefStyleSheet.height = `${locationRef}px`;
                 } else {
+                    //  常规定位
                     className = style.scrollRelative;
+                    wrapRefStyleSheet.top = 0;
+                    locationRefStyleSheet.height = 'auto';
                 }
             }
+
             return (
-                <div className={style.wrap} style={styleSheet}>
-                    <div className={className} ref={this.scrollFixedRef}>
+                <div className={style.wrap} ref={this.wrapRef} style={locationRefStyleSheet}>
+                    <div className={className} ref={this.locationRef} style={wrapRefStyleSheet}>
                         <RenderElement/>
                     </div>
                 </div>
