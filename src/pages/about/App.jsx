@@ -4,11 +4,13 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetAboutUs } from '@api/index';
-import { commonRelativeWideFn } from '@utils/utils';
+import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
-import { About } from '@components/about';
 import { BannerManage } from '@components/bannerManage';
 import './index.module.less';
+import { ScrollFixed } from '@components/scrollFixed';
+import { NewsTabBox } from '@components/news/newsTabBox';
+import { AboutTabBox } from '@components/about/aboutTabBox';
 
 export default connect(
     mapStateToProps,
@@ -25,7 +27,10 @@ export default connect(
                 .then(v => {
                     navSortByRank(v.invest, 'rank');
                 });
+            //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
+            //  页面滚动监听
+            getBrowserInfo(this.props.setBrowserScrollInfoFn);
         }
 
         render(){
@@ -35,7 +40,16 @@ export default connect(
                     <BasicHeader/>
                     {/*banner轮播*/}
                     <BannerManage bannerType={5}/>
-                    <About/>
+                    {/*合作咨询定位组件*/}
+                    <ScrollFixed RenderElement={AboutTabBox}/>
+                    <h3 id="tab1">aaa</h3>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <h3 id="tab2">bbb</h3>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <h3 id="tab3">cccc</h3>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <h3 id="tab4">ddd</h3>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

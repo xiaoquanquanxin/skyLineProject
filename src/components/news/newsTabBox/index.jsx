@@ -5,7 +5,7 @@ import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetNewsCategory } from '@api/index';
 import { getSearchString, navSortByRank } from '@utils/utils';
 
-export const AboutTabBox = connect(
+export const NewsTabBox = connect(
     mapStateToProps,
     mapDispatchToProps
 )(
@@ -62,7 +62,7 @@ export const AboutTabBox = connect(
                 >{item.name}</span>;
             });
             return (
-                <div className={style.aboutTabBox} ref={this.aboutTabBoxRef}
+                <div className={style.newsTabBox} ref={this.aboutTabBoxRef}
                     //  如果数据大于4个，并且是移动端
                      style={(list.length > 4 && !REDUCER_BROWSER_INFO.isRelativeWide) ? {
                          height: '.8rem',

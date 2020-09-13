@@ -4,7 +4,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
-import { AboutTabBox } from '@components/news/aboutTabBox';
+import { NewsTabBox } from '@components/news/newsTabBox';
 import { NewsList } from '@components/news/newsList';
 import './index.less';
 import { BannerManage } from '@components/bannerManage';
@@ -33,7 +33,7 @@ export default connect(
                     <BannerManage bannerType={4}/>
                     {/*菜单*/}
                     {/*合作咨询定位组件*/}
-                    <ScrollFixed RenderElement={AboutTabBox}/>
+                    <ScrollFixed RenderElement={NewsTabBox}/>
                     {/*新闻内容*/}
                     <NewsList/>
                     {/*<br/>*/}
