@@ -7,9 +7,9 @@ export const Crumb = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(
-    ({ REDUCER_ABOUT_TAB_BOX, mainData }) => {
+    ({ REDUCER_NEWS_TAB_BOX, mainData }) => {
         //  redux里的数据，一个对于新闻菜单的map
-        const { newsCategoryDataMap } = REDUCER_ABOUT_TAB_BOX;
+        const { newsCategoryDataMap } = REDUCER_NEWS_TAB_BOX;
 
         let data = null;
         if (mainData && newsCategoryDataMap) {

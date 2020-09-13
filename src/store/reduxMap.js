@@ -7,11 +7,11 @@ export const mapStateToProps = ({
     //  浏览器信息
     REDUCER_BROWSER_INFO,
     //  新闻页面
-    REDUCER_ABOUT_TAB_BOX,
+    REDUCER_NEWS_TAB_BOX,
 }) => {
     return {
         REDUCER_BROWSER_INFO,
-        REDUCER_ABOUT_TAB_BOX,
+        REDUCER_NEWS_TAB_BOX,
     };
 };
 

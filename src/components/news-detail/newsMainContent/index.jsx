@@ -9,9 +9,9 @@ export const NewsMainContent = connect(
     mapDispatchToProps
 )(({
     mainData,
-    REDUCER_ABOUT_TAB_BOX
+    REDUCER_NEWS_TAB_BOX
 }) => {
-    const { newsCategoryDataMap } = REDUCER_ABOUT_TAB_BOX;
+    const { newsCategoryDataMap } = REDUCER_NEWS_TAB_BOX;
     let data = null;
     if (mainData && newsCategoryDataMap) {
         //  这是新闻菜单数据

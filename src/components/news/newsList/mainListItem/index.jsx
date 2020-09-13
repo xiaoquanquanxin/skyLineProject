@@ -9,9 +9,9 @@ export const MainListItem = connect(
     mapDispatchToProps
 )(({
     data,
-    REDUCER_ABOUT_TAB_BOX,
+    REDUCER_NEWS_TAB_BOX,
 }) => {
-    const { newsCategoryDataMap } = REDUCER_ABOUT_TAB_BOX;
+    const { newsCategoryDataMap } = REDUCER_NEWS_TAB_BOX;
     if (newsCategoryDataMap === null) {
         return '';
     }

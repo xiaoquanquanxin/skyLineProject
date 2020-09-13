@@ -64,6 +64,7 @@ export const AboutTabBox = connect(
 
     render(){
         const { activeIndex } = this.state;
+        const {} = this.props
         const linkList = this.anchorList.map((item, index) => {
             return (
                 <span className={`${style.link} ${index === activeIndex ? style.active : ''}`}

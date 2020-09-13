@@ -33,9 +33,9 @@ export const NewsList = connect(
 
         //  仅关心是否分页
         componentDidUpdate(prevProps, prevState, snapshot){
-            //  console.log(prevProps.REDUCER_ABOUT_TAB_BOX, this.props.REDUCER_ABOUT_TAB_BOX);
-            const { activeIndex: prevActiveIndex } = prevProps.REDUCER_ABOUT_TAB_BOX;
-            const { activeIndex } = this.props.REDUCER_ABOUT_TAB_BOX;
+            //  console.log(prevProps.REDUCER_NEWS_TAB_BOX, this.props.REDUCER_NEWS_TAB_BOX);
+            const { activeIndex: prevActiveIndex } = prevProps.REDUCER_NEWS_TAB_BOX;
+            const { activeIndex } = this.props.REDUCER_NEWS_TAB_BOX;
             //  console.log(prevActiveIndex, activeIndex);
 
             //  只有这个activeIndex变化了，才重置零
@@ -63,7 +63,7 @@ export const NewsList = connect(
 
         //  请求
         getNewsList(){
-            const { activeIndex } = this.props.REDUCER_ABOUT_TAB_BOX;
+            const { activeIndex } = this.props.REDUCER_NEWS_TAB_BOX;
             //  console.log('list请求数据', activeIndex,this.state.page);
             const { page, dataList, relateList, canClick } = this.state;
             //  console.log(canClick);
