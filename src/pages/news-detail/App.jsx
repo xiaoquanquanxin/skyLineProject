@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { commonRelativeWideFn } from '@utils/utils';
+import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import './index.less';
 import { NewsDetail } from '@components/news-detail';
 
@@ -17,7 +17,10 @@ export default connect(
         }
 
         componentDidMount(){
+            //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
+            //  页面滚动监听
+            getBrowserInfo(this.props.setBrowserScrollInfoFn);
         }
 
         render(){

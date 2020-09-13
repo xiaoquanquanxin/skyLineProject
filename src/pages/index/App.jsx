@@ -54,7 +54,8 @@ export default connect(
                         customList,
                     }));
                 });
-            commonRelativeWideFn(this.props.setRelativeWideFn);
+             //  页面宽度监听
+commonRelativeWideFn(this.props.setRelativeWideFn);
             //  页面滚动监听
             getBrowserInfo(this.props.setBrowserScrollInfoFn);
         }

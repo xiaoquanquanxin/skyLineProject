@@ -5,7 +5,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetBannerByType } from '@api/index';
-import { commonRelativeWideFn } from '@utils/utils';
+import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import { BannerManage } from '@components/bannerManage';
 
@@ -24,6 +24,8 @@ export default connect(
                     navSortByRank(v.data, 'rank');
                 });
             commonRelativeWideFn(this.props.setRelativeWideFn);
+            //  页面滚动监听
+            getBrowserInfo(this.props.setBrowserScrollInfoFn);
         }
 
         render(){

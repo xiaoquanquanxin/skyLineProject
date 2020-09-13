@@ -8,6 +8,8 @@ import { AboutTabBox } from '@components/news/aboutTabBox';
 import { NewsList } from '@components/news/newsList';
 import './index.less';
 import { BannerManage } from '@components/bannerManage';
+import { ScrollFixed } from '@components/scrollFixed';
+import { AiotBarBox } from '@components/aiot';
 
 export default connect(
     mapStateToProps,
@@ -16,9 +18,6 @@ export default connect(
     class App extends React.Component {
         constructor(props){
             super(props);
-        }
-
-        componentDidMount(){
             //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
             //  页面滚动监听
@@ -33,7 +32,8 @@ export default connect(
                     {/*banner*/}
                     <BannerManage bannerType={4}/>
                     {/*菜单*/}
-                    <AboutTabBox/>
+                    {/*合作咨询定位组件*/}
+                    <ScrollFixed RenderElement={AboutTabBox}/>
                     {/*新闻内容*/}
                     <NewsList/>
                     {/*<br/>*/}

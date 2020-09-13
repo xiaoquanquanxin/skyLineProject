@@ -55,12 +55,6 @@ export const AboutTabBox = connect(
             if (!newsCategoryData || newsCategoryData.length === 0) {
                 return '';
             }
-            //  页面滚动高度
-            const { scrollTop } = REDUCER_BROWSER_INFO;
-            //  页面定位元素
-            const aboutTabBoxRef = this.aboutTabBoxRef.current;
-            //  是否固定
-            const isFixed = (aboutTabBoxRef && aboutTabBoxRef.offsetTop) < scrollTop;
             const list = newsCategoryData.map((item) => {
                 return <span key={item.id}
                              className={`${REDUCER_ABOUT_TAB_BOX.activeIndex === item.id ? style.active : ''}`}
@@ -74,7 +68,7 @@ export const AboutTabBox = connect(
                          height: '.8rem',
                          marginBottom: '.2rem'
                      } : {}}>
-                    <div className={`${style.aboutTabInner} ${isFixed ? style.isFixed : ''}`}>
+                    <div className={`${style.aboutTabInner}`}>
                         <div className={style.aboutTab}
                              style={REDUCER_BROWSER_INFO.isRelativeWide ? {} : {
                                  width: `${1.36 * (list.length + 1)}rem`,

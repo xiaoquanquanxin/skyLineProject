@@ -35,7 +35,7 @@ export const ScrollFixed = connect(
                 if (scrollTop > wrapRef.offsetTop) {
                     className = style.scrollFixed;
                     wrapRefStyleSheet.left = `${-scrollLeft}px`;
-                    locationRefStyleSheet.height = `${locationRef}px`;
+                    locationRefStyleSheet.height = `${locationRef.offsetHeight}px`;
                 } else {
                     //  常规定位
                     className = style.scrollRelative;

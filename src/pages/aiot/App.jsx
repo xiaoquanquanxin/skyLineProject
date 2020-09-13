@@ -25,6 +25,7 @@ export default connect(
                 .then(v => {
                     navSortByRank(v.data, 'rank');
                 });
+            //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
             //  页面滚动监听
             getBrowserInfo(this.props.setBrowserScrollInfoFn);
