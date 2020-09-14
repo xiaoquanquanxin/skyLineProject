@@ -199,15 +199,18 @@ export const CustomSwiper = connect(
         return (
             <div className={`swiper-container`} ref={this.swiperRef}>
                 <div className="swiper-wrapper">
-                    {swiperData && swiperData.length && swiperData.map(
-                        (item, index) => {
-                            return (
-                                <div key={item.id || index} className="swiper-slide">
-                                    <SliderItem data={item}/>
-                                </div>
-                            );
-                        })
-                    }
+                    {(
+                        swiperData
+                        && swiperData.length
+                        && swiperData.map(
+                            (item, index) => {
+                                return (
+                                    <div key={item.id || index} className="swiper-slide">
+                                        <SliderItem data={item}/>
+                                    </div>
+                                );
+                            })
+                    ) || ''}
                 </div>
                 <div className={`swiper-pagination-custom`}>
                     {swiperData && swiperData.length > 1 && swiperData.map(
