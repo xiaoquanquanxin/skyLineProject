@@ -16,7 +16,6 @@
 		margin: 0 auto;
 
 		.swiperItem {
-			border-radius: 6px;
 			width: 200px;
 			overflow: hidden;
 			margin: 20px 20px 0 0;
@@ -43,6 +42,7 @@
 		}
 	}
 
+	//	天工开物
 	&.open {
 		background-color: var(--white);
 	}
@@ -58,6 +58,12 @@
 			font-size: 24px;
 		}
 	}
+
+	&.open, &.partner, &.about {
+		.swiperItem {
+			border-radius: 6px
+		}
+	}
 }
 
 @media screen and (max-width: 750px) {
@@ -70,14 +76,12 @@
 			line-height: 0.5rem;
 			font-size: 0.36rem;
 			padding: 0.45rem 0 0.25rem 0;
-
 		}
 
 		.customerList {
 			width: auto;
 
 			.swiperItem {
-				border-radius: .06rem;
 				width: 24%;
 				height: auto;
 				margin: 1% 0 0 1%;
@@ -97,6 +101,12 @@
 		&.about {
 			.title {
 				font-size: .24rem;
+			}
+		}
+
+		&.open, &.partner, &.about {
+			.swiperItem {
+				border-radius: .06rem;
 			}
 		}
 	}
