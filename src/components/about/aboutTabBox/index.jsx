@@ -51,21 +51,6 @@ export const AboutTabBox = connect(
         };
     }
 
-    componentDidMount(){
-//        //  fixme   safari
-//        //  ⚠️⚠️⚠️⚠️
-//        setTimeout(() => {
-//            //  模拟点击
-//            window.requestAnimationFrame(() => {
-//                console.log(this.hash);
-//                //  如果有hash数据和元素
-//                if (this.hash) {
-//                    this.anchorClick(this.anchorList[this.hashIndex].customOffsetTop, 'smooth');
-//                }
-//            });
-//        }, 1000);
-    }
-
     componentDidUpdate(prevProps, prevState, snapshot){
         const { componentDidMountFinish } = this.props.REDUCER_ABOUT_US_MAP;
         const { isRelativeWide } = this.props.REDUCER_BROWSER_INFO;
