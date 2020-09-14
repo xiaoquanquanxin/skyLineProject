@@ -4,7 +4,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetAboutUs } from '@api/index';
-import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { commonRelativeWideFn, getBrowserInfo, getContentList } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import { BannerManage } from '@components/bannerManage';
 import './index.module.less';
@@ -13,6 +13,8 @@ import { AboutTabBox } from '@components/about/aboutTabBox';
 import { AboutUsBasic } from '@components/about/aboutUsBasic';
 import { AboutUsHistory } from '@components/about/aboutUsHistory';
 import { AdvertisementBanner } from '@components/bannerManage/advertisementBanner';
+import { AboutContactUs } from '@components/about/aboutContactUs';
+import { AboutUsLocation } from '@components/about/aboutUsLocation';
 
 export default connect(
     mapStateToProps,
@@ -29,13 +31,21 @@ export default connect(
                 historyInfoList: null,
                 //  投资阵容（部分）
                 investList: null,
+                //  联系我们
+                contactInfo: null,
+                //  地图与地址
+                addrInfoList: null,
+                addrInfoMap: null,
             };
+            //  页面宽度监听
+            commonRelativeWideFn(this.props.setRelativeWideFn);
+            //  页面滚动监听
+            getBrowserInfo(this.props.setBrowserScrollInfoFn);
         }
 
         componentDidMount(){
             requestGetAboutUs()
                 .then(v => {
-                    console.log(v.invest);
                     navSortByRank(v.invest, 'rank');
                     this.setState(() => {
                         return {
@@ -43,17 +53,33 @@ export default connect(
                             historyInfoMap: v.history,
                             historyInfoList: Reflect.ownKeys(v.history).reverse(),
                             investList: v.invest,
+                            contactInfo: getContentList(v.contact, 2),
+                            addrInfoMap: v.addr,
+                            addrInfoList: this.transformAddrInfo(v.addr),
                         };
                     });
                 });
-            //  页面宽度监听
-            commonRelativeWideFn(this.props.setRelativeWideFn);
-            //  页面滚动监听
-            getBrowserInfo(this.props.setBrowserScrollInfoFn);
+        }
+
+        //  转换地图地址格式
+        transformAddrInfo(info){
+            const list = Reflect.ownKeys(info);
+            list.sort((a, b) => {
+                return info[a][0].id - info[b][0].id;
+            });
+            return list;
         }
 
         render(){
-            const { basicInfo, historyInfoMap, historyInfoList, investList } = this.state;
+            const {
+                basicInfo,
+                historyInfoMap,
+                historyInfoList,
+                investList,
+                contactInfo,
+                addrInfoMap,
+                addrInfoList,
+            } = this.state;
             return (
                 <div className="App">
                     {/*头部*/}
@@ -67,7 +93,19 @@ export default connect(
                     {/*发展历程*/}
                     <AboutUsHistory historyInfoMap={historyInfoMap} historyInfoList={historyInfoList}/>
                     {/*投资阵容（部分）*/}
-                    <AdvertisementBanner data={investList}/>
+                    <AdvertisementBanner
+                        data={investList}
+                        title='投资阵容（部分）'
+                        styleType={4}
+                    />
+                    {/*联系我们*/}
+                    <AboutContactUs contactInfo={contactInfo}/>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    {/*地图部分*/}
+                    <AboutUsLocation addrInfoMap={addrInfoMap}
+                                     addrInfoList={addrInfoList}
+                    />
+                    <br/><br/><br/><br/><br/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
@@ -75,11 +113,3 @@ export default connect(
         }
     }
 );
-
-//import BMap from 'BMap';
-//var map = new BMap.Map('allmap'); // 创建Map实例
-//map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 初始化地图,设置中心点坐标和地图级别
-//map.addControl(new BMap.MapTypeControl()); //添加地图类型控件
-//map.setCurrentCity('北京'); // 设置地图显示的城市 此项是必须设置的
-//map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
-{/*<div id='allmap' style={{ width: '100vw', height: '100vh' }}/>*/}
