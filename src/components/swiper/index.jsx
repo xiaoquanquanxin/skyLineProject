@@ -5,7 +5,7 @@ import Swiper from 'swiper';
 import { resizeListener } from '@utils/eventListener';
 import { FRAME_DELAY } from '@utils/constant';
 import { BannerSlider } from '@components/index/bannerSwiper';
-import {AdvertisementBanner} from '@components/bannerManage/advertisementBanner';
+import {CustomerSlickItem} from '@components/bannerManage/advertisementBanner';
 import { AboutBannerSliderItem } from '@components/bannerManage/aboutBanner';
 import { ProjectBannerSliderItem } from '@components/bannerManage/projectBanner';
 import 'swiper/dist/css/swiper.css';
@@ -160,7 +160,7 @@ export const CustomSwiper = connect(
                 SliderItem = BannerSlider;
                 break;
             case 2: //  首页的赋能客户
-                SliderItem = AdvertisementBanner;
+                SliderItem = CustomerSlickItem;
                 break;
             case 3: //  新闻中心、关于我们
                 SliderItem = AboutBannerSliderItem;
