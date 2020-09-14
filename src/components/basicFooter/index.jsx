@@ -82,7 +82,7 @@ export const BasicFooter = class extends Component {
                 //  关于我们
                 navSortByRank(data.aboutus, 'rank');
                 //  联系我们
-                data.contact = getContentList(data.contact);
+                data.contact = getContentList(data.contact, 1);
                 //  console.log(data);
                 this.setState(() => ({
                     data,

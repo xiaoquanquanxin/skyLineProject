@@ -6,7 +6,6 @@ export const AboutUsBasic = ({
 }) => {
     return (
         <div className={style.aboutUsBanner}>
-            <div id="tab1"/>
             <div className={style.aboutUs} dangerouslySetInnerHTML={{ __html: aboutUsInfo && aboutUsInfo.desc }}/>
             <div className={style.aboutUsImgWrap}>
                 <img className={style.img} src={aboutUsInfo && aboutUsInfo.img} alt=''/>

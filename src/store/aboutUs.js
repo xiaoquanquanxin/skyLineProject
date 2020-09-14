@@ -25,19 +25,30 @@ export function setAboutUsMapActiveAreaId(activeAreaId, activeAreaName){
     return { type: ACTIVE_AREA_ID, activeAreaId, activeAreaName };
 }
 
+//  组件初始化完成 - 父级
+export const COMPONENT_DID_MOUNT_FINISH = 'COMPONENT_DID_MOUNT_FINISH';
+
+export function setComponentDidMountFinish(componentDidMountFinish){
+    return { type: COMPONENT_DID_MOUNT_FINISH, componentDidMountFinish };
+}
+
 //  关于我的 地图
 export function REDUCER_ABOUT_US_MAP(state = {
     openIndex: 0,
     //  默认激活openIndex为零的第一个的id
     activeAreaId: null,
     activeAreaName: null,
+    //  组件初始化
+    componentDidMountFinish: false,
 }, action){
-    const { type, openIndex, activeAreaId, activeAreaName } = action;
+    const { type, openIndex, activeAreaId, activeAreaName, componentDidMountFinish } = action;
     switch (type) {
         case OPEN_INDEX:
             return Object.assign({}, state, { openIndex });
         case ACTIVE_AREA_ID:
             return Object.assign({}, state, { activeAreaId, activeAreaName });
+        case COMPONENT_DID_MOUNT_FINISH:
+            return Object.assign({}, state, { componentDidMountFinish });
         default:
             return state;
     }

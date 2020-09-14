@@ -7,7 +7,6 @@ import { requestGetAboutUs } from '@api/index';
 import { commonRelativeWideFn, getBrowserInfo, getContentList } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import { BannerManage } from '@components/bannerManage';
-import './index.module.less';
 import { ScrollFixed } from '@components/scrollFixed';
 import { AboutTabBox } from '@components/about/aboutTabBox';
 import { AboutUsBasic } from '@components/about/aboutUsBasic';
@@ -56,8 +55,12 @@ export default connect(
                             contactInfo: getContentList(v.contact, 2),
                             addrInfoMap: v.addr,
                             addrInfoList: this.transformAddrInfo(v.addr),
+
                         };
                     });
+                    //  父组件初始化完成
+                    const { setComponentDidMountFinish } = this.props;
+                    setComponentDidMountFinish(true);
                 });
         }
 
@@ -89,23 +92,26 @@ export default connect(
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={AboutTabBox}/>
                     {/*关于我们*/}
+                    <div id="tab1" pc={20} mobile={15}/>
                     <AboutUsBasic aboutUsInfo={basicInfo}/>
                     {/*发展历程*/}
+                    <div id="tab2" pc={50} mobile={30}/>
                     <AboutUsHistory historyInfoMap={historyInfoMap} historyInfoList={historyInfoList}/>
                     {/*投资阵容（部分）*/}
+                    <div id="tab3" pc={50} mobile={40}/>
                     <AdvertisementBanner
                         data={investList}
                         title='投资阵容（部分）'
                         styleType={4}
                     />
+                    <div id="tab4" pc={70} mobile={40}/>
                     {/*联系我们*/}
                     <AboutContactUs contactInfo={contactInfo}/>
-                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                     {/*地图部分*/}
                     <AboutUsLocation addrInfoMap={addrInfoMap}
                                      addrInfoList={addrInfoList}
                     />
-                    <br/><br/><br/><br/><br/>
+
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

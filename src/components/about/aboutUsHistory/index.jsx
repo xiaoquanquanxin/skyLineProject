@@ -18,7 +18,6 @@ export const AboutUsHistory = ({
     }
     return (
         <div className={style.history}>
-            <span id="tab2"/>
             <div className={style.historyInner}>
                 <div className={style.title}>发展历程</div>
                 {list}
