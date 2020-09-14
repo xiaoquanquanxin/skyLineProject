@@ -14,7 +14,12 @@ export const AdvertisementBanner = connect(
     {
         //  数据
         data,
+        //  标题
+        title,
+        //  浏览器数据
         REDUCER_BROWSER_INFO,
+        //  样式类型
+        styleType,
     }) => {
         const { isRelativeWide } = REDUCER_BROWSER_INFO;
         const swiperData = [];
@@ -24,13 +29,33 @@ export const AdvertisementBanner = connect(
             swiperData.push(data.slice(portion * index, portion * (1 + index)));
             index++;
         }
-        //      console.log(swiperData.length);
+        let styleSheet;
+        switch (styleType) {
+            case 1:
+                //  首页的
+                styleSheet = style.index;
+                break;
+            case 2:
+                //  天工开物
+                styleSheet = style.open;
+                break;
+            case 3:
+                //  普通合作伙伴
+                styleSheet = style.partner;
+                break;
+            case 4:
+                //  关于我们
+                styleSheet = style.about;
+                break;
+            default:
+                throw new Error(`错误的类型${styleType}`);
+        }
         return (
-            <div className={style.container} id='AdvertisementBanner'>
-                <p className={style.title}>赋能客户</p>
+            <div className={`${style.container} ${styleSheet}`} id='AdvertisementBanner'>
+                <p className={style.title}>{title}</p>
                 <CustomSwiper swiperData={swiperData}
                               sliderItemType={2}
-                              basicDelay={51}
+                              basicDelay={5}
                 />
             </div>
         );

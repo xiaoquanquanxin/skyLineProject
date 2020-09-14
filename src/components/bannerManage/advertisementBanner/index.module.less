@@ -1,14 +1,12 @@
 .container {
-	background: linear-gradient(90deg, rgba(10, 17, 33, 1) 0%, rgba(18, 25, 41, 1) 100%);
 	min-width: 1080px;
 	margin: 0 auto;
-
 	//	标题
 	.title {
+		font-size: 40px;
+		color: var(--black);
 		text-align: center;
-		color: var(--white);
 		line-height: 70px;
-		font-size: 50px;
 		padding: 90px 0 50px 0;
 	}
 
@@ -18,8 +16,9 @@
 		margin: 0 auto;
 
 		.swiperItem {
+			border-radius: 6px;
 			width: 200px;
-			//	height: 126px;
+			overflow: hidden;
 			margin: 20px 20px 0 0;
 			float: left;
 
@@ -32,6 +31,31 @@
 				height: 149px;
 				display: block;
 			}
+		}
+	}
+
+	//	首页
+	&.index {
+		background: linear-gradient(90deg, rgba(10, 17, 33, 1) 0%, rgba(18, 25, 41, 1) 100%);
+
+		.title {
+			color: var(--white);
+		}
+	}
+
+	&.open {
+		background-color: var(--white);
+	}
+
+	//	合作伙伴、关于我们
+	&.partner, &.about {
+		background-color: var(--colorf9);
+	}
+
+	//	关于我们
+	&.about {
+		.title {
+			font-size: 24px;
 		}
 	}
 }
@@ -53,6 +77,7 @@
 			width: auto;
 
 			.swiperItem {
+				border-radius: .06rem;
 				width: 24%;
 				height: auto;
 				margin: 1% 0 0 1%;
@@ -62,9 +87,19 @@
 				}
 
 				img {
-					height: 1.21rem;
+					height: 1.208333rem;
 				}
+			}
+		}
+
+
+		//	关于我们
+		&.about {
+			.title {
+				font-size: .24rem;
 			}
 		}
 	}
 }
+
+
