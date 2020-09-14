@@ -89,6 +89,8 @@ export const CustomSwiper = connect(
             autoplay: {
                 delay: 100000000,
             },
+            //  ✨自动高度
+            //  autoHeight: true,
             loop: true,
             on: {
                 slideChangeTransitionStart: () => {
