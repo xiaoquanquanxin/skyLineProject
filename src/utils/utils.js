@@ -127,3 +127,49 @@ export const getBrowserInfo = (setBrowserScrollInfoFn) => {
         setBrowserScrollInfoFn(info);
     });
 };
+
+//  浏览器类型
+export const getUserAgentType = (function Browser(){
+    function isSafari(){
+        const ua = window.navigator.userAgent.toLowerCase();
+        return (ua.indexOf('safari') >= 0 && ua.indexOf('chrome') < 0 && ua.indexOf('android') < 0);
+    }
+
+    return {
+        isIE: !!window.navigator.userAgent.match(/Trident/g) || !!window.navigator.userAgent.match(/MSIE/g),
+        isEdge: !!window.navigator.userAgent.match(/Edge/g),
+        isSafari: isSafari(),
+        isUiWebView: /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(window.navigator.userAgent),
+    };
+}());
+
+/**
+ * 将联系我们的数据格式转为list，主要是用来转换格式的
+ * @param {Object} data 数据
+ * @param {Number} listType 类型
+ * @param {Array<T>} list  返回列表
+ * */
+export const getContentList = (data, listType) => {
+    let index = 1;
+    const list = [];
+    while (1) {
+        const titleKey = data[`title${index}`];
+        const contentKey = data[`content${index}`];
+        if (titleKey && contentKey) {
+            switch (listType) {
+                case 1: //  footer
+                    list.push({ name: `${titleKey}：${contentKey}`, id: -1000000 + index });
+                    break;
+                case 2: //  关于我们
+                    list.push({ title: titleKey, content: contentKey, id: -1000000 + index });
+                    break;
+                default:
+                    throw new Error(`listType ${listType} 未定义`);
+            }
+            index++;
+            continue;
+        }
+        break;
+    }
+    return list;
+};
