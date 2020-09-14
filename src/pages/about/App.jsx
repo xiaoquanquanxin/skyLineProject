@@ -10,6 +10,9 @@ import { BannerManage } from '@components/bannerManage';
 import './index.module.less';
 import { ScrollFixed } from '@components/scrollFixed';
 import { AboutTabBox } from '@components/about/aboutTabBox';
+import { AboutUsBasic } from '@components/about/aboutUsBasic';
+import { AboutUsHistory } from '@components/about/aboutUsHistory';
+import { AdvertisementBanner } from '@components/bannerManage/advertisementBanner';
 
 export default connect(
     mapStateToProps,
@@ -18,13 +21,30 @@ export default connect(
     class App extends Component {
         constructor(props){
             super(props);
-            this.state = {};
+            this.state = {
+                //  公司简介
+                basicInfo: null,
+                //  发展历程
+                historyInfoMap: null,
+                historyInfoList: null,
+                //  投资阵容（部分）
+                investList: null,
+            };
         }
 
         componentDidMount(){
             requestGetAboutUs()
                 .then(v => {
+                    console.log(v.invest);
                     navSortByRank(v.invest, 'rank');
+                    this.setState(() => {
+                        return {
+                            basicInfo: v.aboutus,
+                            historyInfoMap: v.history,
+                            historyInfoList: Reflect.ownKeys(v.history).reverse(),
+                            investList: v.invest,
+                        };
+                    });
                 });
             //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
@@ -33,6 +53,7 @@ export default connect(
         }
 
         render(){
+            const { basicInfo, historyInfoMap, historyInfoList, investList } = this.state;
             return (
                 <div className="App">
                     {/*头部*/}
@@ -41,14 +62,12 @@ export default connect(
                     <BannerManage bannerType={5}/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={AboutTabBox}/>
-                    <h3 id="tab1">aaa</h3>
-                    <br/><br/>我是 a<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <h3 id="tab2">bbb</h3>
-                    <br/><br/>我是 b<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <h3 id="tab3">cccc</h3>
-                    <br/><br/>我是 c<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                    <h3 id="tab4">ddd</h3>
-                    <br/><br/>我是 d<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    {/*关于我们*/}
+                    <AboutUsBasic aboutUsInfo={basicInfo}/>
+                    {/*发展历程*/}
+                    <AboutUsHistory historyInfoMap={historyInfoMap} historyInfoList={historyInfoList}/>
+                    {/*投资阵容（部分）*/}
+                    <AdvertisementBanner data={investList}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
