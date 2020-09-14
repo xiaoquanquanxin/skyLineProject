@@ -15,7 +15,7 @@ const aboutUsMapData = {
     marker: null,
     //  初始化
     init(){
-        console.log('初始化地图仅一次');
+        //  console.log('初始化地图仅一次');
         // 创建Map实例
         const map = new BMap.Map('aboutUsMap');
         // 初始化地图,设置中心点坐标和地图级别
@@ -32,7 +32,7 @@ const aboutUsMapData = {
     //  切换地图
     changeMap(value){
         this.geoMap.getPoint(value, (point) => {
-            console.log(value, point.lat, point.lng);
+            //  console.log(value, point.lat, point.lng);
             if (point) {
                 this.map.centerAndZoom(point, 22);
                 //  清除旧的Overlay
@@ -55,10 +55,13 @@ export const AboutUsLocation = connect(
     mapDispatchToProps,
 )(
     class extends React.Component {
-
         componentDidUpdate(prevProps, prevState, snapshot){
             const { activeAreaId, activeAreaName } = this.props.REDUCER_ABOUT_US_MAP;
             const { setAboutUsMapActiveAreaId, addrInfoMap, addrInfoList } = this.props;
+            //  等数据
+            if (addrInfoMap === null) {
+                return;
+            }
             //  点击了，或者初始化了
             if (prevProps.REDUCER_ABOUT_US_MAP.activeAreaId !== activeAreaId) {
                 //  激活的名字
@@ -67,6 +70,7 @@ export const AboutUsLocation = connect(
             }
             //  如果没有设置过地图的激活数据，那么应该将其置为第一个城市的第一条数据
             if (activeAreaId === null) {
+                //  console.log(addrInfoMap);
                 //  我想要的区域的数据将
                 const currentAreaData = addrInfoMap[addrInfoList[0]][0];
                 //  这时候初始化是安全的
