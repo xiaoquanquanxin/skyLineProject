@@ -15,6 +15,9 @@ export const CustomSwiper = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(class extends React.Component {
+    paginRefs;
+    mySwiper;
+
     /**
      * basicDelay:默认滚动时间，这是为数据如果没有second字段准备的
      * */
@@ -52,7 +55,7 @@ export const CustomSwiper = connect(
         if (swiperData.length < 2) {
             return;
         }
-          //    console.log('swiper的update执行次数');
+        //    console.log('swiper的update执行次数');
         this.mySwiper = new Swiper(this.swiperRef.current, {
             autoplay: {
                 delay: 100000000,
@@ -126,16 +129,26 @@ export const CustomSwiper = connect(
         fn();
         //  console.log('swiper的transform执行执行');
         this.paginRefs.forEach(item => {
-            item.current.classList.remove('active-pagination');
-            item.current.querySelector('i').style.width = '0';
+            this.removeActiveClassName(item.current);
         });
         this.setActiveClassName(activeElement, i / fullTime);
     }
 
     //  激活类型的class
     setActiveClassName(activeElement, width){
+        if (!activeElement) {
+            return;
+        }
         activeElement.classList.add('active-pagination');
         activeElement.querySelector('i').style.width = `${width * 100}%`;
+    }
+
+    removeActiveClassName(activeElement){
+        if (!activeElement) {
+            return;
+        }
+        activeElement.classList.remove('active-pagination');
+        activeElement.querySelector('i').style.width = '0';
     }
 
     render(){
