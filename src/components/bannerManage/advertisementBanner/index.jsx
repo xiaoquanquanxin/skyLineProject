@@ -30,7 +30,7 @@ export const AdvertisementBanner = connect(
                 <p className={style.title}>赋能客户</p>
                 <CustomSwiper swiperData={swiperData}
                               sliderItemType={2}
-                              basicDelay={5}
+                              basicDelay={51}
                 />
             </div>
         );
