@@ -1,5 +1,6 @@
 import { setBrowserScrollInfo, setRelativeWide } from '@store/browserInfo';
 import { setTabBoxActiveIndex, setNewsCategoryData, newsCategoryDataForMap } from '@store/newsInfo';
+import { setAboutUsMapOpenIndex, setAboutUsMapActiveAreaId } from '@store/aboutUs';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
 //  ✅读取state到props
@@ -8,10 +9,13 @@ export const mapStateToProps = ({
     REDUCER_BROWSER_INFO,
     //  新闻页面
     REDUCER_NEWS_TAB_BOX,
+    //  关于我的，主要是地图
+    REDUCER_ABOUT_US_MAP,
 }) => {
     return {
         REDUCER_BROWSER_INFO,
         REDUCER_NEWS_TAB_BOX,
+        REDUCER_ABOUT_US_MAP,
     };
 };
 
@@ -42,6 +46,15 @@ export const mapDispatchToProps = (dispatch) => {
                 mapData[item.id] = item;
             });
             dispatch(newsCategoryDataForMap(mapData));
+        },
+
+        //  关于我的，地图相关
+        setAboutUsMapOpenIndex: (openIndex) => {
+            dispatch(setAboutUsMapOpenIndex(openIndex));
+        },
+        //  同上
+        setAboutUsMapActiveAreaId: (activeAreaId,activeAreaName) => {
+            dispatch(setAboutUsMapActiveAreaId(activeAreaId,activeAreaName));
         },
     };
 };

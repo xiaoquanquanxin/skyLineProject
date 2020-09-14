@@ -32,7 +32,7 @@ export function newsCategoryDataForMap(newsCategoryDataMap){
     return { type: NEWS_CATEGORY_DATA_MAP, newsCategoryDataMap };
 }
 
-//  关于的tab box
+//  新闻的tab box
 export function REDUCER_NEWS_TAB_BOX(state = {
     //  默认激活0
     activeIndex: Number(getSearchString('id')) || 0,
