@@ -8,7 +8,7 @@ import { commonRelativeWideFn } from '@utils/utils';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { MainInfo } from '@components/index/mainInfo';
-import { AssignedCustomer } from '@components/index/assignedCustomer';
+import { AdvertisementBanner } from '@components/bannerManage/advertisementBanner';
 
 export default connect(
     mapStateToProps,
@@ -27,6 +27,10 @@ export default connect(
                 //  智能客户
                 customList: null,
             };
+            //  页面宽度监听
+            commonRelativeWideFn(this.props.setRelativeWideFn);
+            //  页面滚动监听
+            getBrowserInfo(this.props.setBrowserScrollInfoFn);
         }
 
         //  钩子
@@ -38,10 +42,7 @@ export default connect(
                     navSortByRank(v.middle_banner, 'rank');
                     navSortByRank(v.bottom_banner, 'rank');
                     navSortByRank(v.client, 'rank');
-                    const customList = [];
-                    while (v.client && v.client.length) {
-                        customList.push(v.client.splice(0, 15));
-                    }
+
                     //  客户轮播
                     this.setState(() => ({
                         //  banner数据
@@ -51,13 +52,11 @@ export default connect(
                         //  第三块
                         secondInfo: v.bottom_banner && v.bottom_banner[0],
                         //  客户轮播
-                        customList,
+                        customList: v.client,
+                        //  customList: v.client.concat(v.client),
+                        //  customList: v.client.slice(0,12)
                     }));
                 });
-             //  页面宽度监听
-commonRelativeWideFn(this.props.setRelativeWideFn);
-            //  页面滚动监听
-            getBrowserInfo(this.props.setBrowserScrollInfoFn);
         }
 
         render(){
@@ -76,7 +75,7 @@ commonRelativeWideFn(this.props.setRelativeWideFn);
                     <MainInfo info={firstInfo} textPosition='right'/>
                     <MainInfo info={secondInfo} textPosition='left'/>
                     {/*赋能客户*/}
-                    <AssignedCustomer data={customList}/>
+                    <AdvertisementBanner data={customList}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
