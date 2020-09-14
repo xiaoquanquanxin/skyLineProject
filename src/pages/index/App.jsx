@@ -75,7 +75,11 @@ export default connect(
                     <MainInfo info={firstInfo} textPosition='right'/>
                     <MainInfo info={secondInfo} textPosition='left'/>
                     {/*赋能客户*/}
-                    <AdvertisementBanner data={customList}/>
+                    <AdvertisementBanner
+                        data={customList}
+                        title='赋能客户'
+                        styleType={1}
+                    />
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
