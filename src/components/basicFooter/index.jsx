@@ -5,7 +5,7 @@ import layout from '@css/layout.module.less';
 import { SiteInfo } from '@components/basicFooter/siteInfo';
 import { LinkList } from '@components/basicFooter/linkList';
 import { requestFooterNav } from '@api/index';
-import { navSortByRank } from '@utils/utils';
+import { getContentList, navSortByRank } from '@utils/utils';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
@@ -82,29 +82,12 @@ export const BasicFooter = class extends Component {
                 //  关于我们
                 navSortByRank(data.aboutus, 'rank');
                 //  联系我们
-                data.contact = this.getContentList(data.contact);
+                data.contact = getContentList(data.contact);
                 //  console.log(data);
                 this.setState(() => ({
                     data,
                 }));
             });
-    }
-
-    //  将联系我们的数据格式转为list
-    getContentList(data){
-        let index = 1;
-        const list = [];
-        while (1) {
-            const titleKey = data[`title${index}`];
-            const contentKey = data[`content${index}`];
-            if (titleKey && contentKey) {
-                list.push({ name: `${titleKey}：${contentKey}`, id: -1000000 + index });
-                index++;
-                continue;
-            }
-            break;
-        }
-        return list;
     }
 
     //  点击二维码
