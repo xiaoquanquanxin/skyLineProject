@@ -14,7 +14,7 @@
 
 	//	轮播
 	.customerList {
-		width: 1100px;
+		width: 1080px;
 		margin: 0 auto;
 
 		.swiperItem {
@@ -22,6 +22,10 @@
 			height: 126px;
 			margin: 20px 20px 0 0;
 			float: left;
+
+			&:nth-child(5n) {
+				margin-right: 0;
+			}
 
 			img {
 				width: 100%;
@@ -51,6 +55,10 @@
 				width: 24%;
 				height: auto;
 				margin: 1% 0 0 1%;
+
+				&:nth-child(4n) {
+					margin-right: 0;
+				}
 			}
 		}
 	}
