@@ -1,9 +1,10 @@
 import React from 'react';
+import BMap from 'BMap';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import BMap from 'BMap';
-import style from './index.module.less';
 import { BMAP_ANIMATION_BOUNCE } from '@utils/constant';
+import style from './index.module.less';
+
 //  地图相关
 const aboutUsMapData = {
     //  地图实例
@@ -47,6 +48,8 @@ const aboutUsMapData = {
         });
     }
 };
+
+//  地图相关组件
 export const AboutUsLocation = connect(
     mapStateToProps,
     mapDispatchToProps,
@@ -105,20 +108,6 @@ export const AboutUsLocation = connect(
         }
     }
 );
-//export const AboutUsLocation = connect(
-//    mapStateToProps,
-//    mapDispatchToProps,
-//)(({
-//    //  地图的城市的名称
-//    addrInfoList,
-//    //  地图数据
-//    addrInfoMap,
-//    REDUCER_ABOUT_US_MAP,
-//    //  设置点击的区的激活id
-//    setAboutUsMapActiveAreaId,
-//}) => {
-//
-//});
 
 //  城市的每一项
 const CityItem = connect(
