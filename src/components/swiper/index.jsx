@@ -5,7 +5,7 @@ import Swiper from 'swiper';
 import { resizeListener } from '@utils/eventListener';
 import { FRAME_DELAY } from '@utils/constant';
 import { BannerSlider } from '@components/index/bannerSwiper';
-import {CustomerSlickItem} from '@components/bannerManage/advertisementBanner';
+import { CustomerSlickItem } from '@components/bannerManage/advertisementBanner';
 import { AboutBannerSliderItem } from '@components/bannerManage/aboutBanner';
 import { ProjectBannerSliderItem } from '@components/bannerManage/projectBanner';
 import 'swiper/dist/css/swiper.css';
@@ -17,6 +17,7 @@ export const CustomSwiper = connect(
 )(class extends React.Component {
     paginRefs;
     mySwiper;
+    swiperRef;
 
     /**
      * basicDelay:默认滚动时间，这是为数据如果没有second字段准备的
@@ -45,17 +46,45 @@ export const CustomSwiper = connect(
 
     //  更新props数据
     componentDidUpdate(prevProps, a, b){
-        const { swiperData } = this.props;
-        //  不是这个变化
+        const { swiperData, REDUCER_BROWSER_INFO } = this.props;
+        //  如果数据一样
         if (swiperData === prevProps.swiperData) {
             return;
         }
-        //  console.log(`swiperData的数量`, swiperData.length);
-        //  数据量必须>=2才能有swiper，否则没有swiper
+        //  如果没有数据
+        if (swiperData.length === 0) {
+            return;
+        }
+        //  console.log(REDUCER_BROWSER_INFO.isRelativeWide !== prevProps.REDUCER_BROWSER_INFO.isRelativeWide);
+        //  console.log(REDUCER_BROWSER_INFO.isRelativeWide !== prevProps.REDUCER_BROWSER_INFO.isRelativeWide);
+        if (REDUCER_BROWSER_INFO.isRelativeWide !== prevProps.REDUCER_BROWSER_INFO.isRelativeWide) {
+            this.initMySwiper();
+        }
+        if (this.mySwiper === null) {
+            this.initMySwiper();
+        }
+        resizeListener(() => {
+            this.transform();
+        });
+        this.setState(() => ({
+            status: 1,
+        }), () => {
+            this.transform();
+        });
+    }
+
+    //  初始化swiper，构造函数销毁、点的数组的长度、定时器重置
+    initMySwiper(){
+        const { swiperData } = this.props;
+        if (this.mySwiper) {
+            this.mySwiper.destroy();
+            this.paginRefs.length = 0;
+            clearTimeout(this.timer);
+            this.timer = null;
+        }
         if (swiperData.length < 2) {
             return;
         }
-        //    console.log('swiper的update执行次数');
         this.mySwiper = new Swiper(this.swiperRef.current, {
             autoplay: {
                 delay: 100000000,
@@ -71,21 +100,15 @@ export const CustomSwiper = connect(
         for (let i = 0; i < swiperData.length; i++) {
             this.paginRefs.push(createRef());
         }
-        resizeListener(() => {
-            this.transform();
-        });
-        window.requestAnimationFrame(() => {
-            this.transform();
-        });
-        this.setState(() => ({
-            status: 1,
-        }));
     }
 
     //  分页计时器变换
     transform(){
         const { status } = this.state;
         if (status !== 1) {
+            return;
+        }
+        if (this.paginRefs.length === 0) {
             return;
         }
         const { swiperData, basicDelay } = this.props;
@@ -153,7 +176,6 @@ export const CustomSwiper = connect(
 
     render(){
         const { swiperData, sliderItemType } = this.props;
-        const { status } = this.state;
         let SliderItem = null;
         switch (sliderItemType) {
             case 1: //  首页banner
@@ -171,10 +193,9 @@ export const CustomSwiper = connect(
             default:
                 throw new Error('错误的类型，没有这种类sliderItem');
         }
+        //  todo    数据量必须>=2才能有swiper，否则没有swiper
         return (
-            <div className={`swiper-container`} ref={this.swiperRef}
-                 data-status={status}
-            >
+            <div className={`swiper-container`} ref={this.swiperRef}>
                 <div className="swiper-wrapper">
                     {swiperData && swiperData.length && swiperData.map(
                         (item, index) => {
