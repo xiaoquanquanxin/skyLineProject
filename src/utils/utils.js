@@ -40,13 +40,14 @@ export function navSortByRank(list, rank){
 }
 
 /**
- * 正则验证是不是一个http
+ * 正则验证是不是一个http，数据是这样存的
  * @param {string} str
  * @return boolean
  * */
 export const isValidHTTPString = (str) => {
-    const reg = /^(https:\/\/|http:\/\/).+/;
-    return reg.test(str);
+    return str && (str !== '0');
+//    const reg = /^(https:\/\/|http:\/\/).+/;
+//    return reg.test(str);
 };
 
 /**
