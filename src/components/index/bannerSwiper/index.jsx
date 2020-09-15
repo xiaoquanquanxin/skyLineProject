@@ -31,11 +31,12 @@ export const BannerSlider = connect(
             url,
         } = data;
         //  如果不是合法视频地址
-        if (!isValidHTTPString(video) && !isValidResourceString(video)) {
+        //  ⚠️只有null和 "0" 两种
+        if (video === '0') {
             video = null;
         }
         //  如果不是合法链接
-        if (!isValidHTTPString(url)) {
+        if (url === '0') {
             url = null;
         }
         //  如果页面不够宽
