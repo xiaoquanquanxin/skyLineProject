@@ -74,9 +74,9 @@ export class BannerManage extends React.Component {
         requestGetBannerByType(bannerType)
             .then(v => {
                 navSortByRank(v.data, 'rank');
-                const swiperData = v.data.concat(Object.assign({}, v.data[0]));
-                swiperData[0].id = '122';
-//                const swiperData = v.data;
+//                const swiperData = v.data.concat(Object.assign({}, v.data[0]));
+//                swiperData[0].id = '12345';
+                const swiperData = v.data;
                 //  console.log(swiperData);
                 this.setState(() => {
                     return {
