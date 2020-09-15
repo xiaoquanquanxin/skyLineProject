@@ -63,7 +63,7 @@ export const AdvertisementBanner = connect(
 );
 
 //  swiper的每一项，本身是一个list
-export const CustomerSlickItem = ({
+export const AdvertisementSlickItem = ({
     data
 }) => {
     if (!data || data.length === 0) {
