@@ -19,7 +19,7 @@ export const ProductSlickItem = connect(
             data.video = null;
         }
         data.video = null;
-        console.log(data);
+        //  console.log(data);
 
         return (
             <div className={`${sliderItemStyle.bannerSlider} ${style.bannerSlider}`}>
