@@ -9,7 +9,7 @@ import { NewsList } from '@components/news/newsList';
 import './index.less';
 import { BannerManage } from '@components/bannerManage';
 import { ScrollFixed } from '@components/scrollFixed';
-import { AiotBarBox } from '@components/aiot';
+import { FixedBarBox } from '@components/aiot';
 
 export default connect(
     mapStateToProps,

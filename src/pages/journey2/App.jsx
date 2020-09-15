@@ -4,7 +4,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
-import { AiotBarBox } from '@components/aiot';
+import { FixedBarBox } from '@components/aiot';
 import { ScrollFixed } from '@components/scrollFixed';
 import { BannerManage } from '@components/bannerManage';
 import { Journey2cdrb } from '@components/journey2/cdrb';
@@ -20,7 +20,10 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    class App extends Component {
+    class App extends React.Component {
+        //  锚点
+        barBoxAnchor;
+
         constructor(props){
             super(props);
             //  页面宽度监听
@@ -74,17 +77,40 @@ export default connect(
                         desc: '2 × I2S , 3 × SPI , 4 × I2C , and 4 × UART<br>1 × Gigabit Ethernet MAC , 2 × SDIO<br>Multiple GPIO and PWM',
                     }]
                 },
+
+                //  FixedBarBox参数
+                barBoxData: {
+                    SubTitle: '征程 Journey',
+                    SubDescription: '车规级 AI 芯片',
+                }
             };
+            this.barBoxAnchor = [{
+                name: '概述', anchor: '#m1', customOffsetTop: 0
+            }, {
+                name: '参数', anchor: '#m2', customOffsetTop: 0
+            }];
+        }
+
+        componentDidMount(){
+            //  父组件初始化完成
+            const { setComponentDidMountFinish } = this.props;
+            setComponentDidMountFinish(true);
         }
 
         render(){
-            const { cdrbData, highPerceptionData, productMatrixData, baseParamData } = this.state;
+            const { cdrbData, highPerceptionData, productMatrixData, baseParamData, barBoxData } = this.state;
+            const AiotBarBoxCustom = () => {
+                return (
+                    <FixedBarBox barBoxAnchor={this.barBoxAnchor} barBoxData={barBoxData}/>
+                );
+            };
             return (
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
-                    <ScrollFixed RenderElement={AiotBarBox}/>
+                    <ScrollFixed RenderElement={AiotBarBoxCustom}/>
+                    <div id="m1" pc={20} mobile={15}/>
                     {/*banner轮播*/}
                     <BannerManage bannerType={8}/>
                     {/*四个一块*/}
@@ -96,6 +122,7 @@ export default connect(
                     {/*地平线智能驾驶产品矩阵*/}
                     <ProductMatrix data={productMatrixData}/>
                     {/*规格参数*/}
+                    <div id="m2" pc={20} mobile={15}/>
                     <BaseParam data={baseParamData}/>
                     {/*视频展示*/}
                     <Journey2Video videoType={19}/>

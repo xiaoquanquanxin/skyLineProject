@@ -8,7 +8,7 @@ import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
 import { ScrollFixed } from '@components/scrollFixed';
-import { AiotBarBox } from '@components/aiot';
+import { FixedBarBox } from '@components/aiot';
 import { BannerManage } from '@components/bannerManage';
 
 export default connect(
@@ -35,7 +35,7 @@ export default connect(
                     {/*头部*/}
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
-                    <ScrollFixed RenderElement={AiotBarBox}/>
+                    <ScrollFixed RenderElement={FixedBarBox}/>
                     {/*banner轮播*/}
                     <BannerManage bannerType={11}/>
                     {/*脚部*/}
