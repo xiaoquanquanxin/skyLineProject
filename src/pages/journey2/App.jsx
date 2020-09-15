@@ -3,10 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { requestGetBannerByType } from '@api/index';
 import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
-import { navSortByRank } from '@utils/utils';
-import './index.less';
 import { AiotBarBox } from '@components/aiot';
 import { ScrollFixed } from '@components/scrollFixed';
 import { BannerManage } from '@components/bannerManage';
@@ -15,6 +12,9 @@ import { HighPerception } from '@components/journey2/HighPerception';
 import { EdgeComputing } from '@components/journey2/edgeComputing';
 import { ProductMatrix } from '@components/journey2/productMatrix';
 import { BaseParam } from '@components/journey2/baseParam';
+import { Journey2Video } from '@components/journey2/journey2Video';
+import { GetMoreBox } from '@components/getMoreBox';
+import './index.less';
 
 export default connect(
     mapStateToProps,
@@ -59,17 +59,22 @@ export default connect(
                     img: 'http://horizon.wx.h5work.com/images/product/journey2/matrix.png?v=1.1'
                 },
                 baseParamData: {
-
-                }
+                    title: '规格参数',
+                    list: [{
+                        label: 'CPU处理器',
+                        desc: 'Dual-Core ARM<sup>®</sup> Cortex<sup>®</sup>-A53 up to 1 GHz'
+                    }, {
+                        label: 'CPU处理器',
+                        desc: 'Dual-Core ARM<sup>®</sup> Cortex<sup>®</sup>-A53 up to 1 GHz'
+                    }, {
+                        label: 'CPU处理器',
+                        desc: 'Dual-Core ARM<sup>®</sup> Cortex<sup>®</sup>-A53 up to 1 GHz'
+                    }, {
+                        label: 'CPU处理器',
+                        desc: '2 × I2S , 3 × SPI , 4 × I2C , and 4 × UART<br>1 × Gigabit Ethernet MAC , 2 × SDIO<br>Multiple GPIO and PWM',
+                    }]
+                },
             };
-        }
-
-        componentDidMount(){
-            requestGetBannerByType(19)
-                .then(v => {
-                    navSortByRank(v.data, 'rank');
-                });
-
         }
 
         render(){
@@ -92,6 +97,10 @@ export default connect(
                     <ProductMatrix data={productMatrixData}/>
                     {/*规格参数*/}
                     <BaseParam data={baseParamData}/>
+                    {/*视频展示*/}
+                    <Journey2Video videoType={19}/>
+                    {/*更多*/}
+                    <GetMoreBox/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
