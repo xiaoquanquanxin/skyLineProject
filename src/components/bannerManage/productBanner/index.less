@@ -1,0 +1,43 @@
+#productBanner {
+	padding-top: 680px;
+	width: 1280px;
+	margin: auto;
+
+	.swiper-pagination-custom {
+		padding-top: 48px;
+		padding-bottom: 68px;
+		position: relative;
+		@media screen and (max-width: 750px) {
+			padding-top: .48rem;
+			padding-bottom: .68rem;
+		}
+	}
+
+	@media screen and (max-width: 750px) {
+		& {
+			width: 100%;
+			padding-top: 5rem;
+		}
+	}
+}
+
+//	浅色背景和深色背景
+
+#swiperMainWrapDark {
+	background-image: url(~@media/banner/bg-banner-5.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#swiperMainWrapLight {
+	background-color: #EBEBEB;
+}
+
+#swiperMainWrapDark, #swiperMainWrapLight {
+	width: 100%;
+	@media screen and (max-width: 750px) {
+		height: 5rem;
+		background-position: 50% 50%;
+		background-size: cover;
+	}
+}
