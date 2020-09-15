@@ -7,6 +7,8 @@ import style from './index.module.less';
 //  bannerId字符串
 const aboutBanner = 'aboutBanner';
 const projectBanner = 'projectBanner';
+const productBanner = 'productBanner';
+const matrixBanner = 'matrixBanner';
 
 export class BannerManage extends React.Component {
     //  区分使用使用的子组件
@@ -23,6 +25,10 @@ export class BannerManage extends React.Component {
         16: 4,
         17: 4,
         18: 4,
+        //  征程、旭日2、旭日3
+        8: 5,
+        //  matrix
+        11: 6,
     };
     //  功能类似，banner的Id
     //  key: bannerType , value : bannerId
@@ -30,7 +36,6 @@ export class BannerManage extends React.Component {
         //  关于我们、新闻中心
         4: aboutBanner,
         5: aboutBanner,
-        //
         //  核心技术、天工开物、高级别辅助驾驶、自动驾驶、智能座舱、高精地图、智能物联网
         6: projectBanner,
         12: projectBanner,
@@ -39,6 +44,10 @@ export class BannerManage extends React.Component {
         16: projectBanner,
         17: projectBanner,
         18: projectBanner,
+        //  征程、旭日2、旭日3
+        8: productBanner,
+        //  matrix
+        11: matrixBanner,
     };
 
     /**
@@ -79,14 +88,30 @@ export class BannerManage extends React.Component {
 
     render(){
         const { swiperData, sliderItemType, bannerId } = this.state;
+        const { bannerType } = this.props;
+        let id;
+        //  只有征程、旭日2、旭日3、MATRIX有需要背景
+        switch (bannerType) {
+            case 8:     //  只有征程、旭日2、旭日3一种背景色
+//            case 8:
+                id = 'swiperMainWrapDark';
+                break;
+            case 11:    //  matrix  颜色不同而已
+                id = 'swiperMainWrapLight';
+                break;
+            default:
+                break;
+        }
         return (
-            <div className={style.bannerSwiper} id={bannerId}>
-                <div className={style.container}>
-                    <CustomSwiper
-                        swiperData={swiperData}
-                        sliderItemType={sliderItemType}
-                        basicDelay={5}
-                    />
+            <div id={id} className={style[id]}>
+                <div className={style.bannerSwiper} id={bannerId}>
+                    <div className={style.container}>
+                        <CustomSwiper
+                            swiperData={swiperData}
+                            sliderItemType={sliderItemType}
+                            basicDelay={5}
+                        />
+                    </div>
                 </div>
             </div>
         );
