@@ -30,13 +30,13 @@
 			align-items: center;
 			white-space: nowrap;
 
-			.title {
+			.subTitle {
 				font-size: 20px;
 				font-weight: 500;
 				color: rgba(0, 0, 0, 0.8);
 			}
 
-			.desc {
+			.subDescription {
 				font-size: 14px;
 				color: rgba(0, 0, 0, 0.7);
 				padding-left: 25px;
@@ -68,7 +68,7 @@
 					color: rgba(0, 0, 0, 0.55);
 					padding: 0 20px;
 
-					.active {
+					&.active {
 						color: var(--color06f);
 					}
 				}
@@ -103,17 +103,18 @@
 		& {
 			height: 0.8rem;
 			line-height: .8rem;
+
 			.titleBox {
 				width: 100%;
 				padding: 0 0.32rem;
 				height: 100%;
 
 				.themeDesc {
-					.title {
+					.subTitle {
 						font-size: 0.26rem;
 					}
 
-					.desc {
+					.subDescription {
 						max-width: 3.6rem;
 						overflow: hidden;
 						text-overflow: ellipsis;
@@ -131,7 +132,6 @@
 					}
 
 					.inquireBtn {
-						display: none;
 						width: 1.2rem;
 						height: 0.42rem;
 						border-radius: 0.2rem;

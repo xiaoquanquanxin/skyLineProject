@@ -6,6 +6,7 @@ import { REDUCER_NEWS_TAB_BOX } from '@store/newsInfo';
 import { REDUCER_ABOUT_US_MAP } from '@store/aboutUs';
 import { REDUCER_VIDEO } from '@store/video';
 import { REDUCER_POP_FORM } from '@store/popForm';
+import { REDUCER_FIXED_TAB_BOX } from '@store/fixedTabBox';
 
 const AppRedux = combineReducers({
     REDUCER_BROWSER_INFO,
@@ -13,6 +14,7 @@ const AppRedux = combineReducers({
     REDUCER_ABOUT_US_MAP,
     REDUCER_VIDEO,
     REDUCER_POP_FORM,
+    REDUCER_FIXED_TAB_BOX,
 });
 export default AppRedux;
 

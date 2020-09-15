@@ -21,9 +21,6 @@ export default connect(
     mapDispatchToProps
 )(
     class App extends React.Component {
-        //  锚点
-        barBoxAnchor;
-
         constructor(props){
             super(props);
             //  页面宽度监听
@@ -77,39 +74,35 @@ export default connect(
                         desc: '2 × I2S , 3 × SPI , 4 × I2C , and 4 × UART<br>1 × Gigabit Ethernet MAC , 2 × SDIO<br>Multiple GPIO and PWM',
                     }]
                 },
-
-                //  FixedBarBox参数
-                barBoxData: {
-                    SubTitle: '征程 Journey',
-                    SubDescription: '车规级 AI 芯片',
-                }
             };
-            this.barBoxAnchor = [{
-                name: '概述', anchor: '#m1', customOffsetTop: 0
-            }, {
-                name: '参数', anchor: '#m2', customOffsetTop: 0
-            }];
+            //  设置barBox的参数
+            const { setBarBoxAnchorList } = props;
+            setBarBoxAnchorList(['概述', '参数']);
         }
 
         componentDidMount(){
-            //  父组件初始化完成
-            const { setComponentDidMountFinish } = this.props;
-            setComponentDidMountFinish(true);
+            setTimeout(() => {
+                const { setBarBoxData, setComponentDidMountFinish } = this.props;
+                //  FixedBarBox参数
+                setBarBoxData({
+                    subTitle: '征程 Journey',
+                    subDescription: '车规级 AI 芯片',
+                });
+                //  父组件初始化完成
+                setComponentDidMountFinish(true);
+            }, 1111);
         }
 
         render(){
-            const { cdrbData, highPerceptionData, productMatrixData, baseParamData, barBoxData } = this.state;
-            const AiotBarBoxCustom = () => {
-                return (
-                    <FixedBarBox barBoxAnchor={this.barBoxAnchor} barBoxData={barBoxData}/>
-                );
-            };
+            const { cdrbData, highPerceptionData, productMatrixData, baseParamData } = this.state;
+
             return (
                 <div className="App">
                     {/*头部*/}
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
-                    <ScrollFixed RenderElement={AiotBarBoxCustom}/>
+                    <ScrollFixed RenderElement={FixedBarBox}/>
+                    {/*<FixedBarBox/>*/}
                     <div id="m1" pc={20} mobile={15}/>
                     {/*banner轮播*/}
                     <BannerManage bannerType={8}/>

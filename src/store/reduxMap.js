@@ -3,6 +3,7 @@ import { setTabBoxActiveIndex, setNewsCategoryData, newsCategoryDataForMap } fro
 import { setAboutUsMapOpenIndex, setAboutUsMapActiveAreaId, setComponentDidMountFinish } from '@store/aboutUs';
 import { setVideoOpenStatus } from '@store/video';
 import { setPopFormOpenStatus } from '@store/popForm';
+import { originBarBoxAnchorList, setBarBoxAnchorList, setBarBoxData } from '@store/fixedTabBox';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
 //  ✅读取state到props
@@ -15,12 +16,18 @@ export const mapStateToProps = ({
     REDUCER_ABOUT_US_MAP,
     //  视频播放器
     REDUCER_VIDEO,
+    //  form表单
+    REDUCER_POP_FORM,
+    //  固定定位的导航
+    REDUCER_FIXED_TAB_BOX,
 }) => {
     return {
         REDUCER_BROWSER_INFO,
         REDUCER_NEWS_TAB_BOX,
         REDUCER_ABOUT_US_MAP,
         REDUCER_VIDEO,
+        REDUCER_POP_FORM,
+        REDUCER_FIXED_TAB_BOX
     };
 };
 
@@ -72,6 +79,17 @@ export const mapDispatchToProps = (dispatch) => {
         //  是否打开form表单
         setPopFormOpenStatus: (popFormIsOpen) => {
             dispatch(setPopFormOpenStatus(popFormIsOpen));
+        },
+        //  设置fixedBarBox相关
+        setBarBoxAnchorList: (barBoxAnchorList) => {
+            const list = Object.assign([], originBarBoxAnchorList);
+            list.forEach((item, index) => {
+                item.name = barBoxAnchorList[index];
+            });
+            dispatch(setBarBoxAnchorList(list));
+        },
+        setBarBoxData: (barBoxData) => {
+            dispatch(setBarBoxData(barBoxData));
         }
     };
 };
