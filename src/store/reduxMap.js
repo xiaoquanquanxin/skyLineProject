@@ -1,6 +1,7 @@
 import { setBrowserScrollInfo, setRelativeWide } from '@store/browserInfo';
 import { setTabBoxActiveIndex, setNewsCategoryData, newsCategoryDataForMap } from '@store/newsInfo';
 import { setAboutUsMapOpenIndex, setAboutUsMapActiveAreaId, setComponentDidMountFinish } from '@store/aboutUs';
+import { setVideoOpenStatus } from '@store/video';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
 //  ✅读取state到props
@@ -11,11 +12,14 @@ export const mapStateToProps = ({
     REDUCER_NEWS_TAB_BOX,
     //  关于我的，主要是地图
     REDUCER_ABOUT_US_MAP,
+    //  视频播放器
+    REDUCER_VIDEO,
 }) => {
     return {
         REDUCER_BROWSER_INFO,
         REDUCER_NEWS_TAB_BOX,
         REDUCER_ABOUT_US_MAP,
+        REDUCER_VIDEO,
     };
 };
 
@@ -59,6 +63,10 @@ export const mapDispatchToProps = (dispatch) => {
         //  组件初始化完成
         setComponentDidMountFinish: (componentDidMountFinish) => {
             dispatch(setComponentDidMountFinish(componentDidMountFinish));
+        },
+        //  是否打开播放器
+        setVideoOpenStatus: (videoIsOpen) => {
+            dispatch(setVideoOpenStatus(videoIsOpen));
         }
     };
 };

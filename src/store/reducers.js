@@ -4,11 +4,13 @@ import { combineReducers } from 'redux';
 import { REDUCER_BROWSER_INFO } from './browserInfo';
 import { REDUCER_NEWS_TAB_BOX } from '@store/newsInfo';
 import { REDUCER_ABOUT_US_MAP } from '@store/aboutUs';
+import { REDUCER_VIDEO } from '@store/video';
 
 const AppRedux = combineReducers({
     REDUCER_BROWSER_INFO,
     REDUCER_NEWS_TAB_BOX,
-    REDUCER_ABOUT_US_MAP
+    REDUCER_ABOUT_US_MAP,
+    REDUCER_VIDEO,
 });
 export default AppRedux;
 
