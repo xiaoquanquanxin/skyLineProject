@@ -2,6 +2,7 @@ import { setBrowserScrollInfo, setRelativeWide } from '@store/browserInfo';
 import { setTabBoxActiveIndex, setNewsCategoryData, newsCategoryDataForMap } from '@store/newsInfo';
 import { setAboutUsMapOpenIndex, setAboutUsMapActiveAreaId, setComponentDidMountFinish } from '@store/aboutUs';
 import { setVideoOpenStatus } from '@store/video';
+import { setPopFormOpenStatus } from '@store/popForm';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
 //  ✅读取state到props
@@ -67,6 +68,10 @@ export const mapDispatchToProps = (dispatch) => {
         //  是否打开播放器
         setVideoOpenStatus: (videoIsOpen) => {
             dispatch(setVideoOpenStatus(videoIsOpen));
+        },
+        //  是否打开form表单
+        setPopFormOpenStatus: (popFormIsOpen) => {
+            dispatch(setPopFormOpenStatus(popFormIsOpen));
         }
     };
 };
