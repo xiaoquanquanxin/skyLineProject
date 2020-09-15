@@ -10,9 +10,11 @@ export const HighPerception = ({
     return (
         <div className={style.highPerception}>
             <div className={style.highPerceptionIn} style={{ backgroundImage: `url(${data.img})` }}>
-                <p className={style.title}>{data.title}</p>
-                <div className={style.desc} dangerouslySetInnerHTML={{ __html: data.desc }}/>
-                <DescList data={data.descList}/>
+                <div className={style.wrap}>
+                    <p className={style.title}>{data.title}</p>
+                    <div className={style.desc} dangerouslySetInnerHTML={{ __html: data.desc }}/>
+                    <DescList data={data.descList}/>
+                </div>
             </div>
         </div>
     );
