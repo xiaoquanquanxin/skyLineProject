@@ -9,6 +9,7 @@ import { navSortByRank } from '@utils/utils';
 import './index.less';
 import { ScrollFixed } from '@components/scrollFixed';
 import { AiotBarBox } from '@components/aiot';
+import { BannerManage } from '@components/bannerManage';
 
 export default connect(
     mapStateToProps,
@@ -17,18 +18,15 @@ export default connect(
     class App extends Component {
         constructor(props){
             super(props);
-        }
 
-        componentDidMount(){
-            //  发请求，取页面数据
-            requestGetBannerByType(11)
-                .then(v => {
-                    navSortByRank(v.data, 'rank');
-                });
             //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
             //  页面滚动监听
             getBrowserInfo(this.props.setBrowserScrollInfoFn);
+        }
+
+        componentDidMount(){
+
         }
 
         render(){
@@ -38,6 +36,8 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={AiotBarBox}/>
+                    {/*banner轮播*/}
+                    <BannerManage bannerType={11}/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
