@@ -15,8 +15,6 @@ export function requestFooterNav(){
     return request({
         url: '/api/getfooter',
         method: 'get',
-        //  get:params: { clientKey: CLIENT_IP, }
-        //  post:data: data,
     });
 }
 
@@ -25,8 +23,6 @@ export function requestIndex(){
     return request({
         url: '/api/getindex',
         method: 'get',
-        //  get:params: { clientKey: CLIENT_IP, }
-        //  post:data: data,
     });
 }
 
@@ -116,4 +112,28 @@ export function requestGetAboutUs(){
         url: '/api/getaboutus',
         method: 'get',
     });
+}
+
+//  表单提交
+export function requestSave({
+    content,
+    fullname,
+    contact,
+    company,
+    position,
+    email,
+}){
+    return request({
+        url: '/api/save',
+        method: 'post',
+        data: {
+            title: document.title,
+            content,
+            fullname,
+            contact,
+            company,
+            position,
+            email,
+        }
+    })
 }
