@@ -32,11 +32,6 @@ export const Journey2Video = connect(
                 });
         }
 
-        //  点击播放
-        playAndStopClick(){
-            this.props.setVideoOpenStatus(true);
-        }
-
         render(){
             const { videoData } = this.state;
             if (!videoData) {
@@ -47,7 +42,7 @@ export const Journey2Video = connect(
                     <div className={style.videoBox}>
                         <p className={style.videoTitle}>视频展示</p>
                         <div className={style.videoCover} style={{ backgroundImage: `url(${videoData.img})` }}
-                             onClick={() => {this.playAndStopClick();}}
+                             onClick={() => {this.props.setVideoOpenStatus(true, videoData && videoData.video);}}
                         />
                         <p className={style.videoSTitle}>{videoData.title}</p>
                     </div>
