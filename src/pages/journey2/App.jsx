@@ -82,15 +82,11 @@ export default connect(
 
         componentDidMount(){
             setTimeout(() => {
-                const { setBarBoxData, setComponentDidMountFinish } = this.props;
-                //  FixedBarBox参数
-                setBarBoxData({
-                    subTitle: '征程 Journey',
-                    subDescription: '车规级 AI 芯片',
-                });
+                const { setComponentDidMountFinish } = this.props;
+                console.log('请求成功了');
                 //  父组件初始化完成
                 setComponentDidMountFinish(true);
-            }, 1111);
+            }, 20);
         }
 
         render(){
