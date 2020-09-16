@@ -16,6 +16,8 @@ import { Journey2Video } from '@components/journey2/journey2Video';
 import { GetMoreBox } from '@components/getMoreBox';
 import './index.less';
 import { VideoWrap } from '@components/video';
+import { PopForm } from '@components/popForm';
+import { Toast } from '@components/toast';
 
 export default connect(
     mapStateToProps,
@@ -126,6 +128,10 @@ export default connect(
                     <VideoWrap/>
                     {/*脚部*/}
                     <BasicFooter/>
+                    {/*表单*/}
+                    <PopForm/>
+                    {/*toast*/}
+                    <Toast/>
                 </div>
             );
         }
