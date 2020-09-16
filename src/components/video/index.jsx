@@ -2,6 +2,7 @@ import React from 'react';
 import style from './index.module.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
+import layout from '@css/layout.module.less';
 
 //  视频播放器
 export const VideoWrap = connect(
@@ -13,7 +14,7 @@ export const VideoWrap = connect(
 }) => {
     const { videoIsOpen } = REDUCER_VIDEO;
     return (
-        <div className={style.popVideoWrap} style={{ display: videoIsOpen ? 'flex' : 'none' }}>
+        <div className={`${style.popVideoWrap} ${layout.mask}`} style={{ display: videoIsOpen ? 'flex' : 'none' }}>
             <div className={style.popVideoMain}>
                 <video autoPlay="autoplay" preload="auto" controls="controls" playsInline={true}
                        webkit-playsinline="true"

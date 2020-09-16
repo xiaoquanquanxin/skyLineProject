@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './index.module.less';
 import { requestGetBannerByType } from '@api/index';
-import { VideoWrap } from '@components/video';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
@@ -50,8 +49,7 @@ export const Journey2Video = connect(
                         <div className={style.videoCover} style={{ backgroundImage: `url(${videoData.img})` }}
                              onClick={() => {this.playAndStopClick();}}
                         />
-                        <p className={style.videoSTitle}>基于征程2 的单目前视解决方案（ADAS）</p>
-                        <VideoWrap/>
+                        <p className={style.videoSTitle}>{videoData.title}</p>
                     </div>
                 </div>
             );
