@@ -4,6 +4,7 @@ import { setAboutUsMapOpenIndex, setAboutUsMapActiveAreaId, setComponentDidMount
 import { setVideoOpenStatus } from '@store/video';
 import { setPopFormOpenStatus, setToastStatus } from '@store/popForm';
 import { originBarBoxAnchorList, setBarBoxAnchorList, setBarBoxData } from '@store/fixedTabBox';
+import { setNavListData } from '@store/header';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
 //  ✅读取state到props
@@ -20,6 +21,8 @@ export const mapStateToProps = ({
     REDUCER_POP_FORM,
     //  固定定位的导航
     REDUCER_FIXED_TAB_BOX,
+    //  头部数据
+    REDUCER_HEADER_DATA,
 }) => {
     return {
         REDUCER_BROWSER_INFO,
@@ -27,7 +30,8 @@ export const mapStateToProps = ({
         REDUCER_ABOUT_US_MAP,
         REDUCER_VIDEO,
         REDUCER_POP_FORM,
-        REDUCER_FIXED_TAB_BOX
+        REDUCER_FIXED_TAB_BOX,
+        REDUCER_HEADER_DATA
     };
 };
 
@@ -100,6 +104,10 @@ export const mapDispatchToProps = (dispatch) => {
         },
         setBarBoxData: (barBoxData) => {
             dispatch(setBarBoxData(barBoxData));
+        },
+        //  设置头部数据
+        setNavListData: (navListData) => {
+            dispatch(setNavListData(navListData));
         }
     };
 };

@@ -7,6 +7,7 @@ import { REDUCER_ABOUT_US_MAP } from '@store/aboutUs';
 import { REDUCER_VIDEO } from '@store/video';
 import { REDUCER_POP_FORM } from '@store/popForm';
 import { REDUCER_FIXED_TAB_BOX } from '@store/fixedTabBox';
+import { REDUCER_HEADER_DATA } from '@store/header';
 
 const AppRedux = combineReducers({
     REDUCER_BROWSER_INFO,
@@ -15,6 +16,7 @@ const AppRedux = combineReducers({
     REDUCER_VIDEO,
     REDUCER_POP_FORM,
     REDUCER_FIXED_TAB_BOX,
+    REDUCER_HEADER_DATA,
 });
 export default AppRedux;
 
