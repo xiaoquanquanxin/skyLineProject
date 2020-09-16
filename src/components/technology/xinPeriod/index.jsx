@@ -71,7 +71,7 @@ export const XinPeriod = connect(
                     activeIndex,
                 };
             });
-            console.log(activeIndex);
+            //  console.log(activeIndex);
         }
 
         render(){

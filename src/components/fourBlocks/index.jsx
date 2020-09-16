@@ -2,14 +2,14 @@ import React from 'react';
 import style from './index.module.less';
 
 //  四个一块的
-export const Journey2cdrb = ({
+export const FourBlocks = ({
     data,
 }) => {
     let list;
     if (data && data.length) {
         list = data.map((item, index) => {
             return (
-                <Journey2cdrbItem key={index} data={item}/>
+                <FourBlocksItem key={index} data={item}/>
             );
         });
     }
@@ -21,7 +21,7 @@ export const Journey2cdrb = ({
 };
 
 //  每一项
-const Journey2cdrbItem = ({
+const FourBlocksItem = ({
     data,
 }) => {
     return (

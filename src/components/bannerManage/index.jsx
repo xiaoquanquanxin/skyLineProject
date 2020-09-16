@@ -13,6 +13,13 @@ const matrixBanner = 'matrixBanner';
 export class BannerManage extends React.Component {
     //  区分使用使用的子组件
     //  key: bannerType , value : sliderItemType
+    //  ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+    //  ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+    //  ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+    //  ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️      要补充3个地方
+    //  ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+    //  ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+    //  ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
     bannerSliderTypeMap = {
         //  关于我们、新闻中心
         4: 3,
@@ -95,7 +102,7 @@ export class BannerManage extends React.Component {
         //  只有征程、旭日2、旭日3、MATRIX有需要背景
         switch (bannerType) {
             case 8:     //  只有征程、旭日2、旭日3一种背景色
-//            case 8:
+            case 10:
                 id = 'swiperMainWrapDark';
                 break;
             case 11:    //  matrix  颜色不同而已

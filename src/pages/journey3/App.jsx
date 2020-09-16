@@ -7,7 +7,7 @@ import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { ScrollFixed } from '@components/scrollFixed';
 import { BannerManage } from '@components/bannerManage';
-import { Journey2cdrb } from '@components/journey2/cdrb';
+import { FourBlocks } from '@components/fourBlocks';
 import { HighPerception } from '@components/journey2/HighPerception';
 import { EdgeComputing } from '@components/journey2/edgeComputing';
 import { ProductMatrix } from '@components/journey2/productMatrix';
@@ -103,7 +103,7 @@ export default connect(
                     {/*banner轮播*/}
                     <BannerManage bannerType={8}/>
                     {/*四个一块*/}
-                    <Journey2cdrb data={cdrbData}/>
+                    <FourBlocks data={cdrbData}/>
                     {/*高知觉*/}
                     <HighPerception data={highPerceptionData}/>
                     <EdgeComputing data={highPerceptionData}/>
