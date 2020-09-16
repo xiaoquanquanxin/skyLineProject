@@ -12,17 +12,24 @@ export const VideoWrap = connect(
     REDUCER_VIDEO,
     setVideoOpenStatus,
 }) => {
-    const { videoIsOpen } = REDUCER_VIDEO;
+    const { videoIsOpen, videoSrc } = REDUCER_VIDEO;
     return (
         <div className={`${style.popVideoWrap} ${layout.mask}`} style={{ display: videoIsOpen ? 'flex' : 'none' }}>
             <div className={style.popVideoMain}>
-                <video autoPlay="autoplay" preload="auto" controls="controls" playsInline={true}
-                       webkit-playsinline="true"
-                       x5-video-player-type="h5" x5-video-orientation="portraint"
-                       x5-video-player-fullscreen="true"
-                       src="http://horizon.wx.h5work.com/upload/202009/04/781851599220146.mp4"
-                       className={style.popVideo}
-                />
+                {videoSrc ?
+                    <video
+                        autoPlay
+                        preload="auto"
+                        controls="controls"
+                        playsInline={true}
+                        webkit-playsinline='true'
+                        x5-video-player-type="h5"
+                        x5-video-orientation="portraint"
+                        x5-video-player-fullscreen="true"
+                        src={videoSrc}
+                        className={style.popVideo}
+                    />
+                    : ''}
                 <div className={style.iconClose} onClick={() => {setVideoOpenStatus(false);}}/>
             </div>
         </div>
