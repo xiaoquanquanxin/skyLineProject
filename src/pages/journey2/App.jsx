@@ -78,9 +78,6 @@ export default connect(
                     }]
                 },
             };
-            //  设置barBox的参数
-            const { setBarBoxAnchorList } = props;
-            setBarBoxAnchorList(['概述', '参数']);
         }
 
         componentDidMount(){

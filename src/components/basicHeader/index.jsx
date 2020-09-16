@@ -95,7 +95,13 @@ export const BasicHeader = connect(
                 if (value.url === null) {
                     //  console.log(value.url, value);
                 } else if (value.url === this.pathName) {
-                    //  console.log('匹配到的页面，这个路由是激活的🐸', value);
+                    console.log('匹配到的页面，这个路由是激活的🐸', 'title🍎', value.title, 'desc🍐', value.desc,);
+                    //  给 FixedBarBox 加状态，
+                    const { setBarBoxData } = this.props;
+                    setBarBoxData({
+                        subTitle: value.title,
+                        subDescription: value.desc
+                    });
                     //  激活态
                     value.isActive = true;
                     //  不需要跳转

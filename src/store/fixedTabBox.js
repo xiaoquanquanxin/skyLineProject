@@ -33,7 +33,7 @@ export const originBarBoxAnchorList = [{
 
 //  固定定位
 export function REDUCER_FIXED_TAB_BOX(state = {
-    barBoxAnchorList: [],
+    barBoxAnchorList: ['概述', '参数'],
     barBoxData: {}
 }, action){
     const { type, barBoxAnchorList, barBoxData } = action;
@@ -47,3 +47,7 @@ export function REDUCER_FIXED_TAB_BOX(state = {
     }
 }
 
+//  e.g.
+//  设置barBox的参数
+//  const { setBarBoxAnchorList } = props;
+//  setBarBoxAnchorList(['概述', '参数']);
