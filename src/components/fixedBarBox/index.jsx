@@ -88,7 +88,8 @@ export const FixedBarBox = connect(
 
         render(){
             const { activeIndex } = this.state;
-            const { barBoxAnchorList, barBoxData } = this.props.REDUCER_FIXED_TAB_BOX;
+            const { setPopFormOpenStatus, REDUCER_FIXED_TAB_BOX } = this.props;
+            const { barBoxAnchorList, barBoxData } = REDUCER_FIXED_TAB_BOX;
             const anchorList = barBoxAnchorList.map((item, index) => {
                 return (
                     <span
@@ -109,7 +110,9 @@ export const FixedBarBox = connect(
                             <div className={style.navTag}>
                                 {anchorList}
                             </div>
-                            <div className={style.inquireBtn}>合作咨询</div>
+                            <div className={style.inquireBtn}
+                                 onClick={() => {setPopFormOpenStatus(true);}}>合作咨询
+                            </div>
                         </div>
                     </div>
                 </div>
