@@ -3,6 +3,8 @@ import CSSModules from 'react-css-modules';
 import style from './index.module.less';
 //  箭头
 import arrowsSrc from '@media/basicHeader/icon-arrow-black.png';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 //  每一项
 const MenuListItem = CSSModules(
     ({
@@ -110,40 +112,45 @@ const NavLevel3 = CSSModules(
 );
 
 //  主菜单
-export const MenuMobile = ({
-    //  是折叠
-    menuIsFold,
-    //  数据
-    navListData,
-    //  展开的一级菜单的index - 移动端
-    primaryIndex,
-    //  展开的二级菜单的index - 移动端
-    secondaryIndex,
-    //  一级菜单点击事件
-    primaryMenuClick,
-    //  次级菜单点击事件
-    secondaryMenuClick,
-}) => {
-    if (!navListData || !navListData.length) {
-        return '';
-    }
-    const list = navListData.map((item, index) => (
-        <MenuListItem
-            key={item.id}
-            data={item}
-            index={index}
-            isEventActive={primaryIndex === index}
-            secondaryIndex={secondaryIndex}
-            primaryMenuClick={primaryMenuClick}
-            secondaryMenuClick={secondaryMenuClick}
-        />
-    ));
+export const MenuMobile = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(
+    ({
+        //  是折叠
+        menuIsFold,
+        //  展开的一级菜单的index - 移动端
+        primaryIndex,
+        //  展开的二级菜单的index - 移动端
+        secondaryIndex,
+        //  一级菜单点击事件
+        primaryMenuClick,
+        //  次级菜单点击事件
+        secondaryMenuClick,
+        REDUCER_HEADER_DATA,
+    }) => {
+        const { navListData } = REDUCER_HEADER_DATA;
+        if (!navListData || !navListData.length) {
+            return '';
+        }
+        const list = navListData.map((item, index) => (
+            <MenuListItem
+                key={item.id}
+                data={item}
+                index={index}
+                isEventActive={primaryIndex === index}
+                secondaryIndex={secondaryIndex}
+                primaryMenuClick={primaryMenuClick}
+                secondaryMenuClick={secondaryMenuClick}
+            />
+        ));
 
-    return (
-        //  如果窄屏展开，或者宽屏
-        <ul className={`${style.menuMobile} ${!menuIsFold ? style.menuListShow : ''}`}>
-            {list}
-        </ul>
-    );
-};
+        return (
+            //  如果窄屏展开，或者宽屏
+            <ul className={`${style.menuMobile} ${!menuIsFold ? style.menuListShow : ''}`}>
+                {list}
+            </ul>
+        );
+    }
+);
 

@@ -16,8 +16,6 @@ export const HeaderPC = connect(
         isOverHeader,
         //  是否为首页
         isHomePage,
-        //  数据
-        navListData,
         //  鼠标浮于header上方
         headerMouseOver,
         //  鼠标离开
@@ -46,7 +44,6 @@ export const HeaderPC = connect(
                         </div>
                         {/*菜单*/}
                         <MenuPC
-                            navListData={navListData}
                             isTopAndHome={headerRenderInfo.isTopAndHome}
                         />
                     </div>

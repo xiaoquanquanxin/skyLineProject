@@ -19,8 +19,6 @@ export const HeaderMobile = connect(
         primaryIndex,
         //  展开的二级菜单的index - 移动端
         secondaryIndex,
-        //  数据
-        navListData,
         //  一级菜单点击事件
         primaryMenuClick,
         //  次级菜单点击事件
@@ -53,7 +51,6 @@ export const HeaderMobile = connect(
                     {/*菜单*/}
                     <MenuMobile
                         menuIsFold={menuIsFold}
-                        navListData={navListData}
                         primaryIndex={primaryIndex}
                         secondaryIndex={secondaryIndex}
                         primaryMenuClick={primaryMenuClick}

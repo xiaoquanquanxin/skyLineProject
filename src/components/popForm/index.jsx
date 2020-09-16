@@ -66,7 +66,6 @@ export const PopForm = connect(
             this.formList.forEach(name => {
                 data[name] = document.querySelector(`[name=${name}]`).value;
             });
-            debugger
             requestSave(data)
                 .then(v => {
                     const { setToastStatus } = this.props;

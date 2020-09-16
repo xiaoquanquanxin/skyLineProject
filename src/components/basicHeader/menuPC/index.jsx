@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CSSModules from 'react-css-modules';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
 //  每一项
 const MenuListItem = CSSModules(
@@ -64,30 +66,35 @@ const NavLevel3 = CSSModules(
 );
 
 //  主菜单
-export const MenuPC = ({
-    //  激活了哪一个路由 index
-    isTopAndHome,
-    //  数据
-    navListData,
-}) => {
-    if (!navListData || !navListData.length) {
-        return '';
-    }
-    const list = navListData.map((item) => {
+export const MenuPC = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(
+    ({
+        //  激活了哪一个路由 index
+        isTopAndHome,
+        REDUCER_HEADER_DATA,
+    }) => {
+        const { navListData } = REDUCER_HEADER_DATA;
+        if (!navListData || !navListData.length) {
+            return '';
+        }
+        const list = navListData.map((item) => {
+            return (
+                <MenuListItem
+                    isActive={item.isActive}
+                    key={item.id}
+                    content={item.name}
+                    href={item.url}
+                    target={item.is_out ? '_blank' : '_self'}
+                    subList={item.son}
+                />
+            );
+        });
         return (
-            <MenuListItem
-                isActive={item.isActive}
-                key={item.id}
-                content={item.name}
-                href={item.url}
-                target={item.is_out ? '_blank' : '_self'}
-                subList={item.son}
-            />
+            <ul className={`${style.menuPC} ${layout.clearfix} ${isTopAndHome ? style.isTopAndHome : ''}`}>
+                {list}
+            </ul>
         );
-    });
-    return (
-        <ul className={`${style.menuPC} ${layout.clearfix} ${isTopAndHome ? style.isTopAndHome : ''}`}>
-            {list}
-        </ul>
-    );
-};
+    }
+);

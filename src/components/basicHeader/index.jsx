@@ -29,8 +29,6 @@ export const BasicHeader = connect(
                 primaryIndex: -1,
                 //  展开的二级菜单的index - 移动端
                 secondaryIndex: -1,
-                //  请求的导航数据
-                navListData: null
             };
         }
 
@@ -40,12 +38,11 @@ export const BasicHeader = connect(
             requestHeaderNav()
                 .then(v => {
                     this.navSort(v.data);
-                    //  console.log(v.data);
+                    //  设置导航数据
+                    const { setNavListData } = this.props;
+                    setNavListData(v.data);
                     //  ⚠️⚠️特殊问题特殊处理
                     specialPathName(this.pathName, v.data);
-                    this.setState(() => ({
-                        navListData: v.data
-                    }));
                 });
         }
 
@@ -57,7 +54,6 @@ export const BasicHeader = connect(
                 isHomePage,
                 primaryIndex,
                 secondaryIndex,
-                navListData,
             } = this.state;
             const {
                 isRelativeWide
@@ -68,7 +64,6 @@ export const BasicHeader = connect(
                     <HeaderPC
                         isOverHeader={isOverHeader}
                         isHomePage={isHomePage}
-                        navListData={navListData}
                         headerMouseOver={this.headerMouseOver}
                         headerMouseLeave={this.headerMouseLeave}
                     /> :
@@ -77,7 +72,6 @@ export const BasicHeader = connect(
                         isHomePage={isHomePage}
                         primaryIndex={primaryIndex}
                         secondaryIndex={secondaryIndex}
-                        navListData={navListData}
                         primaryMenuClick={this.primaryMenuClick}
                         secondaryMenuClick={this.secondaryMenuClick}
                         menuFoldClick={this.menuFoldClick}
