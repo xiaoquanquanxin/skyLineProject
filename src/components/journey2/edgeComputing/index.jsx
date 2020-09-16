@@ -2,10 +2,12 @@ import React from 'react';
 import style from './index.module.less';
 import { DescList } from '@components/journey2/descList';
 
-//  四个一块的
 export const EdgeComputing = ({
     data,
 }) => {
+    if (!data) {
+        return null;
+    }
     data.descList = [{}, {}, {}];
     return (
         <div className={style.edgeComputing}>
