@@ -77,8 +77,9 @@ export const mapDispatchToProps = (dispatch) => {
             dispatch(setComponentDidMountFinish(componentDidMountFinish));
         },
         //  是否打开播放器
-        setVideoOpenStatus: (videoIsOpen) => {
-            dispatch(setVideoOpenStatus(videoIsOpen));
+        setVideoOpenStatus: (videoIsOpen, videoSrc) => {
+            videoSrc = videoSrc || '';
+            dispatch(setVideoOpenStatus(videoIsOpen, videoSrc));
         },
         //  是否打开form表单
         setPopFormOpenStatus: (popFormIsOpen) => {

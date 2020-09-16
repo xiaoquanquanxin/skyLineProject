@@ -59,7 +59,7 @@ export class BannerManage extends React.Component {
         if (!bannerType) {
             throw new Error(`缺少用于发请求的bannerType${bannerType}`);
         }
-        console.log(`bannerType:${bannerType}`);
+        console.log(`BannerManage 组件：bannerType:${bannerType}`);
         this.state = {
             swiperData: null,
             sliderItemType: this.bannerSliderTypeMap[bannerType],
