@@ -15,6 +15,7 @@ import { BaseParam } from '@components/journey2/baseParam';
 import { Journey2Video } from '@components/journey2/journey2Video';
 import { GetMoreBox } from '@components/getMoreBox';
 import './index.less';
+import { VideoWrap } from '@components/video';
 
 export default connect(
     mapStateToProps,
@@ -121,6 +122,8 @@ export default connect(
                     <Journey2Video videoType={19}/>
                     {/*更多*/}
                     <GetMoreBox/>
+                    {/*视频本身*/}
+                    <VideoWrap/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
