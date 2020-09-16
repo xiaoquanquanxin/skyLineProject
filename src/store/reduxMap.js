@@ -2,7 +2,7 @@ import { setBrowserScrollInfo, setRelativeWide } from '@store/browserInfo';
 import { setTabBoxActiveIndex, setNewsCategoryData, newsCategoryDataForMap } from '@store/newsInfo';
 import { setAboutUsMapOpenIndex, setAboutUsMapActiveAreaId, setComponentDidMountFinish } from '@store/aboutUs';
 import { setVideoOpenStatus } from '@store/video';
-import { setPopFormOpenStatus } from '@store/popForm';
+import { setPopFormOpenStatus, setToastStatus } from '@store/popForm';
 import { originBarBoxAnchorList, setBarBoxAnchorList, setBarBoxData } from '@store/fixedTabBox';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
@@ -79,6 +79,16 @@ export const mapDispatchToProps = (dispatch) => {
         //  是否打开form表单
         setPopFormOpenStatus: (popFormIsOpen) => {
             dispatch(setPopFormOpenStatus(popFormIsOpen));
+        },
+        //  是否打开toast
+        setToastStatus: (toastStatus, isSuccess) => {
+            //  如果是打开，那么3s后关闭
+            if (toastStatus) {
+                setTimeout(() => {
+                    dispatch(setToastStatus(!toastStatus, isSuccess));
+                }, 3000);
+            }
+            dispatch(setToastStatus(toastStatus, isSuccess));
         },
         //  设置fixedBarBox相关
         setBarBoxAnchorList: (barBoxAnchorList) => {
