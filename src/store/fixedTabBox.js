@@ -26,14 +26,14 @@ export function setBarBoxData(barBoxData){
 
 //  初始的barBoxAnchorList
 export const originBarBoxAnchorList = [{
-    anchor: '#m1', customOffsetTop: 0,
+    anchor: '#m1', customOffsetTop: 0, name: '概述'
 }, {
-    anchor: '#m2', customOffsetTop: 0,
+    anchor: '#m2', customOffsetTop: 0, name: '参数'
 }];
 
 //  固定定位
 export function REDUCER_FIXED_TAB_BOX(state = {
-    barBoxAnchorList: ['概述', '参数'],
+    barBoxAnchorList: originBarBoxAnchorList,
     barBoxData: {}
 }, action){
     const { type, barBoxAnchorList, barBoxData } = action;
