@@ -43,7 +43,7 @@
 				line-height: 1.625;
 				position: relative;
 
-				.span {
+				.content {
 					width: 770px;
 					display: -webkit-inline-box;
 					display: -ms-inline-flexbox;
@@ -51,6 +51,12 @@
 					overflow: hidden;
 					max-height: 26px;
 					white-space: nowrap;
+
+					&.active {
+						display: inline;
+						white-space: normal;
+						max-height: none;
+					}
 				}
 
 				.btn {
@@ -72,9 +78,7 @@
 					}
 
 					.close {
-						visibility: hidden;
-						position: absolute;
-						left: 0;
+						visibility: visible;
 					}
 
 					.arrow {
@@ -131,7 +135,7 @@
 						max-height: none;
 						text-align: justify;
 
-						.span {
+						.content {
 							width: 5.2rem;
 						}
 
