@@ -27,6 +27,7 @@ export class BannerManage extends React.Component {
         18: 4,
         //  征程、旭日2、旭日3
         8: 5,
+        10: 5,
         //  matrix
         11: 6,
     };
@@ -46,6 +47,7 @@ export class BannerManage extends React.Component {
         18: projectBanner,
         //  征程、旭日2、旭日3
         8: productBanner,
+        10: productBanner,
         //  matrix
         11: matrixBanner,
     };
