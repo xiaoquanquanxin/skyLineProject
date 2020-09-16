@@ -16,7 +16,7 @@ const cdnInject = (pathName, html, preString) => {
         default:
             break;
     }
-    console.log('输出🍉🍉', preString);
+    //  console.log('输出🍉🍉', preString);
     //  preString += `<div>${pathName}</div>`;
     //  替换html
     html = html.replace('[[[custom-js-cdn-placeholder]]]', preString);

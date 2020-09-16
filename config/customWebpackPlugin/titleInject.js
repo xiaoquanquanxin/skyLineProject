@@ -93,7 +93,7 @@ const titleInjectFn = (outputName, html) => {
 
     //  替换html
     html = html.replace('[[[custom-title]]]', titlePlaceholder);
-    console.log('输出🍉🍉', html);
+    //  console.log('输出🍉🍉', html);
     return html;
 };
 module.exports = titleInjectFn;
