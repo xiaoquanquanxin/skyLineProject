@@ -24,8 +24,9 @@ export const PopForm = connect(
             };
             //  表单的list
             this.formList = ['content', 'fullname', 'contact', 'company', 'position', 'email'];
-            const { setToastStatus } = this.props;
-            setToastStatus(true, true);
+            //  测试
+            //  const { setToastStatus } = this.props;
+            //  setToastStatus(true, true);
         }
 
         /**
