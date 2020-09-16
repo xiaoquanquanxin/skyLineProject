@@ -16,7 +16,7 @@ export const BasicHeader = connect(
         constructor(props){
             super(props);
             //  是哪一个页面
-            this.pathName = window.location.pathname.replace(/\//ig, '');
+            this.pathName = window.location.pathname.replace(/\//ig, '') || 'index.html';
             this.state = {
                 //  鼠标浮于上方，锁定白色
                 isOverHeader: false,
@@ -24,7 +24,7 @@ export const BasicHeader = connect(
                 //  右侧菜单的折叠状态 true:折叠
                 menuIsFold: true,
                 //  是首页？
-                isHomePage: this.pathName === 'index.html' || this.pathName === '',
+                isHomePage: this.pathName === 'index.html',
                 //  展开的一级菜单的index - 移动端
                 primaryIndex: -1,
                 //  展开的二级菜单的index - 移动端
@@ -40,6 +40,7 @@ export const BasicHeader = connect(
             requestHeaderNav()
                 .then(v => {
                     this.navSort(v.data);
+                    //  console.log(v.data);
                     //  ⚠️⚠️特殊问题特殊处理
                     specialPathName(this.pathName, v.data);
                     this.setState(() => ({
@@ -98,9 +99,9 @@ export const BasicHeader = connect(
                 //  如果遍历到的url和当前页面的url匹配，那么，我当前选中的就是这个路由，它的div应该是激活态
 
                 if (value.url === null) {
-                    console.log(value.url, value);
+                    //  console.log(value.url, value);
                 } else if (value.url === this.pathName) {
-//                console.log('匹配到的页面，这个路由是激活的🐸', value);
+                    //  console.log('匹配到的页面，这个路由是激活的🐸', value);
                     //  激活态
                     value.isActive = true;
                     //  不需要跳转
