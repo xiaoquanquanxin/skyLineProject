@@ -37,6 +37,11 @@ const titleInjectFn = (outputName, html) => {
             titlePlaceholder = '征程';
             break;
 
+        case 'journey3.html':
+            //  征程3
+            titlePlaceholder = '征程3';
+            break;
+
         case 'matrix.html':
             //  产品中心-MATRIX
             titlePlaceholder = '产品中心-MATRIX';
