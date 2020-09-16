@@ -4,7 +4,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
-import { FixedBarBox } from '@components/aiot';
+import { FixedBarBox } from '@components/fixedBarBox';
 import { ScrollFixed } from '@components/scrollFixed';
 import { BannerManage } from '@components/bannerManage';
 import { Journey2cdrb } from '@components/journey2/cdrb';

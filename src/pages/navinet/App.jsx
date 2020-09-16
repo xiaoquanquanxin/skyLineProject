@@ -9,7 +9,7 @@ import { navSortByRank } from '@utils/utils';
 import './index.less';
 import { BannerManage } from '@components/bannerManage';
 import { ScrollFixed } from '@components/scrollFixed';
-import { FixedBarBox } from '@components/aiot';
+import { FixedBarBox } from '@components/fixedBarBox';
 
 export default connect(
     mapStateToProps,

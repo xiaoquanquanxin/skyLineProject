@@ -8,7 +8,7 @@ import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
 import { ScrollFixed } from '@components/scrollFixed';
-import { FixedBarBox } from '@components/aiot';
+import { FixedBarBox } from '@components/fixedBarBox';
 
 export default connect(
     mapStateToProps,
