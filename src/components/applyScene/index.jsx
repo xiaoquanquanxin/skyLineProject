@@ -16,6 +16,8 @@ export const ApplyScene = ({
         case 1:
             sceneTypeClassName = style.white;
             break;
+        default:
+            break;
     }
     return (
         <div className={`${style.applyScene} ${sceneTypeClassName}`}>
