@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './index.module.less';
+import { RobotoCondensed, RobotoCondensedLine } from '@components/sunrise3/robotoCondensed';
 
 //  伯努利2.0 BPU
 export const Sunrise3BpuBox = ({
@@ -11,23 +12,15 @@ export const Sunrise3BpuBox = ({
         list = sunrise3BpuBoxData.list.map((item, index) => {
             if (index > 0 && index % 2) {
                 return (
-                    <li key={index} className={style.itemLine}>
-                        <div className={style.line}/>
-                    </li>
+                    <RobotoCondensedLine key={index}/>
                 );
             }
             return (
-                <li key={index} className={style.item}>
-                    <label className={style.label}>Effective AI performance</label>
-                    <div className={style.c}>
-                        <b className={style.b}>5</b>
-                        <span className={style.span}>TOPS</span>
-                    </div>
-                </li>
+                <RobotoCondensed data={item} key={index}/>
             );
         });
     }
-    console.log(sunrise3BpuBoxData);
+    //  console.log(sunrise3BpuBoxData);
     return (
         <div className={style.bpuBox}>
             <div className={style.bpuIn}>
