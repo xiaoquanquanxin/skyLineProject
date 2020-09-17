@@ -117,12 +117,12 @@ export default connect(
                     <Journey2Video videoType={19}/>
                     {/*更多*/}
                     <GetMoreBox/>
+                    {/*表单*/}
+                    <PopForm/>
                     {/*视频本身*/}
                     <VideoWrap/>
                     {/*脚部*/}
                     <BasicFooter/>
-                    {/*表单*/}
-                    <PopForm/>
                     {/*toast*/}
                     <Toast/>
                 </div>
