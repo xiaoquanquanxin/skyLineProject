@@ -4,6 +4,8 @@ import style from './index.module.less';
 //  四个一块的
 export const FourBlocks = ({
     data,
+    //  是浅色背景？
+    isLight
 }) => {
     let list;
     if (data && data.length) {
@@ -14,7 +16,7 @@ export const FourBlocks = ({
         });
     }
     return (
-        <ul className={style.cdrb}>
+        <ul className={`${style.cdrb} ${isLight ? style.isLight : ''}`}>
             {list}
         </ul>
     );

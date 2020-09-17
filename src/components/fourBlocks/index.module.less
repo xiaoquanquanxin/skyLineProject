@@ -10,6 +10,17 @@
 	background: -webkit-linear-gradient(top, #121212 0%, #0F0F0F 100%);
 	background: linear-gradient(180deg, #121212 0%, #0F0F0F 100%);
 
+	//	是浅色
+	&.isLight {
+		background: var(--colorf9);
+
+		.item {
+			.name {
+				color: rgba(0, 0, 0, 0.8);
+			}
+		}
+	}
+
 	.item {
 		width: 252px;
 		text-align: center;
