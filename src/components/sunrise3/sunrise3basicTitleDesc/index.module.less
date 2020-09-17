@@ -1,19 +1,40 @@
 .sunrise3basicTitleDesc {
+	text-align: center;
 	.title {
 		font-size: 40px;
 		font-weight: 500;
-		color: #fff;
+		color: var(--white);
 		line-height: 1.25;
 	}
 
-	.desc {
+	.widthType918 {
 		width: 918px;
+	}
+
+	.widthType784 {
+		width: 784px;
+	}
+
+	.widthType710 {
+		width: 710px;
+	}
+
+	.widthType620 {
+		width: 620px;
+	}
+
+	.widthTypeBasic {
+		width: 100%;
+	}
+
+	.desc {
 		font-size: 16px;
 		font-weight: 400;
 		color: rgba(255, 255, 255, .7);
 		line-height: 1.625;
-		margin: 20px;
+		margin: 20px auto;
 	}
+
 
 	@media screen and  (max-width: 750px) {
 		& {
@@ -24,7 +45,16 @@
 			.desc {
 				width: 6rem;
 				font-size: 0.18rem;
-				margin: 0.2rem;
+				margin: 0.2rem auto;
+			}
+
+			.widthType710 {
+				width: 5.6rem;
+			}
+
+			.widthType620 {
+				width: 6.3rem;
+				font-size: .16rem;
 			}
 		}
 	}
