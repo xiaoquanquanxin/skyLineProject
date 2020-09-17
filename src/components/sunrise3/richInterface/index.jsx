@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
-import { Sunrise3basicTitleDesc } from '@components/sunrise3/sunrise3basicTitleDesc';
+import { BasicTitleDesc } from '@components/basicTitleDesc';
 
 //  旭日3 系列——释放 “芯” 效能
 export const RichInterface = class extends React.Component {
@@ -41,7 +41,7 @@ export const RichInterface = class extends React.Component {
         const { activeTab } = this.state;
         return (
             <div className={style.richInterface}>
-                <Sunrise3basicTitleDesc data={richInterfaceData} widthType={784}/>
+                <BasicTitleDesc data={richInterfaceData} widthType={784}/>
                 <dl className={style.tabBox}>
                     <dd className={`${style.tab} ${activeTab === 0 ? style.active : ''}`}
                         onClick={() => {this.setActive(0);}}

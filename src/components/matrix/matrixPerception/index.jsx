@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './index.module.less';
-import { Sunrise3basicTitleDesc } from '@components/sunrise3/sunrise3basicTitleDesc';
+import { BasicTitleDesc } from '@components/basicTitleDesc';
 
 //  高性能图像感知能力
 export const MatrixPerception = ({
@@ -17,7 +17,7 @@ export const MatrixPerception = ({
     }
     return (
         <div className={style.perception}>
-            <Sunrise3basicTitleDesc data={perceptionData} widthType={620}/>
+            <BasicTitleDesc data={perceptionData} widthType={620}/>
             <ul className={style.suite}>{list}</ul>
             <div className={style.bottomDesc} style={{ backgroundImage: `url(${perceptionData.img})` }}/>
         </div>

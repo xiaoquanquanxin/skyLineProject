@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './index.module.less';
-import { Sunrise3basicTitleDesc } from '@components/sunrise3/sunrise3basicTitleDesc';
+import { BasicTitleDesc } from '@components/basicTitleDesc';
 
 //  开发工具套件
 export const ToolSuite = ({
@@ -17,7 +17,7 @@ export const ToolSuite = ({
     }
     return (
         <div className={style.toolSuite}>
-            <Sunrise3basicTitleDesc data={toolSuiteData} widthType={494} isLight={true}/>
+            <BasicTitleDesc data={toolSuiteData} widthType={494} isLight={true}/>
             <ul className={style.suite}>
                 {list}
             </ul>

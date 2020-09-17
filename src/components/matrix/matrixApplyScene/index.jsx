@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
-import { Sunrise3basicTitleDesc } from '@components/sunrise3/sunrise3basicTitleDesc';
+import { BasicTitleDesc } from '@components/basicTitleDesc';
 
 //  应用场景
 export const MatrixApplyScene = ({
@@ -18,7 +18,7 @@ export const MatrixApplyScene = ({
     }
     return (
         <div className={style.applyScene}>
-            <Sunrise3basicTitleDesc data={applySceneData}
+            <BasicTitleDesc data={applySceneData}
                                     isLight={true}
                                     widthType={670}
                                     descriptionColor={'rgba(0,0,0,0.8)'}
