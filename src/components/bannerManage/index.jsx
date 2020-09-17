@@ -34,6 +34,7 @@ export class BannerManage extends React.Component {
         18: 4,
         //  征程、旭日2、旭日3
         8: 5,
+        9: 5,
         10: 5,
         //  matrix
         11: 6,
@@ -54,6 +55,7 @@ export class BannerManage extends React.Component {
         18: projectBanner,
         //  征程、旭日2、旭日3
         8: productBanner,
+        9: productBanner,
         10: productBanner,
         //  matrix
         11: matrixBanner,
@@ -102,6 +104,7 @@ export class BannerManage extends React.Component {
         //  只有征程、旭日2、旭日3、MATRIX有需要背景
         switch (bannerType) {
             case 8:     //  只有征程、旭日2、旭日3一种背景色
+            case 9:
             case 10:
                 id = 'swiperMainWrapDark';
                 break;
