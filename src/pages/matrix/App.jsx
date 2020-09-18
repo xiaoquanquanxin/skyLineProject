@@ -17,8 +17,8 @@ import { HardwareSpecification } from '@components/matrix/hardwareSpecification'
 import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
 import { MatrixApplyScene } from '@components/matrix/matrixApplyScene';
-import './index.less';
 import { Matrix, NAV_CAT_ID } from '@utils/constant';
+import './index.less';
 
 export default connect(
     mapStateToProps,
@@ -52,7 +52,7 @@ export default connect(
         componentDidMount(){
             Promise.all([
                 //  获取页面文案接口
-                requestGetPageContent(Matrix)
+                requestGetPageContent(Matrix.name)
                     .then(v => {
                         const { data } = v;
                         this.setState((state) => {
@@ -73,7 +73,7 @@ export default connect(
                         });
                     }),
                 //  获取图片标题接口
-                requestGetImgTitle(Matrix)
+                requestGetImgTitle(Matrix.name)
                     .then(v => {
                         const { data } = v;
                         //  console.log('获取图片标题接口');
