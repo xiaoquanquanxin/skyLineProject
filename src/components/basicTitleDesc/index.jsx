@@ -41,10 +41,13 @@ export const BasicTitleDesc = ({
     return (
         <div className={`${style.basicTitleDesc} ${isLight ? style.isLight : ''}`}>
             <p className={style.title} dangerouslySetInnerHTML={{ __html: data.title }}/>
-            <div className={`${style.desc} ${widthTypeClassName}`}
-                 dangerouslySetInnerHTML={{ __html: data.desc }}
-                 style={{ color: descriptionColor ? descriptionColor : 'auto' }}
-            />
+            {data.desc
+                ? <div className={`${style.desc} ${widthTypeClassName}`}
+                       dangerouslySetInnerHTML={{ __html: data.desc }}
+                       style={{ color: descriptionColor ? descriptionColor : 'auto' }}
+                />
+                : <p/>
+            }
         </div>
     );
 };
