@@ -34,7 +34,7 @@ const ModuleNavItem = ({
     return (
         <li className={style.item}>
             <div className={style.imgBox}>
-                <img src={data.img} alt='' style={style.img}/>
+                <img src={data.img} alt='' className={style.img}/>
             </div>
             <p className={style.title} dangerouslySetInnerHTML={{ __html: data.title }}/>
             <div className={style.desc} dangerouslySetInnerHTML={{ __html: data.desc }}/>
