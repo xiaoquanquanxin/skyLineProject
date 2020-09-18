@@ -135,5 +135,14 @@ export function requestSave({
             position,
             email,
         }
-    })
+    });
+}
+
+//  获取seo
+export function requestGetSeo(nav_id){
+    return request({
+        url: '/api/getseo',
+        method: 'get',
+        params: { nav_id },
+    });
 }

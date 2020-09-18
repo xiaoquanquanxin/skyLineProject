@@ -18,7 +18,7 @@ export function setBarBoxAnchorList(barBoxAnchorList){
 /**
  * 设置左侧title文字
  * @param {Array} barBoxData
- * @return {Object}
+ * @return {Object} subTitle、subDescription、id，导航相关
  * */
 export function setBarBoxData(barBoxData){
     return { type: BAR_BOX_DATA, barBoxData };
@@ -34,13 +34,16 @@ export const originBarBoxAnchorList = [{
 //  固定定位
 export function REDUCER_FIXED_TAB_BOX(state = {
     barBoxAnchorList: originBarBoxAnchorList,
-    barBoxData: {}
+    barBoxData: {},
 }, action){
     const { type, barBoxAnchorList, barBoxData } = action;
     switch (type) {
         case BAR_BOX_ANCHOR_LIST:
             return Object.assign([], state, { barBoxAnchorList });
         case BAR_BOX_DATA:
+            if (state.barBoxData.id) {
+                return state;
+            }
             return Object.assign({}, state, { barBoxData });
         default:
             return state;

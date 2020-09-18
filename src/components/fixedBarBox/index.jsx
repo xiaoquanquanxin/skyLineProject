@@ -103,8 +103,8 @@ export const FixedBarBox = connect(
                 <div className={style.floatBarBox}>
                     <div className={style.titleBox}>
                         <div className={style.themeDesc}>
-                            <strong className={style.subTitle}>{barBoxData.subTitle}</strong>
-                            <em className={style.subDescription}>{barBoxData.subDescription}</em>
+                            <strong className={style.subTitle}>{barBoxData.title}</strong>
+                            <em className={style.subDescription}>{barBoxData.desc}</em>
                         </div>
                         <div className={style.titleNavInquireBtn}>
                             <div className={style.navTag}>

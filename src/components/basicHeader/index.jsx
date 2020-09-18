@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { HeaderPC } from '@components/basicHeader/headerPC';
 import { HeaderMobile } from '@components/basicHeader/headerMobile';
-import { requestHeaderNav } from '@api/index';
-import { navSortByRank, specialPathName } from '@utils/utils';
+import { requestGetSeo, requestHeaderNav } from '@api/index';
+import { emptyFunction, navSortByRank, specialPathName } from '@utils/utils';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 
@@ -43,6 +43,24 @@ export const BasicHeader = connect(
                     setNavListData(v.data);
                     //  ⚠️⚠️特殊问题特殊处理
                     specialPathName(this.pathName, v.data);
+                })
+                .then(() => {
+                    const { REDUCER_FIXED_TAB_BOX } = this.props;
+                    const { barBoxData } = REDUCER_FIXED_TAB_BOX;
+                    //  请求seo
+                    requestGetSeo(barBoxData.id)
+                        .then(v => {
+                            const { data, code } = v;
+                            if (!data || Number(code) < 0) {
+                                return;
+                            }
+                            window.document.title = data.title;
+                            const metaKeyword = document.querySelector('#metaKeyword');
+                            metaKeyword.content = data.keywords;
+                            const metaDesc = document.querySelector('#metaDesc');
+                            metaDesc.content = data.description;
+                        })
+                        .catch(emptyFunction);
                 });
         }
 
@@ -95,13 +113,11 @@ export const BasicHeader = connect(
                 if (value.url === null) {
                     //  console.log(value.url, value);
                 } else if (value.url === this.pathName) {
-                    console.log('匹配到的页面，这个路由是激活的🐸', 'title🍎', value.title, 'desc🍐', value.desc,);
+                    console.log('匹配到的页面，这个路由是激活的🐸');
+                    //  console.log(value);
                     //  给 FixedBarBox 加状态，
                     const { setBarBoxData } = this.props;
-                    setBarBoxData({
-                        subTitle: value.title,
-                        subDescription: value.desc
-                    });
+                    setBarBoxData(value);
                     //  激活态
                     value.isActive = true;
                     //  不需要跳转
