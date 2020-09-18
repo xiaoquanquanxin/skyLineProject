@@ -2,12 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps } from '@store/reduxMap';
 import style from './index.module.less';
-import { getUserAgentType } from '@utils/utils';
 
-//  如果是safari
-if (getUserAgentType.isSafari) {
-    require('smoothscroll-polyfill').polyfill();
-}
 export const AboutTabBox = connect(
     mapStateToProps,
 )(class extends React.Component {
