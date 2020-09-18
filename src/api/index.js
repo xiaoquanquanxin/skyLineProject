@@ -146,3 +146,30 @@ export function requestGetSeo(nav_id){
         params: { nav_id },
     });
 }
+
+//  获取页面文案接口
+export function requestGetPageContent(name){
+    return request({
+        url: '/api/getpagecontent',
+        method: 'get',
+        params: { name },
+    });
+}
+
+//  获取图片标题接口
+export function requestGetImgTitle(name){
+    return request({
+        url: '/api/getimgtitle',
+        method: 'get',
+        params: { name },
+    });
+}
+
+//  获取图片标题接口
+export function requestGetClientCase(type){
+    return request({
+        url: '/api/getclientcase',
+        method: 'get',
+        params: { type },
+    });
+}
