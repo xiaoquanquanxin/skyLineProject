@@ -140,7 +140,7 @@ export default connect(
                     {/*强大的视频处理能力*/}
                     <VideoProcessing videoProcessingData={videoProcessingData}/>
                     {/*地平线 “天工开物”*/}
-                    <OpenExplorer openExplorerData={openExplorerData}/>
+                    <OpenExplorer openExplorerData={openExplorerData} isLight={false}/>
                     {/*旭日3 系列——释放 “芯” 效能*/}
                     <div id="m2" pc={20} mobile={15}/>
                     <RichInterface richInterfaceData={richInterfaceData}/>
