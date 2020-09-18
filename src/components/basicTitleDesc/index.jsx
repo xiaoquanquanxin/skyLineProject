@@ -39,7 +39,7 @@ export const BasicTitleDesc = ({
             widthTypeClassName = style.widthTypeBasic;
     }
     return (
-        <div className={`${style.sunrise3basicTitleDesc} ${isLight ? style.isLight : ''}`}>
+        <div className={`${style.basicTitleDesc} ${isLight ? style.isLight : ''}`}>
             <p className={style.title} dangerouslySetInnerHTML={{ __html: data.title }}/>
             <div className={`${style.desc} ${widthTypeClassName}`}
                  dangerouslySetInnerHTML={{ __html: data.desc }}
