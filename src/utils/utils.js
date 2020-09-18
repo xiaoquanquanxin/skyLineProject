@@ -174,3 +174,20 @@ export const getContentList = (data, listType) => {
     }
     return list;
 };
+
+/**
+ * 裁剪数据，将list里id===id的抽出来
+ * @param {Array} list          源数据
+ * @param {string} listIdKey    源数据中要比对的key
+ * @param {Number} id           要比对的值
+ * */
+export const clipData = (list, listIdKey, id) => {
+    const result = [];
+    for (let i = 0; i < list.length; i++) {
+        if (list[i][listIdKey] === id) {
+            result.push(list.splice(i, 1)[0]);
+            i--;
+        }
+    }
+    return result;
+};
