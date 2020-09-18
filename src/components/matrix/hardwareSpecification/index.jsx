@@ -16,30 +16,31 @@ export const HardwareSpecification = ({
                     </div>
                     <HSImgList imgList={hsData.imgList}/>
                 </div>
-                <HSTable tableList={hsData.tableList}/>
+                <HSTable tableList={hsData.content}/>
             </div>
         </div>
     );
 };
 
+//  图片两个
 const HSImgList = ({
     imgList
 }) => {
     if (!imgList) {
         return '';
     }
+    const list = imgList.map((item, index) => {
+        return (
+            <div className={style.img1} key={index}>
+                <div className={style.imgCenter2}
+                     style={{ backgroundImage: `url(${item.img})` }}/>
+                <div className={style.name} dangerouslySetInnerHTML={{ __html: item.title }}/>
+            </div>
+        );
+    });
     return (
         <div className={style.imgGroup}>
-            <div className={style.img1}>
-                <div className={style.imgCenter2}
-                     style={{ backgroundImage: `url(${imgList[0].img})` }}/>
-                <div className={style.name} dangerouslySetInnerHTML={{ __html: imgList[0].name }}/>
-            </div>
-            <div className={style.img1}>
-                <div className={style.imgCenter2}
-                     style={{ backgroundImage: `url(${imgList[1].img})` }}/>
-                <div className={style.name} dangerouslySetInnerHTML={{ __html: imgList[1].name }}/>
-            </div>
+            {list}
         </div>
     );
 };
@@ -49,7 +50,9 @@ const HSTable = ({
     tableList
 }) => {
     let list;
+
     if (tableList) {
+        tableList = JSON.parse(tableList);
         list = tableList.map((item, index) => {
             return (
                 <tr key={index}>

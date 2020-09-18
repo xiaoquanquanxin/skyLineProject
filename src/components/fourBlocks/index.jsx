@@ -29,7 +29,7 @@ const FourBlocksItem = ({
     return (
         <li className={style.item}>
             <img className={style.imgCenter2} src={data.img} alt=""/>
-            <p className={style.name}>{data.name}</p>
+            <p className={style.name} dangerouslySetInnerHTML={{ __html: data.title }}/>
         </li>
     );
 };

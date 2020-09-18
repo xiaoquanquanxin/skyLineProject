@@ -30,8 +30,8 @@ const MatrixPerceptionItem = ({
     return (
         <li className={style.item}>
             <div className={style.imgCenter2} style={{ backgroundImage: `url(${data.img})` }}/>
-            <p className={style.name} dangerouslySetInnerHTML={{ __html: data.name }}/>
-            <div className={style.nameDesc} dangerouslySetInnerHTML={{ __html: data.nameDesc }}/>
+            <p className={style.name} dangerouslySetInnerHTML={{ __html: data.title }}/>
+            <div className={style.nameDesc} dangerouslySetInnerHTML={{ __html: data.desc }}/>
         </li>
     );
 };
