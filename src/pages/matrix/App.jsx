@@ -3,10 +3,8 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { requestGetBannerByType } from '@api/index';
-import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
-import { navSortByRank } from '@utils/utils';
-import './index.less';
+import { requestGetImgTitle, requestGetPageContent } from '@api/index';
+import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { BannerManage } from '@components/bannerManage';
@@ -19,6 +17,8 @@ import { HardwareSpecification } from '@components/matrix/hardwareSpecification'
 import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
 import { MatrixApplyScene } from '@components/matrix/matrixApplyScene';
+import './index.less';
+import { Matrix, NAV_CAT_ID } from '@utils/constant';
 
 export default connect(
     mapStateToProps,
@@ -50,145 +50,78 @@ export default connect(
         }
 
         componentDidMount(){
-            this.setState(() => {
-                return {
-                    //  荣获多项国际大奖
-                    awardsBoxData: {
-                        title: '荣获多项国际大奖',
-                        list: [{
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/logo-1@2x.png',
-                            name: '2019 CES<br>INNOVATION AWARDS',
-                            desc: '凭借强大的感知计算能力，地平线 Matrix 荣获车辆智能和自动驾驶技术类 2019 CES 创新奖，这也是该分类奖项下唯一获此殊荣的中国产品。'
-                        }, {
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/logo-2@2x.png',
-                            name: '2019 CES<br>INNOVATION AWARDS',
-                            desc: '凭借强大的感知计算能力，地平线 Matrix 荣获车辆智能和自动驾驶技术类 2019 CES 创新奖，这也是该分类奖项下唯一获此殊荣的中国产品。'
-                        }, {
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/logo-2@2x.png',
-                            name: '2019 CES<br>INNOVATION AWARDS',
-                            desc: '凭借强大的感知计算能力，地平线 Matrix 荣获车辆智能和自动驾驶技术类 2019 CES 创新奖，这也是该分类奖项下唯一获此殊荣的中国产品。'
-                        }]
-                    },
-                    //  四个一块的
-                    cdrbData: [
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon01@2x.png',
-                            name: '针对智能驾驶场景优化',
-                        },
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon02@2x.png',
+            Promise.all([
+                //  获取页面文案接口
+                requestGetPageContent(Matrix)
+                    .then(v => {
+                        const { data } = v;
+                        this.setState((state) => {
+                            return {
+                                //  荣获多项国际大奖
+                                awardsBoxData: Object.assign({}, state.awardsBoxData, data[0]),
+                                //  高性能图像感知能力
+                                perceptionData: Object.assign({}, state.perceptionData, data[1]),
+                                //  开发工具套件
+                                toolSuiteData: Object.assign({}, state.toolSuiteData, data[2]),
+                                //  开放工具链
+                                chainBoxData: Object.assign({}, state.chainBoxData, data[3]),
+                                //  硬件关键规格
+                                hsData: Object.assign({}, state.hsData, data[4]),
+                                //  应用场景
+                                applySceneData: Object.assign({}, state.applySceneData, data[5]),
+                            };
+                        });
+                    }),
+                //  获取图片标题接口
+                requestGetImgTitle(Matrix)
+                    .then(v => {
+                        const { data } = v;
+                        //  console.log('获取图片标题接口');
+                        //  荣获多项国际大奖
+                        const awardsBoxDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        //  四个一块的
+                        const cdrbData = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        //  高性能图像感知能力
+                        const perceptionDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        //  开发工具套件
+                        const toolSuiteDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        //  硬件关键规格
+                        const hsDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        //  应用场景
+                        const applySceneDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
 
-                            name: '软硬件高效协同'
-                        },
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon03@2x.png',
-                            name: '强大的边缘计算能力'
-                        },
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon04@2x.png',
-                            name: '低延时/低功耗'
-                        }
-                    ],
-                    //  高性能图像感知能力
-                    perceptionData: {
-                        title: '高性能图像感知能力',
-                        desc: '通过稀疏化和定点化的神经网络，高效实现全面而高精度的感知任务，包括多达 23 类的像素级语义分割以及全面的目标物体 2D/3D 检测和分类。',
-                        list: [{
-                            name: '常见道路动态物体',
-                            nameDesc: '多种类型交通灯、交通牌、路面标识等',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img04@2x.png'
-                        }, {
-                            name: '常见道路动态物体',
-                            nameDesc: '多种类型交通灯、交通牌、路面标识等',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img04@2x.png'
-                        }, {
-                            name: '常见道路动态物体',
-                            nameDesc: '多种类型交通灯、交通牌、路面标识等',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img04@2x.png'
-                        }],
-                        img: 'http://horizon.wx.h5work.com/images/product/martix/board@2x.png',
-                    },
-                    //  开发工具套件
-                    toolSuiteData: {
-                        title: '开发工具套件',
-                        desc: '与计算平台配套提供数据采集和回灌工具，提升开发验证效率，降低开发成本。',
-                        list: [{
-                            name: '抓帧器',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img06@2x.png',
-                            desc: '车载数据采集平台，提供最多 12 路视频输入'
-                        }, {
-                            name: '抓帧器',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img06@2x.png',
-                            desc: '车载数据采集平台，提供最多 12 路视频输入'
-                        }]
-                    },
-                    //  开放工具链
-                    chainBoxData: {
-                        img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img08@2x.png',
-                        title: '开放工具链',
-                        desc: '地平线自主研发的工具链，开发者和研究人员可以基于地平线 Matrix 平台部署神经网络模型，进行开发、验证、优化和部署，支持多种主流框架。',
-                    },
-                    //  硬件关键规格
-                    hsData: {
-                        title: '硬件关键规格',
-                        desc: '针对不同应用场景的传感器布置方案，Matrix 系列分别推出 4 路和 1 路接入的两种平台，灵活满足模块化需求。',
-                        imgList: [{
-                            name: 'Matrix 2 <sup>Mono</sup>',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img09@2x.png',
-                        }, {
-                            name: 'Matrix 2 <sup>Mono</sup>',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img09@2x.png',
-                        }],
-                        tableList: [{
-                            name: '征程2 处理芯片',
-                            content1: true,
-                            content2: true,
-                        }, {
-                            name: '视频输入',
-                            content1: '1 路 1080p@30fps',
-                            content2: '4 路 1080p@30fps',
-                        }, {
-                            name: '功耗',
-                            content1: '8W ，被动散热',
-                            content2: '20W ，被动散热',
-                        }, {
-                            name: '语义分割目标检测和分类',
-                            content1: true,
-                            content2: true,
-                        }, {
-                            name: '60ms 低延时',
-                            content1: true,
-                            content2: true,
-                        }, {
-                            name: '工作环境',
-                            content1: '-40 °C ~ 85 °C',
-                            content2: '-40 °C ~ 85 °C',
-                        }]
-                    },
+                        this.setState((state) => {
+                            return {
+                                //  荣获多项国际大奖
+                                awardsBoxData: Object.assign({}, state.awardsBoxData, { list: awardsBoxDataList }),
+                                //  四个一块的
+                                cdrbData: Object.assign([], state.cdrbData, cdrbData),
+                                //  高性能图像感知能力
+                                perceptionData: Object.assign({}, state.perceptionData, { list: perceptionDataList }),
+                                //  开发工具套件
+                                toolSuiteData: Object.assign({}, state.toolSuiteData, { list: toolSuiteDataList }),
+                                //  硬件关键规格
+                                hsData: Object.assign({}, state.hsData, { imgList: hsDataList }),
+                                //  应用场景
+                                applySceneData: Object.assign({}, state.applySceneData, { list: applySceneDataList })
+                            };
+                        });
+                    })
+            ])
+                .then(() => {
+                    const { setComponentDidMountFinish } = this.props;
+                    //  父组件初始化完成
+                    setComponentDidMountFinish(true);
+                    console.log('setState结果是🍎', this.state.applySceneData);
+                });
 
-                    //  应用场景
-                    applySceneData: {
-                        title: '应用场景',
-                        desc: '地平线通过提供即装即用的视觉感知方案赋能客户，使客户得以专注于用户体验差异化的提升和车队的规模化部署运营，从而在快速发展的市场中赢得先机。',
-                        list: [{
-                            name: '无人的士/小巴',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img13@2x.png'
-                        }, {
-                            name: '无人的士/小巴',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img13@2x.png'
-                        }, {
-                            name: '无人的士/小巴',
-                            img: 'http://horizon.wx.h5work.com/images/product/martix/matrix-img13@2x.png'
-                        }]
-                    }
-                };
-            });
-            setTimeout(() => {
-                const { setComponentDidMountFinish } = this.props;
-                console.log('请求成功了');
-                //  父组件初始化完成
-                setComponentDidMountFinish(true);
-            }, 20);
+//            //  获取客户案例接口
+//            requestGetClientCase(119)
+//                .then(v => {
+//                    const { data } = v;
+//                    console.log('获取客户案例接口');
+//                    console.log(data);
+//                });
         }
 
         render(){
