@@ -35,13 +35,6 @@ export function requestGetBannerByType(type){
     });
 }
 
-//  天工开物
-export function requestGetProductPartner(){
-    return request({
-        url: '/api/getproductpartner',
-        method: 'get',
-    });
-}
 
 //  高级别辅助驾驶
 export function requestGetDriverClient(){
