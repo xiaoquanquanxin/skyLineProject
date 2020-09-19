@@ -38,7 +38,7 @@ const ApplySceneTopList = ({
     const list = topList.map((item, index) => {
         return (
             <div key={index} className={style.topItem}
-                 style={{ backgroundImage: `url(${item})` }}/>
+                 style={{ backgroundImage: `url(${item.img})` }}/>
         );
     });
     return (
@@ -57,7 +57,7 @@ const ApplySceneBottomList = ({
     const list = bottomList.map((item, index) => {
         return (
             <div key={index} className={style.bottomItem}
-                 style={{ backgroundImage: `url(${item})` }}/>
+                 style={{ backgroundImage: `url(${item.img})` }}/>
         );
     });
     return (
