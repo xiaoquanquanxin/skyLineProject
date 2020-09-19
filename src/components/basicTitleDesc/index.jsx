@@ -23,6 +23,10 @@ export const BasicTitleDesc = ({
         case 710:
             widthTypeClassName = style.widthType710;
             break;
+        case 705:
+            //  征程3 DVB
+            widthTypeClassName = style.widthType705;
+            break;
         case 670:
             widthTypeClassName = style.widthType670;
             break;
