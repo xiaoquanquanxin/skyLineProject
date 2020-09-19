@@ -16,11 +16,25 @@ export const Advantages = ({
             );
         });
     }
+    //  内容的数量
+    const itemCount = advantagesData.list && advantagesData.list.length;
+    let itemCountClassName;
+    console.log(itemCount)
+    switch (itemCount) {
+        case 3:
+            itemCountClassName = style.itemCount3;
+            break;
+        case 4:
+            itemCountClassName = style.itemCount4;
+            break;
+        default:
+            break;
+    }
     return (
         <div className={style.advantages}>
             <div className={style.advantagesIn}>
                 <BasicTitleDesc data={advantagesData} isLight={true}/>
-                <ul className={`${style.list} ${layout.clearfix}`}>
+                <ul className={`${style.list} ${layout.clearfix} ${itemCountClassName}`}>
                     {list}
                 </ul>
             </div>
