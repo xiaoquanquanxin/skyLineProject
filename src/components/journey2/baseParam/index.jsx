@@ -1,21 +1,27 @@
 import React from 'react';
 import style from './index.module.less';
+import { BasicTitleDesc } from '@components/basicTitleDesc';
 
 export const BaseParam = ({
-    data
+    baseParamData
 }) => {
+    baseParamData = baseParamData || {};
     let list;
-    if (data && data.list && data.list.length) {
-        list = data.list.map((item, index) => {
+    //  数据的数量
+    let len = baseParamData.list.length;
+    if (len) {
+        list = baseParamData.list.map((item, index) => {
             return (
-                <BaseParamItem data={item} key={index}/>
+                <BaseParamItem data={item} key={index} lastIsOdd={!!(index === (len - 1) && (len % 2))}/>
             );
         });
     }
+    //  console.log(baseParamData)
     return (
         <div className={style.baseParam}>
             <div className={style.baseParamIn}>
-                <p className={style.baseParamTitle}>{data.title}</p>
+                <BasicTitleDesc data={baseParamData}/>
+                <p className={style.listTitle} dangerouslySetInnerHTML={{ __html: baseParamData.listTitle }}/>
                 <ul className={style.baseParamList}>
                     {list}
                 </ul>
@@ -26,10 +32,16 @@ export const BaseParam = ({
 
 const BaseParamItem = ({
     data,
+    //  最后一个是奇数
+    lastIsOdd,
 }) => {
     return (
-        <li className={style.baseParamItem}>
-            <label className={style.label}>{data.label}</label>
+        <li className={`${style.baseParamItem} ${lastIsOdd ? style.lastIsOdd : ''}`}>
+            {/*<p>1111</p>*/}
+            {/*<p>2222</p>*/}
+            {data.label
+                ? <label className={style.label} dangerouslySetInnerHTML={{ __html: data.label }}/>
+                : ''}
             <div className={style.c} dangerouslySetInnerHTML={{ __html: data.desc }}/>
         </li>
     );

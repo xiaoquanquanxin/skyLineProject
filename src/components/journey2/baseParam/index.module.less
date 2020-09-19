@@ -6,12 +6,13 @@
 		margin: 0 auto;
 		width: 1280px;
 
-		.baseParamTitle {
+		.listTitle {
 			font-size: 30px;
 			font-weight: 500;
 			color: #fff;
 			line-height: 1.6666;
 		}
+
 
 		.baseParamList {
 			margin-top: 34px;
@@ -32,7 +33,7 @@
 				width: 100%;
 				padding: 0 0.2rem;
 
-				.baseParamTitle {
+				.listTitle {
 					font-size: 0.3rem;
 					text-align: center;
 				}
@@ -55,18 +56,17 @@
 	display: flex;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
+	justify-content: flex-start;
 	align-items: center;
 
+
 	.label {
-		width: 160px;
+		width: 180px;
 		font-size: 20px;
 		font-weight: 500;
 		color: rgba(255, 255, 255, 0.8);
 		line-height: 1.4;
-		-ms-flex-negative: 0;
-		flex-shrink: 0;
-		-ms-flex-item-align: start;
-		align-self: flex-start;
+		display: flex;
 	}
 
 	.c {
@@ -74,9 +74,11 @@
 		font-weight: 400;
 		color: rgba(255, 255, 255, .6);
 		line-height: 2.5714;
-		-ms-flex-item-align: start;
-		align-self: flex-start;
-		margin-top: -5px;
+		display: flex;
+	}
+
+	&.lastIsOdd {
+		width: 100%;
 	}
 
 	@media screen and (max-width: 750px) {
@@ -85,14 +87,13 @@
 			padding: 0.2rem 0;
 
 			.label {
-				width: 1.6rem;
+				width: 1.8rem;
 				font-size: 0.2rem;
 				white-space: nowrap;
 			}
 
 			.c {
 				font-size: 0.14rem;
-				margin-top: -0.05rem;
 			}
 		}
 	}
