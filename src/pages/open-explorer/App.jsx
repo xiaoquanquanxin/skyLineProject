@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, navSortByRank } from '@utils/utils';
 import { BannerManage } from '@components/bannerManage';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
@@ -54,8 +54,7 @@ export default connect(
                     }),
                 //  获取页面文案接口
                 requestGetPageContent(OPEN_EXPLORER.name)
-                    .then(v => {
-                        const { data } = v;
+                    .then(data => {
                         this.setState((state) => {
                             return {
                                 //  特色与优势
@@ -69,12 +68,11 @@ export default connect(
                     }),
                 //  获取图片标题接口
                 requestGetImgTitle(OPEN_EXPLORER.name)
-                    .then(v => {
-                        const { data } = v;
+                    .then(data => {
                         //  特色与优势
                         const advantagesDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
                         //  功能模块
-                        const moduleNavDataList = clipData(data, NAV_CAT_ID, data[1][NAV_CAT_ID]);
+                        const moduleNavDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
                         this.setState((state) => {
                             return {
                                 //  特色与优势
