@@ -5,7 +5,9 @@ import style from './index.module.less';
 export const ApplyScene = ({
     applySceneData,
     //  场景颜色。0黑色，1白色
-    sceneType
+    sceneType,
+    //  背景颜色
+    bgc,
 }) => {
     applySceneData = applySceneData || {};
     let sceneTypeClassName;
@@ -20,7 +22,7 @@ export const ApplyScene = ({
             break;
     }
     return (
-        <div className={`${style.applyScene} ${sceneTypeClassName}`}>
+        <div className={`${style.applyScene} ${sceneTypeClassName}`} style={bgc ? { background: bgc } : {}}>
             <p className={style.title}>应用场景</p>
             <ApplySceneTopList topList={applySceneData.topList}/>
             <ApplySceneBottomList bottomList={applySceneData.bottomList}/>
