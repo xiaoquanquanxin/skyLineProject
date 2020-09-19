@@ -4,25 +4,25 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import {
-    requestGetBannerByType, requestGetClientCase, requestGetImgTitle,
+    requestGetClientCase,
+    requestGetImgTitle,
     requestGetIotPartner,
     requestGetPageContent,
-    requestGetProductPartner
 } from '@api/index';
 import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
-import './index.less';
 import { BannerManage } from '@components/bannerManage';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { Advantages } from '@components/open-explorer/advantages';
-import { NAV_CAT_ID, AIOT, JOURNEY3 } from '@utils/constant';
+import { NAV_CAT_ID, AIOT } from '@utils/constant';
 import { TechnicalSolution } from '@components/aiot/technicalSolution';
 import { ApplyScene } from '@components/applyScene';
 import { AdvertisementBanner } from '@components/bannerManage/advertisementBanner';
 import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
+import './index.less';
 
 export default connect(
     mapStateToProps,
@@ -50,14 +50,6 @@ export default connect(
         componentDidMount(){
             //  AIOT
             Promise.all([
-//                requestGetProductPartner()
-//                    .then(v => {
-//                        this.setState(() => {
-//                            return {
-//                                customList: v.data,
-//                            };
-//                        });
-//                    }),
                 //  获取页面文案接口
                 requestGetPageContent(AIOT.name)
                     .then(data => {
@@ -134,7 +126,9 @@ export default connect(
                     {/*头部*/}
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
-                    {/*<ScrollFixed RenderElement={FixedBarBox}/>*/}
+                    <ScrollFixed RenderElement={FixedBarBox}/>
+                    {/*轮播*/}
+                    <div id="m1" pc={60} mobile={30}/>
                     <BannerManage bannerType={18}/>
                     {/*特色与优势*/}
                     <Advantages advantagesData={advantagesData}/>
@@ -142,6 +136,7 @@ export default connect(
                     <TechnicalSolution technicalSolutionData={technicalSolutionData}/>
                     {/*应用场景，无文字，纯图片*/}
                     <ApplyScene applySceneData={applySceneData} sceneType={1}/>
+                    <div id="m2" pc={60} mobile={40}/>
                     {/*合作伙伴*/}
                     <AdvertisementBanner
                         data={customList}
