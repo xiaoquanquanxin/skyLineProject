@@ -24,8 +24,12 @@ export const ApplyScene = ({
     return (
         <div className={`${style.applyScene} ${sceneTypeClassName}`} style={bgc ? { background: bgc } : {}}>
             <p className={style.title}>应用场景</p>
-            <ApplySceneTopList topList={applySceneData.topList}/>
-            <ApplySceneBottomList bottomList={applySceneData.bottomList}/>
+            <div className={style.applySceneInner}>
+                <div className={style.listWrap}>
+                    <ApplySceneTopList topList={applySceneData.topList}/>
+                    <ApplySceneBottomList bottomList={applySceneData.bottomList}/>
+                </div>
+            </div>
         </div>
     );
 };
@@ -39,8 +43,7 @@ const ApplySceneTopList = ({
     }
     const list = topList.map((item, index) => {
         return (
-            <div key={index} className={style.topItem}
-                 style={{ backgroundImage: `url(${item.img})` }}/>
+            <img src={item.img} alt="" key={index} className={style.topItem}/>
         );
     });
     return (
@@ -58,8 +61,7 @@ const ApplySceneBottomList = ({
     }
     const list = bottomList.map((item, index) => {
         return (
-            <div key={index} className={style.bottomItem}
-                 style={{ backgroundImage: `url(${item.img})` }}/>
+            <img src={item.img} alt="" key={index} className={style.bottomItem}/>
         );
     });
     return (
