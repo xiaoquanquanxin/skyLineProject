@@ -20,3 +20,9 @@ export const NAV_CAT_ID = 'nav_cat_id';
 export const MATRIX = { name: 'Matrix', type: 119 };
 //  天工开物
 export const OPEN_EXPLORER = { name: '天工开物' };
+//  征程3
+export const JOURNEY3 = { name: '征程3', type: 120 };
+//  旭日2
+export const SUNRISE2 = { name: '旭日2', type: 123 };
+//  智能物联网
+export const AIOT = { name: '智能物联网', type: 129 };
