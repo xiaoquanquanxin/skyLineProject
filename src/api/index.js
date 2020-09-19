@@ -1,4 +1,5 @@
 import { request } from '@utils/request';
+import { navSortByRank } from '@utils/utils';
 
 //  获取header导航
 export function requestHeaderNav(){
@@ -35,6 +36,13 @@ export function requestGetBannerByType(type){
     });
 }
 
+//  天工开物
+export function requestGetProductPartner(){
+    return request({
+        url: '/api/getproductpartner',
+        method: 'get',
+    });
+}
 
 //  高级别辅助驾驶
 export function requestGetDriverClient(){
@@ -146,7 +154,11 @@ export function requestGetPageContent(name){
         url: '/api/getpagecontent',
         method: 'get',
         params: { name },
-    });
+    })
+        .then(v => {
+            navSortByRank(v.data, 'id');
+            return v.data;
+        });
 }
 
 //  获取图片标题接口
@@ -155,7 +167,11 @@ export function requestGetImgTitle(name){
         url: '/api/getimgtitle',
         method: 'get',
         params: { name },
-    });
+    })
+        .then(v => {
+            navSortByRank(v.data, 'id');
+            return v.data;
+        });
 }
 
 //  获取图片标题接口
@@ -164,5 +180,9 @@ export function requestGetClientCase(type){
         url: '/api/getclientcase',
         method: 'get',
         params: { type },
-    });
+    })
+        .then(v => {
+            navSortByRank(v.data, 'id');
+            return v.data;
+        });
 }
