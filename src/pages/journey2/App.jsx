@@ -140,12 +140,12 @@ export default connect(
                     <GetMoreBox/>
                     {/*表单*/}
                     <PopForm/>
+                    {/*toast*/}
+                    <Toast/>
                     {/*视频本身*/}
                     <VideoWrap/>
                     {/*脚部*/}
                     <BasicFooter/>
-                    {/*toast*/}
-                    <Toast/>
                 </div>
             );
         }

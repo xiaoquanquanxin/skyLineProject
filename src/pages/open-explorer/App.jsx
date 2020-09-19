@@ -16,6 +16,7 @@ import { requestGetImgTitle, requestGetPageContent, requestGetProductPartner } f
 import { AdvertisementBanner } from '@components/bannerManage/advertisementBanner';
 import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
+import { Toast } from '@components/toast';
 
 export default connect(
     mapStateToProps,
@@ -124,6 +125,8 @@ export default connect(
                     <GetMoreBox/>
                     {/*表单*/}
                     <PopForm/>
+                    {/*toast*/}
+                    <Toast/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

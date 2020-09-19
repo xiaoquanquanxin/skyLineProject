@@ -19,6 +19,7 @@ import { PopForm } from '@components/popForm';
 import { MatrixApplyScene } from '@components/matrix/matrixApplyScene';
 import { MATRIX, NAV_CAT_ID } from '@utils/constant';
 import './index.less';
+import { Toast } from '@components/toast';
 
 export default connect(
     mapStateToProps,
@@ -153,6 +154,8 @@ export default connect(
                     <GetMoreBox/>
                     {/*表单*/}
                     <PopForm/>
+                    {/*toast*/}
+                    <Toast/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

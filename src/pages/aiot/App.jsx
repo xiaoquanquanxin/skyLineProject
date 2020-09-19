@@ -20,6 +20,9 @@ import { NAV_CAT_ID, AIOT, JOURNEY3 } from '@utils/constant';
 import { TechnicalSolution } from '@components/aiot/technicalSolution';
 import { ApplyScene } from '@components/applyScene';
 import { AdvertisementBanner } from '@components/bannerManage/advertisementBanner';
+import { GetMoreBox } from '@components/getMoreBox';
+import { PopForm } from '@components/popForm';
+import { Toast } from '@components/toast';
 
 export default connect(
     mapStateToProps,
@@ -145,6 +148,12 @@ export default connect(
                         title='合作伙伴'
                         styleType={3}
                     />
+                    {/*更多*/}
+                    <GetMoreBox/>
+                    {/*表单*/}
+                    <PopForm/>
+                    {/*toast*/}
+                    <Toast/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

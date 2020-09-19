@@ -16,6 +16,7 @@ import { PopForm } from '@components/popForm';
 import './index.less';
 import { requestGetClientCase, requestGetImgTitle, requestGetPageContent } from '@api/index';
 import { SUNRISE2, NAV_CAT_ID } from '@utils/constant';
+import { Toast } from '@components/toast';
 
 export default connect(
     mapStateToProps,
@@ -165,6 +166,8 @@ export default connect(
                     <GetMoreBox/>
                     {/*表单*/}
                     <PopForm/>
+                    {/*toast*/}
+                    <Toast/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

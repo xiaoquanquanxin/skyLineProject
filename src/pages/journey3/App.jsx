@@ -188,10 +188,11 @@ export default connect(
                     <GetMoreBox/>
                     {/*表单*/}
                     <PopForm/>
-                    {/*脚部*/}
-                    <BasicFooter/>
                     {/*toast*/}
                     <Toast/>
+                    {/*脚部*/}
+                    <BasicFooter/>
+
                 </div>
             );
         }

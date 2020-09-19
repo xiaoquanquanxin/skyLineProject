@@ -18,6 +18,7 @@ import { RichInterface } from '@components/sunrise3/richInterface';
 import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
 import { ApplyScene } from '@components/applyScene';
+import { Toast } from '@components/toast';
 
 export default connect(
     mapStateToProps,
@@ -150,6 +151,8 @@ export default connect(
                     <GetMoreBox/>
                     {/*表单*/}
                     <PopForm/>
+                    {/*toast*/}
+                    <Toast/>
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>

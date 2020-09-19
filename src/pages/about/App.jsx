@@ -99,6 +99,7 @@ export default connect(
                     <AboutUsHistory historyInfoMap={historyInfoMap} historyInfoList={historyInfoList}/>
                     {/*投资阵容（部分）*/}
                     <div id="tab3" pc={50} mobile={40}/>
+                    {/*合作伙伴*/}
                     <AdvertisementBanner
                         data={investList}
                         title='投资阵容（部分）'
