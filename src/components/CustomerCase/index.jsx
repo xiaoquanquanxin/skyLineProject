@@ -6,7 +6,6 @@ export const CustomerCase = ({
     customerCaseData
 }) => {
     customerCaseData = customerCaseData || {};
-    console.clear();
     let list;
     if (customerCaseData.list) {
         list = customerCaseData.list.map((item, index) => {
@@ -28,7 +27,6 @@ export const CustomerCase = ({
 
 //  每一项
 const CustomerCaseItem = ({ data }) => {
-    console.table(data);
     return (
         <li className={style.item}>
             <div className={`${layout.imgCenter2} ${style.imgCenter2}`}
