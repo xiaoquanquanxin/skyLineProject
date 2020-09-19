@@ -7,16 +7,28 @@ export const FourBlocks = ({
     //  是浅色背景？
     isLight
 }) => {
-    let list;
-    if (data && data.length) {
-        list = data.map((item, index) => {
-            return (
-                <FourBlocksItem key={index} data={item}/>
-            );
-        });
+    if (!data || !data.length) {
+        return '';
+    }
+    const list = data.map((item, index) => {
+        return (
+            <FourBlocksItem key={index} data={item}/>
+        );
+    });
+    let dataLengthClassName;
+    //  一共几个？
+    switch (data.length) {
+        case 4:
+            dataLengthClassName = style.dataLength4;
+            break;
+        case 5:
+            dataLengthClassName = style.dataLength5;
+            break;
+        default:
+            break;
     }
     return (
-        <ul className={`${style.cdrb} ${isLight ? style.isLight : ''}`}>
+        <ul className={`${style.cdrb} ${isLight ? style.isLight : ''} ${dataLengthClassName}`}>
             {list}
         </ul>
     );
