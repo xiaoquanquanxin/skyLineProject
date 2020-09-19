@@ -18,6 +18,12 @@ export default connect(
     class App extends Component {
         constructor(props){
             super(props);
+            //  页面宽度监听
+            commonRelativeWideFn(this.props.setRelativeWideFn);
+            //  页面滚动监听
+            getBrowserInfo(this.props.setBrowserScrollInfoFn);
+            const { setBarBoxAnchorList } = props;
+            setBarBoxAnchorList(['方案概述', '客户案例']);
         }
 
         componentDidMount(){
@@ -25,10 +31,7 @@ export default connect(
                 .then(v => {
                     navSortByRank(v.data, 'rank');
                 });
-            //  页面宽度监听
-            commonRelativeWideFn(this.props.setRelativeWideFn);
-            //  页面滚动监听
-            getBrowserInfo(this.props.setBrowserScrollInfoFn);
+
         }
 
         render(){

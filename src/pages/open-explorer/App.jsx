@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { clipData, commonRelativeWideFn, getBrowserInfo, navSortByRank } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { BannerManage } from '@components/bannerManage';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
@@ -40,6 +40,8 @@ export default connect(
                 //  合作伙伴
                 customList: null
             };
+            const { setBarBoxAnchorList } = props;
+            setBarBoxAnchorList(['优势概述', '合作伙伴',]);
         }
 
         componentDidMount(){

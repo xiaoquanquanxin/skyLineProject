@@ -45,6 +45,8 @@ export default connect(
             commonRelativeWideFn(this.props.setRelativeWideFn);
             //  页面滚动监听
             getBrowserInfo(this.props.setBrowserScrollInfoFn);
+            const { setBarBoxAnchorList } = props;
+            setBarBoxAnchorList(['方案概述', '合作伙伴',]);
         }
 
         componentDidMount(){
