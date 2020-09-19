@@ -20,7 +20,7 @@ export const BaseParam = ({
     return (
         <div className={style.baseParam}>
             <div className={style.baseParamIn}>
-                <BasicTitleDesc data={baseParamData}/>
+                <BasicTitleDesc data={baseParamData} widthType={705}/>
                 <p className={style.listTitle} dangerouslySetInnerHTML={{ __html: baseParamData.listTitle }}/>
                 <ul className={style.baseParamList}>
                     {list}
