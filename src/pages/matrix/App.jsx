@@ -53,8 +53,7 @@ export default connect(
             Promise.all([
                 //  获取页面文案接口
                 requestGetPageContent(MATRIX.name)
-                    .then(v => {
-                        const { data } = v;
+                    .then(data => {
                         this.setState((state) => {
                             return {
                                 //  荣获多项国际大奖
@@ -74,8 +73,7 @@ export default connect(
                     }),
                 //  获取图片标题接口
                 requestGetImgTitle(MATRIX.name)
-                    .then(v => {
-                        const { data } = v;
+                    .then(data => {
                         //  console.log('获取图片标题接口');
                         //  荣获多项国际大奖
                         const awardsBoxDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
