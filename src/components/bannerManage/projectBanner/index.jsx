@@ -31,7 +31,8 @@ export const ProjectBannerSliderItem = connect(
                         : <img className={style.sliderItemImg} src={data.img} alt={data.title || ''}/>
                 }
                 <div className={style.sliderText}>
-                    <p className={style.sliderTitle}>{data.title}</p>
+                    <p className={`${style.sliderTitle} ${data.title && data.title.length >= 20 ? style.textSmallSize : ''}`}
+                       dangerouslySetInnerHTML={{ __html: data.title }}/>
                     <p className={`${style.sliderDescription} ${data.desc && data.desc.length >= 100 ? style.textSmallSize : ''}`}>{data.desc}</p>
                 </div>
             </div>
