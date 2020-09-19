@@ -19,7 +19,6 @@ export const Advantages = ({
     //  内容的数量
     const itemCount = advantagesData.list && advantagesData.list.length;
     let itemCountClassName;
-    console.log(itemCount)
     switch (itemCount) {
         case 3:
             itemCountClassName = style.itemCount3;
