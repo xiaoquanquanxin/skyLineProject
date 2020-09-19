@@ -7,7 +7,7 @@ import { CustomSwiper } from '@components/swiper';
 import './index.less';
 import { preventDefaultFn } from '@utils/eventListener';
 
-//  广告位轮播
+//  合作伙伴
 export const AdvertisementBanner = connect(
     mapStateToProps,
 )((
