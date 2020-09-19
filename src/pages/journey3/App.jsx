@@ -92,8 +92,7 @@ export default connect(
             Promise.all([
                 //  获取页面文案接口
                 requestGetPageContent(JOURNEY3.name)
-                    .then(v => {
-                        const { data } = v;
+                    .then(data => {
                         this.setState((state) => {
                             return {
                                 //  超低功耗
@@ -111,8 +110,7 @@ export default connect(
                     }),
                 //  获取图片标题接口
                 requestGetImgTitle(JOURNEY3.name)
-                    .then(v => {
-                        const { data } = v;
+                    .then(data => {
                         //  四个一块的
                         const cdrbData = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
                         //  console.log(data);
@@ -125,8 +123,7 @@ export default connect(
                     }),
                 //  客户案例
                 requestGetClientCase(JOURNEY3.type)
-                    .then(v => {
-                        const { data } = v;
+                    .then(data => {
                         //  应用场景
                         const applySceneList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
                         const topList = applySceneList.splice(0, 4);
