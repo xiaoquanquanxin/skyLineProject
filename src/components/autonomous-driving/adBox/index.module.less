@@ -1,0 +1,185 @@
+.imgTabBox {
+	padding: 70px 0 74px 0;
+	background-color: var(--white);
+
+	.imgTab {
+		width: 1080px;
+		margin: 60px auto 0;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+
+		.imgCenter2 {
+			width: 600px;
+			height: 370px;
+		}
+
+		.tabHeaderContent {
+			width: 440px;
+			-ms-flex-negative: 0;
+			flex-shrink: 0;
+
+			.list {
+				border-bottom: solid 1px #D8D8D8;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+
+				.item {
+					cursor: pointer;
+					font-size: 20px;
+					font-weight: 500;
+					color: rgba(0, 0, 0, 0.6);
+					line-height: 2;
+					margin: 0 28px;
+					position: relative;
+
+					&:first-child {
+						margin-left: 0;
+					}
+
+					&.active {
+						color: rgba(0, 0, 0, 1);
+
+						&::before {
+							display: block;
+						}
+					}
+
+					&::before {
+						content: "";
+						display: none;
+						width: 100%;
+						height: 4px;
+						background-color: #0066FF;
+						left: 0;
+						bottom: -1px;
+						position: absolute;
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and  (max-width: 750px) {
+		& {
+			padding: 0.5rem 0;
+
+			.imgTab {
+				width: 7.1rem;
+				margin: 0.6rem auto 0;
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				align-items: center;
+
+				.imgCenter2 {
+					width: 100%;
+					height: 3.7rem;
+				}
+
+				.tabHeaderContent {
+					width: 100%;
+
+					.list {
+						.item {
+							font-size: 0.24rem;
+							line-height: 2.6;
+							margin: 0 0.28rem;
+
+							&::before {
+								height: 0.04rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+.itemContent {
+	display: none;
+	margin-top: 20px;
+
+	.dl {
+		.type1 {
+			height: 51px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+
+			.ok {
+				width: 18px;
+				height: 18px;
+				background-image: url(~@media/autonomous-driving/ok.png);
+				background-size: 100% 100%;
+			}
+
+			.span {
+				font-size: 18px;
+				color: #000;
+				margin-left: 10px;
+			}
+
+			.em {
+				font-size: 14px;
+				color: rgba(0, 0, 0, 0.5);
+				margin-left: 16px;
+			}
+		}
+
+		.type2 {
+			font-size: 18px;
+			color: #000;
+			line-height: 1.8888;
+			margin-top: 10px;
+		}
+	}
+
+	&.active {
+		display: block;
+	}
+
+	@media screen and  (max-width: 750px) {
+		& {
+			margin-top: 0.2rem;
+
+			.dl {
+				.type1 {
+					height: 0.7rem;
+
+					.ok {
+						width: 0.22rem;
+						height: 0.22rem;
+					}
+
+					.span {
+						font-size: 0.22rem;
+						margin-left: 0.1rem;
+					}
+
+					.em {
+						font-size: 0.18rem;
+						margin-left: 0.16rem;
+					}
+				}
+
+				.type2 {
+					font-size: 0.22rem;
+					margin-top: 0.1rem;
+				}
+			}
+		}
+	}
+}
