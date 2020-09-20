@@ -18,11 +18,10 @@ import './index.less';
 import { VideoWrap } from '@components/video';
 import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
-import { JOURNEY3, MATRIX, NAV_CAT_ID } from '@utils/constant';
+import { JOURNEY3, NAV_CAT_ID } from '@utils/constant';
 import { requestGetClientCase, requestGetImgTitle, requestGetPageContent } from '@api/index';
 import { OpenExplorer } from '@components/sunrise3/openExplorer';
 import { UltraLowPower } from '@components/journey3/ultraLowPower';
-import { JourneyDVB } from '@components/journey3/journeyDVB';
 import { ApplyScene } from '@components/applyScene';
 
 export default connect(
@@ -192,7 +191,6 @@ export default connect(
                     <Toast/>
                     {/*脚部*/}
                     <BasicFooter/>
-
                 </div>
             );
         }
