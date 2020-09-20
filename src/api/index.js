@@ -60,7 +60,7 @@ export function requestGetCockPitPartner(){
     });
 }
 
-//  高精地图
+//  高精地图                                            🍋   多余
 export function requestGetMapClient(){
     return request({
         url: '/api/getmapclient',
