@@ -6,7 +6,6 @@ export const SubBanner = ({
     subBannerData
 }) => {
     subBannerData = subBannerData || {};
-    console.log(subBannerData);
     return (
         <div className={style.sbanner}>
             <div className={style.sbannerIn}>
