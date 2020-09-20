@@ -5,18 +5,14 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import {
     requestGetClientCase,
-    requestGetCockPitPartner,
     requestGetImgTitle,
-    requestGetMapClient,
     requestGetPageContent
 } from '@api/index';
 import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
-import { navSortByRank } from '@utils/utils';
-import './index.less';
 import { BannerManage } from '@components/bannerManage';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
-import { INTELLIGENT_COCKPIT, NAV_CAT_ID, NAVINET } from '@utils/constant';
+import { NAV_CAT_ID, NAVINET } from '@utils/constant';
 import { SystemArchitecture } from '@components/navinet/systemArchitecture';
 import { NAL } from '@components/navinet/nAlgorithmsLibrary';
 import { NavinetApplyScene } from '@components/navinet/navinetApplyScene';
@@ -28,6 +24,7 @@ import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
 import { MultipleAdvantages } from '@components/navinet/multipleAdvantages';
 import { ProductHighlights } from '@components/navinet/productHighlights';
+import './index.less';
 
 export default connect(
     mapStateToProps,
