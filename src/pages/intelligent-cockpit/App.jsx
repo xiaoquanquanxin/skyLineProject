@@ -228,7 +228,7 @@ export default connect(
                     {/*toast*/}
                     <Toast/>
                     {/*脚部*/}
-                    {/*<BasicFooter/>*/}
+                    <BasicFooter/>
                 </div>
             );
         }
