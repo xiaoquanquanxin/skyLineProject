@@ -64,6 +64,18 @@
 		}
 	}
 
+	//	下标奇数
+	&.odd {
+		background-color: #FAFAFA;
+
+		.imgTab {
+			-webkit-box-orient: horizontal;
+			-webkit-box-direction: reverse;
+			-ms-flex-direction: row-reverse;
+			flex-direction: row-reverse;
+		}
+	}
+
 	@media screen and  (max-width: 750px) {
 		& {
 			padding: 0.5rem 0;
@@ -100,9 +112,16 @@
 					}
 				}
 			}
+
+			//	下标奇数
+			&.odd {
+				-webkit-box-orient: vertical;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: column;
+				flex-direction: column;
+			}
 		}
 	}
-
 }
 
 .itemContent {

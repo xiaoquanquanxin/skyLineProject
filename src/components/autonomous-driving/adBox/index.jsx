@@ -7,7 +7,7 @@ import { BasicTitleDesc } from '@components/basicTitleDesc';
 export const AdBox = class extends React.Component {
 
     /**
-     * @param  {object} props { dataList:列表数据 , adBoxData:常规数据 }
+     * @param  {object} props { dataList:列表数据 , adBoxData:常规数据 , index:索引 }
      * */
     constructor(props){
         super(props);
@@ -27,7 +27,7 @@ export const AdBox = class extends React.Component {
 
     render(){
         const { activeIndex } = this.state;
-        const { adBoxData, dataList } = this.props;
+        const { adBoxData, dataList, index } = this.props;
         let list;
         if (dataList && dataList.data) {
             list = dataList.data.map((item, index) => {
@@ -37,7 +37,7 @@ export const AdBox = class extends React.Component {
             });
         }
         return (
-            <div className={style.imgTabBox}>
+            <div className={`${style.imgTabBox} ${index % 2 ? style.odd : ''}`}>
                 <BasicTitleDesc data={adBoxData} isLight={true}/>
                 <div className={style.imgTab}>
                     <div className={`${layout.imgCenter2} ${style.imgCenter2}`}
