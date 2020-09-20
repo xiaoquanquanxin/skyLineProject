@@ -7,7 +7,6 @@ export const ProductArchitecture = ({
     productArchitectureData
 }) => {
     productArchitectureData = productArchitectureData || {};
-    console.log(productArchitectureData);
     let list;
     if (productArchitectureData.list) {
         const len = productArchitectureData.list.length;
