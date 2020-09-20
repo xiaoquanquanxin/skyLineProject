@@ -1,0 +1,54 @@
+.deploy {
+	background-color: var(--white);;
+
+	.deployIn {
+		background-repeat: no-repeat;
+		background-position: 50% 0;
+		background-size: cover;
+		height: 200px;
+		margin: 0 auto;
+		width: 1280px;
+		padding: 57px 0 0 484px;
+
+		.title {
+			font-size: 24px;
+			font-weight: 600;
+			color: rgba(0, 0, 0, .8);
+			line-height: 1.375;
+		}
+
+		.desc {
+			width: 637px;
+			font-size: 14px;
+			font-weight: 400;
+			color: rgba(0, 0, 0, 0.6);
+			line-height: 1.7142;
+			margin-top: 5px;
+		}
+	}
+
+	@media screen and  (max-width: 750px) {
+		& {
+
+			.deployIn {
+				background-repeat: no-repeat;
+				background-position: 30% 0;
+				background-size: cover;
+				height: 2rem;
+				margin: 0 auto;
+				width: 100%;
+				padding: 0.3rem 0 0 3rem;
+
+				.title {
+					font-size: 0.24rem;
+				}
+
+				.desc {
+					margin-top: 0.01rem;
+					width: 4rem;
+					font-size: 0.16rem;
+				}
+			}
+		}
+	}
+}
