@@ -53,7 +53,6 @@ const PhItem = ({ data }) => {
     );
 };
 const HIItem = ({ data }) => {
-    console.log(data)
     return (
         <div className={`${layout.imgCenter2} ${style.imgCenter2}`}
              style={{ backgroundImage: `url(${data.img})` }}
