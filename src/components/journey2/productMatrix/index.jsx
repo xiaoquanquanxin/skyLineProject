@@ -4,7 +4,7 @@ import style from './index.module.less';
 export const ProductMatrix = ({
     data
 }) => {
-    //  console.log(data);
+    data = data || {};
     return (
         <div className={style.productMatrix}>
             <div className={style.productMatrixIn}>
