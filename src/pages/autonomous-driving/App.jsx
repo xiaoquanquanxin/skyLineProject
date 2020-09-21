@@ -4,7 +4,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetBannerByType, requestGetPageContent } from '@api/index';
-import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { commonRelativeWideFn, getBrowserInfo, setJSONData } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
 import { BannerManage } from '@components/bannerManage';
@@ -35,12 +35,13 @@ export default connect(
             //  页面滚动监听
             getBrowserInfo(this.props.setBrowserScrollInfoFn);
             const { setBarBoxAnchorList } = props;
-            setBarBoxAnchorList(['优势概述', '合作伙伴',]);
+            setBarBoxAnchorList(['', '',]);
         }
 
         componentDidMount(){
             //  JSON
             this.setState((state) => {
+                return {};
                 return {
                     adBoxData: Object.assign({}, state.adBoxData, {
                         dataList: [
@@ -101,6 +102,9 @@ export default connect(
                 requestGetPageContent(AUTONOMOUS_DRIVING.name)
                     .then(data => {
                         navSortByRank(data, 'id');
+                        setJSONData(data[0]);
+                        setJSONData(data[1]);
+                        setJSONData(data[2]);
                         this.setState((state) => {
                             return {
                                 adBoxData: Object.assign({}, state.adBoxData, { list: data })
@@ -122,12 +126,11 @@ export default connect(
                 adBoxData,
             } = this.state;
             let AdBoxComponents;
-            if (adBoxData && adBoxData.list && adBoxData.dataList) {
+            if (adBoxData && adBoxData.list) {
                 AdBoxComponents = adBoxData.list.map((item, index) => {
                     return (
                         <AdBox key={index}
                                adBoxData={item}
-                               dataList={adBoxData.dataList[index]}
                                index={index}/>
                     );
                 });
