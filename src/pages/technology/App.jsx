@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import './index.less';
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { requestGetBannerByType, requestGetImgTitle, requestGetPageContent } from '@api/index';
+import { requestGetImgTitle, requestGetPageContent } from '@api/index';
 import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
-import { navSortByRank } from '@utils/utils';
 import { BannerManage } from '@components/bannerManage';
 import { TechnologyVideo } from '@components/technology/technologyVideo';
 import { VideoWrap } from '@components/video';
@@ -14,7 +12,8 @@ import { Bpu } from '@components/technology/bpu';
 import { TechnologyPerformance } from '@components/technology/performance';
 import { MAPS } from '@components/technology/MAPS';
 import { XinPeriod } from '@components/technology/xinPeriod';
-import { NAV_CAT_ID, NAVINET, TECHNOLOGY } from '@utils/constant';
+import { NAV_CAT_ID, TECHNOLOGY } from '@utils/constant';
+import './index.less';
 
 export default connect(
     mapStateToProps,
