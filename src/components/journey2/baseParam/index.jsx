@@ -8,7 +8,11 @@ export const BaseParam = ({
     baseParamData = baseParamData || {};
     let list;
     //  数据的数量
-    let len = baseParamData.list.length;
+    let len;
+    if (baseParamData.list) {
+        len = baseParamData.list.length;
+    }
+
     if (len) {
         list = baseParamData.list.map((item, index) => {
             return (
