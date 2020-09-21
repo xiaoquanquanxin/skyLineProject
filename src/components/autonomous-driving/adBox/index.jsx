@@ -29,10 +29,19 @@ export const AdBox = class extends React.Component {
         const { activeIndex } = this.state;
         const { adBoxData, index } = this.props;
         let list;
+        let tabList;
         if (adBoxData && adBoxData.data) {
             list = adBoxData.data.map((item, index) => {
                 return (
                     <ADItem key={index} data={item}/>
+                );
+            });
+            tabList = adBoxData.tabList.map((item, index) => {
+                return (
+                    <li key={index}
+                        className={`${style.item} ${activeIndex === index ? style.active : ''}`}
+                        onMouseOver={() => {this.mouseOver(index);}}>{item}
+                    </li>
                 );
             });
         }
@@ -45,15 +54,7 @@ export const AdBox = class extends React.Component {
                     />
                     <div className={style.tabHeaderContent}>
                         <ul className={style.list}>
-                            <li className={`${style.item} ${activeIndex === 0 ? style.active : ''}`}
-                                onMouseOver={() => {this.mouseOver(0);}}>优势简介
-                            </li>
-                            <li className={`${style.item} ${activeIndex === 1 ? style.active : ''}`}
-                                onMouseOver={() => {this.mouseOver(1);}}>行业痛点
-                            </li>
-                            <li className={`${style.item} ${activeIndex === 2 ? style.active : ''}`}
-                                onMouseOver={() => {this.mouseOver(2);}}>落地概述
-                            </li>
+                            {tabList}
                         </ul>
                         <div className={`${style.itemContent} ${activeIndex === 0 ? style.active : ''}`}>
                             <dl className={style.dl}>
