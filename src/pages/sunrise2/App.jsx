@@ -31,6 +31,7 @@ export default connect(
                 cdrbData: null,
                 //  计算赋能
                 aiotBoxData: null,
+                //  应用场景
                 applySceneData: null,
                 //  主要参数
                 mainParamData1: null,
@@ -44,41 +45,6 @@ export default connect(
         }
 
         componentDidMount(){
-            //  JSON
-            this.setState(() => {
-                return {
-                    //  主要参数、芯片规格
-                    mainParamData1: {
-                        title: '主要参数',
-                        list: [{
-                            label: '高性能',
-                            list: ['● 支持 MIPI 、DVP 、BT.1120输入、输出', '● 最大输入分辨率 4K']
-                        }, {
-                            label: '高性能',
-                            list: ['● 支持 MIPI 、DVP 、BT.1120输入、输出', '● 最大输入分辨率 4K最大输入分辨率 4K 最大输入分辨率 4K']
-                        }, {
-                            label: '高性能',
-                            list: ['● 支持 MIPI 、DVP 、BT.1120输入、输出', '● 最大输入分辨率 4K']
-                        }, {
-                            label: '高性能',
-                            list: ['● 支持 MIPI 、DVP 、BT.1120输入、输出', '● 最大输入分辨率 4K']
-                        }]
-                    },
-                    mainParamData2: {
-                        title: '芯片规格',
-                        list: [{
-                            label: '高性能',
-                            list: ['● 支持 MIPI 、DVP 、BT.1120输入、输出', '● 最大输入分辨率 4K']
-                        }, {
-                            label: '高性能',
-                            list: ['● 支持 MIPI 、DVP 、BT.1120输入、输出', '● 最大输入分辨率 4K']
-                        }, {
-                            label: '高性能',
-                            list: ['● 支持 MIPI 、DVP 、BT.1120输入、输出', '● 最大输入分辨率 4K']
-                        }]
-                    },
-                };
-            });
             Promise.all([
                 //  获取页面文案接口
                 requestGetPageContent(SUNRISE2.name)
@@ -86,13 +52,23 @@ export default connect(
                         //  计算赋能
                         this.setState((state) => {
                             console.log(data);
+                            if (data[1].content) {
+                                const _data = JSON.parse(data[1].content);
+                                Object.assign(data[1], _data);
+                            }
+                            if (data[2].content) {
+                                const _data = JSON.parse(data[2].content);
+                                Object.assign(data[2], _data);
+                            }
                             return {
                                 //  计算赋能
                                 aiotBoxData: Object.assign({}, state.aiotBoxData, data[0]),
                                 //  主要参数
                                 mainParamData1: Object.assign({}, state.mainParamData1, data[1]),
                                 //  芯片规格
-                                mainParamData2: Object.assign({}, state.mainParamData2, data[2])
+                                mainParamData2: Object.assign({}, state.mainParamData2, data[2]),
+                                //  应用场景
+                                applySceneData: Object.assign({}, state.applySceneData, data[3]),
                             };
                         });
                     }),
