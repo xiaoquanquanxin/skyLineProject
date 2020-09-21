@@ -3,12 +3,10 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
-import './index.less';
+import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { BannerManage } from '@components/bannerManage';
-
 import { FourBlocks } from '@components/fourBlocks';
 import { Sunrise3BpuBox } from '@components/sunrise3/bpuBox';
 import { SuperIsp } from '@components/sunrise3/superIsp';
@@ -19,6 +17,9 @@ import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
 import { ApplyScene } from '@components/applyScene';
 import { Toast } from '@components/toast';
+import './index.less';
+import { requestGetClientCase, requestGetImgTitle, requestGetPageContent } from '@api/index';
+import { JOURNEY3, NAV_CAT_ID, SUNRISE3 } from '@utils/constant';
 
 export default connect(
     mapStateToProps,
@@ -28,12 +29,19 @@ export default connect(
         constructor(props){
             super(props);
             this.state = {
+                //  四个一块的
                 cdrbData: null,
+                //  伯努利2.0 BPU
                 sunrise3BpuBoxData: null,
+                //  面向高画质 ISP
                 superIspData: null,
+                //  强大的视频处理能力
                 videoProcessingData: null,
+                //  地平线 “天工开物”
                 openExplorerData: null,
+                //  旭日3 系列——释放 “芯” 效能
                 richInterfaceData: null,
+                //  应用场景
                 applySceneData: null,
             };
             //  页面宽度监听
@@ -43,46 +51,11 @@ export default connect(
         }
 
         componentDidMount(){
+            //  JSON
             this.setState(() => {
                 return {
-                    cdrbData: [
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon01@2x.png',
-                            name: '针对智能驾驶场景优化',
-                        },
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon02@2x.png',
-
-                            name: '软硬件高效协同'
-                        },
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon03@2x.png',
-                            name: '强大的边缘计算能力'
-                        },
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon04@2x.png',
-                            name: '低延时/低功耗'
-                        }
-                    ],
                     sunrise3BpuBoxData: {
-                        title: '伯努利2.0 BPU',
-                        desc: '从AIoT场景需求出发，在设计过程中采取算法、计算架构、编译器联合设计，使得在功耗不变的情况下，AI性提高数倍。贝努利II架构兼具灵活与高效，能灵活适应AI算法的快速演进，高效支持最先进的网络结构。',
                         list: [{}, {}, {}]
-                    },
-                    superIspData: {
-                        title: '面向高画质 ISP',
-                        desc: '先进的 ISP 处理算法，使得在宽动态、低照度场景下，也能得到高质量的图像。',
-                        img: 'http://horizon.wx.h5work.com/images/product/sunrise3/S3-img03@2x.png',
-                    },
-                    videoProcessingData: {
-                        desc: '旭日3 可同时处理不同分辨率 4 ~ 8 个 Camera Sensor 的输入，并支持多种图像后处理：如畸变矫正、拼接、金字塔等。 同时支持 H.264 / H.265编解码，性能达到4K@60fps 。',
-                        title: '强大的视频处理能力',
-                        img: 'http://horizon.wx.h5work.com/images/product/sunrise3/S3-img04@2x.png',
-                    },
-                    openExplorerData: {
-                        title: '地平线 “天工开物”',
-                        desc: '“天工开物” 是地平线针对边缘 AI 产品研发周期长、投入大等特点，专门打造的，从模型训练到芯片部署皆包含在内的“端到端” AI 软件解决方案。力求全方位赋能客户、降低研发成本，并加速 AI 产品落地。',
-                        img: 'http://horizon.wx.h5work.com/images/product/sunrise3/S3-img05@2x.png',
                     },
                     richInterfaceData: {
                         title: '旭日3 系列——释放 “芯” 效能',
@@ -115,12 +88,57 @@ export default connect(
                     }
                 };
             });
-            setTimeout(() => {
-                const { setComponentDidMountFinish } = this.props;
-                console.log('请求成功了');
-                //  父组件初始化完成
-                setComponentDidMountFinish(true);
-            });
+            Promise.all([
+                //  获取页面文案接口
+                requestGetPageContent(SUNRISE3.name)
+                    .then(data => {
+                        this.setState((state) => {
+                            return {
+                                //  伯努利2.0 BPU
+                                sunrise3BpuBoxData: Object.assign({}, state.sunrise3BpuBoxData, data[0]),
+                                //  面向高画质 ISP
+                                superIspData: Object.assign({}, state.superIspData, data[1]),
+                                //  强大的视频处理能力
+                                videoProcessingData: Object.assign({}, state.videoProcessingData, data[2]),
+                                //  地平线 “天工开物”
+                                openExplorerData: Object.assign({}, state.openExplorerData, data[3]),
+                                //  旭日3 系列——释放 “芯” 效能
+                                richInterfaceData: Object.assign({}, state.richInterfaceData, data[4]),
+                            };
+                        });
+                    }),
+                //  获取图片标题接口
+                requestGetImgTitle(SUNRISE3.name)
+                    .then(data => {
+                        //  四个一块的
+                        const cdrbData = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        this.setState((state) => {
+                            return {
+                                //  四个一块的
+                                cdrbData: Object.assign([], state.cdrbData, cdrbData),
+                            };
+                        });
+                    }),
+                //  客户案例
+                requestGetClientCase(SUNRISE3.type)
+                    .then(data => {
+                        //  应用场景
+                        const applySceneList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        const topList = applySceneList.splice(0, 4);
+                        const bottomList = applySceneList;
+                        this.setState((state) => {
+                            return {
+                                applySceneData: Object.assign([], state.applySceneData, { topList, bottomList })
+                            };
+                        });
+                    })
+            ])
+                .then(() => {
+                    const { setComponentDidMountFinish } = this.props;
+                    //  父组件初始化完成
+                    setComponentDidMountFinish(true);
+                    console.log('setState结果是🍎', this.state);
+                });
         }
 
         render(){
