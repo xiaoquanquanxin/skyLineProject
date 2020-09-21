@@ -8,7 +8,7 @@ import {
     requestGetImgTitle,
     requestGetPageContent
 } from '@api/index';
-import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, setJSONData } from '@utils/utils';
 import { BannerManage } from '@components/bannerManage';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
@@ -56,90 +56,12 @@ export default connect(
         }
 
         componentDidMount(){
-            //  JSON
-            const nALData = {
-                //  建图功能
-                makeFnData: {
-                    title: '建图功能',
-                    thMap: {
-                        label: '',
-                        list: ['位置属性', '逻辑属性', '集合属性', '语义属性']
-                    },
-                    dataList: [
-                        {
-                            label: '路面箭头',
-                            list: [true, true, true, true]
-                        },
-                        {
-                            label: '路面标志',
-                            list: [true, true, true, true]
-                        },
-                        {
-                            label: '交通标志牌',
-                            list: [true, true, true, true]
-                        },
-                        {
-                            label: '指路牌',
-                            list: [true, true, true, true]
-                        },
-                        {
-                            label: '交通灯',
-                            list: [true, true, true, true]
-                        },
-                        {
-                            label: '立杆',
-                            list: [true, true, true, true]
-                        },
-                        {
-                            label: '动态限行区域',
-                            list: [true, true, true, true]
-                        },
-                        {
-                            label: '车道线',
-                            list: [true, true, true, true]
-                        },
-                        {
-                            label: '停止线',
-                            list: [true, true, true, false]
-                        },
-                        {
-                            label: '人行横道线',
-                            list: [true, true, true, false]
-                        },
-                        {
-                            label: '路沿线',
-                            list: [true, true, false, false]
-                        },
-                        {
-                            label: '车辆轨迹',
-                            list: [true, true, false, false]
-                        },
-                    ]
-                },
-                //  定位功能
-                localFunData: {
-                    title: '定位功能',
-                    thMap: {
-                        label: '',
-                        content: '输出类型',
-                    },
-                    dataList: [
-                        { label: '视觉定位', list: ['位置', '朝向', '速度', '定位状态',] },
-                        { label: '融合定位', list: ['位置', '朝向', '速度', '定位状态',] },
-                        { label: '地图概况', list: ['地图范围', '道路信息', '车道信息', '道路设施',] },
-                    ]
-                }
-            };
-            this.setState((state) => {
-                return {
-                    //  算法库
-                    nALData: Object.assign({}, state.nALData, nALData),
-                };
-            });
             Promise.all([
                 //  获取页面文案接口
                 requestGetPageContent(NAVINET.name)
                     .then(data => {
+                        setJSONData(data[1]);
+                        console.log(data[1]);
                         this.setState((state) => {
                             return {
                                 //  系统架构
