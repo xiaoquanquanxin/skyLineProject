@@ -82,21 +82,6 @@ export default connect(
                     }),
                 };
             });
-            //  图片desc里应该有
-//            //  JSON
-//            this.setState((state) => {
-//                const descList = [
-//                    [
-//
-//                    ],
-//                    [],
-//                ];
-//                return {
-//                    customerCaseData: Object.assign({}, state.customerCaseData, {
-//                        descList,
-//                    })
-//                };
-//            });
             Promise.all([
                 //  获取页面文案接口
                 requestGetPageContent(INTELLIGENT_COCKPIT.name)
