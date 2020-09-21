@@ -29,7 +29,10 @@ export const XinPeriod = connect(
             //  以前没数据，说明这一次是注入数据
             if (!prevProps.xinPeriodData) {
                 const { xinPeriodData } = this.props;
-                console.log(xinPeriodData.list);
+                if (!xinPeriodData) {
+                    return;
+                }
+                //  console.log(xinPeriodData);
                 window.requestAnimationFrame(() => {
                     this.setState(() => {
                         return {
@@ -39,6 +42,7 @@ export const XinPeriod = connect(
                 });
                 return;
             }
+            //  console.log(prevState.activeIndex);
             if (prevState.activeIndex == null) {
                 this.mySwiper = new Swiper(this.swiperRef.current, {
                     autoplay: false,
@@ -76,19 +80,16 @@ export const XinPeriod = connect(
 
         render(){
             const { xinPeriodData } = this.props;
-            if (!xinPeriodData) {
+            if (!xinPeriodData || !xinPeriodData.list) {
                 return '';
             }
-            let list;
-            if (xinPeriodData.list) {
-                list = xinPeriodData.list.map((item, index) => {
-                    return (
-                        <div key={item.id || index} className={`swiper-slide ${style.swiperSlide}`}>
-                            <XinPeriodItem data={item}/>
-                        </div>
-                    );
-                });
-            }
+            const list = xinPeriodData.list.map((item, index) => {
+                return (
+                    <div key={index} className={`swiper-slide ${style.swiperSlide}`}>
+                        <XinPeriodItem data={item}/>
+                    </div>
+                );
+            });
             const { activeIndex } = this.state;
             return (
                 <div className={style.xinPeriod}>
@@ -121,17 +122,18 @@ export const XinPeriod = connect(
 const XinPeriodItem = ({
     data,
 }) => {
-    //  console.log(data);
+    if (data.desc) {
+        data._desc = data.desc.replace(/\n/ig, '<br/>');
+    }
     return (
         <div className={`${style.nameImg} ${layout.left} name-img`}>
-            <p className={style.name}>{data.name} </p>
-            <div className={style.imgCenter2}/>
-            <dl className={style.xinDesc}>
-                <dd className={style.dd}>· 伯努利1.0</dd>
-                <dd className={style.dd}>· 4 TOPS</dd>
-                <dd className={style.dd}>· 2 W</dd>
-                <dd className={style.dd}>· AEC-Q100</dd>
-            </dl>
+            <p className={style.name} dangerouslySetInnerHTML={{ __html: data.title }}/>
+            <div className={`${style.imgCenter2} ${layout.imgCenter2}`}
+                 style={{ backgroundImage: `url(${data.img})` }}
+            />
+            {data._desc
+                ? <dl className={style.xinDesc} dangerouslySetInnerHTML={{ __html: data._desc }}/>
+                : ''}
         </div>
     );
 };
