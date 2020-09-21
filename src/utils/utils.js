@@ -197,3 +197,9 @@ export const splitDesc = (str, isRelativeWide) => {
     return str.replace('[[[more]]]', isRelativeWide ? '<br/>' : '');
 };
 
+//  组装json
+export const setJSONData = (data) => {
+    if (data && data.content) {
+        Object.assign(data, JSON.parse(data.content));
+    }
+};
