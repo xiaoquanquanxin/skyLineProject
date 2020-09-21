@@ -8,7 +8,12 @@ export const EdgeComputing = ({
     if (!data) {
         return null;
     }
-    data.descList = [{}, {}, {}];
+    if (data.content) {
+        data.descList = JSON.parse(data.content);
+        if (data.descList.length > 1) {
+            data.descList.splice(1, 0, null);
+        }
+    }
     return (
         <div className={style.edgeComputing}>
             <div className={style.edgeComputingIn} style={{ backgroundImage: `url(${data.img})` }}>
