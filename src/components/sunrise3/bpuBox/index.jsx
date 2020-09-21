@@ -8,8 +8,8 @@ export const Sunrise3BpuBox = ({
 }) => {
     sunrise3BpuBoxData = sunrise3BpuBoxData || {};
     let list;
-    if (sunrise3BpuBoxData.list) {
-        list = sunrise3BpuBoxData.list.map((item, index) => {
+    if (sunrise3BpuBoxData.content) {
+        list = sunrise3BpuBoxData.content.map((item, index) => {
             if (index > 0 && index % 2) {
                 return (
                     <RobotoCondensedLine key={index}/>
