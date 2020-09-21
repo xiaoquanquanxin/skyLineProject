@@ -61,7 +61,7 @@ export default connect(
                 requestGetPageContent(NAVINET.name)
                     .then(data => {
                         setJSONData(data[1]);
-                        console.log(data[1]);
+                        console.log(data);
                         this.setState((state) => {
                             return {
                                 //  系统架构
