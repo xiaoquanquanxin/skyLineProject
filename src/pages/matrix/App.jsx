@@ -4,7 +4,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetImgTitle, requestGetPageContent } from '@api/index';
-import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, navSortByRank } from '@utils/utils';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { BannerManage } from '@components/bannerManage';
@@ -88,7 +88,7 @@ export default connect(
                         const hsDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
                         //  应用场景
                         const applySceneDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
-
+                        navSortByRank(applySceneDataList, 'rank');
                         this.setState((state) => {
                             return {
                                 //  荣获多项国际大奖
