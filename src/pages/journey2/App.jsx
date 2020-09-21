@@ -51,8 +51,12 @@ export default connect(
                 requestGetPageContent(JOURNEY2.name)
                     .then(data => {
                         this.setState((state) => {
-                            console.log(data[4]);
                             setJSONData(data[4]);
+                            if (data[4].list) {
+                                data[4].list.forEach(item => {
+                                    item.desc = item.desc.join('<br/>');
+                                });
+                            }
                             return {
                                 //  高性能视觉感知1
                                 hPData1: Object.assign({}, state.hPData1, data[0]),
