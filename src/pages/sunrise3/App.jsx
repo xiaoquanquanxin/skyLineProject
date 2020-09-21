@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, setJSONData, setListJSONData } from '@utils/utils';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { BannerManage } from '@components/bannerManage';
@@ -51,44 +51,20 @@ export default connect(
         }
 
         componentDidMount(){
-            //  JSON
-            this.setState(() => {
-                return {
-                    sunrise3BpuBoxData: {
-                        list: [{}, {}, {}]
-                    },
-                    richInterfaceData: {
-                        title: '旭日3 系列——释放 “芯” 效能',
-                        desc: '旭日3 系列包含 X3M 和 X3E 两颗芯片，X3M 主要面向 8M 智能前视市场和边缘计算，提供 5TOPS AI 等效算力；X3E 主要面向 5M 智能前视市场，提供 3TOPS AI 等效算力。',
-                        list_1: [{
-                            label: 'Computing',
-                            content: 'Bernoulli 2.0 Dual-Core BPU 5TOPS <br/>Quad-Core CotexA53 CPU <br/> Cortex-R5 MCU'
-                        }, {
-                            label: 'Computing',
-                            content: 'Bernoulli 2.0 Dual-Core BPU 5TOPS <br/>Quad-Core CotexA53 CPU <br/> Cortex-R5 MCU'
-                        }, {
-                            label: 'Computing',
-                            content: 'Bernoulli 2.0 Dual-Core BPU 5TOPS <br/>Quad-Core CotexA53 CPU <br/> Cortex-R5 MCU'
-                        }],
-
-                        list_2: [{
-                            label: 'Computing',
-                            content: 'MIPI-CSI Rx@4Lane, Tx@4Lane<br/>DVP MIPI-DSI<br/>RGB24/16bit LCD IF<br/>BT.1120/656'
-                        }, {
-                            label: 'Computing',
-                            content: 'MIPI-CSI Rx@4Lane, Tx@4Lane<br/>DVP MIPI-DSI<br/>RGB24/16bit LCD IF<br/>BT.1120/656'
-                        }, {
-                            label: 'Computing',
-                            content: 'MIPI-CSI Rx@4Lane, Tx@4Lane<br/>DVP MIPI-DSI<br/>RGB24/16bit LCD IF<br/>BT.1120/656'
-                        }],
-                    },
-                };
-            });
             Promise.all([
                 //  获取页面文案接口
                 requestGetPageContent(SUNRISE3.name)
                     .then(data => {
                         this.setState((state) => {
+                            setListJSONData(data[0]);
+                            if (data[0].content && data[0].content.length > 1) {
+                                data[0].content.splice(1, 0, null);
+                            }
+                            setListJSONData(data[4]);
+                            setListJSONData(data[1]);
+                            if (data[1].content && data[1].content.length > 1) {
+                                data[1].content.splice(1, 0, null);
+                            }
                             return {
                                 //  伯努利2.0 BPU
                                 sunrise3BpuBoxData: Object.assign({}, state.sunrise3BpuBoxData, data[0]),
@@ -138,7 +114,13 @@ export default connect(
         }
 
         render(){
-            const { cdrbData, sunrise3BpuBoxData, superIspData, videoProcessingData, openExplorerData, richInterfaceData, applySceneData } = this.state;
+            const { cdrbData,
+                sunrise3BpuBoxData,
+                superIspData,
+                videoProcessingData,
+                openExplorerData,
+                richInterfaceData,
+                applySceneData } = this.state;
             return (
                 <div className="App">
                     {/*头部*/}
