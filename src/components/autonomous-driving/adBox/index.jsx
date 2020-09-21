@@ -27,10 +27,10 @@ export const AdBox = class extends React.Component {
 
     render(){
         const { activeIndex } = this.state;
-        const { adBoxData, dataList, index } = this.props;
+        const { adBoxData, index } = this.props;
         let list;
-        if (dataList && dataList.data) {
-            list = dataList.data.map((item, index) => {
+        if (adBoxData && adBoxData.data) {
+            list = adBoxData.data.map((item, index) => {
                 return (
                     <ADItem key={index} data={item}/>
                 );
@@ -63,9 +63,9 @@ export const AdBox = class extends React.Component {
                         <div className={`${style.itemContent} ${activeIndex === 1 ? style.active : ''}`}>
                             <dl className={style.dl}>
                                 {
-                                    dataList.list
+                                    adBoxData.list
                                         ? <dd className={style.type2}
-                                              dangerouslySetInnerHTML={{ __html: dataList.list[0] }}/>
+                                              dangerouslySetInnerHTML={{ __html: adBoxData.list[0] }}/>
                                         : ''
                                 }
                             </dl>
@@ -73,9 +73,9 @@ export const AdBox = class extends React.Component {
                         <div className={`${style.itemContent} ${activeIndex === 2 ? style.active : ''}`}>
                             <dl className={style.dl}>
                                 {
-                                    dataList.list
+                                    adBoxData.list
                                         ? <dd className={style.type2}
-                                              dangerouslySetInnerHTML={{ __html: dataList.list[1] }}/>
+                                              dangerouslySetInnerHTML={{ __html: adBoxData.list[1] }}/>
                                         : ''
                                 }
                             </dl>
