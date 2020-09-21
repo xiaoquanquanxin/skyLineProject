@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './index.module.less';
-import { BasicTitleDesc } from '@components/basicTitleDesc';
 
 export const BaseParam = ({
     baseParamData
@@ -24,8 +23,7 @@ export const BaseParam = ({
     return (
         <div className={style.baseParam}>
             <div className={style.baseParamIn}>
-                <BasicTitleDesc data={baseParamData} widthType={705}/>
-                <p className={style.listTitle} dangerouslySetInnerHTML={{ __html: baseParamData.listTitle }}/>
+                <p className={style.listTitle} dangerouslySetInnerHTML={{ __html: baseParamData.title }}/>
                 <ul className={style.baseParamList}>
                     {list}
                 </ul>
