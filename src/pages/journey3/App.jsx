@@ -42,39 +42,7 @@ export default connect(
                 ultraLowPowerData5: null,
 
                 //  征程3 DVB JSON
-                baseParamData: {
-                    listTitle: '征程3 DVB 参数指标',
-                    list: [
-                        {
-                            label: '架构',
-                            desc: '基于地平线 伯努利2.0 BPU 架构'
-                        },
-                        {
-                            label: '高算力',
-                            desc: '等效 5TOPS AI 性能，4 核 A53'
-                        },
-                        {
-                            label: '高性能存储',
-                            desc: '2GB LPDDR4 + 64MB NOR flash + 8GB eMMC'
-                        },
-                        {
-                            label: '视频输入',
-                            desc: '支持 4 – 6 路 Camera 接入'
-                        },
-                        {
-                            label: '接口丰富',
-                            desc: '支持千兆以太网， USB3.0 ，SPI ，I2C ，UART 等接口'
-                        },
-                        {
-                            label: '功能安全等级',
-                            desc: '搭载 ASIL-D 的 MCU 微控制器'
-                        },
-                        {
-                            label: '支持多种应用场景',
-                            desc: '高级别辅助驾驶（ ADAS ），驾驶员监控（ DMS ），自动泊车辅助（ APA ）'
-                        }
-                    ]
-                },
+                baseParamData: { list: [] },
                 //  “天工开物” AI 开发平台
                 openExplorerData: null,
                 //  应用场景
@@ -88,6 +56,11 @@ export default connect(
                 requestGetPageContent(JOURNEY3.name)
                     .then(data => {
                         this.setState((state) => {
+                            if (data[5].content) {
+                                const _data = JSON.parse(data[5].content);
+                                Object.assign(data[5], _data);
+                            }
+                            console.log(data);
                             return {
                                 //  超低功耗
                                 ultraLowPowerData1: Object.assign({}, state.ultraLowPowerData1, data[0]),
@@ -99,6 +72,8 @@ export default connect(
                                 baseParamData: Object.assign({}, state.baseParamData, data[5]),
                                 //  “天工开物” AI 开发平台
                                 openExplorerData: Object.assign({}, state.openExplorerData, data[6]),
+                                //  应用场景
+                                applySceneData: Object.assign({}, state.applySceneData, data[7])
                             };
                         });
                     }),
