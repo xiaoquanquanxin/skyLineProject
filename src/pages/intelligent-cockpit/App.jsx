@@ -4,7 +4,7 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetClientCase, requestGetCockPitPartner, requestGetImgTitle, requestGetPageContent } from '@api/index';
-import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, getContentList, setListJSONData } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
 import { BannerManage } from '@components/bannerManage';
@@ -101,9 +101,9 @@ export default connect(
                     }
                 ];
                 return {
-                    algorithmsLibraryData: Object.assign({}, state.algorithmsLibraryData, {
-                        aLDList,
-                    }),
+//                    algorithmsLibraryData: Object.assign({}, state.algorithmsLibraryData, {
+//                        aLDList,
+//                    }),
                 };
             });
             //  图片desc里应该有
@@ -125,12 +125,18 @@ export default connect(
                 //  获取页面文案接口
                 requestGetPageContent(INTELLIGENT_COCKPIT.name)
                     .then(data => {
+                        console.log(data);
+                        setListJSONData(data[1]);
                         this.setState((state) => {
                             return {
                                 //  产品架构
                                 productArchitectureData: Object.assign({}, state.productArchitectureData, data[0]),
                                 //  算法库
                                 algorithmsLibraryData: Object.assign({}, state.algorithmsLibraryData, data[1]),
+                                //  方案优势
+                                planAdvantageData: Object.assign({}, state.planAdvantageData, data[2]),
+                                //  todo
+                                //  核心算法介绍
                             };
                         });
                     }),
@@ -143,7 +149,6 @@ export default connect(
                         const coreAlgorithmDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
                         //  用户案例
                         const descList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
-                        //  console.log(data);
                         this.setState((state) => {
                             return {
                                 //  方案优势
@@ -154,7 +159,6 @@ export default connect(
                                 customerCaseData: Object.assign({}, state.customerCaseData, { descList, })
                             };
                         });
-
                     }),
                 //  客户案例
                 requestGetClientCase(INTELLIGENT_COCKPIT.type)
