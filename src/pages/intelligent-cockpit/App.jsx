@@ -55,7 +55,7 @@ export default connect(
         componentDidMount(){
             //  JSON
             this.setState((state) => {
-                //  产品架构
+                //  产品架构        todo
                 const list = [
                     {
                         title: '硬件平台',
@@ -67,7 +67,6 @@ export default connect(
                         desc: '通过感知用户的人脸特征、行为特征、语<br>义特征作为输入，同时结合用户在座舱的<br>主动行为作为输入',
                     },
                     {
-
                         title: '处理层',
                         desc: '将用户的感知数据、用户的使用行为数据、用户的主动输入数据<br>以及外部的第三方数据进行数据融合，分析用户所处的场景，然<br>后进行精准的决策',
                     },
@@ -81,29 +80,6 @@ export default connect(
                     productArchitectureData: Object.assign({}, state.productArchitectureData, {
                         list,
                     }),
-                };
-            });
-            //  JSON
-            this.setState((state) => {
-                //  算法库
-                const aLDList = [
-                    {
-                        title: '视觉算法',
-                        list: ['人脸识别', '打哈欠检测', '性别年龄识别', '疲劳分级检测', '情绪识别', '抽烟检测', '打电话检测',]
-                    },
-                    {
-                        title: '语音算法',
-                        list: ['前端降噪', '人声分离', '人声隔离', '命令词', 'VAD', '唤醒', '音区检测', '通用识别',],
-                    },
-                    {
-                        title: '多模融合算法',
-                        list: ['多模免唤醒命令词'],
-                    }
-                ];
-                return {
-//                    algorithmsLibraryData: Object.assign({}, state.algorithmsLibraryData, {
-//                        aLDList,
-//                    }),
                 };
             });
             //  图片desc里应该有
@@ -126,6 +102,7 @@ export default connect(
                 requestGetPageContent(INTELLIGENT_COCKPIT.name)
                     .then(data => {
                         console.log(data);
+                        setListJSONData(data[0]);
                         setListJSONData(data[1]);
                         this.setState((state) => {
                             return {
@@ -163,7 +140,6 @@ export default connect(
                 //  客户案例
                 requestGetClientCase(INTELLIGENT_COCKPIT.type)
                     .then(data => {
-                        console.log(data);
                         this.setState((state) => {
                             return {
                                 customerCaseData: Object.assign({}, state.customerCaseData, { list: data })
