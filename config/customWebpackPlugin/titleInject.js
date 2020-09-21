@@ -80,18 +80,10 @@ const titleInjectFn = (outputName, html) => {
             //  核心技术
             titlePlaceholder = '核心技术';
             break;
-
-        //  fixme   好像没有
-        case 'visual.html':
-            //  视觉
-            titlePlaceholder = '视觉';
+        case '404.html':
+            //  not found
+            titlePlaceholder = 'Not Found';
             break;
-
-        case 'voice.html':
-            //  语音
-            titlePlaceholder = '语音';
-            break;
-
         default:
             break;
     }
