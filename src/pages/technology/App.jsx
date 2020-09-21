@@ -4,8 +4,8 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { requestGetBannerByType } from '@api/index';
-import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { requestGetBannerByType, requestGetImgTitle, requestGetPageContent } from '@api/index';
+import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import { BannerManage } from '@components/bannerManage';
 import { TechnologyVideo } from '@components/technology/technologyVideo';
@@ -14,6 +14,7 @@ import { Bpu } from '@components/technology/bpu';
 import { TechnologyPerformance } from '@components/technology/performance';
 import { MAPS } from '@components/technology/MAPS';
 import { XinPeriod } from '@components/technology/xinPeriod';
+import { NAV_CAT_ID, NAVINET, TECHNOLOGY } from '@utils/constant';
 
 export default connect(
     mapStateToProps,
@@ -23,9 +24,13 @@ export default connect(
         constructor(props){
             super(props);
             this.state = {
+                //  bpu框架
                 bpuData: null,
+                //  AI 芯片真实性能远超对手
                 performanceData: null,
+                //  关于 MAPS 评估方式
                 mapsData: null,
+                //  持续攀登 引领 AI “芯” 时代
                 xinPeriodData: null,
             };
             commonRelativeWideFn(this.props.setRelativeWideFn);
@@ -34,27 +39,46 @@ export default connect(
         }
 
         componentDidMount(){
-            this.setState(() => {
-                return {
-                    bpuData: {
-                        desc: '地平线具有世界领先的深度学习和决策推理算法开发能力，可将算法集成在高性能、低功耗、低成本的边缘人工智能处理器及软硬平台上；同时自主设计研发了创新性的人工智能专用处理器—— <br>BrainProcessing Unit（ BPU )，提供设备端上软硬结合的嵌入式人工智能解决方案。',
-                        title: '为实际场景而生的 BPU 架构',
-                        list: [{ name: 1 }, { name: 1 }, { name: 1 }, { name: 1 }, { name: 1 }]
-                    },
-                    performanceData: {
-                        title: 'AI 芯片真实性能远超对手',
-                        list: [1, 2, 3, 4,]
-                    },
-                    mapsData: {
-                        content: '地平线致力于构建实用性主导的评估标准，让芯片真实 AI 性能可感知。 2020 年，地平线提出了 MAPS 评估方法 ( Mean Accuracy - guaranteed Processing<br>Speed ) ，即在精度有保障范围内的平均处理速度，该评估方式旨在使用户能够通过可视化的图表感知 AI 芯片真实算力。其公式为：MAPS = 所围面积 /（最高精度-最低精度)。',
-                    },
-                    xinPeriodData: {
-                        title: '持续攀登 引领 AI “芯” 时代',
-                        desc: '基于创新的人工智能专用计算架构 BPU ( Brain Processing Unit ) ，地平线为自研 AI 芯片规划了完备的研发路线图。',
-                        list: [{ name: '征程2', }, { name: 'xxx2', }, { name: 'xxx3', }, { name: 'xxx4', }, { name: 'xxx5', }, { name: 'xxx6', }]
-                    }
-                };
-            });
+            Promise.all([
+                //  获取页面文案接口
+                requestGetPageContent(TECHNOLOGY.name)
+                    .then(data => {
+                        this.setState((state) => {
+                            return {
+                                //  bpu框架
+                                bpuData: Object.assign({}, state.bpuData, data[0]),
+                                //  AI 芯片真实性能远超对手
+                                performanceData: Object.assign({}, state.bpuData, data[1]),
+                                //  关于 MAPS 评估方式
+                                mapsData: Object.assign({}, state.mapsData, data[2]),
+                                //  持续攀登 引领 AI “芯” 时代
+                                xinPeriodData: Object.assign({}, state.xinPeriodData, data[3])
+                            };
+                        });
+                    }),
+                //  获取图片标题接口
+                requestGetImgTitle(TECHNOLOGY.name)
+                    .then(data => {
+                        //  bpu框架
+                        const bpuDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        //  持续攀登 引领 AI “芯” 时代
+                        const xinPeriodDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        this.setState((state) => {
+                            return {
+                                //  bpu框架
+                                bpuData: Object.assign({}, state.bpuData, { list: bpuDataList }),
+                                //  持续攀登 引领 AI “芯” 时代
+                                xinPeriodData: Object.assign({}, state.xinPeriodData, { list: xinPeriodDataList })
+                            };
+                        });
+                    })
+            ])
+                .then(() => {
+                    const { setComponentDidMountFinish } = this.props;
+                    //  父组件初始化完成
+                    setComponentDidMountFinish(true);
+                    console.log('setState结果是🍎', this.state);
+                });
         }
 
         render(){
