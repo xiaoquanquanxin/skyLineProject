@@ -35,6 +35,13 @@ export const INTELLIGENT_COCKPIT = { name: '智能座舱', type: 126 };
 //  高精地图
 export const NAVINET = { name: '高精地图', type1: 127, type2: 128 };
 
+//  核心技术
+export const TECHNOLOGY = { name: '核心技术', type: 119 };
+//  征程2
+export const JOURNEY2 = { name: '征程2', type: 121 };
+//  旭日3
+export const SUNRISE3 = { name: '旭日3', type: 122 };
+
 //  页面pathName
 export const pathNameList = [
     '',
