@@ -11,11 +11,16 @@ export const UltraLowPower = ({
 
     //  右侧文字多
     let rightDescMore = contentIsRight && ultraLowPowerData.desc && ultraLowPowerData.desc.length > 100;
+//    if (ultraLowPowerData.desc) {
+//        console.log(ultraLowPowerData.desc.split('•'));
+//    }
+
     return (
         <div className={style.ultraLowPower}>
             <div className={style.ultraLowPowerInner} style={{ backgroundImage: `url(${ultraLowPowerData.img})` }}>
                 <div
-                    className={`${style.contentWrap} ${contentIsRight ? style.contentIsRight : ''} ${rightDescMore ? style.rightDescMore : ''}`}>
+                    className={`${style.contentWrap} ${contentIsRight ? style.contentIsRight : ''} ${rightDescMore ? style.rightDescMore : ''}`}
+                >
                     <p className={style.title} dangerouslySetInnerHTML={{ __html: ultraLowPowerData.title }}/>
                     <ul className={style.list}>
                         <li className={style.item}>
