@@ -17,9 +17,9 @@ import { GetMoreBox } from '@components/getMoreBox';
 import { VideoWrap } from '@components/video';
 import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
+import { requestGetClientCase, requestGetImgTitle, requestGetPageContent } from '@api/index';
+import { JOURNEY2, NAV_CAT_ID } from '@utils/constant';
 import './index.less';
-import { requestGetImgTitle, requestGetPageContent } from '@api/index';
-import { JOURNEY2, JOURNEY3, NAV_CAT_ID } from '@utils/constant';
 
 export default connect(
     mapStateToProps,
@@ -113,7 +113,12 @@ export default connect(
                                 cdrbData: Object.assign([], state.cdrbData, cdrbData),
                             };
                         });
-                    })
+                    }),
+//                //  客户案例  ，视频用
+//                requestGetClientCase(JOURNEY2.type)
+//                    .then(data => {
+//                        console.log(data);
+//                    })
             ]).then(() => {
                 const { setComponentDidMountFinish } = this.props;
                 //  父组件初始化完成
