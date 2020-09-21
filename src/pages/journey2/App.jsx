@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { ScrollFixed } from '@components/scrollFixed';
 import { BannerManage } from '@components/bannerManage';
@@ -14,10 +14,12 @@ import { ProductMatrix } from '@components/journey2/productMatrix';
 import { BaseParam } from '@components/journey2/baseParam';
 import { Journey2Video } from '@components/journey2/journey2Video';
 import { GetMoreBox } from '@components/getMoreBox';
-import './index.less';
 import { VideoWrap } from '@components/video';
 import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
+import './index.less';
+import { requestGetImgTitle, requestGetPageContent } from '@api/index';
+import { JOURNEY2, JOURNEY3, NAV_CAT_ID } from '@utils/constant';
 
 export default connect(
     mapStateToProps,
@@ -32,35 +34,15 @@ export default connect(
             getBrowserInfo(this.props.setBrowserScrollInfoFn);
 
             this.state = {
-                cdrbData: [
-                    {
-                        img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon01@2x.png',
-                        name: '针对智能驾驶场景优化',
-                    },
-                    {
-                        img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon02@2x.png',
-
-                        name: '软硬件高效协同'
-                    },
-                    {
-                        img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon03@2x.png',
-                        name: '强大的边缘计算能力'
-                    },
-                    {
-                        img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon04@2x.png',
-                        name: '低延时/低功耗'
-                    }
-                ],
-                highPerceptionData: {
-                    desc: '基于地平线自研 BPU（ Brain Processing Unit )，<br/>征程芯片可以帮助车辆实现高性能的视觉感知，<br/>加速智能驾驶落地。',
-                    img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-img02@2x.png',
-                    title: '高性能视觉感知'
-                },
-                productMatrixData: {
-                    title: '地平线智能驾驶产品矩阵',
-                    desc: '包括 ADAS 、多模交互、NaviNet 等在内的驾驶产品可与征程芯片完美兼容及适配，为后期升级提供无限可能。',
-                    img: 'http://horizon.wx.h5work.com/images/product/journey2/matrix.png?v=1.1'
-                },
+                //  四个一块的
+                cdrbData: null,
+                //  高性能视觉感知1
+                hPData1: null,
+                hPData3: null,
+                hPData2: null,
+                //  地平线智能驾驶产品矩阵
+                productMatrixData: null,
+                //  JSON
                 baseParamData: {
                     listTitle: '规格参数',
                     list: [
@@ -102,16 +84,53 @@ export default connect(
         }
 
         componentDidMount(){
-            setTimeout(() => {
+            Promise.all([
+                //  获取页面文案接口
+                requestGetPageContent(JOURNEY2.name)
+                    .then(data => {
+                        this.setState((state) => {
+                            return {
+                                //  高性能视觉感知1
+                                hPData1: Object.assign({}, state.hPData1, data[0]),
+                                hPData2: Object.assign({}, state.hPData2, data[1]),
+                                hPData3: Object.assign({}, state.hPData3, data[2]),
+                                //  地平线智能驾驶产品矩阵
+                                productMatrixData: Object.assign({}, state.productMatrixData, data[3]),
+                                //  规格参数
+                                baseParamData: Object.assign({}, state.baseParamData, data[4]),
+                            };
+                        });
+                    }),
+                //  获取图片标题接口
+                requestGetImgTitle(JOURNEY2.name)
+                    .then(data => {
+                        //  四个一块的
+                        const cdrbData = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        //  console.log(data);
+                        this.setState((state) => {
+                            return {
+                                //  四个一块的
+                                cdrbData: Object.assign([], state.cdrbData, cdrbData),
+                            };
+                        });
+                    })
+            ]).then(() => {
                 const { setComponentDidMountFinish } = this.props;
-                console.log('请求成功了');
                 //  父组件初始化完成
                 setComponentDidMountFinish(true);
-            }, 20);
+                console.log('setState结果是🍎', this.state);
+            });
         }
 
         render(){
-            const { cdrbData, highPerceptionData, productMatrixData, baseParamData } = this.state;
+            const {
+                cdrbData,
+                hPData1,
+                hPData2,
+                hPData3,
+                productMatrixData,
+                baseParamData
+            } = this.state;
 
             return (
                 <div className="App">
@@ -126,9 +145,9 @@ export default connect(
                     {/*四个一块*/}
                     <FourBlocks data={cdrbData}/>
                     {/*高知觉*/}
-                    <HighPerception data={highPerceptionData}/>
-                    <EdgeComputing data={highPerceptionData}/>
-                    <HighPerception data={highPerceptionData}/>
+                    <HighPerception data={hPData1}/>
+                    <EdgeComputing data={hPData2}/>
+                    <HighPerception data={hPData3}/>
                     {/*地平线智能驾驶产品矩阵*/}
                     <ProductMatrix data={productMatrixData}/>
                     {/*规格参数*/}
