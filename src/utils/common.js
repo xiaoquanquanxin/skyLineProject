@@ -1,4 +1,14 @@
 import { resizeListener } from '@utils/eventListener';
+import { pathNameList } from '@utils/constant';
+
+//  重定向
+export const isValidatedPathName = ((pathname) => {
+    if (pathNameList.indexOf(pathname) === -1) {
+        window.location.href = '/404.html';
+        return false;
+    }
+    return true;
+})(window.location.pathname.slice(1));
 
 //  重置rem
 function remSet(){
