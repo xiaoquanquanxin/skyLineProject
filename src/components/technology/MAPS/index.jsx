@@ -33,7 +33,12 @@ export const MAPS = connect(
                 return '';
             }
             const { isOpen } = this.state;
-            mapsData._desc = splitDesc(mapsData.desc, REDUCER_BROWSER_INFO.isRelativeWide);
+            //  切字符串
+            if (mapsData.desc) {
+                mapsData.desc_active = splitDesc(mapsData.desc, REDUCER_BROWSER_INFO.isRelativeWide);
+                mapsData.desc_normal = mapsData.desc.split('[[[more]]]')[0];
+            }
+            console.log(mapsData.desc_normal)
             return (
                 <div className={style.assessment}>
                     <div className={style.assessmentIn}>
@@ -42,7 +47,12 @@ export const MAPS = connect(
                             <div className={style.descBtn}>
                                 <div className={style.desc}>
                                 <span className={`${style.content} ${isOpen ? style.active : ''}`}
-                                      dangerouslySetInnerHTML={{ __html: mapsData._desc }}/>
+                                      dangerouslySetInnerHTML={{
+                                          __html:
+                                              isOpen
+                                                  ? mapsData.desc_active
+                                                  : mapsData.desc_normal
+                                      }}/>
                                     <div className={style.btn} onClick={() => {this.openOrClose();}}>
                                         {isOpen
                                             ? <b className={style.close}>收起</b>
