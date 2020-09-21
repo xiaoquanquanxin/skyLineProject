@@ -37,6 +37,7 @@ export const NAVINET = { name: '高精地图', type1: 127, type2: 128 };
 
 //  页面pathName
 export const pathNameList = [
+    '',
     '404.html',
     'about.html',
     'adas.html',
