@@ -19,9 +19,9 @@ export const MatrixApplyScene = ({
     return (
         <div className={style.applyScene}>
             <BasicTitleDesc data={applySceneData}
-                                    isLight={true}
-                                    widthType={670}
-                                    descriptionColor={'rgba(0,0,0,0.8)'}
+                            isLight={true}
+                            widthType={670}
+                            descriptionColor={'rgba(0,0,0,0.8)'}
             />
             <ul className={style.list}>
                 {list}
@@ -37,7 +37,7 @@ const MASItem = ({
         <li className={style.item}>
             <div className={`${style.imgCenter2} ${layout.imgCenter2}`}
                  style={{ backgroundImage: `url(${data.img})` }}/>
-            <div className={style.desc} dangerouslySetInnerHTML={{ __html: data.name }}/>
+            <div className={style.desc} dangerouslySetInnerHTML={{ __html: data.title }}/>
         </li>
     );
 };
