@@ -41,7 +41,7 @@ export default connect(
                 ultraLowPowerData4: null,
                 ultraLowPowerData5: null,
 
-                //  征程3 DVB
+                //  征程3 DVB JSON
                 baseParamData: {
                     listTitle: '征程3 DVB 参数指标',
                     list: [
