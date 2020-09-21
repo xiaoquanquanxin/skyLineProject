@@ -34,3 +34,24 @@ export const AUTONOMOUS_DRIVING = { name: '自动驾驶', };
 export const INTELLIGENT_COCKPIT = { name: '智能座舱', type: 126 };
 //  高精地图
 export const NAVINET = { name: '高精地图', type1: 127, type2: 128 };
+
+//  页面pathName
+export const pathNameList = [
+    '404.html',
+    'about.html',
+    'adas.html',
+    'aiot.html',
+    'autonomous-driving.html',
+    'index.html',
+    'intelligent-cockpit.html',
+    'journey2.html',
+    'journey3.html',
+    'matrix.html',
+    'navinet.html',
+    'news-detail.html',
+    'news.html',
+    'open-explorer.html',
+    'sunrise2.html',
+    'sunrise3.html',
+    'technology.html',
+];
