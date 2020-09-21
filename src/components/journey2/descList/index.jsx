@@ -1,4 +1,3 @@
-
 import React from 'react';
 import style from './index.module.less';
 
@@ -8,7 +7,6 @@ export const DescList = ({
     if (!data) {
         return '';
     }
-
     const list = data.map((item, index) => {
         if (index > 0 && index % 2) {
             return (
@@ -20,10 +18,10 @@ export const DescList = ({
         }
         return (
             <li key={index} className={style.item}>
-                <label className={style.label}>运算功率</label>
+                <label className={style.label} dangerouslySetInnerHTML={{ __html: item.title }}/>
                 <div className={style.c}>
-                    <b><s>2</s></b>
-                    <span>w</span>
+                    <b><s dangerouslySetInnerHTML={{ __html: item.number }}/></b>
+                    <span dangerouslySetInnerHTML={{ __html: item.numberDesc }}/>
                 </div>
             </li>
         );
