@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, setJSONData } from '@utils/utils';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { ScrollFixed } from '@components/scrollFixed';
 import { BannerManage } from '@components/bannerManage';
@@ -89,10 +89,8 @@ export default connect(
                 requestGetPageContent(JOURNEY2.name)
                     .then(data => {
                         this.setState((state) => {
-                            console.log(data[4].content);
-                            if (data[4].content) {
-                                Object.assign(data[4], JSON.parse(data[4].content));
-                            }
+                            console.log(data[4]);
+                            setJSONData(data[4]);
                             return {
                                 //  高性能视觉感知1
                                 hPData1: Object.assign({}, state.hPData1, data[0]),
