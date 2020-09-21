@@ -1,4 +1,4 @@
-import '@utils/common';
+import {isValidatedPathName} from '@utils/common';
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
@@ -9,7 +9,9 @@ import '@css/reset.less';
 
 let store = createStore(AppRedux);
 render(
-    <Provider store={store}>
-        <App/>
-    </Provider>,
+    isValidatedPathName ?
+        <Provider store={store}>
+            <App/>
+        </Provider>
+        : '',
     document.getElementById('root'));
