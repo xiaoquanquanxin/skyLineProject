@@ -203,3 +203,10 @@ export const setJSONData = (data) => {
         Object.assign(data, JSON.parse(data.content));
     }
 };
+
+//  组装List json
+export const setListJSONData = (data) => {
+    if (data && data.content) {
+        data.content = JSON.parse(data.content);
+    }
+};
