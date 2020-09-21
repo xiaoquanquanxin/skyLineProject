@@ -82,10 +82,6 @@ export default connect(
                             content: 'MIPI-CSI Rx@4Lane, Tx@4Lane<br/>DVP MIPI-DSI<br/>RGB24/16bit LCD IF<br/>BT.1120/656'
                         }],
                     },
-                    applySceneData: {
-                        topList: ['http://horizon.wx.h5work.com/images/product/sunrise3/2@2x.png', 'http://horizon.wx.h5work.com/images/product/sunrise3/2@2x.png', 'http://horizon.wx.h5work.com/images/product/sunrise3/2@2x.png', 'http://horizon.wx.h5work.com/images/product/sunrise3/2@2x.png'],
-                        bottomList: ['http://horizon.wx.h5work.com/images/product/sunrise3/7@2x.png?v=1.0', 'http://horizon.wx.h5work.com/images/product/sunrise3/7@2x.png?v=1.0', 'http://horizon.wx.h5work.com/images/product/sunrise3/7@2x.png?v=1.0', 'http://horizon.wx.h5work.com/images/product/sunrise3/7@2x.png?v=1.0', 'http://horizon.wx.h5work.com/images/product/sunrise3/7@2x.png?v=1.0']
-                    }
                 };
             });
             Promise.all([
