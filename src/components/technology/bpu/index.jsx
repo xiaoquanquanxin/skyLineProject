@@ -3,6 +3,7 @@ import style from './index.module.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { FRAME_DELAY } from '@utils/constant';
+import { BasicTitleDesc } from '@components/basicTitleDesc';
 
 export const Bpu = connect(
     mapStateToProps,
@@ -21,10 +22,6 @@ export const Bpu = connect(
             this.setActive = this.setActive.bind(this);
             this.listRef = createRef();
             this.boxRef = createRef();
-        }
-
-        componentDidMount(){
-
         }
 
         setActive(activeIndex){
@@ -55,7 +52,7 @@ export const Bpu = connect(
         }
 
         render(){
-            const { bpuData } = this.props;
+            const bpuData = this.props.bpuData || {};
             const { activeIndex } = this.state;
             let list;
             if (bpuData && bpuData.list) {
@@ -72,8 +69,7 @@ export const Bpu = connect(
             return (
                 <div className={style.bpu}>
                     <div className={style.bpuIn}>
-                        <p className={style.title} dangerouslySetInnerHTML={{ __html: bpuData && bpuData.title }}/>
-                        <div className={style.desc} dangerouslySetInnerHTML={{ __html: bpuData && bpuData.desc }}/>
+                        <BasicTitleDesc data={bpuData} widthType={705}/>
                         <div className={style.bpuUlBox} ref={this.boxRef}>
                             <ul className={style.list} ref={this.listRef}>{list}</ul>
                         </div>
