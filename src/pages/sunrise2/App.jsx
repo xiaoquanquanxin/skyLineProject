@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, setJSONData } from '@utils/utils';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { BannerManage } from '@components/bannerManage';
@@ -13,10 +13,10 @@ import { ApplyScene } from '@components/applyScene';
 import { Sunrise2mainParam } from '@components/sunrise2/mainParam';
 import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
-import './index.less';
 import { requestGetClientCase, requestGetImgTitle, requestGetPageContent } from '@api/index';
 import { SUNRISE2, NAV_CAT_ID } from '@utils/constant';
 import { Toast } from '@components/toast';
+import './index.less';
 
 export default connect(
     mapStateToProps,
@@ -52,14 +52,8 @@ export default connect(
                         //  计算赋能
                         this.setState((state) => {
                             console.log(data);
-                            if (data[1].content) {
-                                const _data = JSON.parse(data[1].content);
-                                Object.assign(data[1], _data);
-                            }
-                            if (data[2].content) {
-                                const _data = JSON.parse(data[2].content);
-                                Object.assign(data[2], _data);
-                            }
+                            setJSONData(data[1]);
+                            setJSONData(data[2]);
                             return {
                                 //  计算赋能
                                 aiotBoxData: Object.assign({}, state.aiotBoxData, data[0]),
