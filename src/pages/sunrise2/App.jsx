@@ -27,10 +27,14 @@ export default connect(
             super(props);
 
             this.state = {
+                //  四个一块的
                 cdrbData: null,
+                //  计算赋能
                 aiotBoxData: null,
                 applySceneData: null,
+                //  主要参数
                 mainParamData1: null,
+                //  芯片规格
                 mainParamData2: null,
             };
             //  页面宽度监听
@@ -40,32 +44,9 @@ export default connect(
         }
 
         componentDidMount(){
+            //  JSON
             this.setState(() => {
                 return {
-                    cdrbData: [
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon01@2x.png',
-                            name: '针对智能驾驶场景优化',
-                        },
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon02@2x.png',
-
-                            name: '软硬件高效协同'
-                        },
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon03@2x.png',
-                            name: '强大的边缘计算能力'
-                        },
-                        {
-                            img: 'http://horizon.wx.h5work.com/images/product/journey2/j2-icon04@2x.png',
-                            name: '低延时/低功耗'
-                        }
-                    ],
-                    aiotBoxData: {
-                        title: '边缘计算赋能 AIoT',
-                        desc: '智能物联网是未来的趋势所向，海量的碎片化场景与计算需求将使云端计算的负荷成倍增长。旭日处理器强大的边缘计算能力，可在帮助设备高效处理本地数据的同时，兼顾隐私保护。',
-                        img: 'http://horizon.wx.h5work.com/images/product/sunrise2/j2-img02@2x.png',
-                    },
                     //  主要参数、芯片规格
                     mainParamData1: {
                         title: '主要参数',
@@ -98,26 +79,35 @@ export default connect(
                     },
                 };
             });
-            setTimeout(() => {
-                const { setComponentDidMountFinish } = this.props;
-                console.log('请求成功了');
-                //  父组件初始化完成
-                setComponentDidMountFinish(true);
-            });
-
             Promise.all([
                 //  获取页面文案接口
                 requestGetPageContent(SUNRISE2.name)
                     .then(data => {
+                        //  计算赋能
                         this.setState((state) => {
                             console.log(data);
-                            return {};
+                            return {
+                                //  计算赋能
+                                aiotBoxData: Object.assign({}, state.aiotBoxData, data[0]),
+                                //  主要参数
+                                mainParamData1: Object.assign({}, state.mainParamData1, data[1]),
+                                //  芯片规格
+                                mainParamData2: Object.assign({}, state.mainParamData2, data[2])
+                            };
                         });
                     }),
                 //  获取图片标题接口
                 requestGetImgTitle(SUNRISE2.name)
                     .then(data => {
-                        console.log(data);
+                        //  四个一块的
+                        const cdrbData = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
+                        //  console.log(data);
+                        this.setState((state) => {
+                            return {
+                                //  四个一块的
+                                cdrbData: Object.assign([], state.cdrbData, cdrbData),
+                            };
+                        });
                     }),
                 //  客户案例
                 requestGetClientCase(SUNRISE2.type)
