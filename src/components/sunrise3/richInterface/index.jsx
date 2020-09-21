@@ -22,44 +22,41 @@ export const RichInterface = class extends React.Component {
 
     render(){
         const richInterfaceData = this.props.richInterfaceData || {};
-        let list_1;
-        let list_2;
-        if (richInterfaceData.list_1) {
-            list_1 = richInterfaceData.list_1.map((item, index) => {
-                return (
-                    <RichInterfaceItem key={index} data={item}/>
-                );
-            });
-        }
-        if (richInterfaceData.list_2) {
-            list_2 = richInterfaceData.list_2.map((item, index) => {
-                return (
-                    <RichInterfaceItem key={index} data={item}/>
-                );
-            });
-        }
+        const { content } = richInterfaceData;
         const { activeTab } = this.state;
+        if (!content) {
+            return '';
+        }
+        //  tab
+        const ddList = content.map((item, index) => {
+            return (
+                <dd className={`${style.tab} ${activeTab === index ? style.active : ''}`}
+                    onClick={() => {this.setActive(index);}}
+                    onMouseEnter={() => {this.setActive(index);}}
+                    dangerouslySetInnerHTML={{ __html: item.title }}
+                    key={index}
+                />
+            );
+        });
+        const ulList = content.map((item, index) => {
+            const list = item.list.map((item, index) => {
+                return (
+                    <RichInterfaceItem key={index} data={item}/>
+                );
+            });
+            return (
+                <ul className={`${style.list} ${activeTab === index ? layout.flex : layout.none}`} key={index}>
+                    {list}
+                </ul>
+            );
+        });
         return (
             <div className={style.richInterface}>
                 <BasicTitleDesc data={richInterfaceData} widthType={784}/>
                 <dl className={style.tabBox}>
-                    <dd className={`${style.tab} ${activeTab === 0 ? style.active : ''}`}
-                        onClick={() => {this.setActive(0);}}
-                        onMouseEnter={() => {this.setActive(0);}}
-                    >X3M
-                    </dd>
-                    <dd className={`${style.tab} ${activeTab === 1 ? style.active : ''}`}
-                        onClick={() => {this.setActive(1);}}
-                        onMouseEnter={() => {this.setActive(1);}}
-                    >X3E
-                    </dd>
+                    {ddList}
                 </dl>
-                <ul className={`${style.list} ${activeTab === 0 ? layout.flex : layout.none}`}>
-                    {list_1}
-                </ul>
-                <ul className={`${style.list} ${activeTab === 1 ? layout.flex : layout.none}`}>
-                    {list_2}
-                </ul>
+                {ulList}
             </div>
         );
     }
