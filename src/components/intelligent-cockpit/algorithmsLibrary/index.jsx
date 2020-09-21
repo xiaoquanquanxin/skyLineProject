@@ -6,10 +6,10 @@ export const AlgorithmsLibrary = ({
     algorithmsLibraryData
 }) => {
     algorithmsLibraryData = algorithmsLibraryData || {};
-    const { aLDList } = algorithmsLibraryData;
+    const { content } = algorithmsLibraryData;
     let list;
-    if (aLDList) {
-        list = aLDList.map((item, index) => {
+    if (content) {
+        list = content.map((item, index) => {
             return (
                 <ALItem key={index} data={item}/>
             );
