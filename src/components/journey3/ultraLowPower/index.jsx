@@ -11,8 +11,16 @@ export const UltraLowPower = ({
 
     //  右侧文字多
     let rightDescMore = contentIsRight && ultraLowPowerData.desc && ultraLowPowerData.desc.length > 100;
+//    let list;
 //    if (ultraLowPowerData.desc) {
-//        console.log(ultraLowPowerData.desc.split('•'));
+//        list = ultraLowPowerData.desc.split('\n').map((item, index) => {
+//            return (
+//                <p key={index} dangerouslySetInnerHTML={{ __html: item }}/>
+//            );
+//        });
+//        console.clear();
+//        console.log(list);
+//        console.log(ultraLowPowerData.desc.split('\n'));
 //    }
 
     return (
