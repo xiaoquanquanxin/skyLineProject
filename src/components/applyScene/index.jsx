@@ -23,7 +23,7 @@ export const ApplyScene = ({
     }
     return (
         <div className={`${style.applyScene} ${sceneTypeClassName}`} style={bgc ? { background: bgc } : {}}>
-            <p className={style.title}>应用场景</p>
+            <p className={style.title} dangerouslySetInnerHTML={{ __html: applySceneData.title }}/>
             <div className={style.applySceneInner}>
                 <div className={style.listWrap}>
                     <ApplySceneTopList topList={applySceneData.topList}/>
