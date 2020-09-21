@@ -2,11 +2,13 @@ import React from 'react';
 import style from './index.module.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
+import { splitDesc } from '@utils/utils';
 //  性能
 export const TechnologyPerformance = connect(
     mapStateToProps,
     mapDispatchToProps,
-)(class extends React.Component {
+)(
+    class extends React.Component {
         constructor(props){
             super(props);
             this.state = {
@@ -32,14 +34,10 @@ export const TechnologyPerformance = connect(
             }
             const { isOpen } = this.state;
             const { REDUCER_BROWSER_INFO } = this.props;
-            const { isRelativeWide } = REDUCER_BROWSER_INFO;
             //  切字符串
             if (performanceData.desc) {
-                performanceData._desc = performanceData.desc.replace('[[[more]]]',
-                    isRelativeWide
-                        ? '<br/>'
-                        : ''
-                );
+                performanceData.desc_active = splitDesc(performanceData.desc, REDUCER_BROWSER_INFO.isRelativeWide);
+                performanceData.desc_normal = performanceData.desc.split('[[[more]]]')[0];
             }
             return (
                 <div className={style.performance}>
@@ -48,7 +46,12 @@ export const TechnologyPerformance = connect(
                         <div className={style.descBtn}>
                             <div className={style.desc}>
                              <span className={`${style.content} ${isOpen ? style.active : ''}`}
-                                   dangerouslySetInnerHTML={{ __html: performanceData._desc }}/>
+                                   dangerouslySetInnerHTML={{
+                                       __html:
+                                           isOpen
+                                               ? performanceData.desc_active
+                                               : performanceData.desc_normal
+                                   }}/>
                                 <div className={style.btn} onClick={() => {this.openOrClose();}}>
                                     {isOpen
                                         ? <b className={style.close}>收起</b>
