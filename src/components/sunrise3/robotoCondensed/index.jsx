@@ -6,18 +6,17 @@ export const RobotoCondensed = ({
 }) => {
     return (
         <li className={style.robotoCondensed}>
-            <label className={style.label}>Effective AI performance</label>
+            <label className={style.label} dangerouslySetInnerHTML={{ __html: data.title }}/>
             <div className={style.c}>
-                <b className={style.b}>5</b>
-                <span className={style.span}>TOPS</span>
+                <b className={style.b} dangerouslySetInnerHTML={{ __html: data.number }}/>
+                <span className={style.span} dangerouslySetInnerHTML={{ __html: data.numberDesc }}/>
             </div>
         </li>
     );
 };
 
-export const RobotoCondensedLine = ({
-    data
-}) => {
+//  竖线
+export const RobotoCondensedLine = () => {
     return (
         <li className={style.robotoCondensedLine}>
             <div className={style.line}/>
