@@ -3,7 +3,9 @@ import style from './index.module.less';
 
 //  旭日2，主要参数
 export const Sunrise2mainParam = ({
-    mainParamData
+    mainParamData,
+    //  有下边框
+    hasBorderBottom
 }) => {
     mainParamData = mainParamData || {};
     let list;
@@ -17,7 +19,7 @@ export const Sunrise2mainParam = ({
     return (
         <div className={style.mainParam}>
             <p className={style.title} dangerouslySetInnerHTML={{ __html: mainParamData.title }}/>
-            <ul className={style.list}>
+            <ul className={`${style.list} ${hasBorderBottom ? style.hasBorderBottom : ''}`}>
                 {list}
             </ul>
         </div>
