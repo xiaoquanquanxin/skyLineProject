@@ -38,7 +38,6 @@ export const MAPS = connect(
                 mapsData.desc_active = splitDesc(mapsData.desc, REDUCER_BROWSER_INFO.isRelativeWide);
                 mapsData.desc_normal = mapsData.desc.split('[[[more]]]')[0];
             }
-            console.log(mapsData.desc_normal)
             return (
                 <div className={style.assessment}>
                     <div className={style.assessmentIn}>
