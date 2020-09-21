@@ -44,41 +44,41 @@ export default connect(
                 productMatrixData: null,
                 //  JSON
                 baseParamData: {
-                    listTitle: '规格参数',
-                    list: [
-                        {
-                            label: 'CPU处理器',
-                            desc: 'Dual-Core ARM<sup>®</sup> Cortex<sup>®</sup>-A53 up to 1 GHz',
-                        },
-                        {
-                            label: 'AI处理器',
-                            desc: 'Dual-Core Bernoulli architecture BPU',
-                        },
-                        {
-                            label: '外围存储接口',
-                            desc: '32-bit LPDDR4 @ 2667 MHz (MAX 2GB)<br>SPI-Nor Flash interface',
-                        },
-                        {
-                            label: '视频输入输出',
-                            desc: '1080p@30fps, 1080p@60fps, 720p@120fps<br/>MIPI interface: CSI-2 RX and TX, 4 lanes each',
-                        },
-                        {
-                            label: 'AI 工具链',
-                            desc: '支持主流的神经网络<br/>模型编译和优化工具<br/>灵活易用的 SDK 和 API'
-                        },
-                        {
-                            label: '外围接口',
-                            desc: '2 × I2S , 3 × SPI , 4 × I2C , and 4 × UART<br/>1 × Gigabit Ethernet MAC , 2 × SDIO<br/>Multiple GPIO and PWM'
-                        },
-                        {
-                            label: '芯片物理规格',
-                            desc: '车规级认证：AEC-Q100 Grade 2 <br/> Tj温度：-40°C ~ 125°C'
-                        },
-                        {
-                            label: '',
-                            desc: '典型功耗：2W <br/>封装：FCBGA388 , 17 × 17 mm, 0.8 mm pitch',
-                        }
-                    ]
+//                    listTitle: '规格参数',
+//                    list: [
+//                        {
+//                            label: 'CPU处理器',
+//                            desc: 'Dual-Core ARM<sup>®</sup> Cortex<sup>®</sup>-A53 up to 1 GHz',
+//                        },
+//                        {
+//                            label: 'AI处理器',
+//                            desc: 'Dual-Core Bernoulli architecture BPU',
+//                        },
+//                        {
+//                            label: '外围存储接口',
+//                            desc: '32-bit LPDDR4 @ 2667 MHz (MAX 2GB)<br>SPI-Nor Flash interface',
+//                        },
+//                        {
+//                            label: '视频输入输出',
+//                            desc: '1080p@30fps, 1080p@60fps, 720p@120fps<br/>MIPI interface: CSI-2 RX and TX, 4 lanes each',
+//                        },
+//                        {
+//                            label: 'AI 工具链',
+//                            desc: '支持主流的神经网络<br/>模型编译和优化工具<br/>灵活易用的 SDK 和 API'
+//                        },
+//                        {
+//                            label: '外围接口',
+//                            desc: '2 × I2S , 3 × SPI , 4 × I2C , and 4 × UART<br/>1 × Gigabit Ethernet MAC , 2 × SDIO<br/>Multiple GPIO and PWM'
+//                        },
+//                        {
+//                            label: '芯片物理规格',
+//                            desc: '车规级认证：AEC-Q100 Grade 2 <br/> Tj温度：-40°C ~ 125°C'
+//                        },
+//                        {
+//                            label: '',
+//                            desc: '典型功耗：2W <br/>封装：FCBGA388 , 17 × 17 mm, 0.8 mm pitch',
+//                        }
+//                    ]
                 }
             };
         }
@@ -89,6 +89,10 @@ export default connect(
                 requestGetPageContent(JOURNEY2.name)
                     .then(data => {
                         this.setState((state) => {
+                            console.log(data[4].content);
+                            if (data[4].content) {
+                                Object.assign(data[4], JSON.parse(data[4].content));
+                            }
                             return {
                                 //  高性能视觉感知1
                                 hPData1: Object.assign({}, state.hPData1, data[0]),
