@@ -9,7 +9,7 @@ import {
     requestGetImgTitle,
     requestGetPageContent
 } from '@api/index';
-import { clipData, commonRelativeWideFn, getBrowserInfo } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, setListJSONData } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
 import { BannerManage } from '@components/bannerManage';
@@ -40,7 +40,23 @@ export default connect(
                 //  征程2 视觉感知算法
                 jAData: null,
                 //  赋能模式
-                enablingModeData: null,
+                //  todo    🍌🍌🍌🍌
+                enablingModeData: {
+                    _content: [
+                        {
+                            'title': 'ADAS 功能应用',
+                            'desc': '基于地平线车规级 AI 芯片，以及全球领先的视觉感知解决方案，从底层赋能更多合作伙伴，为其智能驾驶在全球最大汽车市场的发展保驾护航'
+                        },
+                        {
+                            'title': '地平线感知算法',
+                            'desc': '针对中国道路和场景进行优化，包括车辆检测、行人检测、车道线检测、红绿灯检测、交通标识检测、可行驶区域检测、场景识别'
+                        },
+                        {
+                            'title': '征程2 芯片',
+                            'desc': '可提供超过 4 TOPS 的等效算力，典型功耗仅 2 瓦，高效灵活地实现多类 AI 任务处理'
+                        }
+                    ]
+                },
                 //  产品配置
                 productSettingData: null,
                 //  应用场景
@@ -65,6 +81,7 @@ export default connect(
                 requestGetPageContent(ADAS.name)
                     .then(data => {
                         console.log(data);
+                        setListJSONData(data[1]);
                         this.setState((state) => {
                             return {
                                 //  征程2 视觉感知算法
