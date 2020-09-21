@@ -33,7 +33,16 @@ export const Bpu = connect(
         }
 
         componentDidUpdate(prevProps, prevState, snapshot){
-            if (this.props.bpuData.list !== (prevProps.bpuData && prevProps.bpuData.list)) {
+            const { bpuData } = this.props;
+            if (bpuData === null) {
+                return;
+            }
+            //  console.log(prevProps.bpuData);
+            //  以前没有主数据，现在直接有数据了，说明先回来的第一个请求就是list
+            if (
+                (bpuData.list && !prevProps.bpuData)
+                || (bpuData.list && !prevProps.bpuData.list)
+            ) {
                 window.requestAnimationFrame(() => {
                     setTimeout(() => {
                         //  list数据发生变化
@@ -46,7 +55,7 @@ export const Bpu = connect(
                         //  console.log(boxRef.offsetWidth);
                         //  console.log(diffX);
                         boxRef.scrollTo(diffX, 0);
-                    }, FRAME_DELAY * 2);
+                    }, FRAME_DELAY * 1);
                 });
             }
         }
