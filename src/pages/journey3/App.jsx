@@ -8,14 +8,8 @@ import { FixedBarBox } from '@components/fixedBarBox';
 import { ScrollFixed } from '@components/scrollFixed';
 import { BannerManage } from '@components/bannerManage';
 import { FourBlocks } from '@components/fourBlocks';
-import { HighPerception } from '@components/journey2/HighPerception';
-import { EdgeComputing } from '@components/journey2/edgeComputing';
-import { ProductMatrix } from '@components/journey2/productMatrix';
 import { BaseParam } from '@components/journey2/baseParam';
-import { Journey2Video } from '@components/journey2/journey2Video';
 import { GetMoreBox } from '@components/getMoreBox';
-import './index.less';
-import { VideoWrap } from '@components/video';
 import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
 import { JOURNEY3, NAV_CAT_ID } from '@utils/constant';
@@ -23,6 +17,7 @@ import { requestGetClientCase, requestGetImgTitle, requestGetPageContent } from 
 import { OpenExplorer } from '@components/sunrise3/openExplorer';
 import { UltraLowPower } from '@components/journey3/ultraLowPower';
 import { ApplyScene } from '@components/applyScene';
+import './index.less';
 
 export default connect(
     mapStateToProps,
