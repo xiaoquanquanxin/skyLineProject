@@ -1,11 +1,24 @@
 import React from 'react';
 import style from './index.module.less';
-import { RobotoCondensed } from '@components/sunrise3/robotoCondensed';
+import { RobotoCondensed, RobotoCondensedLine } from '@components/sunrise3/robotoCondensed';
 
 export const SuperIsp = ({
     superIspData
 }) => {
     superIspData = superIspData || {};
+    let list;
+    if (superIspData.content) {
+        list = superIspData.content.map((item, index) => {
+            if (index > 0 && index % 2) {
+                return (
+                    <RobotoCondensedLine key={index}/>
+                );
+            }
+            return (
+                <RobotoCondensed data={item} key={index}/>
+            );
+        });
+    }
     return (
         <div className={style.superIsp}>
             <div className={style.superIspIn}>
@@ -14,7 +27,7 @@ export const SuperIsp = ({
                     <p className={style.title} dangerouslySetInnerHTML={{ __html: superIspData.title }}/>
                     <div className={style.desc} dangerouslySetInnerHTML={{ __html: superIspData.desc }}/>
                     <ul className={style.sTitle}>
-                        <RobotoCondensed data={{}}/>
+                        {list}
                     </ul>
                 </div>
             </div>
