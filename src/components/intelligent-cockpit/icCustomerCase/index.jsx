@@ -35,7 +35,7 @@ export const IcCustomerCase = class extends React.Component {
                     <ICCItem key={index}
                              data={item}
                              isActive={activeIndex === index}
-                             descListItem={customerCaseData.descList}
+                             descListItem={index === 0 ? customerCaseData.descList : null}
                     />
                 );
             });
