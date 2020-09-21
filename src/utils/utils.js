@@ -191,3 +191,9 @@ export const clipData = (list, listIdKey, id) => {
     }
     return result;
 };
+
+//  切割内容字符串，用于特殊位置的折行
+export const splitDesc = (str, isRelativeWide) => {
+    return str.replace('[[[more]]]', isRelativeWide ? '<br/>' : '');
+};
+
