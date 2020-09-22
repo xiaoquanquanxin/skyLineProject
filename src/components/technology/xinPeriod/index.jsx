@@ -24,7 +24,7 @@ export const XinPeriod = connect(
             this.swiperRef = createRef();
         }
 
-        componentDidUpdate(prevProps, prevState, snapshot){
+        componentDidUpdate(prevProps, prevState){
             //  以前没数据，说明这一次是注入数据
             if (!prevProps.xinPeriodData) {
                 const { xinPeriodData } = this.props;
@@ -48,7 +48,9 @@ export const XinPeriod = connect(
                     loop: false,
                     slidesPerView: 5,
                 });
-                this.setActiveIndex();
+                window.requestAnimationFrame(() => {
+                    this.setActiveIndex();
+                });
             }
         }
 
