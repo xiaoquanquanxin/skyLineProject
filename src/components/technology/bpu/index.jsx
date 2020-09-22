@@ -98,7 +98,9 @@ const BpuItem = ({
     setActive,
 }) => {
     if (bpuData.desc) {
-        bpuData._desc = bpuData.desc.replace(/\n/ig, '<br/>');
+        bpuData._desc = bpuData.desc
+            .replace(/(\r)/ig, '\n')
+            .replace(/\n\n/ig, '<br/>');
     }
     return (
         <li className={`${style.item} ${index === activeIndex ? style.active : ''}`}
