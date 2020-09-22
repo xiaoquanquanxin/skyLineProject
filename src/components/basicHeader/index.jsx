@@ -51,19 +51,15 @@ export const BasicHeader = connect(
                     requestGetSeo(barBoxData.id)
                         .then(v => {
                             const { data, code } = v;
-                            const { title, keywords, description } = data;
-                            console.info('🍍🍍🍍🍍');
-                            console.log(title);
-                            console.log(keywords);
-                            console.log(description);
                             if (!data || Number(code) < 0) {
                                 return;
-                            }
-                            window.document.title = data.title;
+                            }const { title, keywords, description } = data;
+
+                            window.document.title = title;
                             const metaKeyword = document.querySelector('#metaKeyword');
-                            metaKeyword.content = data.keywords;
+                            metaKeyword.content = keywords;
                             const metaDesc = document.querySelector('#metaDesc');
-                            metaDesc.content = data.description;
+                            metaDesc.content = description;
                         })
                         .catch(emptyFunction);
                 });
