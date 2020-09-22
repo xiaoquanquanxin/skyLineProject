@@ -32,7 +32,7 @@ export const Bpu = connect(
             });
         }
 
-        componentDidUpdate(prevProps, prevState, snapshot){
+        componentDidUpdate(prevProps){
             const { bpuData } = this.props;
             if (bpuData === null) {
                 return;
@@ -92,23 +92,23 @@ export const Bpu = connect(
 
 //  每一项
 const BpuItem = ({
-    data,
+    bpuData,
     activeIndex,
     index,
     setActive,
 }) => {
-    const imageUrl = 'http://horizon.wx.h5work.com/images/technology/4.png';
+    if (bpuData.desc) {
+        bpuData._desc = bpuData.desc.split('\n').join('<br/>');
+    }
     return (
         <li className={`${style.item} ${index === activeIndex ? style.active : ''}`}
             onMouseEnter={() => {setActive(index);}}>
             <div className={style.imgCenter2}
-                 style={{ backgroundImage: `url(${imageUrl})` }}
+                 style={{ backgroundImage: `url(${bpuData.img})` }}
             />
-            <p className={style.name}>高斯架构</p>
+            <p className={style.name} dangerouslySetInnerHTML={{ __html: bpuData.title }}/>
             <div className={style.line}/>
-            <div className={style.sdesc}>
-                · 1080p@30fps<br/>· 每帧检测 200 个目标<br/>· 同时检测多达 8 类目标<br/>·支持目标识别
-            </div>
+            <pre className={style.sdesc} dangerouslySetInnerHTML={{ __html: bpuData._desc }}/>
         </li>
     );
 };
