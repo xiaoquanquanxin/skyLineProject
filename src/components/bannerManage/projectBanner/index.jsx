@@ -12,15 +12,20 @@ export const ProjectBannerSliderItem = connect(
 )(({
         data,
         REDUCER_BROWSER_INFO,
+        REDUCER_BANNER_INFO,
     }) => {
         const { isRelativeWide } = REDUCER_BROWSER_INFO;
+        const { projectBannerStyle } = REDUCER_BANNER_INFO;
+        console.log('projectBannerStyle', projectBannerStyle);
         //  如果不是合法视频地址
         if (!isValidHTTPString(data.video) && !isValidResourceString(data.video)) {
             data.video = null;
         }
         //  console.log(data);
         return (
-            <div className={`${sliderItemStyle.bannerSlider} ${style.bannerSlider}`}>
+            <div className={`${sliderItemStyle.bannerSlider} ${style.bannerSlider} ${style[projectBannerStyle]}`}
+                 style={{ backgroundImage: `url(${data.img})` }}
+            >
                 {
                     (data.video && isRelativeWide)
                         ?
@@ -28,7 +33,8 @@ export const ProjectBannerSliderItem = connect(
                                webkit-playsinline='true' x5-video-player-type='h5' x5-video-orientation='portraint'
                                x5-video-player-fullscreen='true'
                                src={data.video} className={style.sliderItemVideo}/>
-                        : <img className={style.sliderItemImg} src={data.img} alt={data.title || ''}/>
+                        : ''
+//                        <img className={style.sliderItemImg} src={data.img} alt={data.title || ''}/>
                 }
                 <div className={style.sliderText}>
                     <p className={`${style.sliderTitle} ${data.title && data.title.length >= 20 ? style.textSmallSize : ''}`}
