@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Swiper from 'swiper';
 import { resizeListener } from '@utils/eventListener';
 import { FRAME_DELAY } from '@utils/constant';
-import { IndexBannerSliderItem } from '@components/index/indexBanner';
+import { IndexBannerSliderItem } from '@components/bannerManage/indexBanner';
 import { AboutBannerSliderItem } from '@components/bannerManage/aboutBanner';
 import { AdvertisementSlickItem } from '@components/bannerManage/advertisementBanner';
 import { ProjectBannerSliderItem } from '@components/bannerManage/projectBanner';
