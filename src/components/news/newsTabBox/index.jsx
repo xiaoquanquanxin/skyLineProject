@@ -3,7 +3,7 @@ import style from './index.module.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetNewsCategory } from '@api/index';
-import { getSearchString, navSortByRank } from '@utils/utils';
+import { navSortByRank } from '@utils/utils';
 
 export const NewsTabBox = connect(
     mapStateToProps,
