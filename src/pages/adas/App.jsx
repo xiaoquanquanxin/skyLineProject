@@ -67,7 +67,6 @@ export default connect(
                     .then(data => {
                         setListJSONData(data[0]);
                         setListJSONData(data[1]);
-                        console.log(data);
                         this.setState((state) => {
                             return {
                                 //  征程2 视觉感知算法
