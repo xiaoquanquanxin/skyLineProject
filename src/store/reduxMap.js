@@ -5,6 +5,7 @@ import { setVideoOpenStatus } from '@store/video';
 import { setPopFormOpenStatus, setToastStatus } from '@store/popForm';
 import { originBarBoxAnchorList, setBarBoxAnchorList, setBarBoxData } from '@store/fixedTabBox';
 import { setNavListData } from '@store/header';
+import { setProjectBanner } from '@store/banner';
 
 //  指定如何把当前 Redux store state 映射到展示组件的 props 中
 //  ✅读取state到props
@@ -23,6 +24,8 @@ export const mapStateToProps = ({
     REDUCER_FIXED_TAB_BOX,
     //  头部数据
     REDUCER_HEADER_DATA,
+    //  banner样式
+    REDUCER_BANNER_INFO,
 }) => {
     return {
         REDUCER_BROWSER_INFO,
@@ -31,7 +34,8 @@ export const mapStateToProps = ({
         REDUCER_VIDEO,
         REDUCER_POP_FORM,
         REDUCER_FIXED_TAB_BOX,
-        REDUCER_HEADER_DATA
+        REDUCER_HEADER_DATA,
+        REDUCER_BANNER_INFO
     };
 };
 
@@ -109,6 +113,10 @@ export const mapDispatchToProps = (dispatch) => {
         //  设置头部数据
         setNavListData: (navListData) => {
             dispatch(setNavListData(navListData));
+        },
+        //  设置产品banner信息
+        setProjectBanner: (projectBannerStyle) => {
+            dispatch(setProjectBanner(projectBannerStyle));
         }
     };
 };
