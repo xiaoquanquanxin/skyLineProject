@@ -33,15 +33,31 @@ const DescList = ({ content }) => {
     if (!content) {
         return '';
     }
-    const list = content.data.map((item, index) => {
+    const { data, labList } = content;
+    const list = data.map((item, index) => {
+        const tdList = labList.map((_item, _index) => {
+            return (
+                <td className={style.td}>
+                    <s className={item[_item.value] ? style.tick : style.hLine}/>
+                </td>
+            );
+        });
         return (
             <tr key={index}>
                 <td className={`${style.firstTh} ${style.td}`}>
-                    <span className={style.span} dangerouslySetInnerHTML={{ __html: item.name }}/></td>
-                <td className={style.td}><s className={item.isEconomical ? style.tick : style.hLine}/></td>
-                <td className={style.td}><s className={item.isProfession ? style.tick : style.hLine}/></td>
-                <td className={style.td}><s className={item.isStandard ? style.tick : style.hLine}/></td>
+                    <span className={style.span} dangerouslySetInnerHTML={{ __html: item.name }}/>
+                </td>
+                {tdList}
             </tr>
+        );
+    });
+
+    const labListComponent = labList.map((item, index) => {
+        return (
+            <th className={style.td}
+                key={index}
+                dangerouslySetInnerHTML={{ __html: item.name }}
+            />
         );
     });
     return (
@@ -50,13 +66,11 @@ const DescList = ({ content }) => {
                 <tbody style={{ width: '100%' }}>
                 <tr className={style.firstTr}>
                     <th className={`${style.firstTh} ${style.td}`}/>
-                    <th className={style.td} dangerouslySetInnerHTML={{ __html: content.map.isEconomical }}/>
-                    <th className={style.td} dangerouslySetInnerHTML={{ __html: content.map.isProfession }}/>
-                    <th className={style.td} dangerouslySetInnerHTML={{ __html: content.map.isStandard }}/>
+                    {labListComponent}
                 </tr>
                 <tr>
                     <td colSpan="4" className={style.noline}>
-                        <div className="line"></div>
+                        <div className="line"/>
                     </td>
                 </tr>
                 {list}
