@@ -77,7 +77,7 @@ export const CustomSwiper = connect(
 
     //  初始化swiper，构造函数销毁、点的数组的长度、定时器重置
     initMySwiper(){
-        const { swiperData } = this.props;
+        const { swiperData, autoHeight } = this.props;
         if (this.mySwiper) {
             this.mySwiper.destroy();
             this.paginRefs.length = 0;
@@ -92,7 +92,7 @@ export const CustomSwiper = connect(
                 delay: 100000000,
             },
             //  ✨自动高度
-            autoHeight: true,
+            autoHeight: autoHeight,
             loop: true,
             on: {
                 slideChangeTransitionStart: () => {
