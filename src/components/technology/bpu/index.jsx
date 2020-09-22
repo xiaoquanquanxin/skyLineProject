@@ -98,7 +98,7 @@ const BpuItem = ({
     setActive,
 }) => {
     if (bpuData.desc) {
-        bpuData._desc = bpuData.desc.split('\n').join('<br/>');
+        bpuData._desc = bpuData.desc.replace(/\n/ig, '<br/>');
     }
     return (
         <li className={`${style.item} ${index === activeIndex ? style.active : ''}`}
@@ -108,7 +108,7 @@ const BpuItem = ({
             />
             <p className={style.name} dangerouslySetInnerHTML={{ __html: bpuData.title }}/>
             <div className={style.line}/>
-            <pre className={style.sdesc} dangerouslySetInnerHTML={{ __html: bpuData._desc }}/>
+            <div className={style.sdesc} dangerouslySetInnerHTML={{ __html: bpuData._desc }}/>
         </li>
     );
 };
