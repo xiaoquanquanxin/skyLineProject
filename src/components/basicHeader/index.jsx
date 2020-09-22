@@ -114,7 +114,7 @@ export const BasicHeader = connect(
                 if (value.url === null) {
                     //  console.log(value.url, value);
                 } else if (value.url === this.pathName) {
-                    console.log('匹配到的页面，这个路由是激活的🐸');
+                    //  console.log('匹配到的页面，这个路由是激活的🐸');
                     //  console.log(value);
                     //  给 FixedBarBox 加状态，
                     const { setBarBoxData } = this.props;
