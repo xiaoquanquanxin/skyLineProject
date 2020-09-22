@@ -60,7 +60,7 @@ export default connect(
                                 const _data = JSON.parse(data[5].content);
                                 Object.assign(data[5], _data);
                             }
-                            console.log(data);
+                            //  console.log(data);
                             return {
                                 //  超低功耗
                                 ultraLowPowerData1: Object.assign({}, state.ultraLowPowerData1, data[0]),
