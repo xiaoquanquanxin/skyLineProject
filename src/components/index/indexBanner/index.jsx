@@ -7,7 +7,7 @@ import style from './index.module.less';
 import './index.less';
 
 //  slick的最内部展示组件
-export const BannerSlider = connect(
+export const IndexBannerSliderItem = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(
