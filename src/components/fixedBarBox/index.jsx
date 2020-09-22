@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import style from './index.module.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
+import { BASIC_COMPARE_WIDTH } from '@utils/constant';
 //  滚动定位的东西
 export const FixedBarBox = connect(
     mapStateToProps,
@@ -13,6 +14,11 @@ export const FixedBarBox = connect(
         //  锚点在锚点列表的id
         hashIndex;
         hash;
+
+        //  几个元素的宽度，主标题、副标题、右侧两个锚点元素、按钮。目的是计算副标题宽度
+        titleRef;
+        descRef;
+        navTagRef;
 
         constructor(props){
             super(props);
@@ -26,6 +32,14 @@ export const FixedBarBox = connect(
             this.state = {
                 activeIndex: this.hashIndex,
             };
+
+            this.titleRef = createRef();
+            this.descRef = createRef();
+            this.navTagRef = createRef();
+        }
+
+        componentDidMount(){
+
         }
 
         componentDidUpdate(prevProps, prevState, snapshot){
@@ -35,6 +49,13 @@ export const FixedBarBox = connect(
             //  组件初始化完成以前
             if (!componentDidMountFinish) {
                 return;
+            }
+            //  计算descRef的宽度
+            if (!prevProps.REDUCER_BROWSER_INFO.isRelativeWide) {
+                const tw = this.titleRef.current.offsetWidth;
+                const nw = this.navTagRef.current.offsetWidth;
+                const diff = window.innerWidth - tw - nw - (20 + 32) * window.innerWidth / BASIC_COMPARE_WIDTH;
+                this.descRef.current.style.width = `${diff}px`;
             }
             barBoxAnchorList.forEach(item => {
                 const element = window.document.querySelector(item.anchor);
@@ -103,10 +124,10 @@ export const FixedBarBox = connect(
                 <div className={style.floatBarBox}>
                     <div className={style.titleBox}>
                         <div className={style.themeDesc}>
-                            <strong className={style.subTitle}>{barBoxData.title}</strong>
-                            <em className={style.subDescription}>{barBoxData.desc}</em>
+                            <strong className={style.subTitle} ref={this.titleRef}>{barBoxData.title}</strong>
+                            <em className={style.subDescription} ref={this.descRef}>{barBoxData.desc}</em>
                         </div>
-                        <div className={style.titleNavInquireBtn}>
+                        <div className={style.titleNavInquireBtn} ref={this.navTagRef}>
                             <div className={style.navTag}>
                                 {anchorList}
                             </div>
