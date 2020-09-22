@@ -87,7 +87,8 @@ export function specialPathName(pathName, routeList){
             });
             break;
         default:
-            console.log(`非自定义路由:${pathName}`);
+            //  console.log(`非自定义路由:${pathName}`);
+            break;
     }
 }
 
