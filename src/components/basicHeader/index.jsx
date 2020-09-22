@@ -51,6 +51,11 @@ export const BasicHeader = connect(
                     requestGetSeo(barBoxData.id)
                         .then(v => {
                             const { data, code } = v;
+//                            const { title, keywords, description } = data;
+//                            console.info('🍍🍍🍍🍍');
+//                            console.log(title);
+//                            console.log(keywords);
+//                            console.log(description);
                             if (!data || Number(code) < 0) {
                                 return;
                             }
