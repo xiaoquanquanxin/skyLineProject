@@ -4,3 +4,7 @@
 
 合作伙伴swiper，人用的是bgi，我是img
 检查fixedBarBox的文字
+
+
+智能驾驶，banner高度出个参数
+
