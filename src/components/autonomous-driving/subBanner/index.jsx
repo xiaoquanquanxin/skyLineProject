@@ -10,7 +10,7 @@ export const SubBanner = ({
         <div className={style.sbanner}>
             <div className={style.sbannerIn}>
                 <div className={`${layout.imgCenter2} ${style.imgCenter2}`}
-                     style={{ backgroundImage: `url(${subBannerData.img})` }}
+                     style={{ backgroundImage: `url(${subBannerData.img || '' })` }}
                 />
                 <div className={style.titleDesc}>
                     <p className={style.title} dangerouslySetInnerHTML={{ __html: subBannerData.title }}/>

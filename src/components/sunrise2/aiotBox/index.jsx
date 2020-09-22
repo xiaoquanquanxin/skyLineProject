@@ -10,7 +10,7 @@ export const AiotBox = ({
     return (
         <div className={style.aiotBox}>
             <BasicTitleDesc data={aiotBoxData} widthType={710}/>
-            <div className={style.earchDec} style={{ backgroundImage: `url(${aiotBoxData.img})` }}/>
+            <div className={style.earchDec} style={{ backgroundImage: `url(${aiotBoxData.img || '' })` }}/>
         </div>
     );
 };

@@ -16,7 +16,7 @@ export const EdgeComputing = ({
     }
     return (
         <div className={style.edgeComputing}>
-            <div className={style.edgeComputingIn} style={{ backgroundImage: `url(${data.img})` }}>
+            <div className={style.edgeComputingIn} style={{ backgroundImage: `url(${data.img || '' })` }}>
                 <div className={style.wrap}>
                     <p className={style.title}>{data.title}</p>
                     <div className={style.desc} dangerouslySetInnerHTML={{ __html: data.desc }}/>

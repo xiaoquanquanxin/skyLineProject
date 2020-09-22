@@ -54,7 +54,7 @@ const PhItem = ({ data }) => {
 const HIItem = ({ data }) => {
     return (
         <div className={`${layout.imgCenter2} ${style.imgCenter2}`}
-             style={{ backgroundImage: `url(${data.img})` }}
+             style={{ backgroundImage: `url(${data.img || '' })` }}
         >
             <div className={style.titleDesc}>
                 <p className={style.title} dangerouslySetInnerHTML={{ __html: data.title }}/>

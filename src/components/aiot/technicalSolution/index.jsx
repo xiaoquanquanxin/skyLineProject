@@ -37,7 +37,7 @@ const TechnicalSolutionItem = ({
                    dangerouslySetInnerHTML={{ __html: item }}/>;
     });
     return (
-        <li className={style.item} style={{ backgroundImage: `url(${data.img})` }}>
+        <li className={style.item} style={{ backgroundImage: `url(${data.img || '' })` }}>
             <p className={style.title} dangerouslySetInnerHTML={{ __html: data.title }}/>
             <div className={style.desc} dangerouslySetInnerHTML={{ __html: data.desc }}/>
             <div className={style.mask}>

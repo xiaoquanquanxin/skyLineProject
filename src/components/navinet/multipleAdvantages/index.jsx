@@ -32,11 +32,11 @@ export const MultipleAdvantages = class extends React.Component {
             return (
                 <li className={`${style.item} ${activeIndex === index ? style.active : ''}`}
                     onMouseOver={() => {this.mouseHover(index);}}
-                    style={{ backgroundImage: `url(${item.img})` }}
+                    style={{ backgroundImage: `url(${item.img || '' })` }}
                     key={index}
                 >
                     <div className={style.thumb}
-                         style={{ backgroundImage: `url(${hoverData.img})` }}>
+                         style={{ backgroundImage: `url(${hoverData.img || '' })` }}>
                         <p className={style.name} dangerouslySetInnerHTML={{ __html: item.title }}/>
                         <div className={style.desc} dangerouslySetInnerHTML={{ __html: hoverData.desc }}/>
                     </div>

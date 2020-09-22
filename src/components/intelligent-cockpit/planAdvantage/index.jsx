@@ -30,7 +30,7 @@ const PlanAdvantageItem = ({ data }) => {
     return (
         <li className={style.item}>
             <div className={`${style.imgCenter2} ${layout.imgCenter2}`}
-                 style={{ backgroundImage: `url(${data.img})` }}
+                 style={{ backgroundImage: `url(${data.img || '' })` }}
             />
             <p className={style.name} dangerouslySetInnerHTML={{ __html: data.title }}/>
             <div className={style.desc} dangerouslySetInnerHTML={{ __html: data.desc }}/>

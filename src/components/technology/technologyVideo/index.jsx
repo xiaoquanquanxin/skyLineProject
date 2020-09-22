@@ -35,7 +35,7 @@ export const TechnologyVideo = connect(
     render(){
         const { videoData } = this.state;
         return (
-            <div className={style.videoBox} style={videoData ? { backgroundImage: `url(${videoData.img})` } : {}}>
+            <div className={style.videoBox} style={videoData ? { backgroundImage: `url(${videoData.img || '' })` } : {}}>
                 <div className={style.btnPlay}
                      onClick={() => {this.props.setVideoOpenStatus(true, videoData && videoData.video);}}
                 >观看视频

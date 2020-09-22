@@ -106,7 +106,7 @@ const BpuItem = ({
         <li className={`${style.item} ${index === activeIndex ? style.active : ''}`}
             onMouseEnter={() => {setActive(index);}}>
             <div className={style.imgCenter2}
-                 style={{ backgroundImage: `url(${bpuData.img})` }}
+                 style={{ backgroundImage: `url(${bpuData.img || '' })` }}
             />
             <p className={style.name} dangerouslySetInnerHTML={{ __html: bpuData.title }}/>
             <div className={style.line}/>

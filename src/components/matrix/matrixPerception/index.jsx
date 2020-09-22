@@ -19,7 +19,7 @@ export const MatrixPerception = ({
         <div className={style.perception}>
             <BasicTitleDesc data={perceptionData} widthType={620}/>
             <ul className={style.suite}>{list}</ul>
-            <div className={style.bottomDesc} style={{ backgroundImage: `url(${perceptionData.img})` }}/>
+            <div className={style.bottomDesc} style={{ backgroundImage: `url(${perceptionData.img || '' })` }}/>
         </div>
     );
 };
@@ -29,7 +29,7 @@ const MatrixPerceptionItem = ({
 }) => {
     return (
         <li className={style.item}>
-            <div className={style.imgCenter2} style={{ backgroundImage: `url(${data.img})` }}/>
+            <div className={style.imgCenter2} style={{ backgroundImage: `url(${data.img || '' })` }}/>
             <p className={style.name} dangerouslySetInnerHTML={{ __html: data.title }}/>
             <div className={style.nameDesc} dangerouslySetInnerHTML={{ __html: data.desc }}/>
         </li>

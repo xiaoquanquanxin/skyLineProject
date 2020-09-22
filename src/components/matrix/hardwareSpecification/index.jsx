@@ -33,7 +33,7 @@ const HSImgList = ({
         return (
             <div className={style.img1} key={index}>
                 <div className={style.imgCenter2}
-                     style={{ backgroundImage: `url(${item.img})` }}/>
+                     style={{ backgroundImage: `url(${item.img || '' })` }}/>
                 <div className={style.name} dangerouslySetInnerHTML={{ __html: item.title }}/>
             </div>
         );

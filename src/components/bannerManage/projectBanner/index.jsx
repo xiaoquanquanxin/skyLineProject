@@ -24,7 +24,7 @@ export const ProjectBannerSliderItem = connect(
         //  console.log(data);
         return (
             <div className={`${sliderItemStyle.bannerSlider} ${style.bannerSlider} ${style[projectBannerStyle]}`}
-                 style={{ backgroundImage: `url(${data.img})` }}
+                 style={{ backgroundImage: `url(${data.img || '' })` }}
             >
                 {
                     (data.video && isRelativeWide)

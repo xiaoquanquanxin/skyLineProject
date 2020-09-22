@@ -21,7 +21,7 @@ export const NCustomerCase = connect(
                     <BasicTitleDesc data={{ title: '客户案例' }}/>
                 </div>
                 <div className={`${layout.imgCenter2} ${style.imgCenter2}`}
-                     style={{ backgroundImage: `url(${nCustomerCaseData.img})` }}
+                     style={{ backgroundImage: `url(${nCustomerCaseData.img || '' })` }}
                      onClick={() => {setVideoOpenStatus(true, nCustomerCaseData && nCustomerCaseData.video);}}
                 />
                 <div className={style.nameDesc}>

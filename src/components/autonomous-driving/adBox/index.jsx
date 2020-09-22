@@ -50,7 +50,7 @@ export const AdBox = class extends React.Component {
                 <BasicTitleDesc data={adBoxData} isLight={true}/>
                 <div className={style.imgTab}>
                     <div className={`${layout.imgCenter2} ${style.imgCenter2}`}
-                         style={{ backgroundImage: `url(${adBoxData.img})` }}
+                         style={{ backgroundImage: `url(${adBoxData.img || '' })` }}
                     />
                     <div className={style.tabHeaderContent}>
                         <ul className={style.list}>

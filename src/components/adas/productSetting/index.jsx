@@ -19,7 +19,7 @@ export const ProductSetting = ({
                 <BasicTitleDesc data={productSettingData}/>
                 <div className={style.imgDesc}>
                     <div className={`${style.imgCenter2} ${layout.imgCenter2}`}
-                         style={{ backgroundImage: `url(${productSettingData.img})` }}
+                         style={{ backgroundImage: `url(${productSettingData.img || '' })` }}
                     />
                     <DescList content={content}/>
                 </div>

@@ -31,7 +31,7 @@ export const ProductSlickItem = connect(
                                x5-video-player-fullscreen='true'
                                src={data.video} className={style.sliderItemVideo}/>
                         : <div className={style.sliderItemImg} style={{
-                            backgroundImage: `url(${data.img})`
+                            backgroundImage: `url(${data.img || '' })`
                         }}/>
                 }
                 <div className={style.textDesc}>

@@ -20,7 +20,7 @@ export const ProductArchitecture = ({
     return (
         <div className={style.productStruction}>
             <div className={style.productStrctIn}
-                 style={{ backgroundImage: `url(${productArchitectureData.img})` }}>
+                 style={{ backgroundImage: `url(${productArchitectureData.img || '' })` }}>
                 <BasicTitleDesc data={productArchitectureData} isLight={true}/>
                 <ul className={style.list}>
                     {list}

@@ -8,7 +8,7 @@ export const Deploy = ({
     return (
         <div className={style.deploy}>
             <div className={style.deployIn}
-                 style={{ backgroundImage: `url(${deployData.img})` }}
+                 style={{ backgroundImage: `url(${deployData.img || '' })` }}
             >
                 <p className={style.title} dangerouslySetInnerHTML={{ __html: deployData.title }}/>
                 <div className={style.desc} dangerouslySetInnerHTML={{ __html: deployData.desc }}/>

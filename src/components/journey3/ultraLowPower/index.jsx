@@ -25,7 +25,7 @@ export const UltraLowPower = ({
 
     return (
         <div className={style.ultraLowPower}>
-            <div className={style.ultraLowPowerInner} style={{ backgroundImage: `url(${ultraLowPowerData.img})` }}>
+            <div className={style.ultraLowPowerInner} style={{ backgroundImage: `url(${ultraLowPowerData.img || '' })` }}>
                 <div
                     className={`${style.contentWrap} ${contentIsRight ? style.contentIsRight : ''} ${rightDescMore ? style.rightDescMore : ''}`}
                 >

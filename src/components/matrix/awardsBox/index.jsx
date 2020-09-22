@@ -29,7 +29,7 @@ const AwardsBoxItem = ({
 }) => {
     return (
         <li className={style.awardsBoxItem}>
-            <div className={style.imgCenter2} style={{ backgroundImage: `url(${data.img})` }}/>
+            <div className={style.imgCenter2} style={{ backgroundImage: `url(${data.img || '' })` }}/>
             <p className={style.name} dangerouslySetInnerHTML={{ __html: data.title }}/>
             <div className={style.nameDesc} dangerouslySetInnerHTML={{ __html: data.desc }}/>
         </li>

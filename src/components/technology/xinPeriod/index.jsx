@@ -130,7 +130,7 @@ const XinPeriodItem = ({
         <div className={`${style.nameImg} ${layout.left} name-img`}>
             <p className={style.name} dangerouslySetInnerHTML={{ __html: data.title }}/>
             <div className={`${style.imgCenter2} ${layout.imgCenter2}`}
-                 style={{ backgroundImage: `url(${data.img})` }}
+                 style={{ backgroundImage: `url(${data.img || '' })` }}
             />
             {data._desc
                 ? <dl className={style.xinDesc} dangerouslySetInnerHTML={{ __html: data._desc }}/>
