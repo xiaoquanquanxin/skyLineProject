@@ -63,6 +63,7 @@ export default connect(
                 //  获取页面文案接口
                 requestGetPageContent(ADAS.name)
                     .then(data => {
+                        setListJSONData(data[0]);
                         setListJSONData(data[1]);
                         this.setState((state) => {
                             return {
