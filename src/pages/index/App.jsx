@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
-import { BannerSwiper } from '@components/index/bannerSwiper';
+import { BannerSwiper } from '@components/bannerManage/indexBanner';
 import { requestIndex } from '@api/index';
 import { getBrowserInfo, navSortByRank } from '@utils/utils';
 import { commonRelativeWideFn } from '@utils/utils';
@@ -14,7 +14,7 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    class App extends Component {
+    class App extends React.Component {
         constructor(props){
             super(props);
             this.state = {

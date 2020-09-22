@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
@@ -17,7 +17,7 @@ import { GetMoreBox } from '@components/getMoreBox';
 import { VideoWrap } from '@components/video';
 import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
-import { requestGetClientCase, requestGetImgTitle, requestGetPageContent } from '@api/index';
+import { requestGetImgTitle, requestGetPageContent } from '@api/index';
 import { JOURNEY2, NAV_CAT_ID } from '@utils/constant';
 import './index.less';
 

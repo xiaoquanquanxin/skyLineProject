@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
@@ -28,7 +28,7 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(
-    class App extends Component {
+    class App extends React.Component {
         constructor(props){
             super(props);
             this.state = {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
