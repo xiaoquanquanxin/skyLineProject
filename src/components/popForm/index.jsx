@@ -44,7 +44,7 @@ export const PopForm = connect(
                     validateList[index] = (value.trim() !== '');        //  都是仅必填
                     break;
                 case 3: //  邮箱地址
-                    validateList[index] = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})/.test(value);
+                    validateList[index] = /^([a-zA-Z]|[0-9])(\w|-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})/.test(value);
                     break;
                 case 4: //  电话号码
                     validateList[index] = /^[1][3,4,5,7,8][0-9]{9}$/.test(value);
