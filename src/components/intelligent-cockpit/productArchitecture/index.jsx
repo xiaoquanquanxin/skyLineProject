@@ -8,9 +8,10 @@ export const ProductArchitecture = ({
 }) => {
     productArchitectureData = productArchitectureData || {};
     let list;
-    if (productArchitectureData.list) {
-        const len = productArchitectureData.list.length;
-        list = productArchitectureData.list.map((item, index) => {
+    const { content } = productArchitectureData;
+    if (content) {
+        const len = content.length;
+        list = content.map((item, index) => {
             return (
                 <PAListItem key={index} data={item} index={len - index}/>
             );
