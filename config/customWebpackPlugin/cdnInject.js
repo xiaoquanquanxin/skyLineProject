@@ -11,7 +11,7 @@ const cdnInject = (pathName, html, preString) => {
             break;
         case 'about.html':
             //  百度地图🌍
-            preString += `<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=W0xBY4G53d6qSbWYajZKeXVUEkbkM1Mo"></script>`;
+            preString += `<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=CB1oOny5dq1D9MdgXNcDKfLR6VaHz2DH"></script>`;
             break;
         default:
             break;
