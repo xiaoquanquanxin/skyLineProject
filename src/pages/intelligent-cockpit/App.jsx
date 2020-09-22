@@ -38,9 +38,7 @@ export default connect(
                 //  算法库
                 algorithmsLibraryData: null,
                 //  客户案例
-                customerCaseData: {
-                    title: '客户案例'
-                },
+                customerCaseData: null,
                 //  合作伙伴
                 customList: null,
             };
@@ -53,41 +51,15 @@ export default connect(
         }
 
         componentDidMount(){
-            //  JSON
-            this.setState((state) => {
-                //  产品架构        todo
-                const list = [
-                    {
-                        title: '硬件平台',
-                        desc: '通过将两路摄像头、两路麦克风的数<br>据接入到芯片进行相关感知算法的处<br>理，同时通过 Can 获取车身信号',
-                    },
-                    {
-                        title: '输入层',
-
-                        desc: '通过感知用户的人脸特征、行为特征、语<br>义特征作为输入，同时结合用户在座舱的<br>主动行为作为输入',
-                    },
-                    {
-                        title: '处理层',
-                        desc: '将用户的感知数据、用户的使用行为数据、用户的主动输入数据<br>以及外部的第三方数据进行数据融合，分析用户所处的场景，然<br>后进行精准的决策',
-                    },
-                    {
-                        title: '输出层',
-                        desc: '接收处理层的决策信号，实现诸如：座椅、空调、天窗等车控功能的智能化、主动化',
-                    }
-                ].reverse();
-                return {
-                    //  产品架构
-                    productArchitectureData: Object.assign({}, state.productArchitectureData, {
-                        list,
-                    }),
-                };
-            });
             Promise.all([
                 //  获取页面文案接口
                 requestGetPageContent(INTELLIGENT_COCKPIT.name)
                     .then(data => {
                         console.log(data);
                         setListJSONData(data[0]);
+                        if (data[0].content) {
+                            data[0].content.reverse();
+                        }
                         setListJSONData(data[1]);
                         this.setState((state) => {
                             return {
@@ -97,8 +69,9 @@ export default connect(
                                 algorithmsLibraryData: Object.assign({}, state.algorithmsLibraryData, data[1]),
                                 //  方案优势
                                 planAdvantageData: Object.assign({}, state.planAdvantageData, data[2]),
-                                //  todo
                                 //  核心算法介绍
+                                coreAlgorithmData: Object.assign({}, state.coreAlgorithmData, data[3]),
+
                             };
                         });
                     }),
