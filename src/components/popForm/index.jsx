@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { connect } from 'react-redux';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
