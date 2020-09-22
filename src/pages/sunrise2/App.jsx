@@ -51,7 +51,7 @@ export default connect(
                     .then(data => {
                         //  计算赋能
                         this.setState((state) => {
-                            console.log(data);
+                            //  console.log(data);
                             setJSONData(data[1]);
                             setJSONData(data[2]);
                             return {
