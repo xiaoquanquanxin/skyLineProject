@@ -55,7 +55,6 @@ export default connect(
                 //  获取页面文案接口
                 requestGetPageContent(INTELLIGENT_COCKPIT.name)
                     .then(data => {
-                        console.log(data);
                         setListJSONData(data[0]);
                         if (data[0].content) {
                             data[0].content.reverse();
@@ -71,7 +70,8 @@ export default connect(
                                 planAdvantageData: Object.assign({}, state.planAdvantageData, data[2]),
                                 //  核心算法介绍
                                 coreAlgorithmData: Object.assign({}, state.coreAlgorithmData, data[3]),
-
+                                //  客户案例
+                                customerCaseData: Object.assign({}, state.customerCaseData, data[4]),
                             };
                         });
                     }),
