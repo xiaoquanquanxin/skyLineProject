@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
+import { BasicTitleDesc } from '@components/basicTitleDesc';
 //  高级别辅助驾驶-客户案例
 export const CustomerCase = ({
     customerCaseData
@@ -17,6 +18,7 @@ export const CustomerCase = ({
     return (
         <div className={style.customerCase}>
             <div className={style.customerCaseIn}>
+                <BasicTitleDesc data={customerCaseData} isLight={true}/>
                 <ul className={style.list}>
                     {list}
                 </ul>
