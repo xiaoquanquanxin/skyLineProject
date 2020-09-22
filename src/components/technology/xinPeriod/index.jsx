@@ -6,7 +6,6 @@ import activeArrow from '@media/technology/arrow-next.svg';
 import greyArrow from '@media/technology/arrow-next-gray.svg';
 import layout from '@css/layout.module.less';
 import Swiper from 'swiper';
-import { FRAME_DELAY } from '@utils/constant';
 import './index.less';
 import 'swiper/dist/css/swiper.css';
 
