@@ -111,7 +111,7 @@ export default connect(
                     const { setComponentDidMountFinish } = this.props;
                     //  父组件初始化完成
                     setComponentDidMountFinish(true);
-                    console.log('setState结果是🍎', this.state.applySceneData);
+                    //  console.log('setState结果是🍎', this.state.applySceneData);
                 });
 
 //            //  获取客户案例接口
