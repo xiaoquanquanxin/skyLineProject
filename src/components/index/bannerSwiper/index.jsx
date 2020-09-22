@@ -1,5 +1,4 @@
 import React from 'react';
-import { isValidHTTPString, isValidResourceString } from '@utils/utils';
 import { preventDefaultFn } from '@utils/eventListener';
 import { mapStateToProps, mapDispatchToProps } from '@store/reduxMap';
 import { connect } from 'react-redux';
