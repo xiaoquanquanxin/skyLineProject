@@ -1,6 +1,8 @@
 //  注入title
 const titleInjectFn = (outputName, html) => {
     let titlePlaceholder = '';
+    let keywordsPlaceholder = '';
+    let descriptionPlaceholder = '';
     switch (outputName) {
         case 'about.html':
             //  关于我们
@@ -24,7 +26,9 @@ const titleInjectFn = (outputName, html) => {
 
         case 'index.html':
             //  首页
-            titlePlaceholder = '地平线';
+            titlePlaceholder = '地平线｜边缘人工智能芯片全球领导者';
+            keywordsPlaceholder = '地平线官网,边缘人工智能芯片全球领导者';
+            descriptionPlaceholder = '地平线是边缘人工智能芯片的全球领导者。得益于前瞻性的软硬结合理念，地平线自主研发兼具极致效能与开放易用性的边缘人工智能芯片及解决方案，可面向智能驾驶以及更广泛的通用 AI 应用领域，提供包括高效能边缘 AI 芯片、丰富算法IP、开放工具链等在内的全面赋能服务。目前，地平线是国内唯一一家实现车规级人工智能芯片量产前装的企业。';
             break;
 
         case 'intelligent-cockpit.html':
@@ -88,8 +92,10 @@ const titleInjectFn = (outputName, html) => {
             break;
     }
 
-    //  替换html
+    //  替换html meta
     html = html.replace('[[[custom-title]]]', titlePlaceholder);
+    html = html.replace('[[[custom-keywords]]]', keywordsPlaceholder);
+    html = html.replace('[[[custom-description]]]', descriptionPlaceholder);
     //  console.log('输出🍉🍉', html);
     return html;
 };
