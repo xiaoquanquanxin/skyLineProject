@@ -79,6 +79,7 @@ export const BannerSwiper = ({
                     swiperData={swiperData}
                     sliderItemType={1}
                     autoHeight={false}
+                    basicDelay={5}
                 />
             </div>
         </div>
