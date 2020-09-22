@@ -4,8 +4,8 @@ import { mapStateToProps, mapDispatchToProps } from '@store/reduxMap';
 import { connect } from 'react-redux';
 import { CustomSwiper } from '@components/swiper';
 import style from './index.module.less';
+import sliderItemStyle from '@components/bannerManage/sliderItem.module.less';
 import './index.less';
-
 //  slick的最内部展示组件
 export const IndexBannerSliderItem = connect(
     mapStateToProps,
@@ -43,7 +43,7 @@ export const IndexBannerSliderItem = connect(
             video = null;
         }
         return (
-            <div>
+            <div className={`${sliderItemStyle.bannerSlider} ${style.bannerSlider}`}>
                 {/*视频优先*/}
                 {REDUCER_BROWSER_INFO.isRelativeWide && video ?
                     <video autoPlay='autoplay' muted='muted' loop='loop' preload='auto' playsInline={true}
@@ -72,13 +72,13 @@ export const IndexBannerSliderItem = connect(
 export const BannerSwiper = ({
     swiperData
 }) => {
-//    console.log('执行次数')
     return (
         <div className={style.bannerSwiper} id='bannerSwiper'>
             <div className={style.container}>
                 <CustomSwiper
                     swiperData={swiperData}
                     sliderItemType={1}
+                    autoHeight={false}
                 />
             </div>
         </div>
