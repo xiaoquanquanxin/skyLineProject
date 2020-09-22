@@ -18,7 +18,7 @@ export const TechnicalSolution = ({
     return (
         <div className={style.technicalWay}>
             <div className={style.technicalWayIn}>
-                <BasicTitleDesc data={technicalSolutionData}/>
+                <BasicTitleDesc data={technicalSolutionData} isLight={true}/>
                 <ul className={style.list}>
                     {list}
                 </ul>
