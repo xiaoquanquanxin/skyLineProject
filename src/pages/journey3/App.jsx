@@ -125,7 +125,6 @@ export default connect(
                 openExplorerData,
                 applySceneData,
             } = this.state;
-
             return (
                 <div className="App">
                     {/*头部*/}
@@ -135,7 +134,7 @@ export default connect(
                     {/*<FixedBarBox/>*/}
                     <div id="m1" pc={60} mobile={30}/>
                     {/*banner轮播*/}
-                    <BannerManage bannerType={8}/>
+                    <BannerManage bannerType={21}/>
                     {/*四个一块*/}
                     <FourBlocks data={cdrbData}/>
                     {/*超低功耗*/}
