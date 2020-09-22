@@ -4,9 +4,8 @@ import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { requestGetClientCase, requestGetCockPitPartner, requestGetImgTitle, requestGetPageContent } from '@api/index';
-import { clipData, commonRelativeWideFn, getBrowserInfo, getContentList, setListJSONData } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, setListJSONData } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
-import './index.less';
 import { BannerManage } from '@components/bannerManage';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
@@ -20,6 +19,7 @@ import { AdvertisementBanner } from '@components/bannerManage/advertisementBanne
 import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
+import './index.less';
 
 export default connect(
     mapStateToProps,
