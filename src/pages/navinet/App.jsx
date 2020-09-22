@@ -70,6 +70,8 @@ export default connect(
                                 nALData: Object.assign({}, state.nALData, data[1]),
                                 //  已在中国及海外市场批量部署
                                 deployData: Object.assign({}, state.deployData, data[2]),
+                                //  应用场景
+                                nasData: Object.assign({}, state.nasData, data[3])
                             };
                         });
                     }),
