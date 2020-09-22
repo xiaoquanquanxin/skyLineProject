@@ -11,7 +11,7 @@ export const SystemArchitecture = ({
         <div className={style.sysStructor}>
             <div className={style.sysStructorIn}
                  style={{ backgroundImage: `url(${systemArchitectureData.img})` }}>
-                <BasicTitleDesc data={systemArchitectureData} isLight={this}/>
+                <BasicTitleDesc data={systemArchitectureData} isLight={true}/>
             </div>
         </div>
     );
