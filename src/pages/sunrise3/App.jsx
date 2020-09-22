@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { clipData, commonRelativeWideFn, getBrowserInfo, setJSONData, setListJSONData } from '@utils/utils';
+import { clipData, commonRelativeWideFn, getBrowserInfo, setListJSONData } from '@utils/utils';
 import { ScrollFixed } from '@components/scrollFixed';
 import { FixedBarBox } from '@components/fixedBarBox';
 import { BannerManage } from '@components/bannerManage';
