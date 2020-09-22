@@ -23,8 +23,7 @@ export const EnablingMode = ({
                 <ul className={style.list}>
                     {list}
                 </ul>
-                <br/><br/><br/>
-                <br/><br/><br/>
+                <p className={style.place}></p>
             </div>
         </div>
     );
