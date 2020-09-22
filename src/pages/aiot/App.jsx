@@ -60,10 +60,10 @@ export default connect(
                             return {
                                 //  特色与优势
                                 advantagesData: Object.assign({}, state.advantagesData, data[0]),
-//                                //  功能模块
-//                                moduleNavData: Object.assign({}, state.moduleNavData, data[1]),
-//                                //  “天工开物” AI 开发平台
-//                                openExplorerData: Object.assign({}, state.openExplorerData, data[2]),
+                                //  技术方案
+                                technicalSolutionData: Object.assign({}, state.technicalSolutionData, data[1]),
+                                //  应用场景
+                                applySceneData: Object.assign({}, state.applySceneData, data[2])
                             };
                         });
                     }),
@@ -130,8 +130,8 @@ export default connect(
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
                     {/*轮播*/}
-                    <div id="m1" pc={60} mobile={30}/>
                     <BannerManage bannerType={18}/>
+                    <div id="m1" pc={60} mobile={60}/>
                     {/*特色与优势*/}
                     <Advantages advantagesData={advantagesData}/>
                     {/*技术方案*/}
