@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Swiper from 'swiper';
 import { resizeListener } from '@utils/eventListener';
 import { FRAME_DELAY } from '@utils/constant';
-import { IndexBnnerSliderItem } from '@components/index/indexBanner';
+import { IndexBannerSliderItem } from '@components/index/indexBanner';
 import { AboutBannerSliderItem } from '@components/bannerManage/aboutBanner';
 import { AdvertisementSlickItem } from '@components/bannerManage/advertisementBanner';
 import { ProjectBannerSliderItem } from '@components/bannerManage/projectBanner';
@@ -183,7 +183,7 @@ export const CustomSwiper = connect(
         let SliderItem = null;
         switch (sliderItemType) {
             case 1: //  首页banner
-                SliderItem = IndexBnnerSliderItem;
+                SliderItem = IndexBannerSliderItem;
                 break;
             case 2: //  首页的赋能客户
                 SliderItem = AdvertisementSlickItem;
