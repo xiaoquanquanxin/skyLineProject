@@ -69,7 +69,7 @@ const NavLevel2 = ({
             }
         }
         if (item.isActive) {
-            console.log('激活的二级', item);
+            //  console.log('激活的二级', item);
         }
         return (
             <dd key={item.id} className={(item.isActive || isEventActive) ? style.navLevel2Active : ''}>
