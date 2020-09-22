@@ -58,13 +58,11 @@ export default connect(
         }
 
         componentDidMount(){
-
             //  ADAS
             Promise.all([
                 //  获取页面文案接口
                 requestGetPageContent(ADAS.name)
                     .then(data => {
-                        console.log(data);
                         setListJSONData(data[1]);
                         this.setState((state) => {
                             return {
@@ -97,7 +95,6 @@ export default connect(
                 //  客户案例
                 requestGetClientCase(ADAS.type)
                     .then(data => {
-                        console.log(data);
                         this.setState((state) => {
                             return {
                                 customerCaseData: Object.assign({}, state.customerCaseData, { list: data })
