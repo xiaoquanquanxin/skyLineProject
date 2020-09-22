@@ -55,7 +55,6 @@ export default connect(
                 //  获取页面文案接口
                 requestGetPageContent(AIOT.name)
                     .then(data => {
-                        console.log(data);
                         this.setState((state) => {
                             return {
                                 //  特色与优势
