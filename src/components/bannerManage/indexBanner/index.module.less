@@ -11,75 +11,78 @@
 		top: 0;
 		height: 100%;
 		position: absolute;
+	}
 
-		//	图片,//	视频
-		.sliderItemImg, .sliderItemVideo {
-			height: auto;
-			width: 100%;
-			left: 0;
-			position: absolute;
-			bottom: 0;
+}
+
+.bannerSlider {
+	//	图片,//	视频
+	.sliderItemImg, .sliderItemVideo {
+		//height: auto;
+		width: 100%;
+		left: 0;
+		position: absolute;
+		bottom: 0;
+	}
+
+	//	文案
+	.sliderItemText {
+		margin: -20px auto 0;
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		text-align: center;
+		-webkit-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
+		color: var(--white);
+
+		.title {
+			line-height: 50px;
+			font-size: 48px;
+			font-weight: 700;
+			letter-spacing: 4px;
 		}
 
-		//	文案
+		//	描述
+		.description {
+			margin-top: 24px;
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 32px;
+			letter-spacing: 12px;
+		}
+
+	}
+
+	//	链接
+	.link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+	}
+
+	@media screen and (max-width: 750px) {
 		.sliderItemText {
-			margin: -20px auto 0;
-			width: 100%;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			text-align: center;
-			-webkit-transform: translate(-50%, -50%);
-			-ms-transform: translate(-50%, -50%);
-			-moz-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
-			color: var(--white);
+			margin-top: 0;
 
 			.title {
-				line-height: 50px;
-				font-size: 48px;
-				font-weight: 700;
-				letter-spacing: 4px;
+				line-height: 0.5rem;
+				font-size: 0.32rem;
+				letter-spacing: 0.04rem;
 			}
 
-			//	描述
 			.description {
-				margin-top: 24px;
-				font-size: 24px;
+				margin-top: 0.24rem;
+				font-size: 0.20rem;
 				font-weight: 400;
-				line-height: 32px;
-				letter-spacing: 12px;
-			}
-
-		}
-
-		//	链接
-		.link {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			opacity: 0;
-		}
-
-		@media screen and (max-width: 750px) {
-			.sliderItemText {
-				margin-top: 0;
-
-				.title {
-					line-height: 0.5rem;
-					font-size: 0.32rem;
-					letter-spacing: 0.04rem;
-				}
-
-				.description {
-					margin-top: 0.24rem;
-					font-size: 0.20rem;
-					font-weight: 400;
-					line-height: 0.32rem;
-					letter-spacing: 0.12rem;
-				}
+				line-height: 0.32rem;
+				letter-spacing: 0.12rem;
 			}
 		}
 	}
