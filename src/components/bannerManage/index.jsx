@@ -125,6 +125,7 @@ export class BannerManage extends React.Component {
                             swiperData={swiperData}
                             sliderItemType={sliderItemType}
                             basicDelay={5}
+                            autoHeight={true}
                         />
                     </div>
                 </div>
