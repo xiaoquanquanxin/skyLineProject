@@ -1,4 +1,12 @@
 .bannerSlider {
+	//	16 是 智能座舱
+	&.pb16 {
+		background-color: #000514;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		background-size: auto 100%;
+	}
+
 	//	媒体
 	.sliderItemImg, .sliderItemVideo {
 		position: relative;
@@ -44,8 +52,11 @@
 			margin-top: 24px;
 		}
 
-		@media screen and(max-width: 750px) {
-			& {
+	}
+
+	@media screen and(max-width: 750px) {
+		& {
+			.sliderText {
 				bottom: 0.4rem;
 
 				.sliderTitle {
