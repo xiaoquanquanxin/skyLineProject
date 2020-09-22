@@ -8,7 +8,6 @@ export const ProductHighlights = ({
     phData
 }) => {
     phData = phData || {};
-    let list;
     const { phList, highLightsImgs } = phData;
     let phListComponent;
     let hLIComponent;
