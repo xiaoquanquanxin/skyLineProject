@@ -18,7 +18,7 @@ export const EnablingMode = ({
     return (
         <div className={style.enablingMode}>
             <div className={style.enablingModeIn}
-                 style={{ backgroundImage: `url(${enablingModeData.img})` }}>
+                 style={{ backgroundImage: `url(${enablingModeData.img || ''})` }}>
                 <BasicTitleDesc data={enablingModeData} isLight={true}/>
                 <ul className={style.list}>
                     {list}
