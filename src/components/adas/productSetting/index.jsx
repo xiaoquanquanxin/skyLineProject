@@ -37,7 +37,7 @@ const DescList = ({ content }) => {
     const list = data.map((item, index) => {
         const tdList = labList.map((_item, _index) => {
             return (
-                <td className={style.td}>
+                <td className={style.td} key={_index}>
                     <s className={item[_item.value] ? style.tick : style.hLine}/>
                 </td>
             );
