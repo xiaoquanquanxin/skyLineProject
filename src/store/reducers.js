@@ -8,6 +8,7 @@ import { REDUCER_VIDEO } from '@store/video';
 import { REDUCER_POP_FORM } from '@store/popForm';
 import { REDUCER_FIXED_TAB_BOX } from '@store/fixedTabBox';
 import { REDUCER_HEADER_DATA } from '@store/header';
+import { REDUCER_BANNER_INFO } from '@store/banner';
 
 const AppRedux = combineReducers({
     REDUCER_BROWSER_INFO,
@@ -17,6 +18,7 @@ const AppRedux = combineReducers({
     REDUCER_POP_FORM,
     REDUCER_FIXED_TAB_BOX,
     REDUCER_HEADER_DATA,
+    REDUCER_BANNER_INFO,
 });
 export default AppRedux;
 
