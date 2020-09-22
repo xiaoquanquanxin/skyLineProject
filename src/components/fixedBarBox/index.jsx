@@ -54,7 +54,7 @@ export const FixedBarBox = connect(
             if (!prevProps.REDUCER_BROWSER_INFO.isRelativeWide) {
                 const tw = this.titleRef.current.offsetWidth;
                 const nw = this.navTagRef.current.offsetWidth;
-                const diff = window.innerWidth - tw - nw - (32 + 32) * window.innerWidth / BASIC_COMPARE_WIDTH;
+                const diff = Math.min(window.innerWidth - tw - nw - (32 + 32) * window.innerWidth / BASIC_COMPARE_WIDTH, 500);
                 this.descRef.current.style.width = `${diff}px`;
             }
             barBoxAnchorList.forEach(item => {
