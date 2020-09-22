@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { HeaderPC } from '@components/basicHeader/headerPC';
 import { HeaderMobile } from '@components/basicHeader/headerMobile';
 import { requestGetSeo, requestHeaderNav } from '@api/index';
@@ -10,7 +10,7 @@ export const BasicHeader = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(
-    class extends Component {
+    class extends React.Component {
         pathName;
 
         constructor(props){
@@ -51,11 +51,11 @@ export const BasicHeader = connect(
                     requestGetSeo(barBoxData.id)
                         .then(v => {
                             const { data, code } = v;
-//                            const { title, keywords, description } = data;
-//                            console.info('🍍🍍🍍🍍');
-//                            console.log(title);
-//                            console.log(keywords);
-//                            console.log(description);
+                            const { title, keywords, description } = data;
+                            console.info('🍍🍍🍍🍍');
+                            console.log(title);
+                            console.log(keywords);
+                            console.log(description);
                             if (!data || Number(code) < 0) {
                                 return;
                             }

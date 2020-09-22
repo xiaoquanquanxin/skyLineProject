@@ -1,5 +1,5 @@
 import CSSModules from 'react-css-modules';
-import React, { Component } from 'react';
+import React from 'react';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
 import { stopPropagation } from '@utils/eventListener';

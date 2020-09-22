@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import style from './index.module.less';
 import layout from '@css/layout.module.less';
 //  白色箭头，取自header
