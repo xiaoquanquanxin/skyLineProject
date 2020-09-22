@@ -16,7 +16,7 @@ export const ProjectBannerSliderItem = connect(
     }) => {
         const { isRelativeWide } = REDUCER_BROWSER_INFO;
         const { projectBannerStyle } = REDUCER_BANNER_INFO;
-        console.log('projectBannerStyle', projectBannerStyle);
+        //  console.log('projectBannerStyle', projectBannerStyle);
         //  如果不是合法视频地址
         if (!isValidHTTPString(data.video) && !isValidResourceString(data.video)) {
             data.video = null;
