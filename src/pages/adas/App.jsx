@@ -50,7 +50,6 @@ export default connect(
                 useSceneData: null,
                 //  客户案例
                 customerCaseData: null,
-
             };
             //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
@@ -68,6 +67,7 @@ export default connect(
                     .then(data => {
                         setListJSONData(data[0]);
                         setListJSONData(data[1]);
+                        console.log(data);
                         this.setState((state) => {
                             return {
                                 //  征程2 视觉感知算法
@@ -76,6 +76,10 @@ export default connect(
                                 enablingModeData: Object.assign({}, state.enablingModeData, data[1]),
                                 //  产品配置
                                 productSettingData: Object.assign({}, state.productSettingData, data[2]),
+                                //  应用场景
+                                useSceneData: Object.assign([], state.useSceneData, data[3]),
+                                //  客户案例
+                                customerCaseData: Object.assign({}, state.customerCaseData, data[4]),
                             };
                         });
                     }),
