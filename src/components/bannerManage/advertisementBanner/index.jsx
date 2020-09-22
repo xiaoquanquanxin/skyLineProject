@@ -53,9 +53,11 @@ export const AdvertisementBanner = connect(
         return (
             <div className={`${style.container} ${styleSheet}`} id='AdvertisementBanner'>
                 <p className={style.title}>{title}</p>
-                <CustomSwiper swiperData={swiperData}
-                              sliderItemType={2}
-                              basicDelay={5}
+                <CustomSwiper
+                    swiperData={swiperData}
+                    sliderItemType={2}
+                    basicDelay={5}
+                    autoHeight={true}
                 />
             </div>
         );
