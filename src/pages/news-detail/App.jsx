@@ -12,10 +12,6 @@ export default connect(
     mapDispatchToProps
 )(
     class App extends Component {
-        constructor(props){
-            super(props);
-        }
-
         componentDidMount(){
             //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
