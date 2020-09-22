@@ -61,7 +61,6 @@ export default connect(
                 requestGetPageContent(NAVINET.name)
                     .then(data => {
                         setJSONData(data[1]);
-                        console.log(data);
                         this.setState((state) => {
                             return {
                                 //  系统架构
@@ -71,7 +70,9 @@ export default connect(
                                 //  已在中国及海外市场批量部署
                                 deployData: Object.assign({}, state.deployData, data[2]),
                                 //  应用场景
-                                nasData: Object.assign({}, state.nasData, data[3])
+                                nasData: Object.assign({}, state.nasData, data[3]),
+                                //  客户案例
+                                nCustomerCaseData: Object.assign({}, state.nCustomerCaseData, data[4])
                             };
                         });
                     }),
