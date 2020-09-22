@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
@@ -9,7 +9,6 @@ import { NewsList } from '@components/news/newsList';
 import './index.less';
 import { BannerManage } from '@components/bannerManage';
 import { ScrollFixed } from '@components/scrollFixed';
-import { FixedBarBox } from '@components/fixedBarBox';
 
 export default connect(
     mapStateToProps,
