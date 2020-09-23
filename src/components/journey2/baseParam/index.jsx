@@ -2,7 +2,8 @@ import React from 'react';
 import style from './index.module.less';
 
 export const BaseParam = ({
-    baseParamData
+    baseParamData,
+    customWidth,
 }) => {
     baseParamData = baseParamData || {};
     let list;
@@ -19,9 +20,17 @@ export const BaseParam = ({
             );
         });
     }
+    let customWidthClass;
+    switch (customWidth) {
+        case 18:
+            customWidthClass = style.customWidth18;
+            break;
+        default:
+            break;
+    }
     //  console.log(baseParamData)
     return (
-        <div className={style.baseParam}>
+        <div className={`${style.baseParam} ${customWidthClass}`}>
             <div className={style.baseParamIn}>
                 <p className={style.listTitle} dangerouslySetInnerHTML={{ __html: baseParamData.title }}/>
                 <ul className={style.baseParamList}>
