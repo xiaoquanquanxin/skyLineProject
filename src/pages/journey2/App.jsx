@@ -124,7 +124,7 @@ export default connect(
                     {/*地平线智能驾驶产品矩阵*/}
                     <ProductMatrix data={productMatrixData}/>
                     {/*规格参数*/}
-                    <div id="m2" pc={20}/>
+                    <div id="m2" pc={36}/>
                     <BaseParam baseParamData={baseParamData}/>
                     {/*视频展示*/}
                     <Journey2Video videoType={19}/>
