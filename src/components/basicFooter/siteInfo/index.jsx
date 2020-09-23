@@ -22,6 +22,7 @@ export const SiteInfo = connect(
         }
         //  浏览器足够宽
         const { isRelativeWide } = REDUCER_BROWSER_INFO;
+        console.log(data.data);
         return (
             <div className={style.siteInfo}>
                 <div className={`${style.siteInfoInner} ${layout.clearfix}`}>
@@ -48,9 +49,8 @@ export const SiteInfo = connect(
                                  className={`${style.qrCode} ${qrCodeShowIndex === 1 ? layout.block : layout.none}`}/>
                         </button>
                     </div>
-                    <div className={`${style.siteInfoMsg} ${isRelativeWide ? layout.left : ''} `}>
-                        Copyright © 2019-2020 地平线官网 粤ICP备17098896号-1
-                    </div>
+                    <div className={`${style.siteInfoMsg} ${isRelativeWide ? layout.left : ''} `}
+                         dangerouslySetInnerHTML={{ __html: data.data.copy_right }}/>
                 </div>
             </div>
         );
