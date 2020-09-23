@@ -130,14 +130,14 @@ export default connect(
                     <ScrollFixed RenderElement={FixedBarBox}/>
                     {/*轮播*/}
                     <BannerManage bannerType={18}/>
-                    <div id="m1" pc={60} mobile={60}/>
+                    <div id="m1" pc={60}/>
                     {/*特色与优势*/}
                     <Advantages advantagesData={advantagesData}/>
                     {/*技术方案*/}
                     <TechnicalSolution technicalSolutionData={technicalSolutionData}/>
                     {/*应用场景，无文字，纯图片*/}
                     <ApplyScene applySceneData={applySceneData} sceneType={1}/>
-                    <div id="m2" pc={60} mobile={40}/>
+                    <div id="m2" pc={60}/>
                     {/*合作伙伴*/}
                     <AdvertisementBanner
                         data={customList}
