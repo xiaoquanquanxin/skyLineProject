@@ -28,16 +28,26 @@ const BasicFooterRender = connect(
         //  获取浏览器信息，来源于redux
         REDUCER_BROWSER_INFO,
     }) => {
+        if (!data) {
+            return '';
+        }
         //  浏览器足够宽
         const { isRelativeWide } = REDUCER_BROWSER_INFO;
         return (
             <section className={style.basicFooter}>
                 <div className={`${style.basicFooterInfo} ${layout.clearfix}`}>
                     <div className={`${style.static} ${isRelativeWide ? layout.left : ''}`}>
-                        <p className={`${isRelativeWide ? style.subTitle : ''}`}>我们的愿景：</p>
-                        <p className={style.subDescription}>边缘人工智能芯片全球领导者</p>
-                        <p className={`${isRelativeWide ? style.subTitle : ''}`}>我们的使命：</p>
-                        <p className={style.subDescription}>赋能万物，让每个人的生活更安全，更美好</p>
+                        <p className={`${isRelativeWide ? style.subTitle : ''}`}
+                           dangerouslySetInnerHTML={{ __html: data.data.left_top_title }}/>
+                        <p className={style.subDescription}
+                           dangerouslySetInnerHTML={{ __html: data.data.left_top_content }}
+                        />
+                        <p className={`${isRelativeWide ? style.subTitle : ''}`}
+                           dangerouslySetInnerHTML={{ __html: data.data.left_bottom_title }}
+                        />
+                        <p className={style.subDescription}
+                           dangerouslySetInnerHTML={{ __html: data.data.left_bottom_content }}
+                        />
                     </div>
                     <LinkList
                         isSpreadIndex={isSpreadIndex}
