@@ -121,7 +121,6 @@ export const FixedBarBox = connect(
                     behavior,
                 });
             }
-
         }
 
         render(){
