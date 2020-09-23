@@ -108,7 +108,7 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     <BannerManage bannerType={12}/>
                     {/*特色与优势*/}
                     <Advantages advantagesData={advantagesData}/>
@@ -116,7 +116,7 @@ export default connect(
                     <ModuleNav moduleNavData={moduleNavData}/>
                     {/*地平线 “天工开物”*/}
                     <OpenExplorer openExplorerData={openExplorerData} isLight={true} margin={.2}/>
-                    <div id="m2" pc={60} mobile={30}/>
+                    <div id="m2" pc={60}/>
                     {/*合作伙伴*/}
                     <AdvertisementBanner
                         data={customList}
