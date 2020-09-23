@@ -2,7 +2,7 @@ import React from 'react';
 import style from './index.module.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { isValidResourceString } from '@utils/utils';
+import { isValidHTTPString } from '@utils/utils';
 
 export const MainInfo = connect(
     mapStateToProps,
@@ -32,7 +32,7 @@ export const MainInfo = connect(
                 throw new Error(`错误的文字位置,${textPosition}`);
         }
         //  判断url对不对
-        if (!isValidResourceString(info.url)) {
+        if (!isValidHTTPString(info.url)) {
             info.url = null;
         }
         return (
