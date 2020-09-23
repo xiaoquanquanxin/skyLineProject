@@ -140,7 +140,7 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     <BannerManage bannerType={16}/>
                     {/*方案优势*/}
                     <PlanAdvantage planAdvantageData={planAdvantageData}/>
@@ -150,7 +150,7 @@ export default connect(
                     <CoreAlgorithm coreAlgorithmData={coreAlgorithmData}/>
                     {/*算法库*/}
                     <AlgorithmsLibrary algorithmsLibraryData={algorithmsLibraryData}/>
-                    <div id="m2" pc={60} mobile={40}/>
+                    <div id="m2" pc={60}/>
                     {/*客户案例*/}
                     <IcCustomerCase customerCaseData={customerCaseData}/>
                     {/*合作伙伴*/}
