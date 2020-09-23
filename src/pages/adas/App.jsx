@@ -146,7 +146,7 @@ export default connect(
                     <ProductSetting productSettingData={productSettingData}/>
                     {/*应用场景*/}
                     <UseScene useSceneData={useSceneData}/>
-                    <div id="m2" pc={20}/>
+                    <div id="m2" pc={60}/>
                     {/*客户案例*/}
                     <CustomerCase customerCaseData={customerCaseData}/>
                     {/*视频本身*/}
