@@ -136,7 +136,7 @@ export default connect(
                     {/*轮播*/}
                     <BannerManage bannerType={13}/>
                     {/*四个一块*/}
-                    <div id="m1" pc={60}/>
+                    <div id="m1" pc={60} mobile={80}/>
                     <FourBlocks data={cdrbData} isLight={true}/>
                     {/*征程2 视觉感知算法*/}
                     <JourneyAlgorithm jAData={jAData}/>
