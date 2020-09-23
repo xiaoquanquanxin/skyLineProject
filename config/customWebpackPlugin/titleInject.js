@@ -3,6 +3,13 @@ const titleInjectFn = (outputName, html) => {
     let titlePlaceholder = '';
     let keywordsPlaceholder = '';
     let descriptionPlaceholder = '';
+
+    let metaSiteName = '';
+    let metaType = '';
+    let metaUrl = '';
+    let metaTitle = '';
+    let metaDescription = '';
+    let metaImage = '';
     switch (outputName) {
         case 'about.html':
             //  关于我们
@@ -128,6 +135,13 @@ const titleInjectFn = (outputName, html) => {
     html = html.replace('[[[custom-title]]]', titlePlaceholder);
     html = html.replace('[[[custom-keywords]]]', keywordsPlaceholder);
     html = html.replace('[[[custom-description]]]', descriptionPlaceholder);
+
+    html = html.replace('[[[custom-og-site_name]]]', metaSiteName);
+    html = html.replace('[[[custom-og-type]]]', metaType);
+    html = html.replace('[[[custom-og-url]]]', metaUrl);
+    html = html.replace('[[[custom-og-title]]]', metaTitle);
+    html = html.replace('[[[custom-og-description]]]', metaDescription);
+    html = html.replace('[[[custom-og-image]]]', metaImage);
     //  console.log('输出🍉🍉', html);
     return html;
 };
