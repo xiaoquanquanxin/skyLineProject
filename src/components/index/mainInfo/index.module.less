@@ -14,19 +14,9 @@
 		transform: translateX(-50%);
 	}
 
+
 	//	内容部分
 	.content {
-		&::before {
-			display: block;
-			content: '';
-			width: 2px;
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: -1px;
-			background: linear-gradient(83deg, #06102c, #0b162f);
-			box-shadow: 0 0 10px 20px rgba(11, 19, 41, .53);
-		}
 
 		height: 100%;
 		padding: 271px 0 0 730px;
@@ -67,6 +57,23 @@
 
 		.content {
 			padding: 226px 0 0 100px;
+		}
+	}
+
+	//	有渐变色
+	&.right {
+		.content {
+			&::before {
+				display: block;
+				content: '';
+				width: 2px;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: -1px;
+				background: linear-gradient(83deg, #06102c, #0b162f);
+				box-shadow: 0 0 10px 20px rgba(11, 19, 41, .53);
+			}
 		}
 	}
 }
