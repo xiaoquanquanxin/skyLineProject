@@ -129,7 +129,7 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     <BannerManage bannerType={10}/>
                     <FourBlocks data={cdrbData}/>
                     {/*伯努利2.0 BPU*/}
@@ -141,7 +141,7 @@ export default connect(
                     {/*地平线 “天工开物”*/}
                     <OpenExplorer openExplorerData={openExplorerData} isLight={false}/>
                     {/*旭日3 系列——释放 “芯” 效能*/}
-                    <div id="m2" pc={20} mobile={15}/>
+                    <div id="m2" pc={20}/>
                     <RichInterface richInterfaceData={richInterfaceData}/>
                     {/*应用场景，无文字，纯图片*/}
                     <ApplyScene applySceneData={applySceneData} sceneType={0}/>
