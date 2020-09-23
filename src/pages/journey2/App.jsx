@@ -112,7 +112,7 @@ export default connect(
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
                     {/*<FixedBarBox/>*/}
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     {/*banner轮播*/}
                     <BannerManage bannerType={8}/>
                     {/*四个一块*/}
@@ -124,7 +124,7 @@ export default connect(
                     {/*地平线智能驾驶产品矩阵*/}
                     <ProductMatrix data={productMatrixData}/>
                     {/*规格参数*/}
-                    <div id="m2" pc={20} mobile={15}/>
+                    <div id="m2" pc={20}/>
                     <BaseParam baseParamData={baseParamData}/>
                     {/*视频展示*/}
                     <Journey2Video videoType={19}/>
