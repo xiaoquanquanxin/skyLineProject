@@ -30,12 +30,12 @@ export const MatrixSliderItem = connect(
                                x5-video-player-fullscreen='true'
                                src={data._video} className={style.sliderItemVideo}/>
                         : <div className={style.sliderItemImg} style={{
-                            backgroundImage: `url(${data.img || '' })`
+                            backgroundImage: `url(${data.img || ''})`
                         }}/>
                 }
                 <div className={style.textDesc}>
-                    <p className={style.sTitle} dangerouslySetInnerHTML={{ __html: data.title2 }}/>
                     <p className={style.title} dangerouslySetInnerHTML={{ __html: data.title }}/>
+                    <p className={style.sTitle} dangerouslySetInnerHTML={{ __html: data.title2 }}/>
                     <div className={style.desc} dangerouslySetInnerHTML={{ __html: data.desc }}/>
                     <div className={style.line}/>
                 </div>
