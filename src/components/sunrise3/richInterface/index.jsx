@@ -65,10 +65,13 @@ export const RichInterface = class extends React.Component {
 const RichInterfaceItem = ({
     data,
 }) => {
+    if (data.content && data.content.join) {
+        data._content = data.content.join('<br/>');
+    }
     return (
         <li className={style.item}>
             <label className={style.label} dangerouslySetInnerHTML={{ __html: data.label }}/>
-            <div className={style.c} dangerouslySetInnerHTML={{ __html: data.content }}/>
+            <div className={style.c} dangerouslySetInnerHTML={{ __html: data._content }}/>
         </li>
     );
 };
