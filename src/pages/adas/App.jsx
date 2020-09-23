@@ -133,10 +133,10 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
-                    <div id="m1" pc={60}/>
                     {/*轮播*/}
                     <BannerManage bannerType={13}/>
                     {/*四个一块*/}
+                    <div id="m1" pc={60}/>
                     <FourBlocks data={cdrbData} isLight={true}/>
                     {/*征程2 视觉感知算法*/}
                     <JourneyAlgorithm jAData={jAData}/>
