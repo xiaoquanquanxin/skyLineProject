@@ -137,7 +137,7 @@ export default connect(
                     <TechnicalSolution technicalSolutionData={technicalSolutionData}/>
                     {/*应用场景，无文字，纯图片*/}
                     <ApplyScene applySceneData={applySceneData} sceneType={1}/>
-                    <div id="m2" pc={60}/>
+                    <div id="m2" pc={50} mobile={60}/>
                     {/*合作伙伴*/}
                     <AdvertisementBanner
                         data={customList}
