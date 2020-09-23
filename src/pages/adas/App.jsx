@@ -133,7 +133,7 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     {/*轮播*/}
                     <BannerManage bannerType={13}/>
                     {/*四个一块*/}
@@ -146,7 +146,7 @@ export default connect(
                     <ProductSetting productSettingData={productSettingData}/>
                     {/*应用场景*/}
                     <UseScene useSceneData={useSceneData}/>
-                    <div id="m2" pc={20} mobile={15}/>
+                    <div id="m2" pc={20}/>
                     {/*客户案例*/}
                     <CustomerCase customerCaseData={customerCaseData}/>
                     {/*视频本身*/}
