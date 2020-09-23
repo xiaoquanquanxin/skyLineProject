@@ -22,7 +22,6 @@ export const SiteInfo = connect(
         }
         //  浏览器足够宽
         const { isRelativeWide } = REDUCER_BROWSER_INFO;
-        console.log(data.data);
         return (
             <div className={style.siteInfo}>
                 <div className={`${style.siteInfoInner} ${layout.clearfix}`}>
