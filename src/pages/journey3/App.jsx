@@ -146,7 +146,7 @@ export default connect(
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData4} contentIsRight={true}/>
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData5}/>
                     {/*规格参数*/}
-                    <div id="m2" pc={20}/>
+                    <div id="m2" pc={36}/>
                     {/*征程3 DVB*/}
                     <BaseParam baseParamData={baseParamData} customWidth={18}/>
                     {/*/!*地平线 “天工开物”*!/*/}
