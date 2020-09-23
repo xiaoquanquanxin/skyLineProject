@@ -84,6 +84,12 @@ export const mapDispatchToProps = (dispatch) => {
         setVideoOpenStatus: (videoIsOpen, videoSrc) => {
             videoSrc = videoSrc || '';
             dispatch(setVideoOpenStatus(videoIsOpen, videoSrc));
+            setTimeout(() => {
+                const mainVideo = document.querySelector('#mainVideo');
+                if (mainVideo) {
+                    mainVideo.play();
+                }
+            }, 1000);
         },
         //  是否打开form表单
         setPopFormOpenStatus: (popFormIsOpen) => {
