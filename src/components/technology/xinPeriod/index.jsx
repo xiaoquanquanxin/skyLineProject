@@ -123,18 +123,20 @@ export const XinPeriod = connect(
 const XinPeriodItem = ({
     data,
 }) => {
-    if (data.desc) {
-        data._desc = data.desc.replace(/\n/ig, '<br/>');
-    }
+    const list = data.desc.split('\n').map((item, index) => {
+        return (
+            <dd className={style.dd} dangerouslySetInnerHTML={{ __html: item }} key={index}/>
+        );
+    });
     return (
         <div className={`${style.nameImg} ${layout.left} name-img`}>
             <p className={style.name} dangerouslySetInnerHTML={{ __html: data.title }}/>
             <div className={`${style.imgCenter2} ${layout.imgCenter2}`}
-                 style={{ backgroundImage: `url(${data.img || '' })` }}
+                 style={{ backgroundImage: `url(${data.img || ''})` }}
             />
-            {data._desc
-                ? <dl className={style.xinDesc} dangerouslySetInnerHTML={{ __html: data._desc }}/>
-                : ''}
+            <dl className={style.xinDesc}>
+                {list}
+            </dl>
         </div>
     );
 };
