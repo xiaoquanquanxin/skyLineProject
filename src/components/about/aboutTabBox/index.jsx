@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps } from '@store/reduxMap';
 import style from './index.module.less';
+import { isMobile } from '@utils/utils';
 
 export const AboutTabBox = connect(
     mapStateToProps,
@@ -97,10 +98,17 @@ export const AboutTabBox = connect(
         if (customOffsetTop === undefined || customOffsetTop == null) {
             throw new Error(`customOffsetTop:${customOffsetTop}未定义`);
         }
-        window.document.documentElement.scrollTo({
-            top: customOffsetTop,
-            behavior,
-        });
+        if (isMobile) {
+            window.document.body.scrollTo({
+                top: customOffsetTop,
+                behavior,
+            });
+        } else {
+            window.document.documentElement.scrollTo({
+                top: customOffsetTop,
+                behavior,
+            });
+        }
     }
 
     render(){
