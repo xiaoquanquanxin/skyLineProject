@@ -53,13 +53,38 @@ export const BasicHeader = connect(
                             const { data, code } = v;
                             if (!data || Number(code) < 0) {
                                 return;
-                            }const { title, keywords, description } = data;
-
+                            }
+                            const {
+                                title,
+                                keywords,
+                                description,
+                                og_site_name,
+                                og_type,
+                                og_url,
+                                og_title,
+                                og_description,
+                            } = data;
+                            console.log(data);
+                            //  og_site_name
+                            //  og_type
+                            //  og_url
+                            //  og_title
+                            //  og_description
                             window.document.title = title;
                             const metaKeyword = document.querySelector('#metaKeyword');
                             metaKeyword.content = keywords;
                             const metaDesc = document.querySelector('#metaDesc');
                             metaDesc.content = description;
+                            const metaSiteName = document.querySelector('#metaSiteName');
+                            metaSiteName.content = og_site_name;
+                            const metaType = document.querySelector('#metaType');
+                            metaType.content = og_type;
+                            const metaUrl = document.querySelector('#metaUrl');
+                            metaUrl.content = og_url;
+                            const metaTitle = document.querySelector('#metaTitle');
+                            metaTitle.content = og_title;
+                            const metaDescription = document.querySelector('#metaDescription');
+                            metaDescription.content = og_description;
                         })
                         .catch(emptyFunction);
                 });
