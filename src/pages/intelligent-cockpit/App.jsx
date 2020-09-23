@@ -140,9 +140,9 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
-                    <div id="m1" pc={60}/>
                     <BannerManage bannerType={16}/>
                     {/*方案优势*/}
+                    <div id="m1" pc={60}/>
                     <PlanAdvantage planAdvantageData={planAdvantageData}/>
                     {/*产品架构*/}
                     <ProductArchitecture productArchitectureData={productArchitectureData}/>
