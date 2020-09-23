@@ -3,6 +3,7 @@ import style from './index.module.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { BASIC_COMPARE_WIDTH } from '@utils/constant';
+import { isMobile } from '@utils/utils';
 //  滚动定位的东西
 export const FixedBarBox = connect(
     mapStateToProps,
@@ -109,10 +110,18 @@ export const FixedBarBox = connect(
             if (customOffsetTop === undefined || customOffsetTop == null) {
                 throw new Error(`customOffsetTop:${customOffsetTop}未定义`);
             }
-            window.document.documentElement.scrollTo({
-                top: customOffsetTop,
-                behavior,
-            });
+            if (isMobile) {
+                window.document.body.scrollTo({
+                    top: customOffsetTop,
+                    behavior,
+                });
+            } else {
+                window.document.documentElement.scrollTo({
+                    top: customOffsetTop,
+                    behavior,
+                });
+            }
+
         }
 
         render(){
