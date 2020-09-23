@@ -96,10 +96,10 @@ export default connect(
                     <BannerManage bannerType={14}/>
                     {/*二级banner*/}
                     <SubBanner subBannerData={subBannerData}/>
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     {/*自动驾驶 的box , 3个*/}
                     {AdBoxComponents}
-                    <div id="m2" pc={60} mobile={30}/>
+                    <div id="m2" pc={60}/>
                     {/*更多*/}
                     <GetMoreBox/>
                     {/*表单*/}
