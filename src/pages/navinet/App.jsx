@@ -112,10 +112,9 @@ export default connect(
                 //  客户案例
                 requestGetClientCase(NAVINET.type2)
                     .then(data => {
-                        //  console.log(data);
                         this.setState((state) => {
                             return {
-                                nCustomerCaseData: Object.assign({}, state.nCustomerCaseData, data[0])
+                                nCustomerCaseData: Object.assign({}, state.nCustomerCaseData, { info: data[0] })
                             };
                         });
                     }),
@@ -125,7 +124,7 @@ export default connect(
                     const { setComponentDidMountFinish } = this.props;
                     //  父组件初始化完成
                     setComponentDidMountFinish(true);
-                    //    console.log('setState结果是🍎', this.state);
+                    //  console.log('setState结果是🍎', this.state.nCustomerCaseData);
                 });
         }
 
@@ -148,7 +147,7 @@ export default connect(
                     {/*轮播*/}
                     <BannerManage bannerType={17}/>
                     {/*方案优势*/}
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     <MultipleAdvantages maData={maData}/>
                     {/*产品亮点*/}
                     <ProductHighlights phData={phData}/>
@@ -161,7 +160,7 @@ export default connect(
                     {/*已在中国及海外市场批量部署*/}
                     <Deploy deployData={deployData}/>
                     {/*客户案例*/}
-                    <div id="m2" pc={60} mobile={30}/>
+                    <div id="m2" pc={60}/>
                     <NCustomerCase nCustomerCaseData={nCustomerCaseData}/>
                     {/*视频本身*/}
                     <VideoWrap/>
