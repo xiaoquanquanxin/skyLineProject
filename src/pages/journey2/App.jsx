@@ -118,9 +118,9 @@ export default connect(
                     {/*四个一块*/}
                     <FourBlocks data={cdrbData}/>
                     {/*高知觉*/}
-                    <HighPerception data={hPData1}/>
+                    <HighPerception data={hPData1} customWidth={1}/>
                     <EdgeComputing data={hPData2}/>
-                    <HighPerception data={hPData3}/>
+                    <HighPerception data={hPData3} customWidth={3}/>
                     {/*地平线智能驾驶产品矩阵*/}
                     <ProductMatrix data={productMatrixData}/>
                     {/*规格参数*/}
