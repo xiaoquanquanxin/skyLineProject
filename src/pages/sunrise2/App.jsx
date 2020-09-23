@@ -121,7 +121,7 @@ export default connect(
                     {/*主要参数*/}
                     <div id="m2" pc={60}/>
                     <Sunrise2mainParam mainParamData={mainParamData1}/>
-                    <Sunrise2mainParam mainParamData={mainParamData2}/>
+                    <Sunrise2mainParam mainParamData={mainParamData2} hasBorderBottom={true}/>
                     {/*更多*/}
                     <GetMoreBox/>
                     {/*表单*/}
