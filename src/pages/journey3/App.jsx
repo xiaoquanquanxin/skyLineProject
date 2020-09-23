@@ -125,6 +125,8 @@ export default connect(
                 openExplorerData,
                 applySceneData,
             } = this.state;
+//            const mbileY = window.innerWidth / 750 * 20;
+//            console.log(mbileY);
             return (
                 <div className="App">
                     {/*头部*/}
@@ -132,7 +134,7 @@ export default connect(
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
                     {/*<FixedBarBox/>*/}
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     {/*banner轮播*/}
                     <BannerManage bannerType={21}/>
                     {/*四个一块*/}
@@ -144,7 +146,7 @@ export default connect(
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData4} contentIsRight={true}/>
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData5}/>
                     {/*规格参数*/}
-                    <div id="m2" pc={20} mobile={40}/>
+                    <div id="m2" pc={20}/>
                     {/*征程3 DVB*/}
                     <BaseParam baseParamData={baseParamData}/>
                     {/*/!*地平线 “天工开物”*!/*/}
