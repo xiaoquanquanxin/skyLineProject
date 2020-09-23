@@ -54,6 +54,7 @@ export const BasicHeader = connect(
                             if (!data || Number(code) < 0) {
                                 return;
                             }
+                            data.og_image = window.location.href + data.og_image;
                             const {
                                 title,
                                 keywords,
@@ -87,7 +88,7 @@ export const BasicHeader = connect(
                             const metaDescription = document.querySelector('#metaDescription');
                             metaDescription.content = og_description;
                             const metaImage = document.querySelector('#metaImage');
-                            metaImage.content = window.location.origin + og_image;
+                            metaImage.content = og_image;
                         })
                         .catch(emptyFunction);
                 });
