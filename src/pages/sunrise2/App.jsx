@@ -110,7 +110,7 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     <BannerManage bannerType={9}/>
                     <FourBlocks data={cdrbData}/>
                     {/*边缘计算赋能 AIoT*/}
@@ -119,7 +119,7 @@ export default connect(
                     {/*应用场景，无文字，纯图片*/}
                     <ApplyScene applySceneData={applySceneData} sceneType={0}/>
                     {/*主要参数*/}
-                    <div id="m2" pc={60} mobile={40}/>
+                    <div id="m2" pc={60}/>
                     <Sunrise2mainParam mainParamData={mainParamData1}/>
                     <Sunrise2mainParam mainParamData={mainParamData2}/>
                     {/*更多*/}
