@@ -148,7 +148,7 @@ export default connect(
                     {/*规格参数*/}
                     <div id="m2" pc={20}/>
                     {/*征程3 DVB*/}
-                    <BaseParam baseParamData={baseParamData}/>
+                    <BaseParam baseParamData={baseParamData} customWidth={18}/>
                     {/*/!*地平线 “天工开物”*!/*/}
                     <OpenExplorer openExplorerData={openExplorerData} isLight={false}/>
                     {/*应用场景，无文字，纯图片*/}
