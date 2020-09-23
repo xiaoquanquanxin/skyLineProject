@@ -116,7 +116,7 @@ export default connect(
                     <ModuleNav moduleNavData={moduleNavData}/>
                     {/*地平线 “天工开物”*/}
                     <OpenExplorer openExplorerData={openExplorerData} isLight={true} margin={.2}/>
-                    <div id="m2" pc={60}/>
+                    <div id="m2" pc={30} mobile={90}/>
                     {/*合作伙伴*/}
                     <AdvertisementBanner
                         data={customList}
