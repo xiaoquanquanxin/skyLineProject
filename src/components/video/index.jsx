@@ -18,6 +18,7 @@ export const VideoWrap = connect(
             <div className={style.popVideoMain}>
                 {videoSrc ?
                     <video
+                        id='mainVideo'
                         autoPlay
                         preload="auto"
                         controls="controls"
