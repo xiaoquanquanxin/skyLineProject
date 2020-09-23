@@ -20,6 +20,7 @@ class MultiplePageJsCdn {
         //  todo    如果不用cdn，需要注释
         if (isEnvProduction) {
             customJsCdnPlaceholder += '<script type="text/javascript" src="/react.v16.13.1.production.js"></script>';
+            customJsCdnPlaceholder += '<script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279298490&web_id=1279298490"></script>';
         } else {
             //  https://cdn.bootcdn.net/ajax/libs/react/16.13.1/umd/react.production.min.js
             customJsCdnPlaceholder += '<script type="text/javascript" src="/react.v16.13.1.development.js"></script>';
