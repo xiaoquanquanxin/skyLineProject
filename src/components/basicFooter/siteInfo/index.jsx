@@ -14,7 +14,12 @@ export const SiteInfo = connect(
         qrCodeClick,
         //  获取浏览器信息，来源于redux
         REDUCER_BROWSER_INFO,
+        //
+        data,
     }) => {
+        if (!data) {
+            return '';
+        }
         //  浏览器足够宽
         const { isRelativeWide } = REDUCER_BROWSER_INFO;
         return (
@@ -28,7 +33,7 @@ export const SiteInfo = connect(
                         >
                             <div className={style.icon}/>
                             <span>地平线官微</span>
-                            <img src={require('@media/basicFooter/QrCodeOfficialWeChat.jpg')}
+                            <img src={data.data.qrcode}
                                  alt='地平线官微' onClick={(e) => stopPropagation(e)}
                                  className={`${style.qrCode} ${qrCodeShowIndex === 0 ? layout.block : layout.none}`}/>
                         </button>
@@ -38,7 +43,7 @@ export const SiteInfo = connect(
                         >
                             <div className={style.icon}/>
                             <span>地平线招聘号</span>
-                            <img src={require('@media/basicFooter/QrCodeRecruitment.jpg')}
+                            <img src={data.data.zp_qrcode}
                                  alt='地平线招聘号' onClick={(e) => stopPropagation(e)}
                                  className={`${style.qrCode} ${qrCodeShowIndex === 1 ? layout.block : layout.none}`}/>
                         </button>
