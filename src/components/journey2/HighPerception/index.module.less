@@ -25,7 +25,6 @@
 			}
 
 			.desc {
-				width: 374px;
 				font-size: 16px;
 				color: rgba(255, 255, 255, .7);
 				line-height: 1.625;
@@ -65,7 +64,6 @@
 					}
 
 					.desc {
-						width: 4.68rem;
 						margin-top: 0.2rem;
 						font-size: 0.2rem;
 					}
@@ -77,6 +75,27 @@
 					top: 0;
 				}
 			}
+		}
+	}
+}
+
+
+.desc {
+	&.wrapWidth1 {
+		width: 352px;
+	}
+
+	&.wrapWidth3 {
+		width: 420px;
+	}
+
+	@media screen and (max-width: 750px) {
+		&.wrapWidth1 {
+			width: 4.39rem;
+		}
+
+		&.wrapWidth3 {
+			width: 3.2rem;
 		}
 	}
 }
