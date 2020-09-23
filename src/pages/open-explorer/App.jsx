@@ -108,8 +108,8 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
-                    <div id="m1" pc={60}/>
                     <BannerManage bannerType={12}/>
+                    <div id="m1" pc={60}/>
                     {/*特色与优势*/}
                     <Advantages advantagesData={advantagesData}/>
                     {/*功能模块*/}
