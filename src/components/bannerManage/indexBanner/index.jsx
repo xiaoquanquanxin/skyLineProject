@@ -30,9 +30,10 @@ export const IndexBannerSliderItem = connect(
             url,
         } = data;
         //  如果不是合法视频地址
+        let _video = video;
         //  ⚠️只有null和 "0" 两种
         if (video === '0') {
-            video = null;
+            _video = null;
         }
         //  如果不是合法链接
         if (url === '0') {
@@ -40,16 +41,16 @@ export const IndexBannerSliderItem = connect(
         }
         //  如果页面不够宽
         if (!REDUCER_BROWSER_INFO.isRelativeWide) {
-            video = null;
+            _video = null;
         }
         return (
             <div className={`${sliderItemStyle.bannerSlider} ${style.bannerSlider}`}>
                 {/*视频优先*/}
-                {REDUCER_BROWSER_INFO.isRelativeWide && video ?
+                {REDUCER_BROWSER_INFO.isRelativeWide && _video ?
                     <video autoPlay='autoplay' muted='muted' loop='loop' preload='auto' playsInline={true}
                            webkit-playsinline='true' x5-video-player-type='h5' x5-video-orientation='portraint'
                            x5-video-player-fullscreen='true'
-                           src={video} className={style.sliderItemVideo}/>
+                           src={_video} className={style.sliderItemVideo}/>
                     :
                     <img src={img} alt={desc} className={style.sliderItemImg}/>
                 }
