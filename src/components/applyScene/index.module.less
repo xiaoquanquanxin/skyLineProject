@@ -42,7 +42,7 @@
 
 .applySceneInner {
 	margin: auto;
-	width: 100vw;
+	width: 100%;
 
 	.listWrap {
 		width: 50%;
@@ -57,24 +57,32 @@
 			display: flex;
 			position: relative;
 
-			.topItem, .bottomItem {
-				width: 28.13vw;
+			//	图片
+			.topItem {
+				width: 24%;
+			}
+
+			.bottomItem {
+				width: 19.1489%;
 			}
 		}
 
 		.applySceneTopList {
-			width: 117.1875vw;
-			left: -58.59375vw;
+			width: 234.375%;
+			left: -117.1875%;
 		}
 
 		.applySceneBottomList {
-			width: 146.875vw;
-			left: -73.4375vw;
+			width: 293.75%;
+			left: -146.875%;
 		}
+	}
 
+	@media screen and  (max-width: 750px) {
+		& {
+			width: 100%;
 
-		@media screen and  (max-width: 750px) {
-			& {
+			.listWrap {
 				.applySceneTopList, .applySceneBottomList {
 					margin-top: 0.12rem;
 
