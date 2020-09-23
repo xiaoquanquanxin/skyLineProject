@@ -28,6 +28,7 @@ export const MainInfo = connect(
                 extraClassName = 'left';
                 break;
             case 'right':
+                extraClassName = 'right'
                 break;
             default:
                 throw new Error(`错误的文字位置,${textPosition}`);
