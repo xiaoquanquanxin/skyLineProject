@@ -131,7 +131,7 @@ export default connect(
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
-                    <div id="m1" pc={60} mobile={30}/>
+                    <div id="m1" pc={60}/>
                     {/*banner轮播*/}
                     <BannerManage bannerType={11}/>
                     {/*荣获多项国际大奖*/}
@@ -145,7 +145,7 @@ export default connect(
                     {/*开放工具链*/}
                     <ChainBox chainBoxData={chainBoxData}/>
                     {/*硬件关键规格*/}
-                    <div id="m2" pc={60} mobile={80}/>
+                    <div id="m2" pc={60}/>
                     {/*硬件关键规格*/}
                     <HardwareSpecification hsData={hsData}/>
                     {/*应用场景*/}
