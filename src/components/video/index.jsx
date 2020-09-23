@@ -24,7 +24,7 @@ export const VideoWrap = connect(
                     autoPlay
                     preload="auto"
                     controls="controls"
-                    playsinline={true}
+                    playsInline={true}
                     webkit-playsinline='true'
                     x5-video-player-type="h5"
                     x5-video-orientation="portraint"
