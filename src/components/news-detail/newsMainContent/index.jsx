@@ -20,7 +20,7 @@ export const NewsMainContent = connect(
     return (
         <div className={style.mainContent}>
             <div className={style.mainBanner}>
-                {mainData && <img className={style.thumb} src={mainData.thumb} alt=''/>}
+                {mainData && <img className={style.thumb} src={mainData.img} alt=''/>}
                 <div className={style.imgDes}>
                     <div className={style.iconType}>
                         {/*用那个数据*/}
