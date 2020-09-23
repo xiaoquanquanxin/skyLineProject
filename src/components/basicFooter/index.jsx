@@ -93,7 +93,7 @@ export const BasicFooter = class extends React.Component {
                 navSortByRank(data.aboutus, 'rank');
                 //  联系我们
                 data.contact = getContentList(data.contact, 1);
-                console.log(data.data);
+
                 this.setState(() => ({
                     data,
                 }));
