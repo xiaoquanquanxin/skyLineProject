@@ -141,7 +141,7 @@ export default connect(
                     {/*地平线 “天工开物”*/}
                     <OpenExplorer openExplorerData={openExplorerData} isLight={false}/>
                     {/*旭日3 系列——释放 “芯” 效能*/}
-                    <div id="m2" pc={20}/>
+                    <div id="m2" pc={60}/>
                     <RichInterface richInterfaceData={richInterfaceData}/>
                     {/*应用场景，无文字，纯图片*/}
                     <ApplyScene applySceneData={applySceneData} sceneType={0}/>
