@@ -1,7 +1,7 @@
 .container {
 	position: relative;
 	height: 760px;
-	background: linear-gradient(90deg, #081830, #051125);
+	background: linear-gradient(90deg, #06102c, #051125);
 	//	背景图
 	.bgGif, .bgVideo {
 		height: 100%;
@@ -16,6 +16,18 @@
 
 	//	内容部分
 	.content {
+		&::before {
+			display: block;
+			content: '';
+			width: 10px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: -5px;
+			background: linear-gradient(to right, #06102c, #051125);
+		}
+
+		height: 100%;
 		padding: 271px 0 0 730px;
 		margin: 0 auto;
 		width: 1280px;
