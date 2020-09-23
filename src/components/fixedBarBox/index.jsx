@@ -59,8 +59,18 @@ export const FixedBarBox = connect(
             }
             barBoxAnchorList.forEach(item => {
                 const element = window.document.querySelector(item.anchor);
-                const diffY = element.getAttribute('pc');
-                const value = isRelativeWide ? diffY : (window.innerWidth / 750) * diffY;
+                const pc = element.getAttribute('pc');
+                const mobile = element.getAttribute('mobile');
+                let value;
+                if (!isRelativeWide) {
+                    if (mobile) {
+                        value = (window.innerWidth / 750) * mobile;
+                    } else {
+                        value = (window.innerWidth / 750) * pc;
+                    }
+                } else {
+                    value = pc;
+                }
                 item.customOffsetTop = element.offsetTop - value;
             });
             //  如果前一次没完成，这一次完成了，说明是数据回调了，父组件渲染完成
