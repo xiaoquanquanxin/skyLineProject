@@ -65,7 +65,7 @@ export const BasicHeader = connect(
                                 og_description,
                                 og_image,
                             } = data;
-                            console.log(data);
+                            //  console.table(data);
                             //  og_site_name
                             //  og_type
                             //  og_url
