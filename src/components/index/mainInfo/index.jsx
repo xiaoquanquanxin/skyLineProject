@@ -18,8 +18,9 @@ export const MainInfo = connect(
     }) => {
         info = info || {};
         const { isRelativeWide } = REDUCER_BROWSER_INFO;
+        info._video = info.video;
         if (!isRelativeWide) {
-            info.video = null;
+            info._video = null;
         }
         let extraClassName = '';
         switch (textPosition) {
@@ -37,9 +38,9 @@ export const MainInfo = connect(
         }
         return (
             <div className={`${style.container} ${style[extraClassName]}`}>
-                {info.video
+                {info._video
                     ? <video className={style.bgVideo}
-                             src={info.video}
+                             src={info._video}
                              autoPlay="autoplay" muted="muted" loop="loop" preload="auto" playsInline={true}
                              webkit-playsinline="true" x5-video-player-type="h5"
                              x5-video-orientation="portraint"
