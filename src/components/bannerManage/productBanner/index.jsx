@@ -14,24 +14,22 @@ export const ProductSlickItem = connect(
         REDUCER_BROWSER_INFO,
     }) => {
         const { isRelativeWide } = REDUCER_BROWSER_INFO;
+        data._video = data.video;
         //  如果不是合法视频地址
         if (!isValidHTTPString(data.video)) {
-            data.video = null;
+            data._video = null;
         }
-        data.video = null;
-        //  console.log(data);
-
         return (
             <div className={`${sliderItemStyle.bannerSlider} ${style.bannerSlider}`}>
                 {
-                    (data.video && isRelativeWide)
+                    (data._video && isRelativeWide)
                         ?
                         <video autoPlay='autoplay' muted='muted' loop='loop' preload='auto' playsInline={true}
                                webkit-playsinline='true' x5-video-player-type='h5' x5-video-orientation='portraint'
                                x5-video-player-fullscreen='true'
-                               src={data.video} className={style.sliderItemVideo}/>
+                               src={data._video} className={style.sliderItemVideo}/>
                         : <div className={style.sliderItemImg} style={{
-                            backgroundImage: `url(${data.img || '' })`
+                            backgroundImage: `url(${data.img || ''})`
                         }}/>
                 }
                 <div className={style.textDesc}>
