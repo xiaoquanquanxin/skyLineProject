@@ -65,7 +65,7 @@ export const BasicHeader = connect(
                                 og_description,
                                 og_image,
                             } = data;
-                            //  console.table(data);
+                            console.table(data);
                             //  og_site_name
                             //  og_type
                             //  og_url
@@ -87,7 +87,7 @@ export const BasicHeader = connect(
                             const metaDescription = document.querySelector('#metaDescription');
                             metaDescription.content = og_description;
                             const metaImage = document.querySelector('#metaImage');
-                            metaImage.content = og_image;
+                            metaImage.content = window.location.origin + og_image;
                         })
                         .catch(emptyFunction);
                 });
