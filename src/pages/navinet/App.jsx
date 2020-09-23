@@ -147,7 +147,7 @@ export default connect(
                     {/*轮播*/}
                     <BannerManage bannerType={17}/>
                     {/*方案优势*/}
-                    <div id="m1" pc={60}/>
+                    <div id="m1" pc={60} mobile={62}/>
                     <MultipleAdvantages maData={maData}/>
                     {/*产品亮点*/}
                     <ProductHighlights phData={phData}/>
