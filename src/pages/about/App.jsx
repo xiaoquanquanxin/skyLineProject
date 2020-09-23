@@ -58,9 +58,11 @@ export default connect(
 
                         };
                     });
-                    //  父组件初始化完成
-                    const { setComponentDidMountFinish } = this.props;
-                    setComponentDidMountFinish(true);
+                    window.requestAnimationFrame(() => {
+                        //  父组件初始化完成
+                        const { setComponentDidMountFinish } = this.props;
+                        setComponentDidMountFinish(true);
+                    });
                 });
         }
 
@@ -112,7 +114,6 @@ export default connect(
                     <AboutUsLocation addrInfoMap={addrInfoMap}
                                      addrInfoList={addrInfoList}
                     />
-
                     {/*脚部*/}
                     <BasicFooter/>
                 </div>
