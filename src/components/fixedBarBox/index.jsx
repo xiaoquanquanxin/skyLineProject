@@ -63,11 +63,7 @@ export const FixedBarBox = connect(
                 const mobile = element.getAttribute('mobile');
                 let value;
                 if (!isRelativeWide) {
-                    if (mobile) {
-                        value = (window.innerWidth / 750) * mobile;
-                    } else {
-                        value = (window.innerWidth / 750) * pc;
-                    }
+                    value = (window.innerWidth / 750) * (mobile || pc);
                 } else {
                     value = pc;
                 }
