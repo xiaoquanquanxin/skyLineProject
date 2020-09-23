@@ -14,22 +14,23 @@ export const NCustomerCase = connect(
     setVideoOpenStatus
 }) => {
     nCustomerCaseData = nCustomerCaseData || {};
+    const { info } = nCustomerCaseData;
     return (
         <div className={style.customerCase}>
             <div className={style.customerCaseIn}>
                 <div style={{ width: '100%' }}>
-                    <BasicTitleDesc data={{ title: '客户案例' }}/>
+                    <BasicTitleDesc data={nCustomerCaseData}/>
                 </div>
                 <div className={`${layout.imgCenter2} ${style.imgCenter2}`}
-                     style={{ backgroundImage: `url(${nCustomerCaseData.img || '' })` }}
-                     onClick={() => {setVideoOpenStatus(true, nCustomerCaseData && nCustomerCaseData.video);}}
+                     style={{ backgroundImage: `url(${(info && info.img) || ''})` }}
+                     onClick={() => {setVideoOpenStatus(true, info && info.video);}}
                 />
                 <div className={style.nameDesc}>
                     <p className={style.name}
-                       dangerouslySetInnerHTML={{ __html: nCustomerCaseData.title }}/>
+                       dangerouslySetInnerHTML={{ __html: info && info.title }}/>
                     <div className={style.line}/>
                     <div className={style.desc}
-                         dangerouslySetInnerHTML={{ __html: nCustomerCaseData.desc }}/>
+                         dangerouslySetInnerHTML={{ __html: info && info.desc }}/>
                 </div>
             </div>
         </div>
