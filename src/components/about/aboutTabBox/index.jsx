@@ -113,7 +113,7 @@ export const AboutTabBox = connect(
         }
         //  console.log('注册㊗️customOffsetTop', customOffsetTop);
         try {
-            window.document.documentElement.scrollTo({
+            window.document.body.scrollTo({
                 top: customOffsetTop,
                 behavior,
             });
