@@ -133,14 +133,15 @@ export default connect(
                     {/*头部*/}
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
-                    <ScrollFixed RenderElement={FixedBarBox}/>
+                    {/*<ScrollFixed RenderElement={FixedBarBox}/>*/}
                     {/*<FixedBarBox/>*/}
                     <div id="m1" pc={60}/>
                     {/*banner轮播*/}
                     <BannerManage bannerType={21}/>
+                    <BlackPadding y={3} color={'#131313'}/>
                     {/*四个一块*/}
                     <FourBlocks data={cdrbData}/>
-                    <BlackPadding/>
+                    <BlackPadding color={'#101010'}/>
                     {/*超低功耗*/}
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData1}/>
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData2} contentIsRight={true}/>
@@ -149,6 +150,7 @@ export default connect(
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData5}/>
                     {/*规格参数*/}
                     <div id="m2" pc={36}/>
+                    <BlackPadding color={'#19191c'}/>
                     {/*征程3 DVB*/}
                     <BaseParam baseParamData={baseParamData} customWidth={18}/>
                     {/*/!*地平线 “天工开物”*!/*/}
