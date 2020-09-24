@@ -17,7 +17,7 @@ export const Sunrise2mainParam = ({
         });
     }
     return (
-        <div className={style.mainParam}>
+        <div className={`${style.mainParam} ${hasBorderBottom ? style.isNext : {}}`}>
             <p className={style.title} dangerouslySetInnerHTML={{ __html: mainParamData.title }}/>
             <ul className={`${style.list} ${hasBorderBottom ? style.hasBorderBottom : ''}`}>
                 {list}
