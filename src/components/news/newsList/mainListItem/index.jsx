@@ -31,9 +31,8 @@ export const MainListItem = connect(
                 <div className={style.titleDateDesc}>
                     <p className={style.title}>{data.title}</p>
                     <p className={style.date}>{transformDateType(data.publish_date)}</p>
-                    <div className={style.desc}>
-                        {matchReg(data.content).slice(0, 150)}
-                    </div>
+                    <div className={style.desc}
+                         dangerouslySetInnerHTML={{ __html: matchReg(data.content).slice(0, 150) }}/>
                 </div>
             </a>
         </li>
