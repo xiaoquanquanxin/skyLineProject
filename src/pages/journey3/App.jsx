@@ -133,7 +133,7 @@ export default connect(
                     {/*头部*/}
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
-                    {/*<ScrollFixed RenderElement={FixedBarBox}/>*/}
+                    <ScrollFixed RenderElement={FixedBarBox}/>
                     {/*<FixedBarBox/>*/}
                     <div id="m1" pc={60}/>
                     {/*banner轮播*/}
