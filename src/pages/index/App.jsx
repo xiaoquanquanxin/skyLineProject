@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { MainInfo } from '@components/index/mainInfo';
 import { AdvertisementBanner } from '@components/bannerManage/advertisementBanner';
+import { BlackPadding } from '@components/blackPadding';
 
 export default connect(
     mapStateToProps,
@@ -74,6 +75,7 @@ export default connect(
                     {/*基本信息*/}
                     <MainInfo info={firstInfo} textPosition='right'/>
                     <MainInfo info={secondInfo} textPosition='left'/>
+                    <BlackPadding color={'rgb(15 22 38)'}/>
                     {/*赋能客户*/}
                     <AdvertisementBanner
                         data={customList}
