@@ -20,6 +20,7 @@ import { Toast } from '@components/toast';
 import { requestGetImgTitle, requestGetPageContent } from '@api/index';
 import { JOURNEY2, NAV_CAT_ID } from '@utils/constant';
 import './index.less';
+import { BlackPadding } from '@components/blackPadding';
 
 export default connect(
     mapStateToProps,
@@ -117,6 +118,7 @@ export default connect(
                     <BannerManage bannerType={8}/>
                     {/*四个一块*/}
                     <FourBlocks data={cdrbData}/>
+                    <BlackPadding/>
                     {/*高知觉*/}
                     <HighPerception data={hPData1} customWidth={1}/>
                     <EdgeComputing data={hPData2}/>
