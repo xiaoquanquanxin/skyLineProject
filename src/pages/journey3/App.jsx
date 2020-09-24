@@ -18,6 +18,7 @@ import { OpenExplorer } from '@components/sunrise3/openExplorer';
 import { UltraLowPower } from '@components/journey3/ultraLowPower';
 import { ApplyScene } from '@components/applyScene';
 import './index.less';
+import { BlackPadding } from '@components/blackPadding';
 
 export default connect(
     mapStateToProps,
@@ -139,6 +140,7 @@ export default connect(
                     <BannerManage bannerType={21}/>
                     {/*四个一块*/}
                     <FourBlocks data={cdrbData}/>
+                    <BlackPadding/>
                     {/*超低功耗*/}
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData1}/>
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData2} contentIsRight={true}/>
