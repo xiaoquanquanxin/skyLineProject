@@ -131,7 +131,7 @@ export default connect(
                     {/*头部*/}
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
-                    {/*<ScrollFixed RenderElement={FixedBarBox}/>*/}
+                    <ScrollFixed RenderElement={FixedBarBox}/>
                     <div id="m1" pc={60}/>
                     <BannerManage bannerType={10}/>
                     <BlackPadding y={3} color={'#131313'}/>
