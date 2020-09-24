@@ -122,7 +122,9 @@ export default connect(
                     <BlackPadding color={'#101010'}/>
                     {/*高知觉*/}
                     <HighPerception data={hPData1} customWidth={1}/>
+                    <BlackPadding color={'#171717'} zIndex={-1}/>
                     <EdgeComputing data={hPData2}/>
+                    <BlackPadding color={'#171717'} zIndex={-1}/>
                     <HighPerception data={hPData3} customWidth={3}/>
                     <BlackPadding color={'#2c2c2f'}/>
                     {/*地平线智能驾驶产品矩阵*/}
