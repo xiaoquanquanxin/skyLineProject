@@ -124,7 +124,7 @@ export default connect(
                         styleType={2}
                     />
                     {/*更多*/}
-                    <GetMoreBox/>
+                    <GetMoreBox isGrey={true}/>
                     {/*表单*/}
                     <PopForm/>
                     {/*toast*/}
