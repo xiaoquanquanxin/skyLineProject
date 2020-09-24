@@ -17,6 +17,7 @@ import { requestGetClientCase, requestGetImgTitle, requestGetPageContent } from 
 import { SUNRISE2, NAV_CAT_ID } from '@utils/constant';
 import { Toast } from '@components/toast';
 import './index.less';
+import { BlackPadding } from '@components/blackPadding';
 
 export default connect(
     mapStateToProps,
@@ -112,15 +113,19 @@ export default connect(
                     <ScrollFixed RenderElement={FixedBarBox}/>
                     <div id="m1" pc={60}/>
                     <BannerManage bannerType={9}/>
+                    <BlackPadding y={3} color={'#131313'}/>
                     <FourBlocks data={cdrbData}/>
+                    <BlackPadding color={'#131313'}/>
                     {/*边缘计算赋能 AIoT*/}
                     <AiotBox aiotBoxData={aiotBoxData}/>
-                    {/*应用场景*/}
+                    <BlackPadding color={'rgb(46 46 49)'}/>
                     {/*应用场景，无文字，纯图片*/}
                     <ApplyScene applySceneData={applySceneData} sceneType={0}/>
                     {/*主要参数*/}
                     <div id="m2" pc={60}/>
+                    <BlackPadding color={'rgb(25 25 28)'}/>
                     <Sunrise2mainParam mainParamData={mainParamData1}/>
+                    <BlackPadding color={'rgb(25 25 28)'}/>
                     <Sunrise2mainParam mainParamData={mainParamData2} hasBorderBottom={true}/>
                     {/*更多*/}
                     <GetMoreBox/>
