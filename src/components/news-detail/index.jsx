@@ -37,6 +37,31 @@ export const NewsDetail = connect(
             .then(v => {
                 //  console.log(v.data);
                 this.setState(() => {
+                    const { title } = v.data;
+                    //  标题
+                    document.title = title;
+                    //  key
+                    document.querySelector('#metaKeyword').content = v.data.keywords;
+
+                    //  og_site_name
+                    document.querySelector('#metaSiteName').content = title;
+                    //  og_type
+                    document.querySelector('#metaType').content = 'website';
+                    //  og_url
+                    document.querySelector('#metaUrl').content = window.location.href;
+                    //  og_title
+                    document.querySelector('#metaTitle').content = title;
+                    //  og_img
+                    document.querySelector('#metaImage').content = v.data.thumb;
+                    try {
+                        //  description
+                        const metaDesc = v.data.content.replace(/<[^>]+>/g, '').substr(0, 100);
+                        document.querySelector('#metaDesc').content = metaDesc;
+                        //  og_description
+                        document.querySelector('#metaDescription').content = metaDesc;
+                    } catch (e) {
+
+                    }
                     return {
                         mainData: v.data,
                         relateList: v.relate
