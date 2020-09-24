@@ -43,7 +43,9 @@ const ApplySceneTopList = ({
     }
     const list = topList.map((item, index) => {
         return (
-            <img src={item.img} alt="" key={index} className={style.topItem}/>
+            <div key={index} className={style.topItem}>
+                <img src={item.img} className={style.applySceneImg} alt=""/>
+            </div>
         );
     });
     return (
@@ -61,7 +63,9 @@ const ApplySceneBottomList = ({
     }
     const list = bottomList.map((item, index) => {
         return (
-            <img src={item.img} alt="" key={index} className={style.bottomItem}/>
+            <div className={style.bottomItem} key={index}>
+                <img src={item.img} alt="" className={style.applySceneImg}/>
+            </div>
         );
     });
     return (
