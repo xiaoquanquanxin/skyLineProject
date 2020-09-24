@@ -1,18 +1,16 @@
 import React from 'react';
-import { isMobile } from '@utils/utils';
 //  填充，移动端有露底
 export const BlackPadding = ({
-    boxShadow,
+    //  颜色
     color,
+    //  y轴位移
+    y,
 }) => {
-    if (!isMobile) {
-        return '';
-    }
-    color = color || '#111111';
+    color = color || 'red';
+    y = y || 0;
     return (
         <div style={{
-            boxShadow: `${color} 0px 0 0 0.01rem`,
-            backgroundColor: color,
+            boxShadow: `${color} 0 ${y}px 0 3px`,
             height: '0',
             position: 'relative'
         }}/>
