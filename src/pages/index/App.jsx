@@ -73,6 +73,7 @@ export default connect(
                     {/*banner轮播*/}
                     <BannerSwiper swiperData={swiperData}/>
                     {/*基本信息*/}
+                    <BlackPadding color={'rgb(4 18 39)'} zIndex={1} spread={1}/>
                     <MainInfo info={firstInfo} textPosition='right'/>
                     <MainInfo info={secondInfo} textPosition='left'/>
                     <BlackPadding color={'rgb(15 22 38)'}/>
