@@ -152,7 +152,7 @@ export default connect(
                     {/*视频本身*/}
                     <VideoWrap/>
                     {/*更多*/}
-                    <GetMoreBox/>
+                    <GetMoreBox isGrey={true}/>
                     {/*表单*/}
                     <PopForm/>
                     {/*toast*/}
