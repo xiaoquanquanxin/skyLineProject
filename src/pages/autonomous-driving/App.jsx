@@ -116,7 +116,7 @@ export default connect(
                     {/*自动驾驶 的box , 3个*/}
                     {AdBoxComponents}
                     {/*客户案例*/}
-                    <CustomerCase customerCaseData={customerCaseData}/>
+                    <CustomerCase customerCaseData={customerCaseData} bgc={'#FAFAFA'}/>
                     <div id="m2" pc={60}/>
                     {/*更多*/}
                     <GetMoreBox/>
