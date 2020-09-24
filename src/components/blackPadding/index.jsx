@@ -10,7 +10,7 @@ export const BlackPadding = ({
     //  发散
     spread,
 }) => {
-    color = color || 'red';
+    color = color || 'white';
     y = y || 0;
     zIndex = zIndex || 0;
     spread = spread || 3;
