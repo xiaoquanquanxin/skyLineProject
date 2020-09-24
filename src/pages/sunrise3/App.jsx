@@ -139,6 +139,7 @@ export default connect(
                     <BlackPadding/>
                     {/*伯努利2.0 BPU*/}
                     <Sunrise3BpuBox sunrise3BpuBoxData={sunrise3BpuBoxData}/>
+                    <BlackPadding/>
                     {/*面向高画质 ISP*/}
                     <SuperIsp superIspData={superIspData}/>
                     <BlackPadding/>
