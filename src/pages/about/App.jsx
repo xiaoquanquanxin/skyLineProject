@@ -14,6 +14,7 @@ import { AboutUsHistory } from '@components/about/aboutUsHistory';
 import { AdvertisementBanner } from '@components/bannerManage/advertisementBanner';
 import { AboutContactUs } from '@components/about/aboutContactUs';
 import { AboutUsLocation } from '@components/about/aboutUsLocation';
+import { FRAME_DELAY } from '@utils/constant';
 
 export default connect(
     mapStateToProps,
@@ -57,11 +58,12 @@ export default connect(
                             addrInfoList: this.transformAddrInfo(v.addr),
 
                         };
-                    });
-                    window.requestAnimationFrame(() => {
-                        //  父组件初始化完成
-                        const { setComponentDidMountFinish } = this.props;
-                        setComponentDidMountFinish(true);
+                    }, () => {
+                        setTimeout(() => {
+                            //  父组件初始化完成
+                            const { setComponentDidMountFinish } = this.props;
+                            setComponentDidMountFinish(true);
+                        }, FRAME_DELAY * 12);
                     });
                 });
         }
