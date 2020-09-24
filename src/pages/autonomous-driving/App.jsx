@@ -3,7 +3,7 @@ import { BasicHeader } from '@components/basicHeader';
 import { BasicFooter } from '@components/basicFooter';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
-import { requestGetBannerByType, requestGetPageContent } from '@api/index';
+import { requestGetBannerByType, requestGetClientCase, requestGetPageContent } from '@api/index';
 import { commonRelativeWideFn, getBrowserInfo, setJSONData } from '@utils/utils';
 import { navSortByRank } from '@utils/utils';
 import './index.less';
@@ -16,6 +16,7 @@ import { AdBox } from '@components/autonomous-driving/adBox';
 import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
+import { CustomerCase } from '@components/CustomerCase';
 
 export default connect(
     mapStateToProps,
@@ -29,6 +30,8 @@ export default connect(
                 subBannerData: null,
                 //  adBoxData
                 adBoxData: null,
+                //  客户案例
+                customerCaseData: null,
             };
             //  页面宽度监听
             commonRelativeWideFn(this.props.setRelativeWideFn);
@@ -59,16 +62,26 @@ export default connect(
                         setJSONData(data[2]);
                         this.setState((state) => {
                             return {
-                                adBoxData: Object.assign({}, state.adBoxData, { list: data })
+                                adBoxData: Object.assign({}, state.adBoxData, { list: data }),
+                                customerCaseData: Object.assign({}, state.customerCaseData, data[3])
                             };
                         });
-                    })
+                    }),
+                //  客户案例
+                requestGetClientCase(AUTONOMOUS_DRIVING.type)
+                    .then(data => {
+                        this.setState((state) => {
+                            return {
+                                customerCaseData: Object.assign({}, state.customerCaseData, { list: data })
+                            };
+                        });
+                    }),
             ])
                 .then(() => {
                     const { setComponentDidMountFinish } = this.props;
                     //  父组件初始化完成
                     setComponentDidMountFinish(true);
-                    //    console.log('setState结果是🍎', this.state);
+//                        console.log('setState结果是🍎', this.state);
                 });
         }
 
@@ -76,6 +89,7 @@ export default connect(
             const {
                 subBannerData,
                 adBoxData,
+                customerCaseData,
             } = this.state;
             let AdBoxComponents;
             if (adBoxData && adBoxData.list) {
@@ -99,6 +113,8 @@ export default connect(
                     <div id="m1" pc={60}/>
                     {/*自动驾驶 的box , 3个*/}
                     {AdBoxComponents}
+                    {/*客户案例*/}
+                    <CustomerCase customerCaseData={customerCaseData}/>
                     <div id="m2" pc={60}/>
                     {/*更多*/}
                     <GetMoreBox/>
