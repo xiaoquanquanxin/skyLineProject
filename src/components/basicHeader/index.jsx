@@ -54,7 +54,7 @@ export const BasicHeader = connect(
                             if (!data || Number(code) < 0) {
                                 return;
                             }
-                            data.og_image = window.location.href + data.og_image;
+                            data.og_image = window.location.origin + data.og_image;
                             const {
                                 title,
                                 keywords,
@@ -66,7 +66,7 @@ export const BasicHeader = connect(
                                 og_description,
                                 og_image,
                             } = data;
-                            console.table(data);
+                            //  console.table(data);
                             //  og_site_name
                             //  og_type
                             //  og_url
