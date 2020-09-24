@@ -63,7 +63,7 @@ export default connect(
                         setJSONData(data[2]);
                         this.setState((state) => {
                             return {
-                                adBoxData: Object.assign({}, state.adBoxData, { list: data }),
+                                adBoxData: Object.assign({}, state.adBoxData, { list: data.slice(0, 3) }),
                                 customerCaseData: Object.assign({}, state.customerCaseData, data[3])
                             };
                         });
