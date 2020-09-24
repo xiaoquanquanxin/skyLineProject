@@ -77,6 +77,8 @@ export default connect(
                                 openExplorerData: Object.assign({}, state.openExplorerData, data[3]),
                                 //  旭日3 系列——释放 “芯” 效能
                                 richInterfaceData: Object.assign({}, state.richInterfaceData, data[4]),
+                                //  应用场景
+                                applySceneData: Object.assign([], state.applySceneData, data[5])
                             };
                         });
                     }),
