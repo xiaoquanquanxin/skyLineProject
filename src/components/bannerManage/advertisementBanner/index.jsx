@@ -57,7 +57,7 @@ export const AdvertisementBanner = connect(
                     swiperData={swiperData}
                     sliderItemType={2}
                     basicDelay={5}
-                    autoHeight={true}
+                    autoHeight={false}
                 />
             </div>
         );
