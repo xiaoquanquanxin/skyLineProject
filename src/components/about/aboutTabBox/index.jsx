@@ -75,9 +75,9 @@ export const AboutTabBox = connect(
                 this.anchorClick(this.anchorList[this.hashIndex].customOffsetTop, 'smooth');
                 //  模拟点击
                 if (this.hash === '#tab4') {
-                    /*setTimeout(() => {
+                    setTimeout(() => {
                         this.anchorClick(this.anchorList[this.hashIndex].customOffsetTop, 'smooth');
-                    }, FRAME_DELAY * 4);*/
+                    }, FRAME_DELAY * 4);
                 }
             }
         }
