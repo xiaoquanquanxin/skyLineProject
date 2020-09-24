@@ -131,26 +131,30 @@ export default connect(
                     {/*头部*/}
                     <BasicHeader/>
                     {/*合作咨询定位组件*/}
-                    <ScrollFixed RenderElement={FixedBarBox}/>
+                    {/*<ScrollFixed RenderElement={FixedBarBox}/>*/}
                     <div id="m1" pc={60}/>
                     <BannerManage bannerType={10}/>
+                    <BlackPadding y={3} color={'#131313'}/>
                     {/*四个一块的*/}
                     <FourBlocks data={cdrbData}/>
-                    <BlackPadding/>
+                    <BlackPadding color={'#101010'}/>
                     {/*伯努利2.0 BPU*/}
                     <Sunrise3BpuBox sunrise3BpuBoxData={sunrise3BpuBoxData}/>
-                    <BlackPadding/>
+                    <BlackPadding color={'#071112'}/>
                     {/*面向高画质 ISP*/}
                     <SuperIsp superIspData={superIspData}/>
-                    <BlackPadding/>
+                    <BlackPadding color={'#2e2e31'}/>
                     {/*强大的视频处理能力*/}
                     <VideoProcessing videoProcessingData={videoProcessingData}/>
+                    <BlackPadding color={'#19191e'}/>
                     {/*地平线 “天工开物”*/}
                     <OpenExplorer openExplorerData={openExplorerData} isLight={false}/>
+                    <BlackPadding color={'#19191e'}/>
                     {/*旭日3 系列——释放 “芯” 效能*/}
                     <div id="m2" pc={60}/>
                     <RichInterface richInterfaceData={richInterfaceData}/>
                     {/*应用场景，无文字，纯图片*/}
+                    <BlackPadding color={'#2e2f31'}/>
                     <ApplyScene applySceneData={applySceneData} sceneType={0}/>
                     {/*更多*/}
                     <GetMoreBox/>
