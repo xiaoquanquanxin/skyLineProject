@@ -76,7 +76,7 @@ export default connect(
                     <BlackPadding color={'rgb(4 18 39)'} zIndex={1} spread={1}/>
                     <MainInfo info={firstInfo} textPosition='right'/>
                     <MainInfo info={secondInfo} textPosition='left'/>
-                    <BlackPadding color={'rgb(15 22 38)'}/>
+                    <BlackPadding y={2} color={'rgb(4, 18, 39)'}/>
                     {/*赋能客户*/}
                     <AdvertisementBanner
                         data={customList}
