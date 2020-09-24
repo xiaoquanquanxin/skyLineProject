@@ -20,6 +20,7 @@ import { Toast } from '@components/toast';
 import { requestGetClientCase, requestGetImgTitle, requestGetPageContent } from '@api/index';
 import { NAV_CAT_ID, SUNRISE3 } from '@utils/constant';
 import './index.less';
+import { BlackPadding } from '@components/blackPadding';
 
 export default connect(
     mapStateToProps,
@@ -131,11 +132,14 @@ export default connect(
                     <ScrollFixed RenderElement={FixedBarBox}/>
                     <div id="m1" pc={60}/>
                     <BannerManage bannerType={10}/>
+                    {/*四个一块的*/}
                     <FourBlocks data={cdrbData}/>
+                    <BlackPadding/>
                     {/*伯努利2.0 BPU*/}
                     <Sunrise3BpuBox sunrise3BpuBoxData={sunrise3BpuBoxData}/>
                     {/*面向高画质 ISP*/}
                     <SuperIsp superIspData={superIspData}/>
+                    <BlackPadding/>
                     {/*强大的视频处理能力*/}
                     <VideoProcessing videoProcessingData={videoProcessingData}/>
                     {/*地平线 “天工开物”*/}
