@@ -17,6 +17,7 @@ import { GetMoreBox } from '@components/getMoreBox';
 import { PopForm } from '@components/popForm';
 import { Toast } from '@components/toast';
 import { CustomerCase } from '@components/CustomerCase';
+import { BlackPadding } from '@components/blackPadding';
 
 export default connect(
     mapStateToProps,
@@ -108,6 +109,7 @@ export default connect(
                     {/*合作咨询定位组件*/}
                     <ScrollFixed RenderElement={FixedBarBox}/>
                     <BannerManage bannerType={14}/>
+                    <BlackPadding y={3} color={'rgb(7,7,7)'}/>
                     {/*二级banner*/}
                     <SubBanner subBannerData={subBannerData}/>
                     <div id="m1" pc={60}/>
