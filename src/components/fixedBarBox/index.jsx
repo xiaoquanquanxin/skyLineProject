@@ -110,16 +110,21 @@ export const FixedBarBox = connect(
             if (customOffsetTop === undefined || customOffsetTop == null) {
                 throw new Error(`customOffsetTop:${customOffsetTop}未定义`);
             }
-            if (isMobile) {
-                window.document.body.scrollTo({
-                    top: customOffsetTop,
-                    behavior,
-                });
-            } else {
+            try {
                 window.document.documentElement.scrollTo({
                     top: customOffsetTop,
                     behavior,
                 });
+            } catch (e) {
+
+            }
+            try {
+                window.document.documentElement.scrollTo({
+                    top: customOffsetTop,
+                    behavior,
+                });
+            } catch (e) {
+
             }
         }
 
