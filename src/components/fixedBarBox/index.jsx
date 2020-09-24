@@ -111,7 +111,7 @@ export const FixedBarBox = connect(
                 throw new Error(`customOffsetTop:${customOffsetTop}未定义`);
             }
             try {
-                window.document.documentElement.scrollTo({
+                window.document.body.scrollTo({
                     top: customOffsetTop,
                     behavior,
                 });
