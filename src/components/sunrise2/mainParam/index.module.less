@@ -1,9 +1,13 @@
+
 .mainParam {
 	background-color: #18181B;
 	padding: 60px 0;
 
-	& + .mainParam {
+	&.isNext {
 		padding-top: 30px;
+		@media screen and  (max-width: 750px) {
+			padding-top: 0;
+		}
 	}
 
 	.title {
