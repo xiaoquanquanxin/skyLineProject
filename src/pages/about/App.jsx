@@ -46,25 +46,26 @@ export default connect(
         componentDidMount(){
             requestGetAboutUs()
                 .then(v => {
-                    navSortByRank(v.invest, 'rank');
-                    this.setState(() => {
-                        return {
-                            basicInfo: v.aboutus,
-                            historyInfoMap: v.history,
-                            historyInfoList: Reflect.ownKeys(v.history).reverse(),
-                            investList: v.invest,
-                            contactInfo: getContentList(v.contact, 2),
-                            addrInfoMap: v.addr,
-                            addrInfoList: this.transformAddrInfo(v.addr),
-
-                        };
-                    }, () => {
-                        setTimeout(() => {
-                            //  父组件初始化完成
-                            const { setComponentDidMountFinish } = this.props;
-                            setComponentDidMountFinish(true);
-                        }, FRAME_DELAY * 12);
-                    });
+                    setTimeout(() => {
+                        navSortByRank(v.invest, 'rank');
+                        this.setState(() => {
+                            return {
+                                basicInfo: v.aboutus,
+                                historyInfoMap: v.history,
+                                historyInfoList: Reflect.ownKeys(v.history).reverse(),
+                                investList: v.invest,
+                                contactInfo: getContentList(v.contact, 2),
+                                addrInfoMap: v.addr,
+                                addrInfoList: this.transformAddrInfo(v.addr),
+                            };
+                        }, () => {
+                            setTimeout(() => {
+                                //  父组件初始化完成
+                                const { setComponentDidMountFinish } = this.props;
+                                setComponentDidMountFinish(true);
+                            }, FRAME_DELAY * ((window.location.hash === '#tab4') ? 36 : 12));
+                        });
+                    }, FRAME_DELAY);
                 });
         }
 
