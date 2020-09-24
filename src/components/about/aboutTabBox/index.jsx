@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps } from '@store/reduxMap';
 import style from './index.module.less';
-import { isMobile } from '@utils/utils';
 import { FRAME_DELAY } from '@utils/constant';
 
 export const AboutTabBox = connect(
