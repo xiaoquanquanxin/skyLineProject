@@ -44,6 +44,13 @@ const titleInjectFn = (outputName, html) => {
             titlePlaceholder = '地平线｜边缘人工智能芯片全球领导者';
             keywordsPlaceholder = '地平线官网,边缘人工智能芯片全球领导者';
             descriptionPlaceholder = '地平线是边缘人工智能芯片的全球领导者。得益于前瞻性的软硬结合理念，地平线自主研发兼具极致效能与开放易用性的边缘人工智能芯片及解决方案，可面向智能驾驶以及更广泛的通用 AI 应用领域，提供包括高效能边缘 AI 芯片、丰富算法IP、开放工具链等在内的全面赋能服务。目前，地平线是国内唯一一家实现车规级人工智能芯片量产前装的企业。';
+
+            metaSiteName = '地平线｜边缘人工智能芯片全球领导者';
+            metaType = 'website';
+            metaUrl = 'https://www.horizon.ai/sunrise2.html';
+            metaTitle = '地平线｜边缘人工智能芯片全球领导者';
+            metaDescription = '地平线是边缘人工智能芯片的全球领导者。得益于前瞻性的软硬结合理念，地平线自主研发兼具极致效能与开放易用性的边缘人工智能芯片及解决方案，可面向智能驾驶以及更广泛的通用 AI 应用领域，提供包括高效能边缘 AI 芯片、丰富算法IP、开放工具链等在内的全面赋能服务。目前，地平线是国内唯一一家实现车规级人工智能芯片量产前装的企业。';
+            metaImage = '/upload/202009/22/news749441600743947.png';
             break;
 
         case 'intelligent-cockpit.html':
@@ -121,6 +128,13 @@ const titleInjectFn = (outputName, html) => {
             titlePlaceholder = '核心技术｜边缘人工智能芯片全球领导者';
             keywordsPlaceholder = '地平线官网,边缘人工智能芯片全球领导者';
             descriptionPlaceholder = '地平线是边缘人工智能芯片的全球领导者。得益于前瞻性的软硬结合理念，地平线自主研发兼具极致效能与开放易用性的边缘人工智能芯片及解决方案，可面向智能驾驶以及更广泛的通用 AI 应用领域，提供包括高效能边缘 AI 芯片、丰富算法IP、开放工具链等在内的全面赋能服务。目前，地平线是国内唯一一家实现车规级人工智能芯片量产前装的企业。';
+
+            metaSiteName = '核心技术｜边缘人工智能芯片全球领导者';
+            metaType = 'website';
+            metaUrl = 'https://www.horizon.ai/technology.html';
+            metaTitle = '核心技术｜边缘人工智能芯片全球领导者';
+            metaDescription = '地平线是边缘人工智能芯片的全球领导者。得益于前瞻性的软硬结合理念，地平线自主研发兼具极致效能与开放易用性的边缘人工智能芯片及解决方案，可面向智能驾驶以及更广泛的通用 AI 应用领域，提供包括高效能边缘 AI 芯片、丰富算法IP、开放工具链等在内的全面赋能服务。目前，地平线是国内唯一一家实现车规级人工智能芯片量产前装的企业。';
+            metaImage = '/upload/202009/22/news206011600746402.png';
             break;
 
         case '404.html':
