@@ -116,19 +116,23 @@ export default connect(
                     <div id="m1" pc={60}/>
                     {/*banner轮播*/}
                     <BannerManage bannerType={8}/>
+                    <BlackPadding y={3} color={'#131313'}/>
                     {/*四个一块*/}
                     <FourBlocks data={cdrbData}/>
-                    <BlackPadding/>
+                    <BlackPadding color={'#101010'}/>
                     {/*高知觉*/}
                     <HighPerception data={hPData1} customWidth={1}/>
                     <EdgeComputing data={hPData2}/>
                     <HighPerception data={hPData3} customWidth={3}/>
+                    <BlackPadding color={'#2c2c2f'}/>
                     {/*地平线智能驾驶产品矩阵*/}
                     <ProductMatrix data={productMatrixData}/>
                     {/*规格参数*/}
+                    <BlackPadding color={'#19191c'}/>
                     <div id="m2" pc={36}/>
                     <BaseParam baseParamData={baseParamData}/>
                     {/*视频展示*/}
+                    <BlackPadding color={'#191918'}/>
                     <Journey2Video videoType={19}/>
                     {/*更多*/}
                     <GetMoreBox/>
