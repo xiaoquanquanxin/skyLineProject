@@ -3,7 +3,7 @@ import style from './index.module.less';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '@store/reduxMap';
 import { BASIC_COMPARE_WIDTH } from '@utils/constant';
-import { isMobile } from '@utils/utils';
+
 //  滚动定位的东西
 export const FixedBarBox = connect(
     mapStateToProps,
