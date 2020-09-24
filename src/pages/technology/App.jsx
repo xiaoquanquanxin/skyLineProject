@@ -14,6 +14,7 @@ import { MAPS } from '@components/technology/MAPS';
 import { XinPeriod } from '@components/technology/xinPeriod';
 import { NAV_CAT_ID, TECHNOLOGY } from '@utils/constant';
 import './index.less';
+import { BlackPadding } from '@components/blackPadding';
 
 export default connect(
     mapStateToProps,
@@ -23,7 +24,7 @@ export default connect(
         constructor(props){
             super(props);
             this.state = {
-                //  bpu框架
+                //  为实际场景而生的 BPU 架构
                 bpuData: null,
                 //  AI 芯片真实性能远超对手
                 performanceData: null,
@@ -44,7 +45,7 @@ export default connect(
                     .then(data => {
                         this.setState((state) => {
                             return {
-                                //  bpu框架
+                                //  为实际场景而生的 BPU 架构
                                 bpuData: Object.assign({}, state.bpuData, data[0]),
                                 //  AI 芯片真实性能远超对手
                                 performanceData: Object.assign({}, state.bpuData, data[1]),
@@ -58,13 +59,13 @@ export default connect(
                 //  获取图片标题接口
                 requestGetImgTitle(TECHNOLOGY.name)
                     .then(data => {
-                        //  bpu框架
+                        //  为实际场景而生的 BPU 架构
                         const bpuDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
                         //  持续攀登 引领 AI “芯” 时代
                         const xinPeriodDataList = clipData(data, NAV_CAT_ID, data[0][NAV_CAT_ID]);
                         this.setState((state) => {
                             return {
-                                //  bpu框架
+                                //  为实际场景而生的 BPU 架构
                                 bpuData: Object.assign({}, state.bpuData, { list: bpuDataList }),
                                 //  持续攀登 引领 AI “芯” 时代
                                 xinPeriodData: Object.assign({}, state.xinPeriodData, { list: xinPeriodDataList })
@@ -87,8 +88,9 @@ export default connect(
                     {/*头部*/}
                     <BasicHeader/>
                     <BannerManage bannerType={6}/>
-                    {/*bpu框架*/}
+                    {/*为实际场景而生的 BPU 架构*/}
                     <Bpu bpuData={bpuData}/>
+                    <BlackPadding/>
                     {/*AI 芯片真实性能远超对手*/}
                     <TechnologyPerformance performanceData={performanceData}/>
                     {/*关于 MAPS 评估方式*/}
