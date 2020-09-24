@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { mapStateToProps } from '@store/reduxMap';
 import style from './index.module.less';
 import { isMobile } from '@utils/utils';
+import { FRAME_DELAY } from '@utils/constant';
 
 export const AboutTabBox = connect(
     mapStateToProps,
@@ -56,15 +57,28 @@ export const AboutTabBox = connect(
         }
         this.anchorList.forEach(item => {
             const element = window.document.querySelector(item.anchor);
-            item.customOffsetTop = element.offsetTop - element.getAttribute(isRelativeWide ? 'pc' : 'mobile');
+            const pc = element.getAttribute('pc');
+            const mobile = element.getAttribute('mobile');
+            let value;
+            if (!isRelativeWide) {
+                value = (window.innerWidth / 750) * (mobile || pc);
+            } else {
+                value = pc;
+            }
+            item.customOffsetTop = element.offsetTop - value;
         });
         //  如果前一次没完成，这一次完成了，说明是数据回调了，父组件渲染完成
         if (componentDidMountFinish !== prevProps.REDUCER_ABOUT_US_MAP.componentDidMountFinish) {
             //  console.log('这玩意儿只执行一次');
             //  如果有hash
             if (this.hash) {
-                //  模拟点击
                 this.anchorClick(this.anchorList[this.hashIndex].customOffsetTop, 'smooth');
+                //  模拟点击
+                if (this.hash === '#tab4') {
+                    /*setTimeout(() => {
+                        this.anchorClick(this.anchorList[this.hashIndex].customOffsetTop, 'smooth');
+                    }, FRAME_DELAY * 4);*/
+                }
             }
         }
         const { scrollTop: prevScrollTop } = prevProps.REDUCER_BROWSER_INFO;
@@ -98,16 +112,22 @@ export const AboutTabBox = connect(
         if (customOffsetTop === undefined || customOffsetTop == null) {
             throw new Error(`customOffsetTop:${customOffsetTop}未定义`);
         }
-        if (isMobile) {
-            window.document.body.scrollTo({
-                top: customOffsetTop,
-                behavior,
-            });
-        } else {
+        //  console.log('注册㊗️customOffsetTop', customOffsetTop);
+        try {
             window.document.documentElement.scrollTo({
                 top: customOffsetTop,
                 behavior,
             });
+        } catch (e) {
+
+        }
+        try {
+            window.document.documentElement.scrollTo({
+                top: customOffsetTop,
+                behavior,
+            });
+        } catch (e) {
+
         }
     }
 
