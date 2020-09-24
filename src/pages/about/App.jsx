@@ -109,7 +109,7 @@ export default connect(
                         title='投资阵容（部分）'
                         styleType={4}
                     />
-                    <div id="tab4" pc={30}/>
+                    <div id="tab4" pc={30} mobile={-60}/>
                     {/*联系我们*/}
                     <AboutContactUs contactInfo={contactInfo}/>
                     {/*地图部分*/}
