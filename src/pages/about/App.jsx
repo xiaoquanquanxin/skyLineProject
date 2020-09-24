@@ -63,7 +63,7 @@ export default connect(
                                 //  父组件初始化完成
                                 const { setComponentDidMountFinish } = this.props;
                                 setComponentDidMountFinish(true);
-                            }, FRAME_DELAY * ((window.location.hash === '#tab4') ? 36 : 12));
+                            }, FRAME_DELAY * ((window.location.hash === '#tab4') ? 60 : 12));
                         });
                     }, FRAME_DELAY);
                 });
