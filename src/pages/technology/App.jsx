@@ -90,11 +90,13 @@ export default connect(
                     <BannerManage bannerType={6}/>
                     {/*为实际场景而生的 BPU 架构*/}
                     <Bpu bpuData={bpuData}/>
-                    <BlackPadding/>
+                    <BlackPadding color={'#0a0a0a'}/>
                     {/*AI 芯片真实性能远超对手*/}
                     <TechnologyPerformance performanceData={performanceData}/>
+                    <BlackPadding color={'#121214'}/>
                     {/*关于 MAPS 评估方式*/}
                     <MAPS mapsData={mapsData}/>
+                    <BlackPadding color={'#000'}/>
                     {/*持续攀登 引领 AI “芯” 时代*/}
                     <XinPeriod xinPeriodData={xinPeriodData}/>
                     {/*视频*/}
