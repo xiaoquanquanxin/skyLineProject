@@ -59,11 +59,14 @@ export default connect(
                                 addrInfoList: this.transformAddrInfo(v.addr),
                             };
                         }, () => {
+                            const { isRelativeWide } = this.props.REDUCER_BROWSER_INFO;
                             setTimeout(() => {
                                 //  父组件初始化完成
                                 const { setComponentDidMountFinish } = this.props;
                                 setComponentDidMountFinish(true);
-                            }, FRAME_DELAY * ((window.location.hash === '#tab4') ? 60 : 12));
+                            }, FRAME_DELAY * ((window.location.hash === '#tab4') ? (
+                                isRelativeWide ? 36 : 60
+                            ) : 12));
                         });
                     }, FRAME_DELAY);
                 });
