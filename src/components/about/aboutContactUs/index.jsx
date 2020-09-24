@@ -16,7 +16,6 @@ export const AboutContactUs = ({
     }
     return (
         <div className={style.contact}>
-            <span id="tab4"/>
             <div className={style.contactInner}>
                 <div className={style.title}>联系我们</div>
                 <ul className={style.list}>
