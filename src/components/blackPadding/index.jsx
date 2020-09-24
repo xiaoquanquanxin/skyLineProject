@@ -5,14 +5,21 @@ export const BlackPadding = ({
     color,
     //  y轴位移
     y,
+    //
+    zIndex,
+    //  发散
+    spread,
 }) => {
     color = color || 'red';
     y = y || 0;
+    zIndex = zIndex || 0;
+    spread = spread || 3;
     return (
         <div style={{
-            boxShadow: `${color} 0 ${y}px 0 3px`,
+            boxShadow: `${color} 0 ${y}px 0 ${spread}px`,
             height: '0',
-            position: 'relative'
+            position: 'relative',
+            zIndex: zIndex,
         }}/>
     );
 };
