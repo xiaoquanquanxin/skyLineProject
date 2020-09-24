@@ -29,7 +29,7 @@ export const AIOT = { name: '智能物联网', type: 129 };
 //  高级别辅助驾驶
 export const ADAS = { name: '高级别辅助驾驶', type: 125 };
 //  自动驾驶
-export const AUTONOMOUS_DRIVING = { name: '自动驾驶', };
+export const AUTONOMOUS_DRIVING = { name: '自动驾驶', type: 132 };
 //  智能座舱
 export const INTELLIGENT_COCKPIT = { name: '智能座舱', type: 126 };
 //  高精地图
