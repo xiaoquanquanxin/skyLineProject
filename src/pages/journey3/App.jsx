@@ -144,9 +144,13 @@ export default connect(
                     <BlackPadding color={'#101010'}/>
                     {/*超低功耗*/}
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData1}/>
+                    <BlackPadding color={'#171717'} zIndex={-1}/>
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData2} contentIsRight={true}/>
+                    <BlackPadding color={'#171717'} zIndex={-1}/>
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData3}/>
+                    <BlackPadding color={'#171717'} zIndex={-1}/>
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData4} contentIsRight={true}/>
+                    <BlackPadding color={'#171717'} zIndex={-1}/>
                     <UltraLowPower ultraLowPowerData={ultraLowPowerData5}/>
                     {/*规格参数*/}
                     <div id="m2" pc={36}/>
