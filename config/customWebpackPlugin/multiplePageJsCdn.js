@@ -17,7 +17,7 @@ class MultiplePageJsCdn {
     //  是生产环境？
     constructor(isEnvProduction){
         console.log(`cdn插件，是生产环境？🍉${isEnvProduction}`);
-        //  todo    如果不用cdn，需要注释
+        //  如果不用cdn，需要注释，修改webpack配置
         if (isEnvProduction) {
             customJsCdnPlaceholder += '<script type="text/javascript" src="/react.v16.13.1.production.js"></script>';
             customJsCdnPlaceholder += '<script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279298490&web_id=1279298490"></script>';
