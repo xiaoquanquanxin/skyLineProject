@@ -103,17 +103,17 @@ export default connect(
                     <div id="tab1" pc={20}/>
                     <AboutUsBasic aboutUsInfo={basicInfo}/>
                     {/*发展历程*/}
-                    <div id="tab2" pc={50}/>
+                    <div id="tab2" pc={50} style={{ transform: 'translateY(-40px)' }}/>
                     <AboutUsHistory historyInfoMap={historyInfoMap} historyInfoList={historyInfoList}/>
                     {/*投资阵容（部分）*/}
-                    <div id="tab3" pc={50}/>
+                    <div id="tab3" pc={50} style={{ transform: 'translateY(-30px)' }}/>
                     {/*合作伙伴*/}
                     <AdvertisementBanner
                         data={investList}
                         title='投资阵容（部分）'
                         styleType={4}
                     />
-                    <div id="tab4" pc={30} mobile={-60}/>
+                    <div id="tab4" pc={30} mobile={-60} style={{ transform: 'translateY(-30px)' }}/>
                     {/*联系我们*/}
                     <AboutContactUs contactInfo={contactInfo}/>
                     {/*地图部分*/}
