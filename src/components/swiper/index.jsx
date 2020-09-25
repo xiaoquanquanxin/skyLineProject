@@ -211,7 +211,6 @@ export const CustomSwiper = connect(
             default:
                 throw new Error('错误的类型，没有这种类sliderItem');
         }
-        //  todo    数据量必须>=2才能有swiper，否则没有swiper
         return (
             <div className={`swiper-container`} ref={this.swiperRef}>
                 <div className="swiper-wrapper">
