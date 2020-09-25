@@ -91,7 +91,7 @@ export const AboutTabBox = connect(
             const value = this.anchorList[i];
             //  console.log(value.customOffsetTop, currentScrollTop);
             //  +10是容错值
-            if (value.customOffsetTop <= currentScrollTop + 10) {
+            if (value.customOffsetTop <= currentScrollTop + 80) {
                 this.setState(() => {
                     return {
                         activeIndex: i,
