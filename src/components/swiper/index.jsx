@@ -22,7 +22,11 @@ export const CustomSwiper = connect(
     swiperRef;
 
     /**
+     * props：
+     * swiperData:数据
      * basicDelay:默认滚动时间，这是为数据如果没有second字段准备的
+     * sliderItemType:子组件类型
+     * autoHeight:自动高度
      * */
     constructor(props){
         super(props);
