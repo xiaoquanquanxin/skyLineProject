@@ -21,7 +21,7 @@ export const OpenExplorer = ({
     return (
         <div className={`${style.openExplorer} ${isLight ? style.isLight : {}}`}>
             <BasicTitleDesc data={openExplorerData} widthType={918} isLight={isLight}/>
-            <img src={openExplorerData.img} className={`${style.img} ${marginClass}`} alt=''/>
+            <img src={openExplorerData.img || ''} className={`${style.img} ${marginClass}`} alt=''/>
         </div>
     );
 };
