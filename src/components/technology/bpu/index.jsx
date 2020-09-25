@@ -75,6 +75,13 @@ export const Bpu = connect(
                     );
                 });
             }
+//            console.log(bpuData.desc, this.props.REDUCER_BROWSER_INFO.isRelativeWide);
+//            const data = {
+//                title: bpuData.title,
+//                desc: this.props.REDUCER_BROWSER_INFO.isRelativeWide
+//                    ? bpuData.desc
+//                    : (bpuData.desc || '').replace(/<br\/>/ig, '')
+//            };
             return (
                 <div className={style.bpu}>
                     <div className={style.bpuIn}>
@@ -106,7 +113,7 @@ const BpuItem = ({
         <li className={`${style.item} ${index === activeIndex ? style.active : ''}`}
             onMouseEnter={() => {setActive(index);}}>
             <div className={style.imgCenter2}
-                 style={{ backgroundImage: `url(${bpuData.img || '' })` }}
+                 style={{ backgroundImage: `url(${bpuData.img || ''})` }}
             />
             <p className={style.name} dangerouslySetInnerHTML={{ __html: bpuData.title }}/>
             <div className={style.line}/>
