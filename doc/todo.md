@@ -1,6 +1,4 @@
--webkit-box-pack??
-
-合作伙伴swiper，人用的是bgi，我是img
+-webkit-box-pack??被编译掉了
 
 
 
