@@ -17,10 +17,14 @@ export const CustomSwiper = connect(
     mapStateToProps,
     mapDispatchToProps,
 )(class extends React.Component {
+    //  分页器组件元素
     paginRefs;
+    //  swiper实例
     mySwiper;
+    //  swiper组件元素
     swiperRef;
-
+    //  定时器
+    timer;
     /**
      * props：
      * swiperData:数据
