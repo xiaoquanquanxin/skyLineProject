@@ -11,7 +11,7 @@ export const VideoProcessing = ({
         <div className={style.videoProcessing}>
             <BasicTitleDesc data={videoProcessingData} widthType={918}/>
             <img className={style.img} alt=''
-                 src={videoProcessingData.img}
+                 src={videoProcessingData.img || ''}
             />
         </div>
     );
