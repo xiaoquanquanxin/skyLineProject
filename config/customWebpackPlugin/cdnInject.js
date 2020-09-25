@@ -1,4 +1,4 @@
-//  注入title
+//  注入特殊cdn
 /**
  * @param {string} pathName
  * @param {string} html
