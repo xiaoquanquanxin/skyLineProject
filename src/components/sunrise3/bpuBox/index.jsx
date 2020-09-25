@@ -20,10 +20,9 @@ export const Sunrise3BpuBox = ({
             );
         });
     }
-    //  console.log(sunrise3BpuBoxData);
     return (
         <div className={style.bpuBox}>
-            <div className={style.bpuIn}>
+            <div className={style.bpuIn} style={{ backgroundImage: `url(${sunrise3BpuBoxData.img})` }}>
                 <div className={style.textDesc}>
                     <p className={style.title} dangerouslySetInnerHTML={{ __html: sunrise3BpuBoxData.title }}/>
                     <div className={style.desc} dangerouslySetInnerHTML={{ __html: sunrise3BpuBoxData.desc }}/>
