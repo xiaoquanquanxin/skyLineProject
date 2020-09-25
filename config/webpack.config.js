@@ -725,7 +725,7 @@ module.exports = function (webpackEnv){
         //  百度地图
         externals: {
             BMap: 'BMap',
-            //  todo    如果不用cdn，需要注释
+            //  如果不用cdn，需要注释
             react: 'React',
         },
     };
