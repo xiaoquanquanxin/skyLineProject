@@ -26,7 +26,7 @@
 //            //  拿buffer
 //            console.log('🍹buffer:', buffer);
 //            //  拿到buffer，替换
-//            const string = buffer.toString().replace('[[[title]]]', '超高校级的希望');
+//            const string = buffer.toString().replace('[[[title]]]', 'xxxxxx');
 //            //  换成二进制
 //            const result = Buffer.from(string);
 //            //  console.log(result.toString());
