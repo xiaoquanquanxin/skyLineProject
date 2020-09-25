@@ -1,4 +1,4 @@
-1.项目搭建采用create-react-app，具体版本见[package.json](../package.json)
+1.项目搭建使用create-react-app，具体版本见[package.json](../package.json)
 2.[webpack配置项](../config)已经暴露
 3.webpack配置项有自定义插件，用于向模板打入必要代码。如果改同构也可以参考。
 4.编译为多页方案，入口文件为[src/pages/**](../src/pages)，详细配置见webpack配置。
