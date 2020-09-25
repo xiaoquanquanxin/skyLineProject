@@ -1,4 +1,4 @@
-1.项目搭建使用create-react-app，具体版本见[package.json](../package.json)
+1.项目搭建使用[create-react-app](https://www.html.cn/create-react-app/docs/getting-started/)，具体版本见[package.json](../package.json)
 
 2.[webpack配置项](../config)已经暴露
 
