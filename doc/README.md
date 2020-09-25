@@ -11,3 +11,5 @@
 6.css模块化已经配置，具体看[/config/webpack.config.js](../config/webpack.config.js)
 
 7.功能类的，注释充足；纯渲染的没注释了。
+
+8.[代理](./目前采用的部署方案.md)
