@@ -2,7 +2,7 @@
 
 2.[webpack配置项](../config)已经暴露
 
-3.webpack配置项有[自定义插件](../config/customWebpackPlugin)，用于向模板打入必要代码。如果改同构也可以参考。
+3.webpack配置项有[自定义插件](../config/customWebpackPlugin)，用于向模板打入必要代码【包括react的cdn、百度地图、cnzz】。如果改同构也可以参考。
 
 4.编译为多页方案，入口文件为[src/pages/**](../src/pages)，详细配置见webpack配置。
 
