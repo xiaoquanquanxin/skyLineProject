@@ -40,7 +40,7 @@ export const ProjectBannerSliderItem = connect(
                 <div className={style.sliderText}>
                     <p className={`${style.sliderTitle} ${data.title && data.title.length >= 20 ? style.textSmallSize : ''}`}
                        dangerouslySetInnerHTML={{ __html: data.title }}/>
-                    <p className={`${style.sliderDescription} ${data.desc && data.desc.length >= 100 ? style.textSmallSize : ''}`}>{data.desc}</p>
+                    <p className={`${style.sliderDescription} ${data.desc && data.desc.length >= 100 ? style.textSmallSize : ''}`} dangerouslySetInnerHTML={{__html:data.desc}}/>
                 </div>
             </div>
         );
