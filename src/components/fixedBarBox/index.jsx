@@ -146,7 +146,7 @@ export const FixedBarBox = connect(
                     <div className={style.titleBox}>
                         <div className={style.themeDesc}>
                             <strong className={style.subTitle} ref={this.titleRef}>{barBoxData.title}</strong>
-                            <em className={style.subDescription} ref={this.descRef}>{barBoxData.desc}</em>
+                            <em className={style.subDescription} ref={this.descRef} dangerouslySetInnerHTML={{__html:barBoxData.desc}}/>
                         </div>
                         <div className={style.titleNavInquireBtn} ref={this.navTagRef}>
                             <div className={style.navTag}>
