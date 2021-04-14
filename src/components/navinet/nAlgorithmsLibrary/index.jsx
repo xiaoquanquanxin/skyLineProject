@@ -50,7 +50,7 @@ const MakeFun = ({ makeFnData }) => {
     });
     return (
         <div className={style.makeFun}>
-            <p className={style.makeFunName}>建图功能</p>
+            <p className={style.makeFunName}>{makeFnData.title}</p>
             <ul className={style.makeFunList}>
                 <li className={style.makeFunItem}>
                     <label dangerouslySetInnerHTML={{ __html: thMap.title }} className={style.label}/>
