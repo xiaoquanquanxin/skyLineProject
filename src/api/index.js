@@ -174,7 +174,7 @@ export function requestGetImgTitle(name){
         });
 }
 
-//  获取图片标题接口
+//  获取用户案例接口
 export function requestGetClientCase(type){
     return request({
         url: '/api/getclientcase',
