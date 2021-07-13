@@ -36,6 +36,10 @@ export function navSortByRank(list, rank){
     if (!list || !list.length || !Array.prototype.isPrototypeOf(list)) {
         return;
     }
+    //  已验证list为数组，如果数据中没有rank字段，就不排序
+    if (list[0].rank === null || list[0].rank === undefined) {
+        return;
+    }
     list.sort((a, b) => a[rank] - b[rank]);
 }
 
