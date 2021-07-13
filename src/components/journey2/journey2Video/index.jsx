@@ -41,9 +41,9 @@ export const Journey2Video = connect(
                 <div className={style.videoShow}>
                     <div className={style.videoBox}>
                         <p className={style.videoTitle}>视频展示</p>
-                        <div className={style.videoCover} style={{ backgroundImage: `url(${videoData.img || '' })` }}
+                        { videoData.video && <div className={style.videoCover} style={{ backgroundImage: `url(${videoData.img || '' })` }}
                              onClick={() => {this.props.setVideoOpenStatus(true, videoData && videoData.video);}}
-                        />
+                        />}
                         <p className={style.videoSTitle}>{videoData.title}</p>
                     </div>
                 </div>
