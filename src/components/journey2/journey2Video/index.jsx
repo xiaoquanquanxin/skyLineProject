@@ -37,14 +37,18 @@ export const Journey2Video = connect(
             if (!videoData) {
                 return '';
             }
+            //  服务端返回video为 "0"
+            if (videoData.video === '0') {
+                videoData.video = null;
+            }
             return (
                 <div className={style.videoShow}>
                     <div className={style.videoBox}>
-                        <p className={style.videoTitle}>视频展示</p>
-                        { videoData.video && <div className={style.videoCover} style={{ backgroundImage: `url(${videoData.img || '' })` }}
+                        <p className={style.videoTitle}>{videoData.title}</p>
+                        { (videoData.video && <div className={style.videoCover} style={{ backgroundImage: `url(${videoData.img || '' })` }}
                              onClick={() => {this.props.setVideoOpenStatus(true, videoData && videoData.video);}}
-                        />}
-                        <p className={style.videoSTitle}>{videoData.title}</p>
+                        />) || <img src={videoData.img} alt="" style={{marginTop:'40px',width:'100%'}}/>}
+                        <p className={style.videoSTitle}>{videoData.title2}</p>
                     </div>
                 </div>
             );
