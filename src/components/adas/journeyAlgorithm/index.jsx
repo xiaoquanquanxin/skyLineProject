@@ -30,7 +30,7 @@ export const JourneyAlgorithm = connect(
                     <BasicTitleDesc data={jAData}/>
                     <div className={style.videoDesc}>
                         <div className={style.videoBox} style={{ backgroundImage: `url(${jAData.img || ''})` }}>
-                            {jAData.video && <img className={style.img} alt='' src={playImg}
+                            {(jAData.video && jAData.video !== '0') && <img className={style.img} alt='' src={playImg}
                                  onClick={() => {setVideoOpenStatus(true, jAData && jAData.video);}}
                             />}
                         </div>
